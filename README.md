@@ -24,14 +24,13 @@ Sênior Sistemas - ERP Sênior
 
 | Sinal | Descrição |
 | --- | --- |
-| = | Sinal Igual: Utilizado em comparações/operações aritméticas. |
-| > | Maior que. |
-| < | Menor que. |
-| <> | Diferente de. |
-| >= | Maior ou igual a. |
-| <= | Menor ou igual a. |
-| e | E. Utilizado com o comando "Se" para ligar várias condições, em que todas devem ser verdadeiras para que o resultado da comparação seja verdadeira. |
-| ou | OU. Utilizado com o comando "Se" para ligar várias condições, devendo apenas uma condição ser verdadeira para que o resultado da comparação seja verdadeiro. |
+| = | **Sinal igual:** Utilizado em comparações/operações aritméticas. |
+| + | **Sinal de adição:** Utilizado nas operações aritméticas de somar. |
+| - | **Sinal de Subtrair:** Utilizado operações aritméticas de subtrair. |
+| / | **Sinal dividir:** Utilizado nas operações aritméticas de divisão. |
+| * | **Asterisco:** Utilizado nas operações aritméticas de multiplicação. |
+| ++ | **Incremento de +1:** Utilizado para aumentar o valor de uma variável, de um em um. |
+| -- | **Decremento de -1:** Utilizado para diminuir o valor de uma variável, de um em um. |
 
 ## Operadores Extras
 
