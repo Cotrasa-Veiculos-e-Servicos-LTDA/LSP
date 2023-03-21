@@ -92,7 +92,7 @@ Válida para todos os locais de definição de regras ou fórmulas, traz a rela�
 
 ## Funções
 
-. Abrir (Open)
+- Abrir (Open)
 Abre o arquivo informado em nome do arquivo para o modo de abertura informado (Ler/Gravar). Se o arquivo não existir, ele é criado. Ele retorna um manipulador de arquivos.
 
 Sintaxe: Abrir ("<nome do arquivo>",<modo de abertura>);
