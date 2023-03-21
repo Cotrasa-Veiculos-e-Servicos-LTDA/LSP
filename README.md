@@ -89,3 +89,17 @@ Válida para todos os locais de definição de regras ou fórmulas, traz a rela�
 | Inserir |	Faz com que o sistema, insira um arquivo na regra atual, em tempo de execução/compilação. Sintaxe: Inserir “<nome_arquivo>”; |
 | ValStr |	Usado apenas no gerador, para alterar a descrição de um campo tipo Descrição. O texto passada para ValStr será impresso no lugar da descrição original do campo. ValStr = Teste; Cancel(2);	|
 | Cursor |	Os cursores nada mais são que um SELECT em uma regra, retornando registros que satisfaçam a condição informada na propriedade SQL de um Cursor. Observações: O SELECT utilizado no cursor não possui relacionamento direto com o SELECT utilizado pelo gerador de relatórios por exemplo. |
+
+## Funções
+
+~~~Abrir (Open)
+Abre o arquivo informado em nome do arquivo para o modo de abertura informado (Ler/Gravar). Se o arquivo não existir, ele é criado. Ele retorna um manipulador de arquivos.
+
+Sintaxe
+
+Abrir ("<nome do arquivo>",<modo de abertura>);
+
+Exemplo
+
+arq = Abrir ("Teste.txt",Ler);
+~~~
