@@ -1,0 +1,24 @@
+/**
+ * @brief Função em LSP para multiplicar dois números.
+ *
+ * @param vnNumA Primeiro número.
+ * @param vnNumB Segundo número.
+ *
+ * @return A multiplicação dos dois números.
+ */
+ 
+Definir Numero vnResult;
+
+Definir Alfa vaResult;
+Definir Alfa vaMensagem;
+
+Definir Funcao multiplicar(Numero vnNumA, Numero vnNumB);
+
+multiplicar(10,10);              
+
+Funcao multiplicar(Numero vnNumA, Numero vnNumB);{
+   vnResult = vnNumA * vnNumB;          
+   IntParaAlfa(vnResult, vaResult); 
+   vaMensagem = "A multiplicação é: " + vaResult;  
+   Mensagem(Retorna,vaMensagem);
+}
