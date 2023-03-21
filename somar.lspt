@@ -1,3 +1,12 @@
+/**
+ * @brief Função em LSP para somar dois números.
+ *
+ * @param vnNumA Primeiro número a ser somado.
+ * @param vnNumB Segundo número a ser somado.
+ *
+ * @return A soma dos dois números.
+ */
+ 
 Definir Numero vnResult;
 
 Definir Alfa vaResult;
