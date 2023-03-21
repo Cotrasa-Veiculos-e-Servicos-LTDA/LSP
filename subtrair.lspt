@@ -1,0 +1,15 @@
+Definir Numero vnResult;
+
+Definir Alfa vaResult;
+Definir Alfa vaMensagem;
+
+Definir Funcao subtrair(Numero vnNumA, Numero vnNumB);
+
+subtrair(10,10);              
+
+Funcao subtrair(Numero vnNumA, Numero vnNumB);{
+   vnResult = vnNumA - vnNumB;          
+   IntParaAlfa(vnResult, vaResult); 
+   vaMensagem = "A subtração é: " + vaResult;  
+   Mensagem(Retorna,vaMensagem);
+}
