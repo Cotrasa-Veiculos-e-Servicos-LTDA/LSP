@@ -1,3 +1,4 @@
+
 # LSP - Linguagem Sênior de Programação - Exemplos de códigos
 
 - Documentação da Linguagem LSP - <https://documentacao.senior.com.br/tecnologia/6.2.35/index.htm#lsp/sintaxe-de-comandos-e-operadores.htm>
@@ -50,7 +51,9 @@ Existem determinados caracteres que, quando inseridos eu uma expressão literal 
 
 > Exemplo
 > 
+> ~~~LSP
 > EnviaEMail("Joao","joao@senior.com.br", "", "", "Teste","\"\\\\Servidor\\teste.txt\"", "");
+> ~~~
 > 
 > Como pode ser visto no exemplo acima, está sendo passado um endereço de um arquivo que normalmente seria: \\Servidor\teste.txt. Entretanto ao passar literalmente nas > regras é necessário colocar uma \ (barra) antes das "" (aspas) e da \ (barra) para que estes caracteres não funcionem como caracteres especiais.
 > 
@@ -70,32 +73,32 @@ Válida para todos os locais de definição de regras ou fórmulas, traz a rela�
 | ou | Liga duas ou mais condições, bastando uma ser verdadeira para o resultado ser verdadeiro. |
 | Inicio | Marcador utilizado para iniciar um bloco. |
 | Fim; | Marcador utilizado para finalizar um bloco. |
-| Para | Comando utilzado para se fazer um loop de comandos. Ou seja, fazer com que um bloco de comandos seja executado determinado número de vezes. Indica-se um <valor inicial> e esse valor é incrementado pelo valor do <contador> até que a <condicao> seja falsa. Sintaxe: Para (<valor inicial>; <condicao>; <contador>) |
-| Enquanto | Comando utilzado para se fazer um loop de comandos. Ou seja, fazer com que um bloco de comandos seja executado determinado número de vezes até que a <condição> seja falsa. Sintaxe: Enquanto (<condicao>) |
+| Para | Comando utilzado para se fazer um loop de comandos. Ou seja, fazer com que um bloco de comandos seja executado determinado número de vezes. Indica-se um \<valor inicial\> e esse valor é incrementado pelo valor do \<contador\> até que a \<condicao\> seja falsa. Sintaxe: Para (\<valor inicial\>; \<condicao\>; \<contador\>); |
+| Enquanto | Comando utilizado para se fazer um loop de comandos. Ou seja, fazer com que um bloco de comandos seja executado determinado número de vezes até que a \<condição>, seja falsa. Sintaxe: Enquanto (\<condicao\>); |
 | Pare | Interrompe a execução de um bloco do comando Para ou Enquanto. O Pare, simplesmente faz com que o sistema abandone o bloco de comandos e continue a execução do restante das regras. Sintaxe: Pare;|
 | Cancel (1) | Se for utilizado em uma regra do evento "Antes de Imprimir" de uma seção, cancela a impressão da seção. Se for usado no evento "Na Impressão" de um campo, cancela a impressão deste campo. Sintaxe: Cancel (1); |
 | Cancel (2) | Deve ser usado em conjunto com as variáveis de sistema ValStr ou ValRet e somente no Evento "Na Impressão". O valor alfa atribuído para ValStr seguido de Cancel (2) será impresso no campo em que foi implementada a regra. Sintaxe: Cancel (2); |
-| Mensagem | Exibe uma mensagem para o usuário durante a execução da regra. Sintaxe: Mensagem (<tipo_da_mensagem>,"<mensagem>"); |
-| Vapara | Desvia a execução da regra para o <rótulo> determinado. Sintaxe: Vapara <rótulo>; |
-| Regra | Chama uma outra regra, identificada pelo <número da regra>. Sintaxe: Regra (<numero_da_regra>); |
+| Mensagem | Exibe uma mensagem para o usuário durante a execução da regra. Sintaxe: Mensagem (\<tipo_da_mensagem\>,"\<mensagem\>"); |
+| Vapara | Desvia a execução da regra para o \<rótulo\> determinado. Sintaxe: Vapara \<rótulo\>; |
+| Regra | Chama uma outra regra, identificada pelo \<número da regra\>. Sintaxe: Regra (\<numero_da_regra\>); |
 | Continue | Continua a execução de um loop feito pelo comando Para. Ou seja, se quiser que o loop não seja executado em determinado caso, faça o teste da condição e com ela use o comando. Sintaxe: Continue; |
-| End | Usado na definição de uma função, para indicar qual parâmetro retornará valor. Sintaxe: Funcao Teste (end <tipo do parâmetro> <nome do parâmetro>); |
-| Abrir |	Abre o <arquivo informado>, no <modo de abertura> desejado. Se o arquivo não existir ele é criado. Ele retorna um manipulador de arquivos. Sintaxe: Manipulador_de_Arquivo = Abrir (“<nome_do_arquivo>”,<modo_de_abertura>); Onde o Modo de Abertura pode ser: Ler ou Gravar. |
-| Fechar |	Fecha o arquivo aberto pela função Abrir. Sintaxe: Fechar (<manipulador_de_arquivo>); |
-| Ler |	Lê uma <quantidade de caracteres> do arquivo especificado no <manipulador de arquivo> e joga o valor lido em uma <variável >. Sintaxe: Ler (<manipulador_de_arquivos>, <variavel>,<tamanho>); |
-| Gravar |	Grava o valor de uma <variável ou de uma constante> no <manipulador de arquivos>. Sintaxe: Gravar (<manipulador_de_arquivos>,<variável ou constante>,<tamanho>); |
-| Lernl |	Lê uma linha no arquivo indicado pelo <manipulador de arquivos> e joga o valor lido em uma <variável>. Sintaxe: Lernl (<manipulador_de_arquivos>,<variável>); |
-| Gravarnl |	Grava uma linha no arquivo indicado pelo <manipulador de arquivos> com o valor contido na variável especificada. Sintaxe: Gravarnl (<manipulador_de_arquivos>,<variável ou constante>); |
-| Inserir |	Faz com que o sistema, insira um arquivo na regra atual, em tempo de execução/compilação. Sintaxe: Inserir “<nome_arquivo>”; |
+| End | Usado na definição de uma função, para indicar qual parâmetro retornará valor. Sintaxe: Funcao Teste (end \<tipo do parâmetro\> \<nome do parâmetro\>); |
+| Abrir |	Abre o \<arquivo informado\>, no \<modo de abertura\> desejado. Se o arquivo não existir ele é criado. Ele retorna um manipulador de arquivos. Sintaxe: Manipulador_de_Arquivo = Abrir (“\<nome_do_arquivo\>”,\<modo_de_abertura\>); Onde o Modo de Abertura pode ser: Ler ou Gravar. |
+| Fechar |	Fecha o arquivo aberto pela função Abrir. Sintaxe: Fechar (\<manipulador_de_arquivo\>); |
+| Ler |	Lê uma \<quantidade de caracteres\> do arquivo especificado no \<manipulador de arquivo\> e joga o valor lido em uma \<variável\>. Sintaxe: Ler (\<manipulador_de_arquivos\>, \<variavel\>,\<tamanho\>); |
+| Gravar |	Grava o valor de uma \<variável ou de uma constante> no \<manipulador de arquivos\>. Sintaxe: Gravar (\<manipulador_de_arquivos\>,\<variável ou constante>,\<tamanho\>); |
+| Lernl |	Lê uma linha no arquivo indicado pelo \<manipulador de arquivos\> e joga o valor lido em uma \<variável\>. Sintaxe: Lernl (\<manipulador_de_arquivos\>,\<variável\>); |
+| Gravarnl |	Grava uma linha no arquivo indicado pelo \<manipulador de arquivos\> com o valor contido na variável especificada. Sintaxe: Gravarnl (\<manipulador_de_arquivos\>,\<variável ou constante\>); |
+| Inserir |	Faz com que o sistema, insira um arquivo na regra atual, em tempo de execução/compilação. Sintaxe: Inserir “\<nome_arquivo\>”; |
 | ValStr |	Usado apenas no gerador, para alterar a descrição de um campo tipo Descrição. O texto passada para ValStr será impresso no lugar da descrição original do campo. ValStr = Teste; Cancel(2);	|
-| Cursor |	Os cursores nada mais são que um SELECT em uma regra, retornando registros que satisfaçam a condição informada na propriedade SQL de um Cursor. Observações: O SELECT utilizado no cursor não possui relacionamento direto com o SELECT utilizado pelo gerador de relatórios por exemplo. |
+| Cursor |	Os cursores nada mais são que um SELECT em uma regra, retornando registros que satisfaçam a condição informada na propriedade SQL de um Cursor. Observações: O SELECT utilizado no cursor não possui relacionamento direto com o SELECT utilizado pelo gerador de relatórios, por exemplo. |
 
 ## Funções
 
 - Abrir (Open)
 Abre o arquivo informado em nome do arquivo para o modo de abertura informado (Ler/Gravar). Se o arquivo não existir, ele é criado. Ele retorna um manipulador de arquivos.
 
-Sintaxe: Abrir ("<nome do arquivo>",<modo de abertura>);
+Sintaxe: Abrir ("\<nome do arquivo\>",\<modo de abertura\>);
 
 Exemplo
 ~~~LSP
