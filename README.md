@@ -1,4 +1,4 @@
-##LSP - Linguagem Sênior de Programação - Exemplos de códigos
+## LSP - Linguagem Sênior de Programação - Exemplos de códigos
 
 - Documentação da Linguagem LSP - https://documentacao.senior.com.br/tecnologia/6.2.35/index.htm#lsp/sintaxe-de-comandos-e-operadores.htm
 
