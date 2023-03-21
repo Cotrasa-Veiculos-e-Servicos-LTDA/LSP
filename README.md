@@ -75,4 +75,5 @@ Válida para todos os locais de definição de regras ou fórmulas, traz a rela�
 | Pare | Interrompe a execução de um bloco do comando Para ou Enquanto. O Pare, simplesmente faz com que o sistema abandone o bloco de comandos e continue a execução do restante das regras. |
 | Cancel (1) | Se for utilizado em uma regra do evento "Antes de Imprimir" de uma seção, cancela a impressão da seção. Se for usado no evento "Na Impressão" de um campo, cancela a impressão deste campo. |
 | Cancel (2) | Deve ser usado em conjunto com as variáveis de sistema ValStr ou ValRet e somente no Evento "Na Impressão". O valor alfa atribuído para ValStr seguido de Cancel (2) será impresso no campo em que foi implementada a regra. |
-| Mensagem | Exibe uma mensagem para o usuário durante a execução da regra. > Mensagem (<tipo_da_mensagem>,"<mensagem>"); |
+| Mensagem | Exibe uma mensagem para o usuário durante a execução da regra.
+> Mensagem (<tipo_da_mensagem>,"<mensagem>"); |
