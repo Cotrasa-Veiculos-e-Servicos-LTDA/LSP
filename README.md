@@ -55,3 +55,23 @@ Existem determinados caracteres que, quando inseridos eu uma expressão literal 
 > Como pode ser visto no exemplo acima, está sendo passado um endereço de um arquivo que normalmente seria: \\Servidor\teste.txt. Entretanto ao passar literalmente nas > regras é necessário colocar uma \ (barra) antes das "" (aspas) e da \ (barra) para que estes caracteres não funcionem como caracteres especiais.
 > 
 > Se a barra não fosse adicionada antes destes caracteres, eles funcionariam de forma especial, ou seja, a \ (barra) é usada para quebra de linha quando o texto é > muito extenso para ser visualizado em tela e as "" (aspas) são usadas para passar (entre as mesmas) expressões literais.
+
+## Palavras Reservadas
+
+A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP possui 51 (cinquenta e uma) palavras reservadas que não poderão ser usadas pelo programador para outros fins.
+
+Válida para todos os locais de definição de regras ou fórmulas, traz a relação dos comandos permitidos nas regras. Podemos então selecionar o comando desejado com as setas e pressionar ENTER para que este seja deslocado para o texto da regra, na posição do cursor, sendo que também é possível digitá-las.
+
+| Comando | Descrição |
+| --- | --- |
+| Se ( ) | Comando de comparação/pergunta, com resposta verdadeiro ou falso. |
+| Senao | É a saída da pergunta (Se) quando a resposta for falsa. |
+| e | Liga duas ou mais condições, devendo todas serem verdadeiras para o resultado ser verdadeiro. |
+| ou | Liga duas ou mais condições, bastando uma ser verdadeira para o resultado ser verdadeiro. |
+| Inicio | Marcador utilizado para iniciar um bloco. |
+| Fim; | Marcador utilizado para finalizar um bloco. |
+| Para | Comando utilzado para se fazer um loop de comandos. Ou seja, fazer com que um bloco de comandos seja executado determinado número de vezes. Indica-se um <valor inicial> e esse valor é incrementado pelo valor do <contador> até que a <condicao> seja falsa. |
+| Enquanto | Comando utilzado para se fazer um loop de comandos. Ou seja, fazer com que um bloco de comandos seja executado determinado número de vezes até que a <condição> seja falsa. |
+| Pare | Interrompe a execução de um bloco do comando Para ou Enquanto. O Pare, simplesmente faz com que o sistema abandone o bloco de comandos e continue a execução do restante das regras. |
+| Cancel (1) | Se for utilizado em uma regra do evento "Antes de Imprimir" de uma seção, cancela a impressão da seção. Se for usado no evento "Na Impressão" de um campo, cancela a impressão deste campo. |
+| Cancel (2) | Deve ser usado em conjunto com as variáveis de sistema ValStr ou ValRet e somente no Evento "Na Impressão". O valor alfa atribuído para ValStr seguido de Cancel (2) será impresso no campo em que foi implementada a regra. |
