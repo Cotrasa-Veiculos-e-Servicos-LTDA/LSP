@@ -67,7 +67,7 @@ Válida para todos os locais de definição de regras ou fórmulas, traz a rela�
 
 | Comando | Descrição |
 | --- | --- |
-| Se ( ) | Comando de comparação/pergunta, com resposta verdadeiro ou falso. |
+| Se | Comando de comparação/pergunta, com resposta verdadeiro ou falso. |
 | Senao | É a saída da pergunta (Se) quando a resposta for falsa. |
 | e | Liga duas ou mais condições, devendo todas serem verdadeiras para o resultado ser verdadeiro. |
 | ou | Liga duas ou mais condições, bastando uma ser verdadeira para o resultado ser verdadeiro. |
