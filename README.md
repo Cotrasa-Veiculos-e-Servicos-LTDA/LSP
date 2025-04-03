@@ -6,7 +6,7 @@ Sênior Sistemas
 
 ## Índice
 
-- [Introdução](#introdu-o)
+- [Introdução](#Introdução)
 - [Sintaxe e Estrutura](#sintaxe-e-estrutura)
   * [Estrutura Básica](#estrutura-b-sica)
   * [Case Sensitivity](#case-sensitivity)
