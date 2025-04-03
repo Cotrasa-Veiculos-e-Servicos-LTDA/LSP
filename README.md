@@ -85,7 +85,7 @@ Sênior Sistemas
 - [Definição de Tabelas](#definição-de-tabelas)
   * [Sintaxe](#sintaxe)
   * [Exemplo](#exemplo)
-  * [Forma de Acesso à Variável](#forma-de-acesso-variável)
+  * [Forma de Acesso à Variável](#forma-de-acesso-à-variável)
 - [Definição de Cursor](#definição-de-cursor)
   * [Cursor Simples](#cursor-simples)
   * [Cursor Completo](#cursor-completo)
