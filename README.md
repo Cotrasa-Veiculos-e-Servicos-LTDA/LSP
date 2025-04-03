@@ -6,63 +6,130 @@ Sênior Sistemas
 
 ## Índice
 
-1. @Introdução
-2. @Sintaxe e Estrutura
-   - @Estrutura Básica
-   - @Case Sensitivity
-   - @Identação e Espaçamento
-   - @Estruturas de Bloco
-3. @Caracteres com Comportamento Especial
-4. @Comentários
-5. @Palavras Reservadas
-6. @Variáveis de Sistema
-7. @Operadores
-   - @Operadores Lógicos
-   - @Operadores Aritméticos
-   - @Operadores Extras
-   - @Comportamentos Especiais
-8. @Tipo de Dados e Variáveis
-   - @Tipos de Dados
-   - @Declaração ou Definição de Variáveis
-   - @Declaração ou Definição de Variáveis com Tamanho
-   - @Forma de Acesso
-   - @Regras
-9. @Manipulação de Alfa
-10. @Cast de Variável
-11. @Manipulação de Datas
-12. @Arredondamento de Valores
-13. @Mensagens
-14. @Cancel
-15. @Padrões e Boas Práticas
-    - @Boas Práticas e Regras Gerais
-    - @Declaração de Variáveis
-    - @Padrão de Nomenclatura de Variáveis
-    - @Identação e Espaçamento
-    - @Estruturas de Bloco
-    - @Comentários
-16. @Controle de Fluxo
-    - @Condicionais
-    - @Estrutura de Repetição
-    - @Pare
-    - @VaPara
-17. @Definição de Arrays
-18. @Definição de Listas
-19. @Definição de Tabelas
-20. @Definição de Cursor
-    - @Cursor Simples
-    - @Cursor Completo
-    - @Vantagens e Desvantagens dos Cursores
-21. @Definição de Funções
-    - @Função com Parâmetro
-    - @Função com Retorno - End (var)
-22. @Retorno para Aplicação
-    - @ValRet
-    - @ValStr
-23. @Funções Gerais
-24. @Funções SQL
-25. @Manipulação de Arquivos
-26. @Chamada de Web Service
-27. @Chamada HTTP
+- [Introdução](#introdu-o)
+- [Sintaxe e Estrutura](#sintaxe-e-estrutura)
+  * [Estrutura Básica](#estrutura-b-sica)
+  * [Case Sensitivity](#case-sensitivity)
+  * [Identação e Espaçamento](#identa-o-e-espa-amento)
+  * [Estruturas de Bloco](#estruturas-de-bloco)
+- [Caracteres com Comportamento Especial](#caracteres-com-comportamento-especial)
+- [Comentários](#coment-rios)
+- [Palavras Reservadas](#palavras-reservadas)
+- [Variáveis de Sistema](#vari-veis-de-sistema)
+- [Operadores](#operadores)
+  * [Operadores Lógicos](#operadores-l-gicos)
+  * [Operadores Aritméticos](#operadores-aritm-ticos)
+  * [Operadores Extras](#operadores-extras)
+  * [Comportamentos Especiais](#comportamentos-especiais)
+- [Tipo de Dados e Variáveis](#tipo-de-dados-e-vari-veis)
+  * [Tipos de Dados](#tipos-de-dados)
+  * [Declaração ou Definição de Variáveis](#declara-o-ou-defini-o-de-vari-veis)
+  * [Declaração ou Definição de Variáveis com Tamanho](#declara-o-ou-defini-o-de-vari-veis-com-tamanho)
+  * [Forma de Acesso](#forma-de-acesso)
+  * [Regras](#regras)
+- [Manipulação de Alfa](#manipula-o-de-alfa)
+  * [CopiarAlfa e CopiarStr](#copiaralfa-e-copiarstr)
+  * [TamanhoAlfa e TamanhoStr](#tamanhoalfa-e-tamanhostr)
+  * [PosicaoAlfa e PosicaoStr](#posicaoalfa-e-posicaostr)
+  * [SubstAlfa e SubstAlfaUmaVez](#substalfa-e-substalfaumavez)
+  * [Concatenar](#concatenar)
+- [Cast de Variável](#cast-de-vari-vel)
+  * [AlfaParaData](#alfaparadata)
+  * [AlfaParaDecimal](#alfaparadecimal)
+  * [AlfaParaInt](#alfaparaint)
+  * [IntParaAlfa](#intparaalfa)
+  * [ConverteMascara](#convertemascara)
+- [Manipulação de Datas](#manipula-o-de-datas)
+  * [DataHoje](#datahoje)
+  * [AdicionarDias](#adicionardias)
+  * [FormatarData](#formatardata)
+- [Arredondamento de Valores](#arredondamento-de-valores)
+  * [Arredondar](#arredondar)
+  * [Truncar](#truncar)
+- [Mensagens](#mensagens)
+- [Cancel](#cancel)
+- [Padrões e Boas Práticas](#padr-es-e-boas-pr-ticas)
+  * [Boas Práticas e Regras Gerais](#boas-pr-ticas-e-regras-gerais)
+  * [Declaração de Variáveis](#declara-o-de-vari-veis)
+  * [Padrão de Nomenclatura de Variáveis](#padr-o-de-nomenclatura-de-vari-veis)
+  * [Identação e Espaçamento](#identa-o-e-espa-amento-1)
+  * [Estruturas de Bloco](#estruturas-de-bloco-1)
+  * [Comentários](#coment-rios-1)
+- [Controle de Fluxo](#controle-de-fluxo)
+  * [Condicionais](#condicionais)
+  * [Estrutura de Repetição](#estrutura-de-repeti-o)
+  * [Pare](#pare)
+  * [VaPara](#vapara)
+- [Definição de Arrays](#defini-o-de-arrays)
+  * [Declaração de Arrays](#declara-o-de-arrays)
+  * [Atribuição de Valores](#atribui-o-de-valores)
+  * [Acesso aos Valores](#acesso-aos-valores)
+  * [Iteração sobre Arrays](#itera-o-sobre-arrays)
+  * [Exemplo Completo](#exemplo-completo)
+- [Definição de Listas](#defini-o-de-listas)
+  * [Comandos para Definição de Listas](#comandos-para-defini-o-de-listas)
+  * [Acesso aos Campos](#acesso-aos-campos)
+  * [Comandos para Manipulação de Registros](#comandos-para-manipula-o-de-registros)
+  * [Comandos para Posicionamento de Listas](#comandos-para-posicionamento-de-listas)
+  * [Comandos para Procura de Registros](#comandos-para-procura-de-registros)
+  * [Comandos para Posicionamento Absoluto](#comandos-para-posicionamento-absoluto)
+  * [Comandos Diversos de Listas](#comandos-diversos-de-listas)
+  * [Exemplo](#exemplo)
+  * [Atribuição de Valores para a Lista](#atribui-o-de-valores-para-a-lista)
+  * [Utilização de Dados de uma Lista](#utiliza-o-de-dados-de-uma-lista)
+  * [Exclusão de Dados da Lista](#exclus-o-de-dados-da-lista)
+  * [Algoritmos de Leitura de Dados da Lista](#algoritmos-de-leitura-de-dados-da-lista)
+    + [Utilizando o Retorno das Funções](#utilizando-o-retorno-das-fun-es)
+    + [Utilizando Propriedade Indicadora de Fim de Arquivo (FDA)](#utilizando-propriedade-indicadora-de-fim-de-arquivo-fda)
+    + [Utilizando Diretamente o Retorno das Funções de Movimentação](#utilizando-diretamente-o-retorno-das-fun-es-de-movimenta-o)
+- [Definição de Tabelas](#defini-o-de-tabelas)
+  * [Sintaxe](#sintaxe)
+  * [Exemplo](#exemplo-1)
+  * [Forma de Acesso à Variável](#forma-de-acesso-vari-vel)
+- [Definição de Cursor](#defini-o-de-cursor)
+  * [Cursor Simples](#cursor-simples)
+  * [Cursor Completo](#cursor-completo)
+  * [Vantagens e Desvantagens dos Cursores](#vantagens-e-desvantagens-dos-cursores)
+    + [Cursor Simples](#cursor-simples-1)
+    + [Cursor Completo](#cursor-completo-1)
+- [Definição de Funções](#defini-o-de-fun-es)
+  * [Exemplos de Funções](#exemplos-de-fun-es)
+    + [Função Simples](#fun-o-simples)
+    + [Função com Parâmetro Numérico](#fun-o-com-par-metro-num-rico)
+    + [Função com Parâmetro Numérico e Retorno no Mesmo Parâmetro](#fun-o-com-par-metro-num-rico-e-retorno-no-mesmo-par-metro)
+    + [Função com Dois Parâmetros Numéricos e Retorno em uma Variável Específica](#fun-o-com-dois-par-metros-num-ricos-e-retorno-em-uma-vari-vel-espec-fica)
+  * [Organização das Funções](#organiza-o-das-fun-es)
+- [Retorno para Aplicação](#retorno-para-aplica-o)
+  * [ValRet](#valret)
+  * [ValStr](#valstr)
+- [Funções Gerais](#fun-es-gerais)
+- [Funções SQL](#fun-es-sql)
+  * [SQL Senior 2](#sql-senior-2)
+    + [Ativação da Linguagem](#ativa-o-da-linguagem)
+    + [Restrições](#restri-es)
+  * [Exemplos](#exemplos)
+    + [Utilização de INSERT](#utiliza-o-de-insert)
+    + [Utilização de SELECT](#utiliza-o-de-select)
+    + [Utilização de UPDATE](#utiliza-o-de-update)
+  * [Passagem de Parâmetros](#passagem-de-par-metros)
+    + [Exemplo com `__inserir`](#exemplo-com-inserir)
+    + [Exemplo com `SQL_Definir<tipo_variavel>`](#exemplo-com-sql-definir-tipo-variavel)
+- [Manipulação de Arquivos](#manipula-o-de-arquivos)
+  * [Abrir (Open)](#abrir-open)
+  * [Ler (Read)](#ler-read)
+  * [Lernl (ReadLn)](#lernl-readln)
+  * [Gravar (Write)](#gravar-write)
+  * [Gravarnl (WriteLn)](#gravarnl-writeln)
+  * [Fechar (Close)](#fechar-close)
+- [Chamada de Web Service](#chamada-de-web-service)
+  * [Modos de Execução](#modos-de-execu-o)
+  * [WS-Security](#ws-security)
+  * [Autenticação](#autentica-o)
+- [Chamada HTTP](#chamada-http)
+  * [Funções para Requisições HTTP](#fun-es-para-requisi-es-http)
+  * [Exemplos de Código](#exemplos-de-c-digo)
+    + [Exemplo 1: Busca o CEP na API VIA CEP](#exemplo-1-busca-o-cep-na-api-via-cep)
+    + [Exemplo 2: Busca a Cidade na API IBGE](#exemplo-2-busca-a-cidade-na-api-ibge)
 
 ## Introdução
 
