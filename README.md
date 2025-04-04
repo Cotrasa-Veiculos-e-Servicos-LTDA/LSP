@@ -63,6 +63,7 @@ Sênior Sistemas
   * [Estrutura de Repetição](#estrutura-de-repetição)
   * [Pare](#pare)
   * [VaPara](#vapara)
+  * [Recursividade](#recursividade)
 - [Definição de Arrays](#definição-de-arrays)
   * [Declaração de Arrays](#declaração-de-arrays)
   * [Atribuição de Valores](#atribuição-de-valores)
@@ -1091,6 +1092,125 @@ Mensagem(Retorna, "Menor de idade");
 
 fim:
 ```
+
+### Recursividade
+
+A recursividade é uma técnica de programação onde uma função chama a si mesma para resolver um problema. Em LSP, a recursividade pode ser implementada seguindo alguns padrões específicos.
+
+#### Estrutura Básica de uma Função Recursiva
+
+Uma função recursiva em LSP geralmente possui:
+1. Um ou mais casos base (condições de parada)
+2. Um ou mais casos recursivos (chamadas à própria função)
+
+Exemplo de implementação recursiva da sequência de Fibonacci:
+
+```lsp
+@ Função recursiva para calcular o n-ésimo termo da sequência de Fibonacci @
+Funcao fibonacciRecursivo(Numero vnTermo, Numero vnAnterior, Numero vnAtual, Numero End vnResultado); {
+  @ Caso base 1: primeiro termo @
+  Se (vnTermo = 0) {
+    vnResultado = vnAnterior;
+  } 
+  @ Caso base 2: segundo termo @
+  Senao Se (vnTermo = 1) {
+    vnResultado = vnAtual;
+  } 
+  @ Caso recursivo: termos subsequentes @
+  Senao {
+    fibonacciRecursivo(vnTermo - 1, vnAtual, vnAnterior + vnAtual, vnResultado);
+  }
+};
+```
+
+#### Características Importantes da Recursividade em LSP
+
+1. **Parâmetros de Entrada e Saída**:
+   - Use o parâmetro `End` para retornar valores
+   - Passe os valores necessários para a próxima chamada recursiva
+
+2. **Condições de Parada**:
+   - Sempre defina casos base claros
+   - Evite recursão infinita
+
+3. **Chamada Recursiva**:
+   - Modifique os parâmetros para se aproximar do caso base
+   - Passe os valores atualizados para a próxima chamada
+
+#### Boas Práticas
+
+1. **Eficiência**:
+   - Evite recálculos desnecessários
+   - Considere usar parâmetros auxiliares para armazenar resultados intermediários
+
+2. **Legibilidade**:
+   - Comente claramente os casos base e recursivos
+   - Use nomes descritivos para variáveis e parâmetros
+
+3. **Limitações**:
+   - Esteja ciente do limite da pilha de chamadas
+   - Considere usar abordagens iterativas para problemas muito grandes
+
+#### Exemplo Completo: Sequência de Fibonacci
+
+```lsp
+@ Exercício - Sequência de Fibonacci (versão recursiva) @
+Definir Funcao fibonacciRecursivo(Numero vnTermo, Numero vnAnterior, Numero vnAtual, Numero End vnResultado);
+Definir Funcao calcularFibonacci();
+
+@ Função principal @
+Definir Numero vnTermos;
+Definir Alfa vaTermos;
+Definir Alfa vaResultado;
+Definir Numero vnContador;
+Definir Alfa vaTermo;
+Definir Numero vnTermoAtual;
+
+vnTermos = 10; @ Número de termos da sequência @
+
+@ Converter número para alfa @
+IntParaAlfa(vnTermos, vaTermos);
+
+@ Montar mensagem inicial @
+vaResultado = "Sequência de Fibonacci com " + vaTermos + " termos: ";
+
+calcularFibonacci();
+
+@ Exibir sequência completa @
+Mensagem(Retorna, vaResultado);
+
+@ ---FUNÇÕES----@
+
+Funcao calcularFibonacci(); {
+  @ Calcular e acumular todos os termos @
+  Para (vnContador = 0; vnContador < vnTermos; vnContador++) {
+    fibonacciRecursivo(vnContador, 0, 1, vnTermoAtual);
+    IntParaAlfa(vnTermoAtual, vaTermo);
+    Se (vnContador = 0) {
+      vaResultado = vaResultado + vaTermo;
+    } Senao {
+      vaResultado = vaResultado + ", " + vaTermo;
+    }
+  }
+};
+
+Funcao fibonacciRecursivo(Numero vnTermo, Numero vnAnterior, Numero vnAtual, Numero End vnResultado); {
+  Se (vnTermo = 0) {
+    vnResultado = vnAnterior;
+  } Senao Se (vnTermo = 1) {
+    vnResultado = vnAtual;
+  } Senao {
+    fibonacciRecursivo(vnTermo - 1, vnAtual, vnAnterior + vnAtual, vnResultado);
+  }
+};
+```
+
+Este exemplo demonstra:
+- Definição clara de casos base
+- Passagem de parâmetros para a próxima chamada recursiva
+- Uso do parâmetro `End` para retorno de valores
+- Acumulação de resultados em uma string
+- Formatação adequada da saída
 
 ## Definição de Arrays
 
