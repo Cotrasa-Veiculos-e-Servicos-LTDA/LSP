@@ -198,14 +198,14 @@ Regras:
 Exemplo de estrutura de bloco com apenas uma linha:
 
 ```lsp
-Se (<Condição>) 
+Se (_condição_) 
   vn = 1; @ Estrutura do bloco em uma linha @
 ```
 
 Exemplo de estrutura de bloco com `{ }`:
 
 ```lsp
-Se (<Condição>) {
+Se (_condição_) {
   @ Estrutura do bloco @
 }
 ```
@@ -213,7 +213,7 @@ Se (<Condição>) {
 Exemplo de estrutura de bloco com `inicio;` e `fim;`:
 
 ```lsp
-Se (<Condição>) 
+Se (_condição_) 
 Inicio
   @ Estrutura do bloco @
 Fim;
@@ -859,7 +859,7 @@ A função `Mensagem` é utilizada para exibir mensagens ao usuário. Existem di
 
 **Sintaxe**
 
-- Mensagem(<tipo da mensagem>,"<mensagem>");
+- Mensagem(_tipo_da_mensagem_,"_mensagem_");
 
 Exibe uma mensagem para o usuário. As mensagens possuem características de acordo com o seu tipo.
 
