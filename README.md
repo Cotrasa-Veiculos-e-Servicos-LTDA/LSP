@@ -40,6 +40,8 @@ Sênior Sistemas
   * [AlfaParaInt](#alfaparaint)
   * [IntParaAlfa](#intparaalfa)
   * [ConverteMascara](#convertemascara)
+  * [Concatenação de Strings](#concatenação-de-strings)
+  * [Quebra de Linha](#quebra-de-linha)
 - [Manipulação de Datas](#manipulação-de-datas)
   * [DataHoje](#datahoje)
   * [AdicionarDias](#adicionardias)
@@ -704,6 +706,41 @@ Definir Alfa vaTexto;
 vnNumero = 123456;
 ConverteMascara(1, vnNumero, vaTexto, "999.999"); @ vaTexto será "123.456" @
 ```
+
+#### Concatenação de Strings
+
+Na LSP, não é possível concatenar diretamente uma variável do tipo Numero com uma variável do tipo Alfa. Para realizar essa operação, é necessário:
+
+1. Definir uma variável Alfa com o mesmo nome da variável numérica, mudando apenas o prefixo de `vn` para `va`
+2. Utilizar a função `IntParaAlfa()` para converter o valor numérico em string
+
+Exemplo:
+```lsp
+Definir Numero vnNumero;
+Definir Alfa vaNumero;
+Definir Alfa vaResultado;
+
+vnNumero = 10;
+IntParaAlfa(vnNumero, vaNumero);
+vaResultado = "O número é " + vaNumero;
+```
+
+#### Quebra de Linha
+
+Na LSP, não existe o caractere `\n` para quebra de linha. Para realizar a quebra de linha em uma string, deve-se:
+
+1. Definir uma variável Alfa para armazenar o caractere de quebra de linha
+2. Utilizar a função `CaracterParaAlfa(13, vaEnter)` para obter o caractere de quebra de linha (13 na tabela ASCII)
+3. Concatenar essa variável na string onde se deseja a quebra de linha
+
+Exemplo:
+```lsp
+Definir Alfa vaEnter;
+Definir Alfa vaMensagem;
+
+CaracterParaAlfa(13, vaEnter);
+vaMensagem = "Primeira linha" + vaEnter + "Segunda linha";
+``` 
 
 ## Manipulação de Datas
 
