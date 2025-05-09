@@ -2109,105 +2109,202 @@ SQL_FecharCursor(xCursor);
 SQL_Destruir(xCursor);
 ```
 
-## Manipulação de Arquivos
+# Manipulação de Arquivos
 
-A LSP permite a manipulação de arquivos utilizando comandos específicos para abrir, ler, gravar e fechar arquivos.
+## Visão Geral
+A LSP oferece um conjunto de funções para manipulação de arquivos texto e binários. Estas funções permitem operações de leitura, escrita e gerenciamento de arquivos no sistema.
 
-### Abrir (Open)
+## Funções Principais
 
-Abre o arquivo informado em nome do arquivo para o modo de abertura informado (Ler/Gravar). Se o arquivo não existir, ele é criado. Ele retorna um manipulador de arquivos.
+### Abrir
+Abre um arquivo para leitura ou escrita.
 
-**Sintaxe:**
+**Sintaxe**: `numero Abrir(Alfa NomeArq, TModeAbert ModoAbertura);`
 
+**Parâmetros**:
+- `NomeArq`: Caminho do arquivo (ex: "C:\\Pasta\\arquivo.txt")
+- `ModoAbertura`: Modo de abertura do arquivo
+  - `Ler`: Leitura binária
+  - `Gravar`: Escrita binária
+  - `Lernl`: Leitura em modo texto
+  - `Gravarnl`: Escrita em modo texto
+
+**Retorno**: Manipulador do arquivo (número)
+
+**Exemplo**:
 ```lsp
-Abrir ("<nome do arquivo>",<modo de abertura>);
+Definir numero vnArquivo;
+vnArquivo = Abrir("C:\\Logs\\sistema.log", Lernl);
 ```
 
-**Exemplo:**
+### Fechar
+Fecha um arquivo previamente aberto.
 
+**Sintaxe**: `Fechar(numero ManArquivo);`
+
+**Parâmetro**:
+- `ManArquivo`: Manipulador do arquivo retornado pela função Abrir
+
+**Exemplo**:
 ```lsp
-arq = Abrir("Teste.txt", Ler);
+Fechar(vnArquivo);
 ```
 
-### Ler (Read)
+### Ler
+Lê bytes de um arquivo binário.
 
-Lê uma quantidade de caracteres especificados em tamanho do arquivo especificado no manipulador de arquivo e joga o valor lido na variável especificada.
+**Sintaxe**: `numero Ler(numero ManArquivo, alfa end Var, numero NumBytes);`
 
-**Sintaxe:**
+**Parâmetros**:
+- `ManArquivo`: Manipulador do arquivo
+- `Var`: Variável que receberá os dados lidos
+- `NumBytes`: Quantidade de bytes a serem lidos
 
+**Retorno**: Número de bytes lidos
+
+**Exemplo**:
 ```lsp
-Ler(<manipulador de arquivo>,<variável>,<tamanho>);
+Definir Alfa vaConteudo;
+Definir numero vnBytesLidos;
+vnBytesLidos = Ler(vnArquivo, vaConteudo, 1024);
 ```
 
-**Exemplo:**
+### LerNL
+Lê uma linha de um arquivo texto.
 
+**Sintaxe**: `numero Lernl(numero ManArquivo, alfa end Var);`
+
+**Parâmetros**:
+- `ManArquivo`: Manipulador do arquivo
+- `Var`: Variável que receberá a linha lida
+
+**Retorno**: 1 se leu com sucesso, 0 se chegou ao final do arquivo
+
+**Exemplo**:
 ```lsp
-Ler(arq, S, 20);
+Definir Alfa vaLinha;
+Definir numero vnLeu;
+vnLeu = Lernl(vnArquivo, vaLinha);
 ```
 
-### Lernl (ReadLn)
+### Gravar
+Escreve bytes em um arquivo binário.
 
-Lê uma linha do arquivo indicado pelo manipulador de arquivo e joga o valor lido para a variável indicada.
+**Sintaxe**: `numero Gravar(numero ManArquivo, alfa Var, numero NumBytes);`
 
-**Sintaxe:**
+**Parâmetros**:
+- `ManArquivo`: Manipulador do arquivo
+- `Var`: Dados a serem gravados
+- `NumBytes`: Quantidade de bytes a serem gravados
 
+**Retorno**: Número de bytes gravados
+
+**Exemplo**:
 ```lsp
-Lernl(<manipulador de arquivo>,<variável>);
+Definir Alfa vaDados;
+vaDados = "Conteúdo do arquivo";
+Gravar(vnArquivo, vaDados, 1);
 ```
 
-**Exemplo:**
+### GravarNL
+Grava uma linha em um arquivo texto.
 
+**Sintaxe**: `Gravarnl(numero ManArquivo, alfa Var);`
+
+**Parâmetros**:
+- `ManArquivo`: Manipulador do arquivo
+- `Var`: Linha a ser gravada
+
+**Exemplo**:
 ```lsp
-Lernl(arq, S);
+Gravarnl(vnArquivo, "Nova linha de texto");
 ```
 
-### Gravar (Write)
+### GravarNLEOL
+Grava uma linha em um arquivo texto com opção de quebra de linha.
 
-Grava o valor de uma constante ou de uma variável, e uma quantidade de caracteres especificados em tamanho no arquivo especificado no manipulador de arquivo.
+**Sintaxe**: `numero GravarNLEOL(numero ManArquivo, alfa Var, logico UseEOL);`
 
-**Sintaxe:**
+**Parâmetros**:
+- `ManArquivo`: Manipulador do arquivo
+- `Var`: Linha a ser gravada
+- `UseEOL`: Se verdadeiro, adiciona quebra de linha
 
+**Exemplo**:
 ```lsp
-Gravar(<manipulador de arquivo>,<<variável> ou <constante>>,<tamanho>);
+GravarNLEOL(vnArquivo, "Linha com quebra", 1);
 ```
 
-**Exemplo:**
+## Exemplos Práticos
 
+### 1. Leitura de Arquivo Texto
 ```lsp
-Gravar(arq, S, 20);
+Definir Alfa vaCaminho;
+Definir Alfa vaConteudo;
+Definir Alfa vaLinha;
+Definir numero vnArquivo;
+Definir numero vnLeu;
+
+vaCaminho = "C:\\Logs\\sistema.log";
+vnArquivo = Abrir(vaCaminho, Lernl);
+vnLeu = 1;
+
+Enquanto (vnLeu = 1) {
+    vnLeu = Lernl(vnArquivo, vaLinha);
+    Se (vnLeu = 1) {
+        vaConteudo = vaConteudo + vaLinha;
+    }
+}
+Fechar(vnArquivo);
 ```
 
-### Gravarnl (WriteLn)
-
-Grava uma linha no arquivo indicado pelo manipulador de arquivo com o valor de uma variável ou constante, passada como parâmetro.
-
-**Sintaxe:**
-
+### 2. Escrita em Arquivo de Log
 ```lsp
-Gravarnl(<manipulador de arquivo>,<<variável> ou <constante>>);
+Definir Alfa vaCaminho;
+Definir Alfa vaMensagem;
+Definir Alfa vaData;
+Definir numero vnArquivo;
+
+vaCaminho = "C:\\Logs\\sistema.log";
+vaMensagem = "Operação realizada com sucesso";
+DataHora(vnDataHora);
+FormatarData(vnDataHora, "DD/MM/YYYY - HH:mm:ss", vaData);
+
+vnArquivo = Abrir(vaCaminho, Gravarnl);
+GravarNLEOL(vnArquivo, vaData + ": " + vaMensagem, 1);
+Fechar(vnArquivo);
 ```
 
-**Exemplo:**
+## Observações Importantes
 
-```lsp
-Gravarnl(arq, Str);
-```
+1. **Quebra de Linha**:
+   - No Windows, use CRLF (#13#10)
+   - Exemplo de configuração:
+   ```lsp
+   Definir Alfa vaEnter;
+   Definir Alfa vaNovaLinha;
+   RetornaAscii(13, vaEnter);
+   RetornaAscii(10, vaNovaLinha);
+   ```
 
-### Fechar (Close)
+2. **Verificação de Existência**:
+   - Use a função `ArqExiste` antes de manipular o arquivo
+   ```lsp
+   Se (ArqExiste(vaCaminho) = 1) {
+       @ Arquivo existe @
+   }
+   ```
 
-Fecha um arquivo aberto anteriormente pelo comando Abrir.
+3. **Tratamento de Erros**:
+   - Sempre feche o arquivo após o uso
+   - Verifique o retorno das funções de leitura/escrita
+   - Trate casos de arquivo inexistente
 
-**Sintaxe:**
-
-```lsp
-Fechar (<manipulador do arquivo>);
-```
-
-**Exemplo:**
-
-```lsp
-Fechar(arq);
-```
+4. **Boas Práticas**:
+   - Use caminhos absolutos
+   - Escape corretamente as barras invertidas
+   - Mantenha o arquivo aberto pelo menor tempo possível
+   - Sempre feche o arquivo após o uso
 
 ## Chamada de Web Service
 
