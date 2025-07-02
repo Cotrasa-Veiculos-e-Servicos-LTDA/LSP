@@ -32,6 +32,7 @@ Sênior Sistemas
   * [Conceitos Fundamentais](#conceitos-fundamentais)
     + [Concatenação de Strings](#concatenação-de-strings)
     + [Quebra de Linha](#quebra-de-linha)
+    + [CaracterParaAlfa](#caracterparaalfa)
   * [Funções Básicas de Manipulação](#funções-básicas-de-manipulação)
     + [CopiarAlfa e CopiarStr](#copiaralfa-e-copiarstr)
     + [TamanhoAlfa e TamanhoStr](#tamanhoalfa-e-tamanhostr)
@@ -82,6 +83,7 @@ Sênior Sistemas
     + [AdicionarDias](#adicionardias)
   * [Formatação Avançada de Datas](#formatação-avançada-de-datas)
     + [FormatarData](#formatardata)
+  * [Manipulação de Componentes de Hora](#manipulação-de-componentes-de-hora)
   * [Validação e Comparação de Datas](#validação-e-comparação-de-datas)
 - [Validação e Verificação](#validação-e-verificação)
   * [Verificação de Abrangências](#verificação-de-abrangências)
@@ -100,6 +102,7 @@ Sênior Sistemas
   * [Operações Especiais](#operações-especiais)
     + [Dividir](#dividir)
     + [RestoDivisao](#restodivisao)
+    + [HoraParaMinuto](#horaparaminuto)
 - [Interface e Feedback do Usuário](#interface-e-feedback-do-usuário)
   * [Barra de Progresso](#barra-de-progresso)
     + [IniciaBarraProgresso](#iniciabarraprogresso)
@@ -172,6 +175,11 @@ Sênior Sistemas
   * [Vantagens e Desvantagens dos Cursores](#vantagens-e-desvantagens-dos-cursores)
     + [Cursor Simples](#cursor-simples-1)
     + [Cursor Completo](#cursor-completo-1)
+  * [Funções de Retorno SQL](#funções-de-retorno-sql)
+    + [Exemplo Completo com Todos os Tipos de Retorno](#exemplo-completo-com-todos-os-tipos-de-retorno)
+    + [Referência Rápida das Funções](#referência-rápida-das-funções)
+    + [Funções de Controle de Posicionamento do Cursor](#funções-de-controle-de-posicionamento-do-cursor)
+    + [Observações Importantes](#observações-importantes)
 - [Definição de Funções](#definição-de-funções)
   * [Exemplos de Funções](#exemplos-de-funções)
     + [Função Simples](#função-simples)
@@ -239,6 +247,8 @@ Sênior Sistemas
   * [Boas Práticas](#boas-práticas)
   * [Códigos de Status HTTP Comuns](#códigos-de-status-http-comuns)
   * [Observações Importantes](#observações-importantes)
+  * [Manipulação de JSON](#manipulação-de-json)
+    + [ValorElementoJson](#valorelementojson)
   * [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis)
     + [Exemplo 1: Busca CEP na API ViaCEP](#exemplo-1-busca-cep-na-api-viacep)
     + [Exemplo 2: Busca Cidade na API IBGE](#exemplo-2-busca-cidade-na-api-ibge)
@@ -602,9 +612,58 @@ vaNome[vnIndice + 1 * 2 ] = "Nome";
 
 ### Regras
 
-- Variaveis do tipo Data deve-se usar a função MontaData(dd,mm,yyyy,vdData); para atribuir uma data ou atribuir a variável de sistema DatSis
-- O nome das variáveis não pode ser igual ao nome dos parâmetros de funções. 
-- O nome das variáveis não pode ser igual ao nome dos campos de listas.
+- Variáveis do tipo Data deve-se usar a função MontaData(dd,mm,yyyy,vdData); para atribuir uma data ou atribuir a variável de sistema DatSis
+- O nome das variáveis não pode ser igual ao nome dos parâmetros de funções
+- O nome das variáveis não pode ser igual ao nome dos campos de listas
+- Variáveis devem seguir o padrão de nomenclatura: prefixo + nome descritivo em CamelCase
+
+### Padrão de Nomenclatura de Variáveis
+
+A LSP utiliza um padrão específico de nomenclatura que facilita a identificação do tipo de variável:
+
+**Prefixos por Tipo:**
+- `va`: Variáveis do tipo **Alfa** (string/texto)
+- `vn`: Variáveis do tipo **Numero** (inteiro/decimal)
+- `vd`: Variáveis do tipo **Data** (data/hora)
+
+**Regras de Nomenclatura:**
+- Use CamelCase após o prefixo
+- Nomes descritivos e significativos
+- Máximo de 100 caracteres
+- Pode conter `_` (underscore)
+- Não use acentuação
+- Não use palavras reservadas
+
+**Exemplos Corretos:**
+```lsp
+@ Variáveis Alfa @
+Definir Alfa vaNomeCompleto;
+Definir Alfa vaEmailUsuario;
+Definir Alfa vaCaminhoArquivo;
+
+@ Variáveis Número @
+Definir Numero vnIdadeUsuario;
+Definir Numero vnValorTotal;
+Definir Numero vnContadorRegistros;
+
+@ Variáveis Data @
+Definir Data vdDataNascimento;
+Definir Data vdDataCadastro;
+Definir Data vdDataVencimento;
+```
+
+**Exemplos Incorretos:**
+```lsp
+@ Sem prefixo @
+Definir Alfa nome; @ Incorreto @
+
+@ Prefixo errado @
+Definir Numero vaIdade; @ Incorreto: va é para Alfa @
+
+@ Nomes não descritivos @
+Definir Alfa va1; @ Incorreto: não é descritivo @
+Definir Numero vnX; @ Incorreto: muito genérico @
+```
 
 
 ## Manipulação Avançada de Strings
@@ -646,7 +705,35 @@ Definir Alfa vaMensagem;
 
 CaracterParaAlfa(13, vaEnter);
 vaMensagem = "Primeira linha" + vaEnter + "Segunda linha";
-``` 
+```
+
+#### CaracterParaAlfa
+
+Converte um caracter (que fica armazenado pelo código ASCII) para o valor Alfanumérico correspondente.
+
+**Sintaxe:**
+
+```lsp
+CaracterParaAlfa(<caractere>, <destino>);
+```
+
+**Parâmetros:**
+- `caractere`: Campo/Variável que mantém o código ASCII de um caracter
+- `destino`: Variável que receberá o resultado da conversão
+
+**Exemplo:**
+```lsp
+Definir Alfa vaLetra;
+Definir Alfa vaEnter;
+
+@ Conversão de código ASCII para caracter @
+CaracterParaAlfa(65, vaLetra); @ vaLetra será "A" @
+
+@ Quebra de linha @
+CaracterParaAlfa(13, vaEnter); @ vaEnter será quebra de linha @
+```
+
+**⚠️ Importante:** Se for utilizar para inserir quebras de linha em envio de e-mail e na Central de Configurações Senior estiver habilitada a opção "Converter quebras de linha para HTML", todas as quebras de linha Windows (caracteres ASCII 13 e 10) serão convertidas para tags `<br/>`. 
 
 ### Funções Básicas de Manipulação
 
@@ -964,58 +1051,107 @@ Mensagem(Retorna, vaMensagem); @ "Total de emails: 3" @
 
 #### ConverteCodificacaoString
 
-Converte a codificação de um texto entre diferentes formatos.
+Esta função altera a codificação de um texto contido em uma variável, onde este texto com a codificação alterada pode ser utilizado para comunicação com web services.
 
 **Sintaxe:**
 
 ```lsp
-ConverteCodificacaoString(<textoOrigem>, <textoDestino>, <codificacaoOrigem>, <codificacaoDestino>);
+vnRetorno = ConverteCodificacaoString(<textoOrigem>, <codificacao>, <textoDestino>);
 ```
 
-**Exemplo de Conversão UTF-8:**
+**Parâmetros:**
+- `textoOrigem`: Contém o texto original que necessita ter sua codificação alterada
+- `codificacao`: Nome da codificação para a qual o texto será convertido ("UTF-8" ou "WINDOWS-1252")
+- `textoDestino`: Contém o texto com a codificação alterada
 
-```lsp
-Definir Alfa vaTextoWindows;
-Definir Alfa vaTextoUTF8;
+**Valor de Retorno:**
+- `0`: Conversão realizada com sucesso
+- `1`: Texto possui caracteres não suportados pela codificação
 
-vaTextoWindows = "Acentuação especial";
-
-@ Converte de windows-1252 para UTF-8 @
-ConverteCodificacaoString(vaTextoWindows, vaTextoUTF8, "windows-1252", "utf-8");
-```
-
-#### ConverteTexto
-
-Substitui caracteres especiais de acordo com a codificação especificada.
-
-**Sintaxe:**
-
-```lsp
-ConverteTexto(<textoOrigem>, <textoDestino>, <tipoCodificacao>);
-```
-
-**Parâmetros de Codificação:**
-- `1`: Remove acentos
-- `2`: Converte para ASCII
-- `3`: Normaliza caracteres especiais
-
-**Exemplo de Normalização:**
+**Exemplo:**
 
 ```lsp
 Definir Alfa vaTextoOriginal;
-Definir Alfa vaTextoSemAcento;
-Definir Alfa vaTextoASCII;
+Definir Alfa vaTextoCodificado;
+Definir Numero vnRetorno;
 
-vaTextoOriginal = "João José da Conceição";
+vaTextoOriginal = "Acentuação especial";
 
-@ Remove acentos @
-ConverteTexto(vaTextoOriginal, vaTextoSemAcento, 1);
-@ vaTextoSemAcento será "Joao Jose da Conceicao" @
+vnRetorno = ConverteCodificacaoString(vaTextoOriginal, "UTF-8", vaTextoCodificado);
 
-@ Converte para ASCII puro @
-ConverteTexto(vaTextoOriginal, vaTextoASCII, 2);
-@ Remove caracteres não-ASCII @
+Se (vnRetorno = 1) {
+  Mensagem(Retorna, "Encontrado caracteres incompatíveis!");
+} Senao {
+  Mensagem(Retorna, "Conversão realizada com sucesso!");
+}
 ```
+
+**Observação:** Se o sistema não suportar a codificação informada, será emitida a mensagem: "A codificação X não é suportada. Verifique a documentação".
+
+#### ConverteTexto
+
+Realiza a substituição de caracteres especiais de acordo com o padrão de codificação informada no primeiro parâmetro, retorna um novo texto com os caracteres convertidos.
+
+**Sintaxe:**
+
+```lsp
+ConverteTexto(<codificacao>, <textoOrigem>, <textoDestino>);
+```
+
+**Parâmetros:**
+- `codificacao`: Codificação do formato de origem do texto (formato suportado: "JSON")
+- `textoOrigem`: Texto contendo os caracteres que necessitam ser convertidos
+- `textoDestino`: Variável que recebe o texto convertido
+
+**Exemplo:**
+
+```lsp
+Definir Alfa vaTextoOrigem;
+Definir Alfa vaTextoDestino;
+
+vaTextoOrigem = "\\u00c1gua";
+
+ConverteTexto("JSON", vaTextoOrigem, vaTextoDestino);
+@ vaTextoDestino recebe o valor "Água" @
+```
+
+**Observação:** A função ConverteTexto deve ser utilizada somente para a conversão de conjunto de caracteres, não sendo recomendada para conversão de conjunto de dados, por exemplo estruturas JSON.
+
+**Tabela de Caracteres Suportados na Conversão:**
+
+| Código | Conversão | Código | Conversão | Código | Conversão | Código | Conversão |
+|--------|-----------|--------|-----------|--------|-----------|--------|-----------|
+| \\u0021 | ! | \\u0041 | A | \\u0061 | a | \\u00C1 | Á |
+| \\u0022 | " | \\u0042 | B | \\u0062 | b | \\u00C2 | Â |
+| \\u0023 | # | \\u0043 | C | \\u0063 | c | \\u00C3 | Ã |
+| \\u0025 | % | \\u0044 | D | \\u0064 | d | \\u00C7 | Ç |
+| \\u0026 | & | \\u0045 | E | \\u0065 | e | \\u00C8 | È |
+| \\u0027 | ' | \\u0046 | F | \\u0066 | f | \\u00C9 | É |
+| \\u0028 | ( | \\u0047 | G | \\u0067 | g | \\u00CA | Ê |
+| \\u0029 | ) | \\u0048 | H | \\u0068 | h | \\u00CC | Ì |
+| \\u002A | * | \\u0049 | I | \\u0069 | i | \\u00CD | Í |
+| \\u002B | + | \\u004A | J | \\u006A | j | \\u00CE | Î |
+| \\u002C | , | \\u004B | K | \\u006B | k | \\u00D2 | Ò |
+| \\u002D | - | \\u004C | L | \\u006C | l | \\u00D3 | Ó |
+| \\u002E | . | \\u004D | M | \\u006D | m | \\u00D4 | Ô |
+| \\u002F | / | \\u004E | N | \\u006E | n | \\u00D5 | Õ |
+| \\u0030 | 0 | \\u004F | O | \\u006F | o | \\u00D9 | Ù |
+| \\u0031 | 1 | \\u0050 | P | \\u0070 | p | \\u00DA | Ú |
+| \\u0032 | 2 | \\u0051 | Q | \\u0071 | q | \\u00DB | Û |
+| \\u0033 | 3 | \\u0052 | R | \\u0072 | r | \\u00E0 | à |
+| \\u0034 | 4 | \\u0053 | S | \\u0073 | s | \\u00E1 | á |
+| \\u0035 | 5 | \\u0054 | T | \\u0074 | t | \\u00E2 | â |
+| \\u0036 | 6 | \\u0055 | U | \\u0075 | u | \\u00E3 | ã |
+| \\u0037 | 7 | \\u0056 | V | \\u0076 | v | \\u00E7 | ç |
+| \\u0038 | 8 | \\u0057 | W | \\u0077 | w | \\u00E8 | è |
+| \\u0039 | 9 | \\u0058 | X | \\u0078 | x | \\u00E9 | é |
+| \\u003B | ; | \\u0059 | Y | \\u0079 | y | \\u00EA | ê |
+| \\u003C | < | \\u005A | Z | \\u007A | z | \\u00EC | ì |
+| \\u003D | = | \\u005B | [ | \\u007B | { | \\u00ED | í |
+| \\u003E | > | \\u005D | ] | \\u007C | \| | \\u00EE | î |
+| \\u003F | ? | \\u005E | ^ | \\u007D | } | \\u00F1 | ñ |
+| \\u0040 | @ | \\u005F | _ | \\u007E | ~ |  |  |
+| \\u0060 | ` |  |  |  |  |  |  |
 
 ## Criptografia e Segurança
 
@@ -1382,23 +1518,44 @@ IntParaAlfa(vnInteiro, vaTexto); @ vaTexto será "123" @
 
 ### ConverteMascara
 
-Converte um valor de entrada (numérico, data, hora ou cadeia de caracteres) para o tipo de dado cadeia de caracteres.
+Esta função converte um valor de entrada (numérico, data, hora ou cadeia de caracteres) para o tipo de dado cadeia de caracteres.
 
 **Sintaxe:**
 
 ```lsp
-ConverteMascara(<tipo>, <valor>, <texto>, <mascara>);
+ConverteMascara(<tipoDado>, <valorOrigem>, <alfaDestino>, <mascara>);
 ```
 
-**Exemplo:**
+**Parâmetros:**
+- `tipoDado`: Código que determina o tipo do valor de origem
+  - `1`: Número
+  - `2`: Dinheiro (valor)
+  - `3`: Data
+  - `4`: Hora
+  - `5`: Alfa
+- `valorOrigem`: Campo/Variável/Valor a ser convertido
+- `alfaDestino`: Variável que receberá o resultado da conversão
+- `mascara`: Especifica o formato de apresentação do resultado
+
+**Exemplo de CPF e CNPJ:**
 
 ```lsp
-Definir Numero vnNumero;
-Definir Alfa vaTexto;
+Definir Alfa vaInscricaoStr;
+Definir Numero vnNumCgc;
+Definir Numero vnTipoInscricao;
 
-vnNumero = 123456;
-ConverteMascara(1, vnNumero, vaTexto, "999.999"); @ vaTexto será "123.456" @
+vnNumCgc = 12345678901;
+vnTipoInscricao = 3; @ CPF @
+
+Se (vnTipoInscricao = 1) { @ CNPJ @
+  ConverteMascara(1, vnNumCgc, vaInscricaoStr, "99.999.999/9999-99");
+} Senao Se (vnTipoInscricao = 3) { @ CPF @
+  ConverteMascara(1, vnNumCgc, vaInscricaoStr, "999.999.999-99");
+}
+@ vaInscricaoStr será "123.456.789-01" @
 ```
+
+**Observação:** No caso de o tipo de dado ser 5 (Alfa), o parâmetro `valorOrigem` é passado como 0 (zero) e o parâmetro `alfaDestino` receberá o campo do tipo Alfa a ser convertido, e após a conversão, receberá o resultado da conversão.
 
 ## Manipulação Avançada de Datas
 
@@ -1471,17 +1628,166 @@ Funcao obterDatasAtuais(); {
 }
 ```
 
+### Manipulação de Componentes de Hora
+
+Existem duas abordagens principais para extrair e manipular componentes de hora do sistema:
+
+#### **Abordagem 1: Usando DataHora + FormatarData (Recomendada)**
+
+Método moderno e direto para obter componentes específicos da data/hora:
+
+```lsp
+Definir Funcao extrairComponentesHoraModerno();
+
+@ Variáveis globais @
+Definir Data vdDataHora;
+Definir Alfa vaHoraCompleta;
+Definir Alfa vaApenasHora;
+Definir Alfa vaApenasMinuto;
+Definir Alfa vaApenasSegundo;
+Definir Alfa vaDataFormatada;
+
+extrairComponentesHoraModerno();
+
+Funcao extrairComponentesHoraModerno(); {
+  @ Obtém data e hora atual @
+  DataHora(vdDataHora);
+  
+  @ Formata data e hora completa @
+  FormatarData(vdDataHora, "dd/MM/yyyy - HH:mm:ss", vaDataFormatada);
+  
+  @ Extrai apenas componentes da hora @
+  FormatarData(vdDataHora, "HH", vaApenasHora);      @ Apenas hora (ex: "14") @
+  FormatarData(vdDataHora, "mm", vaApenasMinuto);    @ Apenas minuto (ex: "30") @
+  FormatarData(vdDataHora, "ss", vaApenasSegundo);   @ Apenas segundo (ex: "45") @
+  FormatarData(vdDataHora, "HH:mm:ss", vaHoraCompleta); @ Hora completa (ex: "14:30:45") @
+  
+  @ Exibe resultados @
+  Mensagem(Retorna, "Data/Hora formatada: " + vaDataFormatada);
+  Mensagem(Retorna, "Hora completa: " + vaHoraCompleta);
+  Mensagem(Retorna, "Hora: " + vaApenasHora);
+  Mensagem(Retorna, "Minuto: " + vaApenasMinuto);
+  Mensagem(Retorna, "Segundo: " + vaApenasSegundo);
+}
+```
+
+#### **Abordagem 2: Usando HorSis + CopiarAlfa (Clássica)**
+
+Método tradicional usando a variável de sistema e manipulação de strings:
+
+```lsp
+Definir Funcao extrairComponentesHoraClassico();
+
+@ Variáveis globais @
+Definir Alfa vaHora[8];
+Definir Numero vnMinuto;
+Definir Numero vnSegundo;
+Definir Numero vnHoraNum;
+Definir Alfa vaMinutoStr;
+Definir Alfa vaSegundoStr;
+Definir Alfa vaHoraStr;
+
+extrairComponentesHoraClassico();
+
+Funcao extrairComponentesHoraClassico(); {
+  @ Obtém a hora do sistema no formato HH:MM:SS @
+  vaHora = HorSis;
+  
+  @ Extrai componentes usando CopiarAlfa @
+  CopiarAlfa(vaHora, vaHoraStr, 1, 2);     @ Extrai hora (posição 1-2) @
+  CopiarAlfa(vaHora, vaMinutoStr, 4, 2);   @ Extrai minuto (posição 4-5) @
+  CopiarAlfa(vaHora, vaSegundoStr, 7, 2);  @ Extrai segundo (posição 7-8) @
+  
+  @ Converte para números se necessário @
+  AlfaParaInt(vaHoraStr, vnHoraNum);
+  AlfaParaInt(vaMinutoStr, vnMinuto);
+  AlfaParaInt(vaSegundoStr, vnSegundo);
+  
+  @ Exibe resultados @
+  Mensagem(Retorna, "Hora completa (HorSis): " + vaHora);
+  Mensagem(Retorna, "Hora extraída: " + vaHoraStr + " (" + IntParaAlfa(vnHoraNum) + ")");
+  Mensagem(Retorna, "Minuto extraído: " + vaMinutoStr + " (" + IntParaAlfa(vnMinuto) + ")");
+  Mensagem(Retorna, "Segundo extraído: " + vaSegundoStr + " (" + IntParaAlfa(vnSegundo) + ")");
+}
+```
+
+#### **Comparação das Abordagens:**
+
+| Aspecto | DataHora + FormatarData | HorSis + CopiarAlfa |
+|---------|-------------------------|---------------------|
+| **Flexibilidade** | ✅ Muito alta (múltiplos formatos) | ❌ Limitada (formato fixo) |
+| **Simplicidade** | ✅ Direta e clara | ❌ Requer manipulação manual |
+| **Performance** | ✅ Otimizada | ⚠️ Múltiplas operações |
+| **Manutenibilidade** | ✅ Fácil de manter | ❌ Propensa a erros |
+| **Compatibilidade** | ✅ Moderna | ✅ Tradicional |
+
+**Recomendação:** Use a **Abordagem 1** (DataHora + FormatarData) para novos desenvolvimentos, pois é mais robusta e flexível.
+
 ### Construção e Decomposição de Datas
 
 #### CodData
 
-Monta uma data a partir de dia, mês e ano.
+Possibilita a composição de uma data, montando-a através de dia, mês e ano.
 
 **Sintaxe:**
 
 ```lsp
-CodData(<dia>, <mes>, <ano>, <data>);
+vdData = CodData(<dia>, <mes>, <ano>);
 ```
+
+**Parâmetros:**
+- `dia`: Valor correspondente ao dia
+- `mes`: Valor correspondente ao mês  
+- `ano`: Valor correspondente ao ano
+
+**Exemplo:**
+
+```lsp
+Definir Data vdData;
+Definir Numero vnDia;
+Definir Numero vnMes;
+Definir Numero vnAno;
+
+vnDia = 10;
+vnMes = 1;
+vnAno = 2002;
+
+vdData = CodData(vnDia, vnMes, vnAno);
+```
+
+#### MontaData
+
+Esta função concatena três variáveis, formando uma data. É uma alternativa ao CodData com sintaxe diferente.
+
+**Sintaxe:**
+
+```lsp
+MontaData(<dia>, <mes>, <ano>, <data>);
+```
+
+**Parâmetros:**
+- `dia`: Dia da data a ser gerada
+- `mes`: Mês da data a ser gerada
+- `ano`: Ano da data a ser gerada (deve ter 4 dígitos, ex: 1998)
+- `data`: Variável do tipo Número ou Data que receberá o resultado
+
+**Exemplo:**
+
+```lsp
+Definir Numero vnDia;
+Definir Numero vnMes;
+Definir Numero vnAno;
+Definir Data vdData;
+
+vnDia = 1;
+vnMes = 9;
+vnAno = 1998;
+
+MontaData(vnDia, vnMes, vnAno, vdData);
+@ vdData conterá "01/09/1998" @
+```
+
+**Observação:** Quando a variável de retorno for numérica, não será necessário defini-la. No entanto, se for utilizada em um cursor, é obrigatório defini-la como Data.
 
 #### DecodData
 
@@ -2042,6 +2348,33 @@ Calcula o resto da divisão (operação módulo).
 RestoDivisao(<dividendo>, <divisor>, <resto>);
 ```
 
+#### HoraParaMinuto
+
+Converte em minutos os valores que representam hora e minuto.
+
+**Sintaxe:**
+
+```lsp
+vnMinutos = HoraParaMinuto(<hora>, <minuto>);
+```
+
+**Parâmetros:**
+- `hora`: Valor correspondente à hora inteira
+- `minuto`: Valor correspondente aos minutos de uma hora
+
+**Exemplo:**
+
+```lsp
+Definir Numero vnResultado;
+Definir Alfa vaResultadoStr;
+
+vnResultado = HoraParaMinuto(1, 30);
+IntParaAlfa(vnResultado, vaResultadoStr);
+
+@ vnResultado será 90 (1 hora e 30 minutos = 90 minutos) @
+Mensagem(Retorna, "Resultado: " + vaResultadoStr + " minutos");
+```
+
 **Exemplo de Validações Numéricas:**
 
 ```lsp
@@ -2186,12 +2519,34 @@ Funcao processarDadosComFeedback(); {
 
 #### ObterVersaoSistema
 
-Obtém a versão atual do sistema Senior.
+Esta função retorna a versão do sistema Senior.
 
 **Sintaxe:**
 
 ```lsp
-ObterVersaoSistema(<versao>);
+ObterVersaoSistema(<majorVersion>, <minorVersion>, <release>, <build>);
+```
+
+**Parâmetros:**
+- `majorVersion`: Versão de primeiro dígito do sistema
+- `minorVersion`: Versão de segundo dígito do sistema
+- `release`: Versão de terceiro dígito do sistema (release)
+- `build`: Versão de quarto dígito do sistema (build)
+
+**Exemplo:**
+
+```lsp
+Definir Numero vnMajorVersion;
+Definir Numero vnMinorVersion;
+Definir Numero vnRelease;
+Definir Numero vnBuild;
+Definir Alfa vaMensagem;
+
+ObterVersaoSistema(vnMajorVersion, vnMinorVersion, vnRelease, vnBuild);
+
+@ Após a chamada da função as variáveis conterão a versão do sistema @
+vaMensagem = "Versão: " + IntParaAlfa(vnMajorVersion) + "." + IntParaAlfa(vnMinorVersion) + "." + IntParaAlfa(vnRelease) + "." + IntParaAlfa(vnBuild);
+Mensagem(Retorna, vaMensagem);
 ```
 
 #### ObtemIdiomaAtivo
@@ -2201,18 +2556,79 @@ Retorna o código do idioma utilizado pelo usuário.
 **Sintaxe:**
 
 ```lsp
-ObtemIdiomaAtivo(<codigoIdioma>);
+ObtemIdiomaAtivo(<valorIdioma>);
+```
+
+**Parâmetros:**
+- `valorIdioma`: Campo ou variável que receberá o valor de retorno do idioma utilizado (ex: "PTBRN")
+
+**Exemplo:**
+
+```lsp
+Definir Alfa vaValorIdioma;
+
+ObtemIdiomaAtivo(vaValorIdioma);
+Mensagem(Retorna, "Idioma ativo: " + vaValorIdioma);
 ```
 
 #### sleep
 
-Pausa a execução por um número especificado de milissegundos.
+Pausa a execução por um número especificado de milissegundos. Útil para simular tempo de processamento, aguardar operações ou criar delays controlados.
 
 **Sintaxe:**
 
 ```lsp
 sleep(<milissegundos>);
 ```
+
+**Parâmetros:**
+- `milissegundos`: Número de milissegundos para pausar a execução
+
+**Exemplos:**
+
+```lsp
+@ Pausa de 1 segundo @
+sleep(1000);
+
+@ Pausa de 5 segundos @
+sleep(5000);
+
+@ Pausa de 100 milissegundos @
+sleep(100);
+```
+
+**Exemplo com Barra de Progresso:**
+
+```lsp
+Definir Funcao exemploComSleep();
+
+exemploComSleep();
+
+Funcao exemploComSleep(); {
+  IniciaBarraProgresso("Processamento", "Iniciando...");
+  
+  @ Simula processamento em etapas @
+  AtualizaBarraProgresso(25, "Processando etapa 1...");
+  sleep(2000); @ Pausa de 2 segundos @
+  
+  AtualizaBarraProgresso(50, "Processando etapa 2...");
+  sleep(2000); @ Pausa de 2 segundos @
+  
+  AtualizaBarraProgresso(75, "Processando etapa 3...");
+  sleep(2000); @ Pausa de 2 segundos @
+  
+  AtualizaBarraProgresso(100, "Concluído!");
+  sleep(1000); @ Pausa de 1 segundo @
+  
+  FinalizaBarraProgresso();
+  Mensagem(Retorna, "Processamento concluído!");
+}
+```
+
+**Observações:**
+- Use com moderação para não impactar a performance
+- Útil em simulações e testes
+- Valores muito altos podem travar a interface do usuário
 
 **Exemplo de Informações do Sistema:**
 
@@ -2234,11 +2650,14 @@ Funcao informacoesSistema(); {
   ObtemIdiomaAtivo(vaIdiomaAtivo);
   
   @ Monta informações @
-  vaInformacoes = "=== INFORMAÇÕES DO SISTEMA ===" + CHR(13);
-  vaInformacoes = vaInformacoes + "Versão: " + vaVersaoSistema + CHR(13);
-  vaInformacoes = vaInformacoes + "Idioma: " + vaIdiomaAtivo + CHR(13);
-  vaInformacoes = vaInformacoes + "Usuário: " + NomUsu + CHR(13);
-  vaInformacoes = vaInformacoes + "Empresa: " + Empresa + CHR(13);
+  Definir Alfa vaEnter;
+  CaracterParaAlfa(13, vaEnter);
+  
+  vaInformacoes = "=== INFORMAÇÕES DO SISTEMA ===" + vaEnter;
+  vaInformacoes = vaInformacoes + "Versão: " + vaVersaoSistema + vaEnter;
+  vaInformacoes = vaInformacoes + "Idioma: " + vaIdiomaAtivo + vaEnter;
+  vaInformacoes = vaInformacoes + "Usuário: " + NomUsu + vaEnter;
+  vaInformacoes = vaInformacoes + "Empresa: " + Empresa + vaEnter;
   vaInformacoes = vaInformacoes + "Data: " + ExtSis;
   
   Mensagem(Retorna, vaInformacoes);
@@ -2249,13 +2668,44 @@ Funcao informacoesSistema(); {
 
 #### RetornaValorCFG
 
-Obtém valores da Central de Configuração Senior.
+Responsável por retornar para a regra o valor de uma determinada chave da Central de Configuração Senior que está sendo utilizada pelo sistema.
 
 **Sintaxe:**
 
 ```lsp
-RetornaValorCFG(<chave>, <valor>);
+RetornaValorCFG(<chave>, <retorno>);
 ```
+
+**Parâmetros:**
+- `chave`: Nome da chave de configuração. Pode conter:
+  - Nome completo da chave
+  - Parte final de uma chave
+  - Diretórios especiais: LOGS, TBS, IMAGENS, ARQUIVOS, GRAFICOS, IMPEXP, CONSULTAS, REGRAS, CUBOS, MODELOS, TBS_TRANSLATION_FILTER_FILE
+- `retorno`: Variável que receberá o valor da chave
+
+**Exemplos:**
+
+```lsp
+Definir Alfa vaChave;
+Definir Alfa vaRetorno;
+
+@ Obter diretório de logs @
+vaChave = "LOGS";
+RetornaValorCFG(vaChave, vaRetorno);
+@ Retorna algo como "\\servidor\ERP\Sapiens\Logs" @
+Mensagem(Retorna, "Diretório de logs: " + vaRetorno);
+
+@ Obter chave específica @
+vaChave = "com.senior.printers.path";
+RetornaValorCFG(vaChave, vaRetorno);
+@ Retorna algo como "\\servidor\ERP\Impressoras" @
+Mensagem(Retorna, "Diretório de impressoras: " + vaRetorno);
+```
+
+**Observações:**
+- Caso o valor da chave esteja em branco, o valor retornado é "( NULO )"
+- Se informada apenas a parte final do nome da chave, será retornado o valor da primeira chave localizada que contenha a parte final informada
+- Não é permitida a visualização da chave PASSWORD do arquivo CFG
 
 **Exemplo de Configuração Dinâmica:**
 
@@ -3234,7 +3684,7 @@ Exemplo de definição de um cursor simples:
 
 ```lsp
 Definir Cursor curExemplo;
-curExemplo.SQL = "SELECT * FROM Tabela";
+curExemplo.SQL "SELECT * FROM Tabela";
 curExemplo.AbrirCursor();
 
 Enquanto (curExemplo.Achou) {
@@ -3254,7 +3704,7 @@ Exemplo de definição de um cursor completo:
 ```lsp
 Definir Alfa xCursor;
 Definir Alfa vSql;
-Definir Data xData;
+Definir Data vdData; MontaData(1,1,2000, vdData);
 
 vSql = "SELECT * FROM Tabela WHERE Condicao";
 
@@ -3262,11 +3712,11 @@ SQL_Criar(xCursor);
 SQL_UsarSQLSenior2(xCursor, 0);
 SQL_UsarAbrangencia(xCursor, 0);
 SQL_DefinirComando(xCursor, vSql);
-SQL_DefinirInteiro(xCursor, "xNumero", 1);
-SQL_DefinirBoleano(xCursor, "xBoleano", 1);
-SQL_DefinirFlutuante(xCursor, "xFlutuante", 1.6);
-SQL_DefinirData(xCursor, "xData", xData);
-SQL_DefinirAlfa(xCursor, "xAlfa", "João da Silva");
+SQL_DefinirInteiro(xCursor, "vnNumero", 1);
+SQL_DefinirBoleano(xCursor, "vbBoleano", 1);
+SQL_DefinirFlutuante(xCursor, "vnFlutuante", 1.6);
+SQL_DefinirData(xCursor, "vdData", vdData);
+SQL_DefinirAlfa(xCursor, "vaAlfa", "João da Silva");
 
 SQL_AbrirCursor(xCursor);
 Enquanto (SQL_EOF(xCursor) = 0) {
@@ -3303,6 +3753,319 @@ SQL_Destruir(xCursor);
 - A performance de resposta depende da rede e do banco de dados.
 - Requer mais funções e configurações em comparação ao cursor simples.
 
+### Funções de Retorno SQL
+
+As funções de retorno SQL são utilizadas para extrair dados dos registros retornados pelo cursor. Cada função é específica para um tipo de dado e permite recuperar valores dos campos da consulta SQL.
+
+#### Exemplo Completo com Todos os Tipos de Retorno
+
+```lsp
+Definir Funcao exemploCompletoRetornoSQL();
+
+@ Variáveis globais @
+Definir Alfa xCursor;
+Definir Alfa vaNomeFuncionario;      @ Para SQL_RetornarAlfa @
+Definir Numero vnCodigoFilial;       @ Para SQL_RetornarInteiro @
+Definir Data vdDataNascimento;       @ Para SQL_RetornarData @
+Definir Numero vnSalario;            @ Para SQL_RetornarFlutuante @
+Definir Numero vnDeficienteFisico;   @ Para SQL_RetornarBoleano @
+Definir Alfa vaFotoFuncionario;      @ Para SQL_RetornarBlob @
+Definir Numero vnContadorRegistros;
+
+exemploCompletoRetornoSQL();
+
+Funcao exemploCompletoRetornoSQL(); {
+  vnContadorRegistros = 0;
+  
+  SQL_Criar(xCursor);
+  SQL_DefinirComando(xCursor, "SELECT NOMFUN, CODFIL, DATNAS, VALSALARIO, DEFFIS FROM R034FUN WHERE NUMEMP = 1");
+  
+  SQL_AbrirCursor(xCursor);
+  Enquanto (SQL_EOF(xCursor) = 0) {
+    
+    @ ===== TODOS OS TIPOS DE RETORNO EM UM ÚNICO EXEMPLO ===== @
+    
+    @ 1. SQL_RetornarAlfa - Para campos de texto @
+    SQL_RetornarAlfa(xCursor, "NOMFUN", vaNomeFuncionario);
+    
+    @ 2. SQL_RetornarInteiro - Para campos numéricos inteiros @
+    SQL_RetornarInteiro(xCursor, "CODFIL", vnCodigoFilial);
+    
+    @ 3. SQL_RetornarData - Para campos de data @
+    SQL_RetornarData(xCursor, "DATNAS", vdDataNascimento);
+    
+    @ 4. SQL_RetornarFlutuante - Para campos numéricos com decimais @
+    SQL_RetornarFlutuante(xCursor, "VALSALARIO", vnSalario);
+    
+    @ 5. SQL_RetornarBoleano - Para campos boolean (1/0) @
+    SQL_RetornarBoleano(xCursor, "DEFFIS", vnDeficienteFisico);
+    
+    @ 6. SQL_RetornarSeNulo - Para verificar campos NULL @
+    Se (SQL_RetornarSeNulo(xCursor, "NOMFUN") = 0) {
+      @ Campo não é nulo, processa normalmente @
+      vnContadorRegistros++;
+      
+      @ Exemplo de processamento dos dados obtidos @
+      Se (vnDeficienteFisico = 1) {
+        Mensagem(Retorna, "✅ " + vaNomeFuncionario + " - PCD");
+      } Senao {
+        Mensagem(Retorna, "📄 " + vaNomeFuncionario + " - Filial: " + IntParaAlfa(vnCodigoFilial));
+      }
+    }
+    
+    SQL_Proximo(xCursor);
+  }
+  
+  SQL_FecharCursor(xCursor);
+  SQL_Destruir(xCursor);
+  
+  IntParaAlfa(vnContadorRegistros, vaNomeFuncionario);
+  Mensagem(Retorna, "Total processado: " + vaNomeFuncionario + " funcionários");
+}
+
+@ ===== EXEMPLO ADICIONAL PARA SQL_RetornarBlob ===== @
+Funcao exemploRetornarBlob(); {
+  Definir Alfa xCursorBlob;
+  
+  SQL_Criar(xCursorBlob);
+  SQL_DefinirComando(xCursorBlob, "SELECT FOTEMP FROM R034FOT WHERE NUMEMP = 1");
+  
+  SQL_AbrirCursor(xCursorBlob);
+  Enquanto (SQL_EOF(xCursorBlob) = 0) {
+    @ 7. SQL_RetornarBlob - Para campos binários/arquivos @
+    SQL_RetornarBlob(xCursorBlob, "FOTEMP", vaFotoFuncionario);
+    
+    @ Processar arquivo blob @
+    Se (TamanhoAlfa(vaFotoFuncionario) > 0) {
+      Mensagem(Retorna, "📷 Foto encontrada");
+    }
+    
+    SQL_Proximo(xCursorBlob);
+  }
+  
+  SQL_FecharCursor(xCursorBlob);
+  SQL_Destruir(xCursorBlob);
+}
+```
+
+#### Referência Rápida das Funções
+
+| **Função** | **Tipo de Campo** | **Sintaxe** | **Uso** |
+|------------|-------------------|-------------|---------|
+| `SQL_RetornarAlfa` | Texto/String | `SQL_RetornarAlfa(cursor, "CAMPO", variavel)` | Nomes, descrições, códigos texto |
+| `SQL_RetornarInteiro` | Número Inteiro | `SQL_RetornarInteiro(cursor, "CAMPO", variavel)` | IDs, códigos, quantidades |
+| `SQL_RetornarFlutuante` | Número Decimal | `SQL_RetornarFlutuante(cursor, "CAMPO", variavel)` | Valores monetários, percentuais |
+| `SQL_RetornarData` | Data | `SQL_RetornarData(cursor, "CAMPO", variavel)` | Datas de nascimento, cadastro |
+| `SQL_RetornarBoleano` | Boolean | `SQL_RetornarBoleano(cursor, "CAMPO", variavel)` | Flags verdadeiro/falso (1/0) |
+| `SQL_RetornarBlob` | Binário/Arquivo | `SQL_RetornarBlob(cursor, "CAMPO", variavel)` | Imagens, documentos, anexos |
+| `SQL_RetornarSeNulo` | Verificação NULL | `resultado = SQL_RetornarSeNulo(cursor, "CAMPO")` | Valida se campo é nulo |
+
+#### Funções de Controle de Posicionamento do Cursor
+
+Além das funções de retorno, existem funções importantes para controlar e verificar a posição do cursor durante a navegação pelos registros.
+
+##### SQL_BOF
+
+Verifica se o cursor está na posição inicial (antes do primeiro registro: posição BOF - Beginning of File).
+
+**Sintaxe:** `SQL_BOF(Alfa Objeto);`
+
+**Retorno:**
+- `1`: Cursor está na posição BOF (antes do primeiro registro)
+- `0`: Cursor NÃO está na posição BOF
+
+**Importante:** Na posição BOF, todos os registros estarão nulos.
+
+**Exemplo Prático - Proteção de Contador:**
+
+```lsp
+Definir Alfa xCursor;
+Definir Numero xFormula;
+
+xFormula = 0;
+SQL_Criar(xCursor);
+SQL_DefinirComando(xCursor, "SELECT R034FUN.CODFIL FROM R034FUN WHERE R034FUN.CODFIL = 1 AND R034FUN.NUMEMP = 1");
+
+@ Teste para proteger o contador @
+@ Se não está em BOF (posição inicial), processa normalmente @
+Se (SQL_BOF(xCursor) = 0) {
+  SQL_Proximo(xCursor);
+  xFormula++;
+}
+
+SQL_FecharCursor(xCursor);
+SQL_Destruir(xCursor);
+```
+
+##### SQL_EOF
+
+Verifica se o cursor está na posição final (depois do último registro: posição EOF - End of File).
+
+**Sintaxe:** `SQL_EOF(Alfa Objeto);`
+
+**Retorno:**
+- `1`: Cursor está na posição EOF (depois do último registro)
+- `0`: Cursor NÃO está na posição EOF
+
+**Importante:** Na posição EOF, todos os registros estarão nulos.
+
+**Exemplo Prático - Loop de Contagem:**
+
+```lsp
+Definir Alfa xCursor;
+Definir Numero xFormula;
+
+xFormula = 0;
+SQL_Criar(xCursor);
+SQL_DefinirComando(xCursor, "SELECT R034FUN.CODFIL FROM R034FUN WHERE R034FUN.CODFIL = 1 AND R034FUN.NUMEMP = 1");
+SQL_AbrirCursor(xCursor);
+
+@ Loop enquanto não chegou no fim dos registros @
+Enquanto (SQL_EOF(xCursor) = 0) {
+  SQL_Proximo(xCursor);
+  xFormula++;
+}
+
+SQL_FecharCursor(xCursor);
+SQL_Destruir(xCursor);
+```
+
+#### Observações Importantes
+
+**SQL_RetornarInteiro vs SQL_RetornarFlutuante:**
+- `SQL_RetornarInteiro`: Se o campo tem valor `5.45`, retorna apenas `5`
+- `SQL_RetornarFlutuante`: Retorna o valor completo `5.45`
+- Para campos tipo Double, use **obrigatoriamente** `SQL_RetornarFlutuante`
+
+**SQL_RetornarBoleano:**
+- Retorna `1` para verdadeiro e `0` para falso
+- Útil para campos de status, flags, indicadores
+
+**SQL_RetornarSeNulo:**
+- Retorna `1` se campo é NULL, `0` se não é NULL  
+- Não detecta campos vazios (`""`) ou zero (`0`), apenas NULL
+- Use para validação antes de processar dados
+
+**SQL_BOF vs SQL_EOF:**
+- **SQL_BOF**: Verifica início do cursor (Before Of File)
+- **SQL_EOF**: Verifica fim do cursor (End Of File)
+- Ambas retornam `1` quando na posição correspondente, `0` caso contrário
+- Em ambas as posições (BOF/EOF), todos os registros estarão nulos
+- Use para proteger contadores e controlar loops de navegação
+
+
+
+### Otimizações para Cursores com Múltiplos Tipos
+
+**❓ Pergunta Comum:** "Não há como otimizar o uso de todos os tipos de retorno em um mesmo cursor?"
+
+**✅ Resposta:** A sequência de `SQL_Retornar*` **é obrigatória** para cada campo, mas podemos otimizar a lógica de processamento:
+
+#### **🚀 Versão Otimizada - Verificação Prévia de NULLs**
+
+```lsp
+Definir Funcao consultarFuncionariosOtimizado();
+
+@ Variáveis globais @
+Definir Alfa xCursor;
+Definir Alfa vaNomeFuncionario;
+Definir Numero vnCodigoFilial;
+Definir Data vdDataNascimento;
+Definir Numero vnSalario;
+Definir Numero vnDeficienteFisico;
+Definir Numero vnContadorValidos;
+Definir Numero vnContadorTotal;
+
+consultarFuncionariosOtimizado();
+
+Funcao consultarFuncionariosOtimizado(); {
+  vnContadorValidos = 0;
+  vnContadorTotal = 0;
+  
+  SQL_Criar(xCursor);
+  SQL_DefinirComando(xCursor, "SELECT NOMFUN, CODFIL, DATNAS, VALSALARIO, DEFFIS FROM R034FUN WHERE NUMEMP = 1");
+  
+  SQL_AbrirCursor(xCursor);
+  Enquanto (SQL_EOF(xCursor) = 0) {
+    vnContadorTotal++;
+    
+    @ 1. PRIMEIRA OTIMIZAÇÃO: Verificar NULLs ANTES de recuperar dados @
+    Se ((SQL_RetornarSeNulo(xCursor, "NOMFUN") = 0) e (SQL_RetornarSeNulo(xCursor, "VALSALARIO") = 0)) {
+      
+      @ 2. SEGUNDA OTIMIZAÇÃO: Só recupera dados se necessário @
+      SQL_RetornarAlfa(xCursor, "NOMFUN", vaNomeFuncionario);
+      SQL_RetornarFlutuante(xCursor, "VALSALARIO", vnSalario);
+      
+      @ 3. TERCEIRA OTIMIZAÇÃO: Recupera dados opcionais só se precisar @
+      Se (vnSalario > 5000) { @ Só pega outros dados para salários altos @
+        SQL_RetornarInteiro(xCursor, "CODFIL", vnCodigoFilial);
+        SQL_RetornarData(xCursor, "DATNAS", vdDataNascimento);
+        SQL_RetornarBoleano(xCursor, "DEFFIS", vnDeficienteFisico);
+        
+        @ Processamento completo @
+        vnContadorValidos++;
+      }
+    }
+    
+    SQL_Proximo(xCursor);
+  }
+  
+  SQL_FecharCursor(xCursor);
+  SQL_Destruir(xCursor);
+  
+  IntParaAlfa(vnContadorValidos, vaNomeFuncionario);
+  Mensagem(Retorna, "Registros processados: " + vaNomeFuncionario + " de " + IntParaAlfa(vnContadorTotal));
+}
+```
+
+#### **⚡ Técnicas de Otimização Aplicadas**
+
+**1. Verificação Prévia de NULLs**
+```lsp
+@ Evita recuperar dados desnecessários @
+Se ((SQL_RetornarSeNulo(xCursor, "NOMFUN") = 0) e (SQL_RetornarSeNulo(xCursor, "VALSALARIO") = 0)) {
+  @ Só recupera dados se campos essenciais existem @
+}
+```
+
+**2. Recuperação Condicional**
+```lsp
+@ Recupera dados básicos primeiro @
+SQL_RetornarAlfa(xCursor, "NOMFUN", vaNomeFuncionario);
+SQL_RetornarFlutuante(xCursor, "VALSALARIO", vnSalario);
+
+@ Só recupera dados extras se condição atendida @
+Se (vnSalario > 5000) {
+  SQL_RetornarInteiro(xCursor, "CODFIL", vnCodigoFilial);
+  @ ... outros dados @
+}
+```
+
+**3. Agrupamento por Uso**
+```lsp
+@ Agrupa recuperação por necessidade @
+@ Campos obrigatórios: sempre recupera @
+SQL_RetornarAlfa(xCursor, "NOMFUN", vaNomeFuncionario);
+SQL_RetornarFlutuante(xCursor, "VALSALARIO", vnSalario);
+
+@ Campos opcionais: recupera condicionalmente @
+Se (precisaDetalhes = 1) {
+  SQL_RetornarData(xCursor, "DATNAS", vdDataNascimento);
+  SQL_RetornarBoleano(xCursor, "DEFFIS", vnDeficienteFisico);
+}
+```
+
+#### **🎯 Resumo das Limitações e Soluções**
+
+| **Aspecto** | **Limitação** | **Solução** |
+|-------------|---------------|-------------|
+| **Tipos de Dados** | Cada tipo precisa de função específica | ✅ **Obrigatório** - Use SQL_Retornar correto |
+| **Performance** | Recuperar dados desnecessários | ✅ **Otimizável** - Verificar NULLs primeiro |
+| **Lógica** | Processamento sequencial | ✅ **Otimizável** - Recuperação condicional |
+| **Memória** | Muitas variáveis | ✅ **Otimizável** - Reutilizar variáveis |
+
+**📌 Conclusão:** A sequência de `SQL_Retornar*` **não pode ser simplificada** (é obrigatória), mas a **lógica de quando e como recuperar** pode ser muito otimizada!
+
 ## Definição de Funções
 
 É um conjunto de comandos que tem como objetivo calcular um ou mais valores e retorná-los para uso na regra. Havendo uma operação que se repita, pode-se criar a função e chamá-la em cada regra, sem precisar reimplementá-la.
@@ -3332,6 +4095,30 @@ vaNome = "João Silva";
 
 Funcao alterarNome(); {
   vaNome = "João da Silva"; @ Correto: variável global @
+}
+```
+
+**Exemplo Oficial da Senior:**
+```lsp
+@ Definição/declaração da função criada pelo usuário @
+Definir Funcao Somar(Numero pNum1, Numero pNum2, Numero End pResultado);
+
+Definir Numero vNum1;
+Definir Numero vNum2;
+Definir Numero vResultado;
+Definir Alfa vResultadoMensagem;
+
+vNum1 = 50;
+vNum2 = 100;
+Somar(vNum1, vNum2, vResultado);
+
+IntParaAlfa(vResultado, vResultadoMensagem);
+vResultadoMensagem = "O resultado da soma é " + vResultadoMensagem;
+Mensagem(Retorna, vResultadoMensagem);
+
+@ Função criada pelo usuário para realizar a soma de dois números @
+Funcao Somar(Numero pNum1, Numero pNum2, Numero End pResultado); {
+  pResultado = pNum1 + pNum2;
 }
 ```
 
@@ -3571,7 +4358,6 @@ As funções a seguir podem ser utilizadas para manipulação de comandos SQL e 
 | Nome                | Descrição                                                                                       |
 |---------------------|-------------------------------------------------------------------------------------------------|
 | SQL_AbrirCursor     | Função que abre o cursor (depois de informado o comando SQL a ser utilizado, que é definido na função SQL_DefinirComando). |
-| SQL_BOF             | Função que retorna a informação se o cursor está na posição inicial (antes do primeiro registro: posição BOF). |
 | SQL_Criar           | A partir de uma variável criada como alfa, é criado um cursor para trabalhar com informações da base de dados. |
 | SQL_DefinirAlfa     | Função que define um valor do tipo alfa para o parâmetro dentro do comando SQL inserido na função SQL_DefinirComando. |
 | SQL_DefinirBlob     | Função que define um valor do tipo alfa (que representa o arquivo blob) para o parâmetro dentro do comando SQL inserido na função SQL_DefinirComando. |
@@ -3581,6 +4367,7 @@ As funções a seguir podem ser utilizadas para manipulação de comandos SQL e 
 | SQL_DefinirFlutuante| Função que define um valor do tipo flutuante ou float (Fracionado Ex: 1,5) para o parâmetro dentro do comando SQL inserido na função SQL_DefinirComando. |
 | SQL_DefinirInteiro  | Função que define um valor do tipo inteiro para o parâmetro dentro do comando SQL inserido na função SQL_DefinirComando. |
 | SQL_Destruir        | Função que elimina um cursor e deve ser chamada quando o cursor não for mais utilizado. |
+| SQL_BOF             | Função que retorna a informação se o cursor está na posição inicial (antes do primeiro registro: posição BOF). |
 | SQL_EOF             | Função que retorna se o cursor está na posição final (depois do último registro chamada de posição EOF). |
 | SQL_FecharCursor    | Função que fecha a pesquisa sendo feita pelo cursor. |
 | SQL_Proximo         | Função que posiciona o cursor no próximo registro. |
@@ -5294,6 +6081,76 @@ Funcao exemploRequisicaoCompleta(); {
 - **Reutilização**: Um objeto HTTP pode ser reutilizado para múltiplas requisições
 - **Conexões**: LSP gerencia automaticamente o pool de conexões
 - **Cache**: Configure cabeçalhos Cache-Control adequadamente
+
+### Manipulação de JSON
+
+#### ValorElementoJson
+
+Função para extrair valores de elementos específicos de um objeto JSON.
+
+**Sintaxe:**
+
+```lsp
+ValorElementoJson(<json>, <grupo>, <elemento>, <valor>);
+```
+
+**Parâmetros:**
+- `json`: String contendo o JSON de origem
+- `grupo`: Nome do grupo/objeto dentro do JSON (use "" para raiz)
+- `elemento`: Nome do elemento/propriedade a ser extraído
+- `valor`: Variável que receberá o valor extraído
+
+**Exemplos:**
+
+```lsp
+Definir Alfa vaJSON;
+Definir Alfa vaToken;
+Definir Alfa vaNome;
+Definir Alfa vaEmail;
+
+@ JSON simples @
+vaJSON = "{\"token\": \"abc123\", \"usuario\": \"joao\"}";
+
+@ Extrair o elemento "token" do JSON @
+ValorElementoJson(vaJSON, "", "token", vaToken);
+@ vaToken será "abc123" @
+
+@ JSON com objeto aninhado @
+vaJSON = "{\"data\": {\"first_name\": \"João\", \"email\": \"joao@exemplo.com\"}, \"token\": \"xyz789\"}";
+
+@ Extrair elementos do grupo "data" @
+ValorElementoJson(vaJSON, "data", "first_name", vaNome);
+ValorElementoJson(vaJSON, "data", "email", vaEmail);
+
+@ Extrair elemento da raiz @
+ValorElementoJson(vaJSON, "", "token", vaToken);
+
+Mensagem(Retorna, "Nome: " + vaNome + ", Email: " + vaEmail + ", Token: " + vaToken);
+```
+
+**Exemplo Prático com API:**
+
+```lsp
+Funcao processarRespostaAPI(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaJSON;
+  Definir Alfa vaStatus;
+  Definir Alfa vaMensagem;
+  Definir Alfa vaUsuario;
+  
+  HttpObjeto(vaHTTP);
+  HttpGet(vaHTTP, "https://reqres.in/api/users/2", vaJSON);
+  
+  @ JSON retornado: {"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free..."}} @
+  
+  @ Extrair dados do usuário @
+  ValorElementoJson(vaJSON, "data", "first_name", vaUsuario);
+  ValorElementoJson(vaJSON, "data", "email", vaStatus);
+  
+  vaMensagem = "Usuário: " + vaUsuario + " - Email: " + vaStatus;
+  Mensagem(Retorna, vaMensagem);
+}
+```
 
 ## 🚀 **Exemplos Práticos de APIs**
 
