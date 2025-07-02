@@ -89,6 +89,7 @@ Sênior Sistemas
   * [Verificação de Abrangências](#verificação-de-abrangências)
     + [VrfAbrA](#vrfabra)
     + [VrfAbrN](#vrfabrn)
+    + [MontaAbrangencia](#montaabrangencia)
   * [Validação de Arquivos](#validação-de-arquivos)
     + [ArqExiste](#arqexiste)
   * [Validação de Dados Estruturados](#validação-de-dados-estruturados)
@@ -2024,6 +2025,53 @@ Verifica se um valor numérico está dentro de uma abrangência especificada.
 ```lsp
 VrfAbrN(<valor>, <abrangencia>);
 ```
+
+#### MontaAbrangencia
+
+Função utilizada para retornar uma cláusula SQL de acordo com um campo e uma abrangência de valores.
+
+Para montar abrangências de local quando existem valores especiais ("1.1.111==", por exemplo), deve ser utilizado o campo NumLoc nesta função. O campo CodLoc não é tratado pela função nesta situação.
+
+**Sintaxe:**
+
+```lsp
+MontaAbrangencia(<tabela>, <valores>, <sqlAbr>);
+```
+
+**Parâmetros:**
+- `tabela`: Variável que recebe o campo da tabela que vai ser montada a abrangência
+- `valores`: Variável que contém a faixa de valores na forma de abrangência
+- `sqlAbr`: Variável alfa que retorna a cláusula SQL correspondente à abrangência informada
+
+**Exemplo:**
+
+```lsp
+Definir Alfa xCodMot;
+Definir Alfa xAbrMot;
+Definir Numero Xnumemp;
+Definir Numero Xtipcol;
+Definir Numero Xnumcad;
+Definir Alfa ECodMot;
+
+Xnumemp = R034FUN.NumEmp;
+Xtipcol = R034FUN.TipCol;
+Xnumcad = R034FUN.NumCad;
+ECodMot = "001..999"; @ Exemplo de abrangência @
+
+MontaAbrangencia("R038HSA.CodMot", ECodMot, xCodMot);
+XAbrMot = "";
+
+Se (xCodMot <> "( )") {
+  XAbrMot = " And " + xCodMot;
+}
+
+Chsa.SQL "SELECT * FROM R038HSA WHERE NUMEMP = :xnumemp AND TIPCOL = :xtipcol AND NUMCAD = :xnumcad __Inserir(:xAbrMot) ORDER BY DESC, SEQALT DESC";
+```
+
+**Observações:**
+- Caso não seja informado nada na variável de abrangência na tela de entrada, esta retornará "( )"
+- O comando MontaAbrangencia retorna "( )" quando a abrangência está vazia
+- Utilização: Gerador de Relatórios e Regras
 
 **Exemplo de Validação de Códigos:**
 
@@ -4334,9 +4382,9 @@ As funções gerais na LSP são utilizadas para realizar operações comuns, com
 | ListaItem                   | Retorna o valor de um item de uma lista de valores concatenados por um caracter separador. |
 | ListaQuantidade             | Retorna a quantidade de itens de uma lista de valores concatenados por um caracter separador em um texto. |
 | Mensagem                    | Apresenta a mensagem em tela de acordo com a parametrização do tipo de retorno e da mensagem que será visualizada. |
+| MontaAbrangencia            | Função utilizada para retornar uma cláusula SQL de acordo com um campo e uma abrangência de valores. |
 | ObtemIdiomaAtivo            | Retorna o código do idioma utilizado pelo usuário.                        |
 | ObterVersaoSistema          | Esta função retorna a versão do sistema.                                  |
-
 | PosicaoAlfa                 | Procura por uma parte de texto dentro de um campo/variável do tipo Alfa, retornando a posição em que o texto inicia. |
 | RemoveExpressoesProibidas   | Não permite que campos de relatórios/regras aceitem algum tipo de script. |
 | RestoDivisao                | Retorna o resto da divisão de um número por outro.                        |
