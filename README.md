@@ -6,7 +6,7 @@ Sênior Sistemas
 
 ## Índice
 
-- [Introdução](#Introdução)
+- [Introdução](#introdução)
 - [Sintaxe e Estrutura](#sintaxe-e-estrutura)
   * [Estrutura Básica](#estrutura-básica)
   * [Case Sensitivity](#case-sensitivity)
@@ -20,7 +20,7 @@ Sênior Sistemas
   * [Operadores Lógicos](#operadores-lógicos)
   * [Operadores Aritméticos](#operadores-aritméticos)
   * [Operadores Extras](#operadores-extras)
-  * [Observação sobre o operador %](#observação-sobre-o-operador-%)
+    + [Observação sobre o operador %](#observação-sobre-o-operador-%)
   * [Comportamentos Especiais](#comportamentos-especiais)
 - [Tipo de Dados e Variáveis](#tipo-de-dados-e-variáveis)
   * [Tipos de Dados](#tipos-de-dados)
@@ -28,36 +28,112 @@ Sênior Sistemas
   * [Declaração ou Definição de Variáveis com Tamanho](#declaração-ou-definição-de-variáveis-com-tamanho)
   * [Forma de Acesso](#forma-de-acesso)
   * [Regras](#regras)
-- [Manipulação de Alfa](#manipulação-de-alfa)
-  * [CopiarAlfa e CopiarStr](#copiaralfa-e-copiarstr)
-  * [TamanhoAlfa e TamanhoStr](#tamanhoalfa-e-tamanhostr)
-  * [PosicaoAlfa e PosicaoStr](#posicaoalfa-e-posicaostr)
-  * [SubstAlfa e SubstAlfaUmaVez](#substalfa-e-substalfaumavez)
-  * [Concatenar](#concatenar)
+- [Manipulação Avançada de Strings](#manipulação-avançada-de-strings)
+  * [Conceitos Fundamentais](#conceitos-fundamentais)
+    + [Concatenação de Strings](#concatenação-de-strings)
+    + [Quebra de Linha](#quebra-de-linha)
+  * [Funções Básicas de Manipulação](#funções-básicas-de-manipulação)
+    + [CopiarAlfa e CopiarStr](#copiaralfa-e-copiarstr)
+    + [TamanhoAlfa e TamanhoStr](#tamanhoalfa-e-tamanhostr)
+    + [PosicaoAlfa e PosicaoStr](#posicaoalfa-e-posicaostr)
+    + [SubstAlfa e SubstAlfaUmaVez](#substalfa-e-substalfaumavez)
+    + [Concatenar](#concatenar)
+  * [Funções Avançadas de Manipulação](#funções-avançadas-de-manipulação)
+    + [DeletarAlfa](#deletaralfa)
+    + [ConverteParaMaiusculo e ConverteParaMinusculo](#converteparamaiusculo-e-converteparaminusculo)
+    + [TrocaString](#trocastring)
+    + [LerPosicaoAlfa](#lerposicaoalfa)
+  * [Funções de Lista e Separação](#funções-de-lista-e-separação)
+    + [ListaItem](#listaitem)
+    + [ListaQuantidade](#listaquantidade)
+  * [Funções de Codificação](#funções-de-codificação)
+    + [ConverteCodificacaoString](#converteccodificacaostring)
+    + [ConverteTexto](#convertetexto)
+- [Criptografia e Segurança](#criptografia-e-segurança)
+  * [Funções de Hash](#funções-de-hash)
+    + [GeraHash](#gerahash)
+  * [Criptografia de Dados](#criptografia-de-dados)
+    + [Encriptar](#encriptar)
+    + [Desencriptar](#desencriptar)
+  * [Geração de Tokens e Nonces](#geração-de-tokens-e-nonces)
+    + [GerarNonce](#gerarnonce)
+    + [GeraToken](#geratoken)
+    + [GeraSenha](#gerasenha)
+  * [WS-Security e Digest](#ws-security-e-digest)
+    + [GerarPwdDigest](#gerarpwddigest)
+  * [Codificação Base64](#codificação-base64)
+    + [Base64Encode](#base64encode)
+    + [Base64Decode](#base64decode)
 - [Cast de Variável](#cast-de-variável)
   * [AlfaParaData](#alfaparadata)
   * [AlfaParaDecimal](#alfaparadecimal)
   * [AlfaParaInt](#alfaparaint)
   * [IntParaAlfa](#intparaalfa)
   * [ConverteMascara](#convertemascara)
-  * [Concatenação de Strings](#concatenação-de-strings)
-  * [Quebra de Linha](#quebra-de-linha)
-- [Manipulação de Datas](#manipulação-de-datas)
-  * [DataHoje](#datahoje)
-  * [AdicionarDias](#adicionardias)
-  * [FormatarData](#formatardata)
-- [Arredondamento de Valores](#arredondamento-de-valores)
-  * [Arredondar](#arredondar)
-  * [Truncar](#truncar)
+- [Manipulação Avançada de Datas](#manipulação-avançada-de-datas)
+  * [Funções de Data Atual](#funções-de-data-atual)
+    + [DataHoje](#datahoje)
+    + [DataHora](#datahora)
+    + [DataHoraUTC](#datahorautc)
+  * [Construção e Decomposição de Datas](#construção-e-decomposição-de-datas)
+    + [CodData](#coddata)
+    + [DecodData](#decoddata)
+  * [Operações Aritméticas com Datas](#operações-aritméticas-com-datas)
+    + [AdicionarDias](#adicionardias)
+  * [Formatação Avançada de Datas](#formatação-avançada-de-datas)
+    + [FormatarData](#formatardata)
+  * [Validação e Comparação de Datas](#validação-e-comparação-de-datas)
+- [Validação e Verificação](#validação-e-verificação)
+  * [Verificação de Abrangências](#verificação-de-abrangências)
+    + [VrfAbrA](#vrfabra)
+    + [VrfAbrN](#vrfabrn)
+  * [Validação de Arquivos](#validação-de-arquivos)
+    + [ArqExiste](#arqexiste)
+  * [Validação de Dados Estruturados](#validação-de-dados-estruturados)
+    + [RemoveExpressoesProibidas](#removeexpressoesproibidas)
+  * [Verificação de Abas Ativas](#verificação-de-abas-ativas)
+    + [VerificaAbaAtiva](#verificaabaativa)
+- [Operações Numéricas Avançadas](#operações-numéricas-avançadas)
+  * [Arredondamento e Truncamento](#arredondamento-e-truncamento)
+    + [Arredondar](#arredondar)
+    + [Truncar](#truncar)
+  * [Operações Especiais](#operações-especiais)
+    + [Dividir](#dividir)
+    + [RestoDivisao](#restodivisao)
+- [Interface e Feedback do Usuário](#interface-e-feedback-do-usuário)
+  * [Barra de Progresso](#barra-de-progresso)
+    + [IniciaBarraProgresso](#iniciabarraprogresso)
+    + [AtualizaBarraProgresso](#atualizabarraprogresso)
+    + [FinalizaBarraProgresso](#finalizabarraprogresso)
+    + [OcultaBarraProgressoRelatorio](#ocultabarraprogressorelatorio)
+  * [Controle de Interface](#controle-de-interface)
+    + [ObterVersaoSistema](#obterversaosistema)
+    + [ObtemIdiomaAtivo](#obtemidiomaativo)
+    + [sleep](#sleep)
+  * [Gerenciamento de Configuração](#gerenciamento-de-configuração)
+    + [RetornaValorCFG](#retornavalorcfg)
+- [Gerenciamento Avançado de Arquivos](#gerenciamento-avançado-de-arquivos)
+  * [Criação e Exclusão de Arquivos Temporários](#criação-e-exclusão-de-arquivos-temporários)
+    + [CriarArquivoTemporario](#criararquivotemporario)
+    + [ExcluirArquivoTemporario](#excluirarquivotemporario)
+    + [LinhasArquivo](#linhasarquivo)
+  * [Execução de Programas Externos](#execução-de-programas-externos)
+    + [ExecProg](#execprog)
+  * [Abrir (Open)](#abrir-open)
+  * [Ler (Read)](#ler-read)
+  * [Lernl (ReadLn)](#lernl-readln)
+  * [Gravar (Write)](#gravar-write)
+  * [Gravarnl (WriteLn)](#gravarnl-writeln)
+  * [Fechar (Close)](#fechar-close)
 - [Mensagens](#mensagens)
 - [Cancel](#cancel)
 - [Padrões e Boas Práticas](#padrões-e-boas-práticas)
   * [Boas Práticas e Regras Gerais](#boas-práticas-e-regras-gerais)
   * [Declaração de Variáveis](#declaração-de-variáveis)
   * [Padrão de Nomenclatura de Variáveis](#padrão-de-nomenclatura-de-variáveis)
-  * [Identação e Espaçamento](#identação-e-espaçamento)
-  * [Estruturas de Bloco](#estruturas-de-bloco)
-  * [Comentários](#comentários)
+  * [Identação e Espaçamento](#identação-e-espaçamento-1)
+  * [Estruturas de Bloco](#estruturas-de-bloco-1)
+  * [Comentários](#comentários-1)
 - [Controle de Fluxo](#controle-de-fluxo)
   * [Condicionais](#condicionais)
   * [Estrutura de Repetição](#estrutura-de-repetição)
@@ -88,21 +164,21 @@ Sênior Sistemas
     + [Utilizando Diretamente o Retorno das Funções de Movimentação](#utilizando-diretamente-o-retorno-das-funções-de-movimentação)
 - [Definição de Tabelas](#definição-de-tabelas)
   * [Sintaxe](#sintaxe)
-  * [Exemplo](#exemplo)
+  * [Exemplo](#exemplo-1)
   * [Forma de Acesso à Variável](#forma-de-acesso-à-variável)
 - [Definição de Cursor](#definição-de-cursor)
   * [Cursor Simples](#cursor-simples)
   * [Cursor Completo](#cursor-completo)
   * [Vantagens e Desvantagens dos Cursores](#vantagens-e-desvantagens-dos-cursores)
-    + [Cursor Simples](#cursor-simples)
-    + [Cursor Completo](#cursor-completo)
+    + [Cursor Simples](#cursor-simples-1)
+    + [Cursor Completo](#cursor-completo-1)
 - [Definição de Funções](#definição-de-funções)
   * [Exemplos de Funções](#exemplos-de-funções)
     + [Função Simples](#função-simples)
     + [Função com Parâmetro Numérico](#função-com-parâmetro-numérico)
     + [Função com Parâmetro Numérico e Retorno no Mesmo Parâmetro](#função-com-parâmetro-numérico-e-retorno-no-mesmo-parâmetro)
     + [Função com Dois Parâmetros Numéricos e Retorno em uma Variável Específica](#função-com-dois-parâmetros-numéricos-e-retorno-em-uma-variável-específica)
-  * [Organização das Funções](#organização-das-funões)
+  * [Organização das Funções](#organização-das-funções)
 - [Retorno para Aplicação](#retorno-para-aplicação)
   * [ValRet](#valret)
   * [ValStr](#valstr)
@@ -117,23 +193,59 @@ Sênior Sistemas
     + [Utilização de UPDATE](#utilização-de-update)
   * [Passagem de Parâmetros](#passagem-de-parâmetros)
     + [Exemplo com `__inserir`](#exemplo-com-inserir)
-    + [Exemplo com `SQL_Definir<tipo_variavel>`](#exemplo-com-sql-definir-tipo-variavel)
+    + [Exemplo com `SQL_Definir<tipo_variavel>`](#exemplo-com-sql_definirtipo_variavel)
 - [Manipulação de Arquivos](#manipulação-de-arquivos)
-  * [Abrir (Open)](#abrir-open)
-  * [Ler (Read)](#ler-read)
-  * [Lernl (ReadLn)](#lernl-readln)
-  * [Gravar (Write)](#gravar-write)
-  * [Gravarnl (WriteLn)](#gravarnl-writeln)
-  * [Fechar (Close)](#fechar-close)
 - [Chamada de Web Service](#chamada-de-web-service)
   * [Modos de Execução](#modos-de-execução)
   * [WS-Security](#ws-security)
   * [Autenticação](#autenticação)
 - [Chamada HTTP](#chamada-http)
-  * [Funções para Requisições HTTP](#funções-para-requisições-http)
-  * [Exemplos de Código](#exemplos-de-c-digo)
-    + [Exemplo 1: Busca o CEP na API VIA CEP](#exemplo-1-busca-o-cep-na-api-via-cep)
-    + [Exemplo 2: Busca a Cidade na API IBGE](#exemplo-2-busca-a-cidade-na-api-ibge)
+  * [Visão Geral das Funções HTTP](#visão-geral-das-funções-http)
+  * [Configuração Inicial](#configuração-inicial)
+  * [HttpGet](#httpget)
+  * [HttpPost](#httppost)
+  * [HttpPut](#httpput)
+  * [HttpDelete](#httpdelete)
+  * [HttpDeleteBody](#httpdeletebody)
+  * [HttpDownload](#httpdownload)
+  * [HttpSetaTimeout](#httpsetatimeout)
+  * [HttpPatch](#httppatch)
+  * [HttpSetAttachment](#httpsetattachment)
+  * [Base64Encode / Base64Decode](#base64encode--base64decode)
+    + [Base64Encode](#base64encode-1)
+    + [Base64Decode](#base64decode-1)
+  * [Funções de Configuração Avançada](#funções-de-configuração-avançada)
+    + [HttpAlteraCabecalhoRequisicao](#httpAlteracabecalhorequisicao)
+    + [HttpAlteraCodifCaracPadrao](#httpAlteracodifcaracpadrao)
+    + [HttpAlteraRedirecionamento](#httpAlteraredirecionamento)
+  * [Funções de Gerenciamento de Cookies](#funções-de-gerenciamento-de-cookies)
+    + [HttpHabilitarCookies / HttpDesabilitarCookies](#httphabilitarcookies--httpdesabilitarcookies)
+  * [Funções de Leitura de Respostas](#funções-de-leitura-de-respostas)
+    + [HttpLeCabecalhoResposta](#httplecabecalhoresposta)
+    + [HttpNormalizaRetorno](#httpnormalizaretorno)
+  * [Configuração de Proxy](#configuração-de-proxy)
+    + [HttpAlteraConfiguracaoProxy](#httpAlteraconfiguracaoproxy)
+    + [HttpLeConfiguracaoProxy](#httpleconfiguracaoproxy)
+    + [HttpAlteraAutenticacaoProxy / HttpLeAutenticacaoProxy](#httpAlteraautenticacaoproxy--httpleautenticacaoproxy)
+    + [Gerenciamento de Exceções de Proxy](#gerenciamento-de-exceções-de-proxy)
+  * [Configuração SSL](#configuração-ssl)
+    + [HttpAlteraConfiguracaoSSL / HttpLeConfiguracaoSSL](#httpAlteraconfiguracaossl--httpleconfiguracaossl)
+  * [Configuração de Progresso de Download](#configuração-de-progresso-de-download)
+    + [HttpAlteraMostrarProgresso / HttpLeMostrarProgresso](#httpAlteramostrarprogresso--httplemostrarprogresso)
+  * [Configuração SNI (Server Name Indication)](#configuração-sni-server-name-indication)
+    + [HttpHabilitaSNI / HttpDesabilitaSNI](#httphabilitasni--httpdesabilitasni)
+  * [Funções Auxiliares Importantes](#funções-auxiliares-importantes)
+  * [Exemplo Completo: Configuração Corporativa](#exemplo-completo-configuração-corporativa)
+  * [Boas Práticas](#boas-práticas)
+  * [Códigos de Status HTTP Comuns](#códigos-de-status-http-comuns)
+  * [Observações Importantes](#observações-importantes)
+  * [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis)
+    + [Exemplo 1: Busca CEP na API ViaCEP](#exemplo-1-busca-cep-na-api-viacep)
+    + [Exemplo 2: Busca Cidade na API IBGE](#exemplo-2-busca-cidade-na-api-ibge)
+    + [🔧 CRUD Básico - ReqRes API](#-crud-básico---reqres-api)
+    + [🔐 Autenticação Basic Auth - HTTPBin](#-autenticação-basic-auth---httpbin)
+    + [🎫 Autenticação Bearer Token - HTTPBin](#-autenticação-bearer-token---httpbin)
+    + [🔑 Fluxo Completo: Login + Token + CRUD](#-fluxo-completo-login--token--crud)
 
 ## Introdução
 
@@ -199,14 +311,14 @@ Regras:
 Exemplo de estrutura de bloco com apenas uma linha:
 
 ```lsp
-Se (_condição_) 
+Se (<Condição>) 
   vn = 1; @ Estrutura do bloco em uma linha @
 ```
 
 Exemplo de estrutura de bloco com `{ }`:
 
 ```lsp
-Se (_condição_) {
+Se (<Condição>) {
   @ Estrutura do bloco @
 }
 ```
@@ -214,7 +326,7 @@ Se (_condição_) {
 Exemplo de estrutura de bloco com `inicio;` e `fim;`:
 
 ```lsp
-Se (_condição_) 
+Se (<Condição>) 
 Inicio
   @ Estrutura do bloco @
 Fim;
@@ -312,7 +424,7 @@ A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP 
 | Gravar (Write) |	Grava o valor de uma \<variável ou de uma constante> no \<manipulador de arquivos\>. Sintaxe: Gravar (\<manipulador_de_arquivos\>,\<variável ou constante>,\<tamanho\>); |
 | Lernl (ReadLn) |	Lê uma linha no arquivo indicado pelo \<manipulador de arquivos\> e joga o valor lido em uma \<variável\>. Sintaxe: Lernl (\<manipulador_de_arquivos\>,\<variável\>); |
 | Gravarnl (WriteLn) |	Grava uma linha no arquivo indicado pelo \<manipulador de arquivos\> com o valor contido na variável especificada. Sintaxe: Gravarnl (\<manipulador_de_arquivos\>,\<variável ou constante\>); |
-| Inserir (Include) |	Faz com que o sistema, insira um arquivo na regra atual, em tempo de execução/compilação. Sintaxe: Inserir “\<nome_arquivo\>”; ou Inserir "Header.lsp"; |
+| Inserir (Include) |	Faz com que o sistema, insira um arquivo na regra atual, em tempo de execução/compilação. Sintaxe: Inserir "\<nome_arquivo\>"; ou Inserir "Header.lsp"; |
 | ValStr |	Usado apenas no gerador, para alterar a descrição de um campo tipo Descrição. O texto passada para ValStr será impresso no lugar da descrição original do campo. ValStr = "Teste"; Cancel(2);	|
 | Cursor |	Os cursores nada mais são que um SELECT em uma regra, retornando registros que satisfaçam a condição informada na propriedade SQL de um Cursor. Observações: O SELECT utilizado no cursor não possui relacionamento direto com o SELECT utilizado pelo gerador de relatórios, por exemplo. |
 
@@ -495,13 +607,52 @@ vaNome[vnIndice + 1 * 2 ] = "Nome";
 - O nome das variáveis não pode ser igual ao nome dos campos de listas.
 
 
-## Manipulação de Alfa
+## Manipulação Avançada de Strings
 
-As funções de manipulação de strings na LSP permitem realizar operações comuns como copiar, medir, encontrar e substituir partes de strings.
+As funções de manipulação de strings na LSP permitem realizar operações complexas de processamento de texto, desde operações básicas até transformações avançadas e limpeza de dados.
 
-### CopiarAlfa e CopiarStr
+### Conceitos Fundamentais
 
-Estas funções copiam parte do conteúdo de uma variável/campo alfanumérico para outra variável alfanumérica.
+#### Concatenação de Strings
+
+Na LSP, não é possível concatenar diretamente uma variável do tipo Numero com uma variável do tipo Alfa. Para realizar essa operação, é necessário:
+
+1. Definir uma variável Alfa com o mesmo nome da variável numérica, mudando apenas o prefixo de `vn` para `va`
+2. Utilizar a função `IntParaAlfa()` para converter o valor numérico em string
+
+**Exemplo:**
+```lsp
+Definir Numero vnNumero;
+Definir Alfa vaNumero;
+Definir Alfa vaResultado;
+
+vnNumero = 10;
+IntParaAlfa(vnNumero, vaNumero);
+vaResultado = "O número é " + vaNumero;
+```
+
+#### Quebra de Linha
+
+Na LSP, não existe o caractere `\n` para quebra de linha. Para realizar a quebra de linha em uma string, deve-se:
+
+1. Definir uma variável Alfa para armazenar o caractere de quebra de linha
+2. Utilizar a função `CaracterParaAlfa(13, vaEnter)` para obter o caractere de quebra de linha (13 na tabela ASCII)
+3. Concatenar essa variável na string onde se deseja a quebra de linha
+
+**Exemplo:**
+```lsp
+Definir Alfa vaEnter;
+Definir Alfa vaMensagem;
+
+CaracterParaAlfa(13, vaEnter);
+vaMensagem = "Primeira linha" + vaEnter + "Segunda linha";
+``` 
+
+### Funções Básicas de Manipulação
+
+#### CopiarAlfa e CopiarStr
+
+Copiam parte do conteúdo de uma variável/campo alfanumérico para outra variável alfanumérica.
 
 **Sintaxe:**
 
@@ -510,86 +661,125 @@ CopiarAlfa(<origem>, <destino>, <posicao>, <tamanho>);
 CopiarStr(<origem>, <destino>, <posicao>, <tamanho>);
 ```
 
-**Exemplo:**
+**Parâmetros:**
+- `origem`: Texto de origem
+- `destino`: Variável que receberá o texto copiado
+- `posicao`: Posição inicial (baseada em 1)
+- `tamanho`: Quantidade de caracteres a copiar
+
+**Exemplo Prático:**
 
 ```lsp
 Definir Alfa vaOrigem;
-Definir Alfa vaDestino;
+Definir Alfa vaNome;
+Definir Alfa vaSobrenome;
 
-vaOrigem = "Exemplo de string";
-CopiarAlfa(vaOrigem, vaDestino, 1, 7); @ vaDestino será "Exemplo" @
+vaOrigem = "João Silva Santos";
+CopiarAlfa(vaOrigem, vaNome, 1, 4); @ vaNome será "João" @
+CopiarAlfa(vaOrigem, vaSobrenome, 6, 5); @ vaSobrenome será "Silva" @
 ```
 
-### TamanhoAlfa e TamanhoStr
+#### TamanhoAlfa e TamanhoStr
 
-Estas funções retornam o tamanho de uma variável/campo alfanumérico.
+Retornam o tamanho de uma variável/campo alfanumérico.
 
 **Sintaxe:**
 
 ```lsp
-TamanhoAlfa(<origem>);
-TamanhoStr(<origem>);
+vnTamanho = TamanhoAlfa(<origem>);
+vnTamanho = TamanhoStr(<origem>);
 ```
 
-**Exemplo:**
+**Exemplo de Validação:**
 
 ```lsp
-Definir Alfa vaTexto;
+Definir Alfa vaSenha;
 Definir Numero vnTamanho;
+Definir Alfa vaMensagem;
+Definir Alfa vaNumeroStr;
 
-vaTexto = "Exemplo";
-vnTamanho = TamanhoAlfa(vaTexto); @ vnTamanho será 7 @
+vaSenha = "minhasenha123";
+vnTamanho = TamanhoAlfa(vaSenha);
+
+Se (vnTamanho < 8) {
+  vaMensagem = "Senha deve ter pelo menos 8 caracteres";
+  Mensagem(Erro, vaMensagem);
+} Senao {
+  IntParaAlfa(vnTamanho, vaNumeroStr);
+  vaMensagem = "Senha válida com " + vaNumeroStr + " caracteres";
+  Mensagem(Retorna, vaMensagem);
+}
 ```
 
-### PosicaoAlfa e PosicaoStr
+#### PosicaoAlfa e PosicaoStr
 
-Estas funções procuram por uma parte de texto dentro de um campo/variável do tipo Alfa, retornando a posição em que o texto inicia.
+Procuram por uma parte de texto dentro de um campo/variável, retornando a posição inicial.
 
 **Sintaxe:**
 
 ```lsp
-PosicaoAlfa(<texto>, <subtexto>);
-PosicaoStr(<texto>, <subtexto>);
+vnPosicao = PosicaoAlfa(<texto>, <subtexto>);
+vnPosicao = PosicaoStr(<texto>, <subtexto>);
 ```
 
-**Exemplo:**
+**Exemplo de Validação de Email:**
+
+```lsp
+Definir Alfa vaEmail;
+Definir Numero vnPosArroba;
+Definir Numero vnPosPonto;
+
+vaEmail = "usuario@empresa.com.br";
+vnPosArroba = PosicaoAlfa(vaEmail, "@");
+vnPosPonto = PosicaoAlfa(vaEmail, ".");
+
+Se (vnPosArroba = 0) {
+  Mensagem(Erro, "Email inválido: falta @");
+} Senao Se (vnPosPonto = 0) {
+  Mensagem(Erro, "Email inválido: falta domínio");
+} Senao {
+  Mensagem(Retorna, "Email válido!");
+}
+```
+
+#### SubstAlfa e SubstAlfaUmaVez
+
+Substituem trechos específicos dentro de um texto por outro texto.
+
+**Sintaxe:**
+
+```lsp
+SubstAlfa(<texto>, <subtexto>, <novoTexto>);      @ Substitui todas as ocorrências @
+SubstAlfaUmaVez(<texto>, <subtexto>, <novoTexto>); @ Substitui apenas a primeira @
+```
+
+**Exemplo de Limpeza de Dados:**
 
 ```lsp
 Definir Alfa vaTexto;
-Definir Numero vnPosicao;
+Definir Alfa vaTextoLimpo;
 
-vaTexto = "Exemplo de string";
-vnPosicao = PosicaoAlfa(vaTexto, "de"); @ vnPosicao será 9 @
+vaTexto = "João--Silva--Santos";
+vaTextoLimpo = vaTexto;
+
+@ Substitui todos os traços duplos por espaço simples @
+SubstAlfa(vaTextoLimpo, "--", " ");
+@ vaTextoLimpo será "João Silva Santos" @
+
+@ Exemplo com SubstAlfaUmaVez @
+vaTexto = "teste teste teste";
+SubstAlfaUmaVez(vaTexto, "teste", "TESTE");
+@ vaTexto será "TESTE teste teste" (apenas o primeiro) @
 ```
 
-### SubstAlfa e SubstAlfaUmaVez
+#### Concatenar
 
-Estas funções substituem um trecho específico dentro de um texto por outro texto.
+Concatena duas ou mais strings.
 
 **Sintaxe:**
 
 ```lsp
-SubstAlfa(<texto>, <subtexto>, <novoTexto>);
-SubstAlfaUmaVez(<texto>, <subtexto>, <novoTexto>);
-```
-
-**Exemplo:**
-
-```lsp
-Definir Alfa vaTexto;
-
-vaTexto = "Exemplo de string";
-SubstAlfa(vaTexto, "string", "texto"); @ vaTexto será "Exemplo de texto" @
-```
-
-### Concatenar
-
-Esta função concatena duas ou mais strings.
-
-**Sintaxe:**
-
-```lsp
-Concatenar(<texto1>, <texto2>, ...);
+vaResultado = Concatenar(<texto1>, <texto2>, ...);
 ```
 
 **Exemplo:**
@@ -602,6 +792,508 @@ Definir Alfa vaResultado;
 vaTexto1 = "Exemplo";
 vaTexto2 = " de string";
 vaResultado = Concatenar(vaTexto1, vaTexto2); @ vaResultado será "Exemplo de string" @
+```
+
+### Funções Avançadas de Manipulação
+
+#### DeletarAlfa
+
+Remove uma quantidade específica de caracteres de uma posição determinada.
+
+**Sintaxe:**
+
+```lsp
+DeletarAlfa(<texto>, <posicao>, <quantidade>);
+```
+
+**Exemplo de Formatação de CPF:**
+
+```lsp
+Definir Alfa vaCPF;
+
+vaCPF = "123.456.789-10";
+
+@ Remove formatação do CPF @
+DeletarAlfa(vaCPF, 4, 1);  @ Remove primeiro ponto @
+DeletarAlfa(vaCPF, 7, 1);  @ Remove segundo ponto @
+DeletarAlfa(vaCPF, 10, 1); @ Remove traço @
+@ vaCPF será "12345678910" @
+```
+
+#### ConverteParaMaiusculo e ConverteParaMinusculo
+
+Convertem o conteúdo de uma variável para maiúsculo ou minúsculo.
+
+**Sintaxe:**
+
+```lsp
+ConverteParaMaiusculo(<texto>);
+ConverteParaMinusculo(<texto>);
+```
+
+**Exemplo de Padronização:**
+
+```lsp
+Definir Alfa vaNome;
+Definir Alfa vaEmail;
+
+vaNome = "joão SILVA santos";
+vaEmail = "USUARIO@EMPRESA.COM.BR";
+
+@ Padroniza email (tudo minúsculo) @
+ConverteParaMinusculo(vaEmail);
+@ vaEmail será "usuario@empresa.com.br" @
+
+@ Para nome próprio @
+ConverteParaMaiusculo(vaNome); @ Vira "JOÃO SILVA SANTOS" @
+```
+
+#### TrocaString
+
+Função avançada de substituição com mais opções de controle.
+
+**Sintaxe:**
+
+```lsp
+TrocaString(<texto>, <textoAntigo>, <textoNovo>);
+```
+
+**Exemplo de Template:**
+
+```lsp
+Definir Alfa vaTemplate;
+Definir Alfa vaNomeUsuario;
+Definir Alfa vaEmpresa;
+Definir Alfa vaMensagemFinal;
+
+vaTemplate = "Olá __NOME__, bem-vindo à __EMPRESA__!";
+vaNomeUsuario = "João Silva";
+vaEmpresa = "Senior Sistemas";
+
+vaMensagemFinal = vaTemplate;
+TrocaString(vaMensagemFinal, "__NOME__", vaNomeUsuario);
+TrocaString(vaMensagemFinal, "__EMPRESA__", vaEmpresa);
+@ vaMensagemFinal será "Olá João Silva, bem-vindo à Senior Sistemas!" @
+```
+
+#### LerPosicaoAlfa
+
+Identifica qual caractere está em uma posição específica.
+
+**Sintaxe:**
+
+```lsp
+LerPosicaoAlfa(<texto>, <posicao>, <caractere>);
+```
+
+**Exemplo de Validação:**
+
+```lsp
+Definir Alfa vaTexto;
+Definir Alfa vaCaractere;
+Definir Numero vnPosicao;
+Definir Alfa vaPosicaoStr;
+
+vaTexto = "ABC123XYZ";
+vnPosicao = 4;
+
+LerPosicaoAlfa(vaTexto, vnPosicao, vaCaractere);
+@ vaCaractere será "1" @
+
+@ Validação se é número @
+Se ((vaCaractere >= "0") e (vaCaractere <= "9")) {
+  IntParaAlfa(vnPosicao, vaPosicaoStr);
+  Mensagem(Retorna, "Posição " + vaPosicaoStr + " é um número");
+}
+```
+
+### Funções de Lista e Separação
+
+#### ListaItem
+
+Retorna um item específico de uma lista concatenada.
+
+**Sintaxe:**
+
+```lsp
+ListaItem(<texto>, <separador>, <indice>, <item>);
+```
+
+**Exemplo de Processamento CSV:**
+
+```lsp
+Definir Alfa vaLinhaCsv;
+Definir Alfa vaNome;
+Definir Alfa vaIdade;
+Definir Alfa vaCargo;
+
+vaLinhaCsv = "João Silva;30;Desenvolvedor;São Paulo";
+
+ListaItem(vaLinhaCsv, ";", 1, vaNome);    @ vaNome = "João Silva" @
+ListaItem(vaLinhaCsv, ";", 2, vaIdade);   @ vaIdade = "30" @
+ListaItem(vaLinhaCsv, ";", 3, vaCargo);   @ vaCargo = "Desenvolvedor" @
+```
+
+#### ListaQuantidade
+
+Retorna a quantidade de itens em uma lista concatenada.
+
+**Sintaxe:**
+
+```lsp
+vnQuantidade = ListaQuantidade(<texto>, <separador>);
+```
+
+**Exemplo de Contagem:**
+
+```lsp
+Definir Alfa vaEmails;
+Definir Numero vnQuantidade;
+Definir Alfa vaMensagem;
+Definir Alfa vaQuantidadeStr;
+
+vaEmails = "user1@teste.com,user2@teste.com,user3@teste.com";
+vnQuantidade = ListaQuantidade(vaEmails, ",");
+
+IntParaAlfa(vnQuantidade, vaQuantidadeStr);
+vaMensagem = "Total de emails: " + vaQuantidadeStr;
+Mensagem(Retorna, vaMensagem); @ "Total de emails: 3" @
+```
+
+### Funções de Codificação
+
+#### ConverteCodificacaoString
+
+Converte a codificação de um texto entre diferentes formatos.
+
+**Sintaxe:**
+
+```lsp
+ConverteCodificacaoString(<textoOrigem>, <textoDestino>, <codificacaoOrigem>, <codificacaoDestino>);
+```
+
+**Exemplo de Conversão UTF-8:**
+
+```lsp
+Definir Alfa vaTextoWindows;
+Definir Alfa vaTextoUTF8;
+
+vaTextoWindows = "Acentuação especial";
+
+@ Converte de windows-1252 para UTF-8 @
+ConverteCodificacaoString(vaTextoWindows, vaTextoUTF8, "windows-1252", "utf-8");
+```
+
+#### ConverteTexto
+
+Substitui caracteres especiais de acordo com a codificação especificada.
+
+**Sintaxe:**
+
+```lsp
+ConverteTexto(<textoOrigem>, <textoDestino>, <tipoCodificacao>);
+```
+
+**Parâmetros de Codificação:**
+- `1`: Remove acentos
+- `2`: Converte para ASCII
+- `3`: Normaliza caracteres especiais
+
+**Exemplo de Normalização:**
+
+```lsp
+Definir Alfa vaTextoOriginal;
+Definir Alfa vaTextoSemAcento;
+Definir Alfa vaTextoASCII;
+
+vaTextoOriginal = "João José da Conceição";
+
+@ Remove acentos @
+ConverteTexto(vaTextoOriginal, vaTextoSemAcento, 1);
+@ vaTextoSemAcento será "Joao Jose da Conceicao" @
+
+@ Converte para ASCII puro @
+ConverteTexto(vaTextoOriginal, vaTextoASCII, 2);
+@ Remove caracteres não-ASCII @
+```
+
+## Criptografia e Segurança
+
+A LSP oferece um conjunto robusto de funções para operações criptográficas, geração de tokens seguros e proteção de dados sensíveis.
+
+### Funções de Hash
+
+#### GeraHash
+
+Gera um hash criptográfico de um texto usando diferentes algoritmos.
+
+**Sintaxe:**
+
+```lsp
+GeraHash(<texto>, <algoritmo>, <hash>);
+```
+
+**Algoritmos Suportados:**
+- `1`: MD5 (128 bits)
+- `2`: SHA-1 (160 bits)
+- `3`: SHA-256 (256 bits)
+- `4`: SHA-512 (512 bits)
+
+**Exemplo de Verificação de Integridade:**
+
+```lsp
+Definir Alfa vaTextoOriginal;
+Definir Alfa vaHashMD5;
+Definir Alfa vaHashSHA256;
+Definir Alfa vaMensagem;
+
+vaTextoOriginal = "dados importantes do sistema";
+
+@ Gera hash MD5 @
+GeraHash(vaTextoOriginal, 1, vaHashMD5);
+
+@ Gera hash SHA-256 (recomendado) @
+GeraHash(vaTextoOriginal, 3, vaHashSHA256);
+
+vaMensagem = "Hash SHA-256: " + vaHashSHA256;
+Mensagem(Retorna, vaMensagem);
+```
+
+### Criptografia de Dados
+
+#### Encriptar
+
+Criptografa uma cadeia de caracteres usando algoritmo interno da Senior.
+
+**Sintaxe:**
+
+```lsp
+Encriptar(<textoOriginal>, <textoCriptografado>);
+```
+
+#### Desencriptar
+
+Descriptografa uma cadeia de caracteres previamente criptografada.
+
+**Sintaxe:**
+
+```lsp
+Desencriptar(<textoCriptografado>, <textoOriginal>);
+```
+
+**Exemplo de Proteção de Dados:**
+
+```lsp
+Definir Funcao protegerDadosSensiveis();
+
+@ Variáveis globais @
+Definir Alfa vaDadosSensiveis;
+Definir Alfa vaDadosCriptografados;
+Definir Alfa vaDadosRecuperados;
+
+vaDadosSensiveis = "CPF:12345678901;SENHA:minhasenha123";
+
+protegerDadosSensiveis();
+
+Funcao protegerDadosSensiveis(); {
+  @ Criptografa dados @
+  Encriptar(vaDadosSensiveis, vaDadosCriptografados);
+  Mensagem(Retorna, "Dados criptografados: " + vaDadosCriptografados);
+
+  @ Descriptografa para uso @
+  Desencriptar(vaDadosCriptografados, vaDadosRecuperados);
+  
+  @ Verifica integridade @
+  Se (vaDadosRecuperados = vaDadosSensiveis) {
+    Mensagem(Retorna, "✅ Dados recuperados com sucesso!");
+  } Senao {
+    Mensagem(Erro, "❌ Erro na integridade dos dados!");
+  }
+}
+```
+
+### Geração de Tokens e Nonces
+
+#### GerarNonce
+
+Gera um valor Nonce (número aleatório usado uma única vez).
+
+**Sintaxe:**
+
+```lsp
+GerarNonce(<nonce>);
+```
+
+#### GeraToken
+
+Gera um token criptográfico seguro.
+
+**Sintaxe:**
+
+```lsp
+GeraToken(<tamanho>, <token>);
+```
+
+#### GeraSenha
+
+Gera uma senha aleatória com caracteres alfanuméricos.
+
+**Sintaxe:**
+
+```lsp
+GeraSenha(<tamanho>, <senha>);
+```
+
+**Exemplo de Sistema de Autenticação:**
+
+```lsp
+Definir Funcao criarSessaoSegura();
+
+@ Variáveis globais @
+Definir Alfa vaUsuario;
+Definir Alfa vaNonce;
+Definir Alfa vaTokenSessao;
+Definir Alfa vaSenhaTemporaria;
+Definir Alfa vaChaveSeguranca;
+
+vaUsuario = "joao.silva";
+
+criarSessaoSegura();
+
+Funcao criarSessaoSegura(); {
+  @ 1. Gera nonce para a sessão @
+  GerarNonce(vaNonce);
+
+  @ 2. Gera token de sessão @
+  GeraToken(32, vaTokenSessao);
+
+  @ 3. Gera senha temporária @
+  GeraSenha(12, vaSenhaTemporaria);
+
+  @ 4. Cria chave de segurança combinada @
+  vaChaveSeguranca = vaUsuario + ":" + vaNonce + ":" + vaTokenSessao;
+  
+  @ 5. Registra sessão @
+  Mensagem(Retorna, "Sessão criada para: " + vaUsuario);
+  Mensagem(Retorna, "Token: " + vaTokenSessao);
+  Mensagem(Retorna, "Senha temporária: " + vaSenhaTemporaria);
+}
+```
+
+### WS-Security e Digest
+
+#### GerarPwdDigest
+
+Gera o Digest da senha para autenticação WS-Security.
+
+**Sintaxe:**
+
+```lsp
+GerarPwdDigest(<nonce>, <created>, <senha>, <digest>);
+```
+
+**Exemplo de Autenticação WS-Security:**
+
+```lsp
+Definir Funcao autenticacaoWSecurity();
+
+@ Variáveis globais @
+Definir Alfa vaNonce;
+Definir Alfa vaCreated;
+Definir Alfa vaSenha;
+Definir Alfa vaDigest;
+Definir Alfa vaXMLSecurity;
+
+vaSenha = "minhasenhasecreta";
+
+autenticacaoWSecurity();
+
+Funcao autenticacaoWSecurity(); {
+  @ 1. Gera nonce @
+  GerarNonce(vaNonce);
+
+  @ 2. Data/hora atual @
+  DataHora(vaCreated);
+  FormatarData(vaCreated, "yyyy-MM-ddTHH:mm:ssZ", vaCreated);
+
+  @ 3. Gera digest @
+  GerarPwdDigest(vaNonce, vaCreated, vaSenha, vaDigest);
+
+  @ 4. Monta XML de segurança @
+  vaXMLSecurity = "<wsse:Security>";
+  vaXMLSecurity = vaXMLSecurity + "<wsse:UsernameToken>";
+  vaXMLSecurity = vaXMLSecurity + "<wsse:Username>usuario</wsse:Username>";
+  vaXMLSecurity = vaXMLSecurity + "<wsse:Password Type=\"PasswordDigest\">";
+  vaXMLSecurity = vaXMLSecurity + vaDigest + "</wsse:Password>";
+  vaXMLSecurity = vaXMLSecurity + "<wsse:Nonce>" + vaNonce + "</wsse:Nonce>";
+  vaXMLSecurity = vaXMLSecurity + "<wsu:Created>" + vaCreated + "</wsu:Created>";
+  vaXMLSecurity = vaXMLSecurity + "</wsse:UsernameToken>";
+  vaXMLSecurity = vaXMLSecurity + "</wsse:Security>";
+
+  Mensagem(Retorna, "XML WS-Security gerado com sucesso!");
+}
+```
+
+### Codificação Base64
+
+#### Base64Encode
+
+Codifica uma string em Base64.
+
+**Sintaxe:**
+
+```lsp
+Base64Encode(<textoOriginal>, <textoBase64>);
+```
+
+#### Base64Decode
+
+Decodifica uma string Base64.
+
+**Sintaxe:**
+
+```lsp
+Base64Decode(<textoBase64>, <textoOriginal>);
+```
+
+**Exemplo de Transmissão Segura:**
+
+```lsp
+Definir Funcao transmitirDadosSeguro();
+
+@ Variáveis globais @
+Definir Alfa vaDados;
+Definir Alfa vaDadosCriptografados;
+Definir Alfa vaDadosBase64;
+Definir Alfa vaDadosRecebidos;
+Definir Alfa vaDadosOriginais;
+
+vaDados = "Informação confidencial da empresa";
+
+transmitirDadosSeguro();
+
+Funcao transmitirDadosSeguro(); {
+  @ 1. Criptografa os dados @
+  Encriptar(vaDados, vaDadosCriptografados);
+
+  @ 2. Codifica em Base64 para transmissão @
+  Base64Encode(vaDadosCriptografados, vaDadosBase64);
+  Mensagem(Retorna, "Dados preparados para transmissão");
+
+  @ Simulação de recebimento @
+  @ 3. Decodifica Base64 @
+  Base64Decode(vaDadosBase64, vaDadosRecebidos);
+
+  @ 4. Descriptografa @
+  Desencriptar(vaDadosRecebidos, vaDadosOriginais);
+
+  @ 5. Verifica integridade @
+  Se (vaDadosOriginais = vaDados) {
+    Mensagem(Retorna, "✅ Transmissão segura concluída!");
+  } Senao {
+    Mensagem(Erro, "❌ Falha na integridade dos dados!");
+  }
+}
 ```
 
 ## Cast de Variável
@@ -708,48 +1400,15 @@ vnNumero = 123456;
 ConverteMascara(1, vnNumero, vaTexto, "999.999"); @ vaTexto será "123.456" @
 ```
 
-#### Concatenação de Strings
+## Manipulação Avançada de Datas
 
-Na LSP, não é possível concatenar diretamente uma variável do tipo Numero com uma variável do tipo Alfa. Para realizar essa operação, é necessário:
+As funções de manipulação de datas na LSP permitem realizar operações complexas com datas, incluindo obtenção de datas atuais, cálculos de diferenças, formatação personalizada e validação.
 
-1. Definir uma variável Alfa com o mesmo nome da variável numérica, mudando apenas o prefixo de `vn` para `va`
-2. Utilizar a função `IntParaAlfa()` para converter o valor numérico em string
+### Funções de Data Atual
 
-Exemplo:
-```lsp
-Definir Numero vnNumero;
-Definir Alfa vaNumero;
-Definir Alfa vaResultado;
+#### DataHoje
 
-vnNumero = 10;
-IntParaAlfa(vnNumero, vaNumero);
-vaResultado = "O número é " + vaNumero;
-```
-
-#### Quebra de Linha
-
-Na LSP, não existe o caractere `\n` para quebra de linha. Para realizar a quebra de linha em uma string, deve-se:
-
-1. Definir uma variável Alfa para armazenar o caractere de quebra de linha
-2. Utilizar a função `CaracterParaAlfa(13, vaEnter)` para obter o caractere de quebra de linha (13 na tabela ASCII)
-3. Concatenar essa variável na string onde se deseja a quebra de linha
-
-Exemplo:
-```lsp
-Definir Alfa vaEnter;
-Definir Alfa vaMensagem;
-
-CaracterParaAlfa(13, vaEnter);
-vaMensagem = "Primeira linha" + vaEnter + "Segunda linha";
-``` 
-
-## Manipulação de Datas
-
-As funções de manipulação de datas na LSP permitem realizar operações comuns como obter a data atual, adicionar dias e formatar datas.
-
-### DataHoje
-
-Retorna a data atual do sistema operacional.
+Obtém a data atual do sistema operacional (apenas data, sem hora).
 
 **Sintaxe:**
 
@@ -757,17 +1416,129 @@ Retorna a data atual do sistema operacional.
 DataHoje(<data>);
 ```
 
-**Exemplo:**
+#### DataHora
+
+Obtém a data e hora atual do sistema operacional.
+
+**Sintaxe:**
 
 ```lsp
-Definir Data vdData;
-
-DataHoje(vdData); @ vdData será a data atual @
+DataHora(<dataHora>);
 ```
 
-### AdicionarDias
+#### DataHoraUTC
 
-Adiciona um número de dias a uma data.
+Obtém a data e hora atual em UTC (Tempo Universal Coordenado).
+
+**Sintaxe:**
+
+```lsp
+DataHoraUTC(<dataHoraUTC>);
+```
+
+**Exemplo Completo de Obtenção de Datas:**
+
+```lsp
+Definir Funcao obterDatasAtuais();
+
+@ Variáveis globais @
+Definir Data vdDataAtual;
+Definir Data vdDataHoraAtual;
+Definir Data vdDataHoraUTC;
+Definir Alfa vaDataFormatada;
+Definir Alfa vaHoraFormatada;
+Definir Alfa vaUTCFormatada;
+
+obterDatasAtuais();
+
+Funcao obterDatasAtuais(); {
+  @ 1. Obtém apenas a data @
+  DataHoje(vdDataAtual);
+  FormatarData(vdDataAtual, "dd/MM/yyyy", vaDataFormatada);
+  
+  @ 2. Obtém data e hora local @
+  DataHora(vdDataHoraAtual);
+  FormatarData(vdDataHoraAtual, "dd/MM/yyyy HH:mm:ss", vaHoraFormatada);
+  
+  @ 3. Obtém data e hora UTC @
+  DataHoraUTC(vdDataHoraUTC);
+  FormatarData(vdDataHoraUTC, "yyyy-MM-ddTHH:mm:ssZ", vaUTCFormatada);
+  
+  @ 4. Exibe resultados @
+  Mensagem(Retorna, "Data atual: " + vaDataFormatada);
+  Mensagem(Retorna, "Data/Hora local: " + vaHoraFormatada);
+  Mensagem(Retorna, "Data/Hora UTC: " + vaUTCFormatada);
+}
+```
+
+### Construção e Decomposição de Datas
+
+#### CodData
+
+Monta uma data a partir de dia, mês e ano.
+
+**Sintaxe:**
+
+```lsp
+CodData(<dia>, <mes>, <ano>, <data>);
+```
+
+#### DecodData
+
+Decompõe uma data em dia, mês e ano separadamente.
+
+**Sintaxe:**
+
+```lsp
+DecodData(<data>, <dia>, <mes>, <ano>);
+```
+
+**Exemplo de Validação de Data:**
+
+```lsp
+Definir Funcao validarDataNascimento();
+
+@ Variáveis globais @
+Definir Numero vnDia;
+Definir Numero vnMes;
+Definir Numero vnAno;
+Definir Data vdDataNascimento;
+Definir Data vdDataAtual;
+Definir Numero vnIdade;
+
+vnDia = 15;
+vnMes = 8;
+vnAno = 1990;
+
+validarDataNascimento();
+
+Funcao validarDataNascimento(); {
+  @ 1. Monta a data @
+  CodData(vnDia, vnMes, vnAno, vdDataNascimento);
+  
+  @ 2. Obtém data atual para validação @
+  DataHoje(vdDataAtual);
+  
+  @ 3. Verifica se a data é válida (não futura) @
+  Se (vdDataNascimento > vdDataAtual) {
+    Mensagem(Erro, "Data de nascimento não pode ser futura!");
+  } Senao {
+    @ 4. Calcula idade aproximada @
+    vnIdade = vnAno - 2024; @ Simplificado para exemplo @
+    Se (vnIdade < 0) {
+      vnIdade = vnIdade * -1;
+    }
+    
+    Mensagem(Retorna, "Data válida! Idade aproximada: " + IntParaAlfa(vnIdade));
+  }
+}
+```
+
+### Operações Aritméticas com Datas
+
+#### AdicionarDias
+
+Adiciona ou subtrai dias de uma data.
 
 **Sintaxe:**
 
@@ -775,41 +1546,421 @@ Adiciona um número de dias a uma data.
 AdicionarDias(<data>, <dias>, <novaData>);
 ```
 
-**Exemplo:**
+**Exemplo de Cálculo de Prazos:**
 
 ```lsp
-Definir Data vdData;
-Definir Data vdNovaData;
+Definir Funcao calcularPrazos();
 
-vdData = "01/01/2020";
-AdicionarDias(vdData, 10, vdNovaData); @ vdNovaData será 11/01/2020 @
+@ Variáveis globais @
+Definir Data vdDataBase;
+Definir Data vdDataVencimento;
+Definir Data vdDataLimite;
+Definir Alfa vaDataVencimentoStr;
+Definir Alfa vaDataLimiteStr;
+
+DataHoje(vdDataBase);
+
+calcularPrazos();
+
+Funcao calcularPrazos(); {
+  @ Calcula vencimento (30 dias) @
+  AdicionarDias(vdDataBase, 30, vdDataVencimento);
+  FormatarData(vdDataVencimento, "dd/MM/yyyy", vaDataVencimentoStr);
+  
+  @ Calcula limite (60 dias) @
+  AdicionarDias(vdDataBase, 60, vdDataLimite);
+  FormatarData(vdDataLimite, "dd/MM/yyyy", vaDataLimiteStr);
+  
+  Mensagem(Retorna, "Vencimento: " + vaDataVencimentoStr);
+  Mensagem(Retorna, "Limite: " + vaDataLimiteStr);
+  
+  @ Exemplo com subtração (data passada) @
+  AdicionarDias(vdDataBase, -15, vdDataBase);
+  FormatarData(vdDataBase, "dd/MM/yyyy", vaDataVencimentoStr);
+  Mensagem(Retorna, "15 dias atrás: " + vaDataVencimentoStr);
+}
 ```
 
-### FormatarData
+### Formatação Avançada de Datas
 
-Formata uma data para um formato específico.
+#### FormatarData
+
+Formata uma data usando máscaras personalizadas.
 
 **Sintaxe:**
 
 ```lsp
-FormatarData(<data>, <formato>, <texto>);
+FormatarData(<data>, <mascara>, <textoFormatado>);
 ```
 
-**Exemplo:**
+**Máscaras Suportadas:**
+- `dd`: Dia (01-31)
+- `MM`: Mês (01-12)
+- `yyyy`: Ano com 4 dígitos
+- `yy`: Ano com 2 dígitos
+- `HH`: Hora (00-23)
+- `mm`: Minuto (00-59)
+- `ss`: Segundo (00-59)
+
+**Exemplo de Formatações Diversas:**
 
 ```lsp
-Definir Data vdData;
-Definir Alfa vaTexto;
+Definir Funcao exemploFormatacoes();
 
-vdData = "01/01/2020";
-FormatarData(vdData, "dd/MM/yyyy", vaTexto); @ vaTexto será "01/01/2020" @
+@ Variáveis globais @
+Definir Data vdDataHora;
+Definir Alfa vaFormatoBR;
+Definir Alfa vaFormatoUS;
+Definir Alfa vaFormatoISO;
+Definir Alfa vaFormatoCompleto;
+Definir Alfa vaApenasHora;
+
+DataHora(vdDataHora);
+
+exemploFormatacoes();
+
+Funcao exemploFormatacoes(); {
+  @ Formato brasileiro @
+  FormatarData(vdDataHora, "dd/MM/yyyy", vaFormatoBR);
+  
+  @ Formato americano @
+  FormatarData(vdDataHora, "MM/dd/yyyy", vaFormatoUS);
+  
+  @ Formato ISO 8601 @
+  FormatarData(vdDataHora, "yyyy-MM-dd", vaFormatoISO);
+  
+  @ Formato completo @
+  FormatarData(vdDataHora, "dd/MM/yyyy HH:mm:ss", vaFormatoCompleto);
+  
+  @ Apenas hora @
+  FormatarData(vdDataHora, "HH:mm", vaApenasHora);
+  
+  @ Exibe resultados @
+  Mensagem(Retorna, "Brasileiro: " + vaFormatoBR);
+  Mensagem(Retorna, "Americano: " + vaFormatoUS);
+  Mensagem(Retorna, "ISO 8601: " + vaFormatoISO);
+  Mensagem(Retorna, "Completo: " + vaFormatoCompleto);
+  Mensagem(Retorna, "Hora: " + vaApenasHora);
+}
 ```
 
-## Arredondamento de Valores
+### Validação e Comparação de Datas
 
-As funções de arredondamento de valores na LSP permitem arredondar números para um número específico de casas decimais.
+**Exemplo de Sistema de Validação:**
 
-### Arredondar
+```lsp
+Definir Funcao validarPeriodo();
+
+@ Variáveis globais @
+Definir Data vdDataInicio;
+Definir Data vdDataFim;
+Definir Data vdDataAtual;
+Definir Numero vnDiaInicio;
+Definir Numero vnMesInicio;
+Definir Numero vnAnoInicio;
+Definir Numero vnDiaFim;
+Definir Numero vnMesFim;
+Definir Numero vnAnoFim;
+
+@ Período de exemplo @
+vnDiaInicio = 1;
+vnMesInicio = 1;
+vnAnoInicio = 2024;
+vnDiaFim = 31;
+vnMesFim = 12;
+vnAnoFim = 2024;
+
+validarPeriodo();
+
+Funcao validarPeriodo(); {
+  @ 1. Monta as datas @
+  CodData(vnDiaInicio, vnMesInicio, vnAnoInicio, vdDataInicio);
+  CodData(vnDiaFim, vnMesFim, vnAnoFim, vdDataFim);
+  DataHoje(vdDataAtual);
+  
+  @ 2. Validações @
+  Se (vdDataInicio > vdDataFim) {
+    Mensagem(Erro, "Data inicial não pode ser maior que a final!");
+  } Senao Se (vdDataFim < vdDataAtual) {
+    Mensagem(Erro, "Período já expirado!");
+  } Senao Se (vdDataInicio > vdDataAtual) {
+    Mensagem(Retorna, "⏳ Período ainda não iniciado");
+  } Senao Se ((vdDataAtual >= vdDataInicio) e (vdDataAtual <= vdDataFim)) {
+    Mensagem(Retorna, "✅ Período ativo");
+  } Senao {
+    Mensagem(Retorna, "❌ Fora do período");
+  }
+}
+```
+
+## Validação e Verificação
+
+A LSP oferece funções especializadas para validação de dados, verificação de abrangências e controle de qualidade de informações.
+
+### Verificação de Abrangências
+
+#### VrfAbrA
+
+Verifica se um valor alfanumérico está dentro de uma abrangência especificada.
+
+**Sintaxe:**
+
+```lsp
+VrfAbrA(<valor>, <abrangencia>);
+```
+
+#### VrfAbrN
+
+Verifica se um valor numérico está dentro de uma abrangência especificada.
+
+**Sintaxe:**
+
+```lsp
+VrfAbrN(<valor>, <abrangencia>);
+```
+
+**Exemplo de Validação de Códigos:**
+
+```lsp
+Definir Funcao validarCodigos();
+
+@ Variáveis globais @
+Definir Alfa vaCodigo;
+Definir Numero vnNumero;
+Definir Alfa vaAbrangenciaAlfa;
+Definir Alfa vaAbrangenciaNum;
+Definir Numero vnResultadoAlfa;
+Definir Numero vnResultadoNum;
+
+vaCodigo = "B";
+vnNumero = 150;
+vaAbrangenciaAlfa = "A..Z";
+vaAbrangenciaNum = "100..200";
+
+validarCodigos();
+
+Funcao validarCodigos(); {
+  @ Verifica abrangência alfanumérica @
+  vnResultadoAlfa = VrfAbrA(vaCodigo, vaAbrangenciaAlfa);
+  Se (vnResultadoAlfa = 1) {
+    Mensagem(Retorna, "✅ Código '" + vaCodigo + "' válido na abrangência " + vaAbrangenciaAlfa);
+  } Senao {
+    Mensagem(Erro, "❌ Código '" + vaCodigo + "' fora da abrangência " + vaAbrangenciaAlfa);
+  }
+  
+  @ Verifica abrangência numérica @
+  vnResultadoNum = VrfAbrN(vnNumero, vaAbrangenciaNum);
+  Se (vnResultadoNum = 1) {
+    Mensagem(Retorna, "✅ Número " + IntParaAlfa(vnNumero) + " válido na abrangência " + vaAbrangenciaNum);
+  } Senao {
+    Mensagem(Erro, "❌ Número " + IntParaAlfa(vnNumero) + " fora da abrangência " + vaAbrangenciaNum);
+  }
+}
+```
+
+### Validação de Arquivos
+
+#### ArqExiste
+
+Verifica se um arquivo físico existe no local especificado.
+
+**Sintaxe:**
+
+```lsp
+vnExiste = ArqExiste(<caminhoArquivo>);
+```
+
+**Exemplo de Verificação de Arquivos:**
+
+```lsp
+Definir Funcao verificarArquivos();
+
+@ Variáveis globais @
+Definir Alfa vaCaminhoArquivo;
+Definir Alfa vaCaminhoConfig;
+Definir Alfa vaCaminhoLog;
+Definir Numero vnExisteArquivo;
+Definir Numero vnExisteConfig;
+Definir Numero vnExisteLog;
+
+vaCaminhoArquivo = "C:\\temp\\dados.txt";
+vaCaminhoConfig = "C:\\config\\app.ini";
+vaCaminhoLog = "C:\\logs\\sistema.log";
+
+verificarArquivos();
+
+Funcao verificarArquivos(); {
+  @ Verifica arquivo de dados @
+  vnExisteArquivo = ArqExiste(vaCaminhoArquivo);
+  Se (vnExisteArquivo = 1) {
+    Mensagem(Retorna, "✅ Arquivo de dados encontrado");
+  } Senao {
+    Mensagem(Erro, "❌ Arquivo de dados não encontrado: " + vaCaminhoArquivo);
+  }
+  
+  @ Verifica arquivo de configuração @
+  vnExisteConfig = ArqExiste(vaCaminhoConfig);
+  Se (vnExisteConfig = 1) {
+    Mensagem(Retorna, "✅ Arquivo de configuração encontrado");
+  } Senao {
+    Mensagem(Retorna, "⚠️ Arquivo de configuração não encontrado, usando padrão");
+  }
+  
+  @ Verifica arquivo de log @
+  vnExisteLog = ArqExiste(vaCaminhoLog);
+  Se (vnExisteLog = 0) {
+    Mensagem(Retorna, "📝 Arquivo de log será criado: " + vaCaminhoLog);
+  }
+}
+```
+
+### Validação de Dados Estruturados
+
+#### RemoveExpressoesProibidas
+
+Remove ou valida expressões que podem representar scripts maliciosos.
+
+**Sintaxe:**
+
+```lsp
+RemoveExpressoesProibidas(<textoOriginal>, <textoLimpo>);
+```
+
+**Exemplo de Limpeza de Dados:**
+
+```lsp
+Definir Funcao limparDadosEntrada();
+
+@ Variáveis globais @
+Definir Alfa vaDadosEntrada;
+Definir Alfa vaDadosLimpos;
+Definir Numero vnTamanhoOriginal;
+Definir Numero vnTamanhoLimpo;
+
+vaDadosEntrada = "Nome: João <script>alert('xss')</script> Silva";
+
+limparDadosEntrada();
+
+Funcao limparDadosEntrada(); {
+  vnTamanhoOriginal = TamanhoAlfa(vaDadosEntrada);
+  
+  @ Remove expressões perigosas @
+  RemoveExpressoesProibidas(vaDadosEntrada, vaDadosLimpos);
+  
+  vnTamanhoLimpo = TamanhoAlfa(vaDadosLimpos);
+  
+  Se (vnTamanhoOriginal <> vnTamanhoLimpo) {
+    Mensagem(Retorna, "⚠️ Expressões perigosas removidas!");
+    Mensagem(Retorna, "Original: " + vaDadosEntrada);
+    Mensagem(Retorna, "Limpo: " + vaDadosLimpos);
+  } Senao {
+    Mensagem(Retorna, "✅ Dados seguros: " + vaDadosLimpos);
+  }
+}
+```
+
+### Verificação de Abas Ativas
+
+#### VerificaAbaAtiva
+
+Verifica se uma aba específica está ativa na interface.
+
+**Sintaxe:**
+
+```lsp
+vnAtiva = VerificaAbaAtiva(<descricaoAba>);
+```
+
+**Exemplo de Controle de Interface:**
+
+```lsp
+Definir Funcao verificarContextoInterface();
+
+@ Variáveis globais @
+Definir Alfa vaAbaClientes;
+Definir Alfa vaAbaProdutos;
+Definir Numero vnAbaClientesAtiva;
+Definir Numero vnAbaProdutosAtiva;
+
+vaAbaClientes = "Clientes";
+vaAbaProdutos = "Produtos";
+
+verificarContextoInterface();
+
+Funcao verificarContextoInterface(); {
+  @ Verifica qual aba está ativa @
+  vnAbaClientesAtiva = VerificaAbaAtiva(vaAbaClientes);
+  vnAbaProdutosAtiva = VerificaAbaAtiva(vaAbaProdutos);
+  
+  Se (vnAbaClientesAtiva = 1) {
+    Mensagem(Retorna, "🧑‍💼 Contexto: Gestão de Clientes");
+    @ Lógica específica para clientes @
+  } Senao Se (vnAbaProdutosAtiva = 1) {
+    Mensagem(Retorna, "📦 Contexto: Gestão de Produtos");
+    @ Lógica específica para produtos @
+  } Senao {
+    Mensagem(Retorna, "📋 Contexto: Genérico");
+    @ Lógica geral @
+  }
+}
+```
+
+### Exemplo Prático: Sistema de Validação Completo
+
+```lsp
+Definir Funcao validacaoCompleta();
+
+@ Variáveis globais @
+Definir Alfa vaNomeArquivo;
+Definir Alfa vaCodigo;
+Definir Numero vnNumero;
+Definir Data vdData;
+Definir Numero vnValidacaoGeral;
+
+vaNomeArquivo = "C:\\dados\\cliente.txt";
+vaCodigo = "CLI001";
+vnNumero = 1500;
+DataHoje(vdData);
+
+validacaoCompleta();
+
+Funcao validacaoCompleta(); {
+  vnValidacaoGeral = 1; @ Assume válido inicialmente @
+  
+  @ 1. Verifica arquivo @
+  Se (ArqExiste(vaNomeArquivo) = 0) {
+    Mensagem(Erro, "❌ Arquivo não encontrado: " + vaNomeArquivo);
+    vnValidacaoGeral = 0;
+  }
+  
+  @ 2. Verifica código na abrangência @
+  Se (VrfAbrA(vaCodigo, "CLI001..CLI999") = 0) {
+    Mensagem(Erro, "❌ Código fora da abrangência: " + vaCodigo);
+    vnValidacaoGeral = 0;
+  }
+  
+  @ 3. Verifica número na faixa @
+  Se (VrfAbrN(vnNumero, "1000..2000") = 0) {
+    Mensagem(Erro, "❌ Número fora da faixa: " + IntParaAlfa(vnNumero));
+    vnValidacaoGeral = 0;
+  }
+  
+  @ 4. Resultado final @
+  Se (vnValidacaoGeral = 1) {
+    Mensagem(Retorna, "✅ Todas as validações passaram!");
+  } Senao {
+    Mensagem(Erro, "❌ Falha na validação geral do sistema");
+  }
+}
+```
+
+## Operações Numéricas Avançadas
+
+As funções numéricas na LSP permitem realizar operações matemáticas complexas, incluindo arredondamentos, divisões especiais e validações numéricas.
+
+### Arredondamento e Truncamento
+
+#### Arredondar
 
 Arredonda um número para um número específico de casas decimais.
 
@@ -819,19 +1970,9 @@ Arredonda um número para um número específico de casas decimais.
 Arredondar(<numero>, <casasDecimais>, <resultado>);
 ```
 
-**Exemplo:**
+#### Truncar
 
-```lsp
-Definir Numero vnNumero;
-Definir Numero vnResultado;
-
-vnNumero = 123.456;
-Arredondar(vnNumero, 2, vnResultado); @ vnResultado será 123.46 @
-```
-
-### Truncar
-
-Trunca um número para inteiro, removendo a parte fracionária do número.
+Trunca um número para inteiro, removendo a parte fracionária.
 
 **Sintaxe:**
 
@@ -839,14 +1980,457 @@ Trunca um número para inteiro, removendo a parte fracionária do número.
 Truncar(<numero>, <resultado>);
 ```
 
-**Exemplo:**
+**Exemplo de Cálculos Financeiros:**
 
 ```lsp
-Definir Numero vnNumero;
-Definir Numero vnResultado;
+Definir Funcao calculosFinanceiros();
 
-vnNumero = 123.456;
-Truncar(vnNumero, vnResultado); @ vnResultado será 123 @
+@ Variáveis globais @
+Definir Numero vnValorOriginal;
+Definir Numero vnValorArredondado;
+Definir Numero vnValorTruncado;
+Definir Numero vnPorcentagem;
+Definir Numero vnDesconto;
+Definir Numero vnValorFinal;
+
+vnValorOriginal = 1234.6789;
+vnPorcentagem = 15.5;
+
+calculosFinanceiros();
+
+Funcao calculosFinanceiros(); {
+  @ Arredonda para 2 casas decimais (padrão monetário) @
+  Arredondar(vnValorOriginal, 2, vnValorArredondado);
+  Mensagem(Retorna, "Valor arredondado: R$ " + IntParaAlfa(vnValorArredondado));
+  
+  @ Trunca para inteiro @
+  Truncar(vnValorOriginal, vnValorTruncado);
+  Mensagem(Retorna, "Valor truncado: R$ " + IntParaAlfa(vnValorTruncado));
+  
+  @ Calcula desconto @
+  vnDesconto = (vnValorOriginal * vnPorcentagem) / 100;
+  Arredondar(vnDesconto, 2, vnDesconto);
+  
+  @ Valor final @
+  vnValorFinal = vnValorOriginal - vnDesconto;
+  Arredondar(vnValorFinal, 2, vnValorFinal);
+  
+  Mensagem(Retorna, "Desconto aplicado: R$ " + IntParaAlfa(vnDesconto));
+  Mensagem(Retorna, "Valor final: R$ " + IntParaAlfa(vnValorFinal));
+}
+```
+
+### Operações Especiais
+
+#### Dividir
+
+Realiza divisão com controle de erro para divisão por zero.
+
+**Sintaxe:**
+
+```lsp
+Dividir(<dividendo>, <divisor>, <resultado>);
+```
+
+#### RestoDivisao
+
+Calcula o resto da divisão (operação módulo).
+
+**Sintaxe:**
+
+```lsp
+RestoDivisao(<dividendo>, <divisor>, <resto>);
+```
+
+**Exemplo de Validações Numéricas:**
+
+```lsp
+Definir Funcao validacoesNumericas();
+
+@ Variáveis globais @
+Definir Numero vnDividendo;
+Definir Numero vnDivisor;
+Definir Numero vnResultado;
+Definir Numero vnResto;
+Definir Numero vnNumero;
+
+vnDividendo = 1500;
+vnDivisor = 400;
+vnNumero = 12345;
+
+validacoesNumericas();
+
+Funcao validacoesNumericas(); {
+  @ Divisão segura @
+  Se (vnDivisor <> 0) {
+    Dividir(vnDividendo, vnDivisor, vnResultado);
+    Mensagem(Retorna, "Divisão: " + IntParaAlfa(vnDividendo) + " ÷ " + IntParaAlfa(vnDivisor) + " = " + IntParaAlfa(vnResultado));
+    
+    @ Resto da divisão @
+    RestoDivisao(vnDividendo, vnDivisor, vnResto);
+    Mensagem(Retorna, "Resto: " + IntParaAlfa(vnResto));
+  } Senao {
+    Mensagem(Erro, "❌ Divisão por zero não permitida!");
+  }
+  
+  @ Verificação de número par/ímpar @
+  RestoDivisao(vnNumero, 2, vnResto);
+  Se (vnResto = 0) {
+    Mensagem(Retorna, "✅ " + IntParaAlfa(vnNumero) + " é par");
+  } Senao {
+    Mensagem(Retorna, "✅ " + IntParaAlfa(vnNumero) + " é ímpar");
+  }
+}
+```
+
+## Interface e Feedback do Usuário
+
+A LSP oferece ferramentas para criar interfaces mais amigáveis e fornecer feedback visual durante operações demoradas.
+
+### Barra de Progresso
+
+#### IniciaBarraProgresso
+
+Inicia uma barra de progresso para mostrar o andamento de processos longos.
+
+**Sintaxe:**
+
+```lsp
+IniciaBarraProgresso(<titulo>, <mensagemInicial>);
+```
+
+#### AtualizaBarraProgresso
+
+Atualiza o progresso e a mensagem da barra.
+
+**Sintaxe:**
+
+```lsp
+AtualizaBarraProgresso(<percentual>, <mensagem>);
+```
+
+#### FinalizaBarraProgresso
+
+Finaliza e fecha a barra de progresso.
+
+**Sintaxe:**
+
+```lsp
+FinalizaBarraProgresso();
+```
+
+#### OcultaBarraProgressoRelatorio
+
+Oculta a barra de progresso padrão durante a execução de relatórios.
+
+**Sintaxe:**
+
+```lsp
+OcultaBarraProgressoRelatorio(<ocultar>);
+```
+
+**Exemplo de Processamento com Feedback:**
+
+```lsp
+Definir Funcao processarDadosComFeedback();
+
+@ Variáveis globais @
+Definir Numero vnTotalRegistros;
+Definir Numero vnRegistroAtual;
+Definir Numero vnPercentual;
+Definir Alfa vaMensagem;
+Definir Alfa vaRegistroStr;
+Definir Alfa vaPercentualStr;
+
+vnTotalRegistros = 100;
+
+processarDadosComFeedback();
+
+Funcao processarDadosComFeedback(); {
+  @ Inicia barra de progresso @
+  IniciaBarraProgresso("Processamento de Dados", "Iniciando processamento...");
+  
+  @ Simula processamento @
+  Para (vnRegistroAtual = 1; vnRegistroAtual <= vnTotalRegistros; vnRegistroAtual++) {
+    @ Calcula percentual @
+    vnPercentual = (vnRegistroAtual * 100) / vnTotalRegistros;
+    
+    @ Monta mensagem @
+    IntParaAlfa(vnRegistroAtual, vaRegistroStr);
+    IntParaAlfa(vnPercentual, vaPercentualStr);
+    vaMensagem = "Processando registro " + vaRegistroStr + " de " + IntParaAlfa(vnTotalRegistros);
+    
+    @ Atualiza barra @
+    AtualizaBarraProgresso(vnPercentual, vaMensagem);
+    
+    @ Simula tempo de processamento @
+    sleep(50); @ Pausa 50ms @
+    
+    @ Simula erro no meio do processo @
+    Se (vnRegistroAtual = 50) {
+      AtualizaBarraProgresso(50, "⚠️ Problema detectado, continuando...");
+      sleep(1000); @ Pausa 1 segundo @
+    }
+  }
+  
+  @ Finaliza @
+  AtualizaBarraProgresso(100, "✅ Processamento concluído!");
+  sleep(1000);
+  FinalizaBarraProgresso();
+  
+  Mensagem(Retorna, "Processamento de " + IntParaAlfa(vnTotalRegistros) + " registros concluído!");
+}
+```
+
+### Controle de Interface
+
+#### ObterVersaoSistema
+
+Obtém a versão atual do sistema Senior.
+
+**Sintaxe:**
+
+```lsp
+ObterVersaoSistema(<versao>);
+```
+
+#### ObtemIdiomaAtivo
+
+Retorna o código do idioma utilizado pelo usuário.
+
+**Sintaxe:**
+
+```lsp
+ObtemIdiomaAtivo(<codigoIdioma>);
+```
+
+#### sleep
+
+Pausa a execução por um número especificado de milissegundos.
+
+**Sintaxe:**
+
+```lsp
+sleep(<milissegundos>);
+```
+
+**Exemplo de Informações do Sistema:**
+
+```lsp
+Definir Funcao informacoesSistema();
+
+@ Variáveis globais @
+Definir Alfa vaVersaoSistema;
+Definir Alfa vaIdiomaAtivo;
+Definir Alfa vaInformacoes;
+
+informacoesSistema();
+
+Funcao informacoesSistema(); {
+  @ Obtém versão do sistema @
+  ObterVersaoSistema(vaVersaoSistema);
+  
+  @ Obtém idioma ativo @
+  ObtemIdiomaAtivo(vaIdiomaAtivo);
+  
+  @ Monta informações @
+  vaInformacoes = "=== INFORMAÇÕES DO SISTEMA ===" + CHR(13);
+  vaInformacoes = vaInformacoes + "Versão: " + vaVersaoSistema + CHR(13);
+  vaInformacoes = vaInformacoes + "Idioma: " + vaIdiomaAtivo + CHR(13);
+  vaInformacoes = vaInformacoes + "Usuário: " + NomUsu + CHR(13);
+  vaInformacoes = vaInformacoes + "Empresa: " + Empresa + CHR(13);
+  vaInformacoes = vaInformacoes + "Data: " + ExtSis;
+  
+  Mensagem(Retorna, vaInformacoes);
+}
+```
+
+### Gerenciamento de Configuração
+
+#### RetornaValorCFG
+
+Obtém valores da Central de Configuração Senior.
+
+**Sintaxe:**
+
+```lsp
+RetornaValorCFG(<chave>, <valor>);
+```
+
+**Exemplo de Configuração Dinâmica:**
+
+```lsp
+Definir Funcao carregarConfiguracoes();
+
+@ Variáveis globais @
+Definir Alfa vaChaveTimeout;
+Definir Alfa vaChaveDebug;
+Definir Alfa vaValorTimeout;
+Definir Alfa vaValorDebug;
+Definir Numero vnTimeout;
+
+vaChaveTimeout = "app.timeout.request";
+vaChaveDebug = "app.debug.enabled";
+
+carregarConfiguracoes();
+
+Funcao carregarConfiguracoes(); {
+  @ Carrega timeout da requisição @
+  RetornaValorCFG(vaChaveTimeout, vaValorTimeout);
+  Se (TamanhoAlfa(vaValorTimeout) > 0) {
+    AlfaParaInt(vaValorTimeout, vnTimeout);
+    Mensagem(Retorna, "⏱️ Timeout configurado: " + vaValorTimeout + "ms");
+  } Senao {
+    vnTimeout = 30000; @ Padrão: 30 segundos @
+    Mensagem(Retorna, "⚠️ Timeout não configurado, usando padrão: 30000ms");
+  }
+  
+  @ Carrega modo debug @
+  RetornaValorCFG(vaChaveDebug, vaValorDebug);
+  Se (vaValorDebug = "true") {
+    Mensagem(Retorna, "🐛 Modo debug ativado");
+  } Senao {
+    Mensagem(Retorna, "🔒 Modo debug desativado");
+  }
+}
+```
+
+## Gerenciamento Avançado de Arquivos
+
+Expansão das funcionalidades de manipulação de arquivos com recursos avançados.
+
+### Criação e Exclusão de Arquivos Temporários
+
+#### CriarArquivoTemporario
+
+Cria um arquivo temporário com nome único.
+
+**Sintaxe:**
+
+```lsp
+CriarArquivoTemporario(<prefixo>, <caminhoArquivo>);
+```
+
+#### ExcluirArquivoTemporario
+
+Exclui um arquivo temporário criado anteriormente.
+
+**Sintaxe:**
+
+```lsp
+ExcluirArquivoTemporario(<caminhoArquivo>);
+```
+
+#### LinhasArquivo
+
+Conta o número de linhas em um arquivo.
+
+**Sintaxe:**
+
+```lsp
+vnLinhas = LinhasArquivo(<caminhoArquivo>);
+```
+
+**Exemplo de Processamento de Arquivo Temporário:**
+
+```lsp
+Definir Funcao processarArquivoTemporario();
+
+@ Variáveis globais @
+Definir Alfa vaCaminhoTemp;
+Definir Numero vnArquivo;
+Definir Numero vnLinhas;
+Definir Alfa vaConteudo;
+Definir Numero vnContador;
+
+processarArquivoTemporario();
+
+Funcao processarArquivoTemporario(); {
+  @ 1. Cria arquivo temporário @
+  CriarArquivoTemporario("processamento_", vaCaminhoTemp);
+  Mensagem(Retorna, "📄 Arquivo temporário criado: " + vaCaminhoTemp);
+  
+  @ 2. Escreve dados no arquivo @
+  vnArquivo = Abrir(vaCaminhoTemp, Gravarnl);
+  Para (vnContador = 1; vnContador <= 10; vnContador++) {
+    vaConteudo = "Linha " + IntParaAlfa(vnContador) + " do arquivo temporário";
+    Gravarnl(vnArquivo, vaConteudo);
+  }
+  Fechar(vnArquivo);
+  
+  @ 3. Verifica o arquivo criado @
+  vnLinhas = LinhasArquivo(vaCaminhoTemp);
+  Mensagem(Retorna, "📊 Arquivo criado com " + IntParaAlfa(vnLinhas) + " linhas");
+  
+  @ 4. Processa o arquivo @
+  IniciaBarraProgresso("Processando Arquivo", "Lendo linhas...");
+  vnArquivo = Abrir(vaCaminhoTemp, Lernl);
+  
+  Para (vnContador = 1; vnContador <= vnLinhas; vnContador++) {
+    Lernl(vnArquivo, vaConteudo);
+    AtualizaBarraProgresso((vnContador * 100) / vnLinhas, "Processando: " + vaConteudo);
+    sleep(100); @ Simula processamento @
+  }
+  
+  Fechar(vnArquivo);
+  FinalizaBarraProgresso();
+  
+  @ 5. Remove arquivo temporário @
+  ExcluirArquivoTemporario(vaCaminhoTemp);
+  Mensagem(Retorna, "🗑️ Arquivo temporário removido");
+}
+```
+
+### Execução de Programas Externos
+
+#### ExecProg
+
+Executa um programa externo a partir da regra LSP.
+
+**Sintaxe:**
+
+```lsp
+ExecProg(<comando>, <parametros>, <aguardarTermino>);
+```
+
+**Exemplo de Integração com Ferramentas Externas:**
+
+```lsp
+Definir Funcao integracaoFerramentasExternas();
+
+@ Variáveis globais @
+Definir Alfa vaComando;
+Definir Alfa vaParametros;
+Definir Alfa vaCaminhoArquivo;
+
+vaCaminhoArquivo = "C:\\temp\\relatorio.txt";
+
+integracaoFerramentasExternas();
+
+Funcao integracaoFerramentasExternas(); {
+  @ 1. Abre arquivo no Bloco de Notas @
+  vaComando = "notepad.exe";
+  vaParametros = vaCaminhoArquivo;
+  
+  Se (ArqExiste(vaCaminhoArquivo) = 1) {
+    ExecProg(vaComando, vaParametros, 0); @ Não aguarda terminar @
+    Mensagem(Retorna, "📝 Arquivo aberto no Bloco de Notas");
+  } Senao {
+    Mensagem(Erro, "❌ Arquivo não encontrado: " + vaCaminhoArquivo);
+  }
+  
+  @ 2. Abre explorador de arquivos @
+  vaComando = "explorer.exe";
+  vaParametros = "C:\\temp";
+  ExecProg(vaComando, vaParametros, 0);
+  Mensagem(Retorna, "📁 Explorador de arquivos aberto");
+  
+  @ 3. Executa comando do sistema @
+  vaComando = "cmd.exe";
+  vaParametros = "/c dir C:\\temp > C:\\temp\\listagem.txt";
+  ExecProg(vaComando, vaParametros, 1); @ Aguarda terminar @
+  Mensagem(Retorna, "⚙️ Listagem de arquivos gerada");
+}
 ```
 
 ## Mensagens
@@ -857,10 +2441,9 @@ A função `Mensagem` é utilizada para exibir mensagens ao usuário. Existem di
 2. É necessário definir uma variável Alfa antes, fazer as concatenações e atribuir nessa variável
 3. A variável Alfa deve ser passada como parâmetro para a função `Mensagem()`
 
-
 **Sintaxe**
 
-- Mensagem(_tipo_da_mensagem_,"_mensagem_");
+- Mensagem(<tipo da mensagem>,"<mensagem>");
 
 Exibe uma mensagem para o usuário. As mensagens possuem características de acordo com o seu tipo.
 
@@ -1178,8 +2761,6 @@ calcularFibonacci();
 
 @ Exibir sequência completa @
 Mensagem(Retorna, vaResultado);
-
-@ ---FUNÇÕES----@
 
 Funcao calcularFibonacci(); {
   @ Calcular e acumular todos os termos @
@@ -1731,10 +3312,28 @@ Como boa prática, é recomendável que se reserve a regra 001 apenas para imple
 
 Uma função pode receber parâmetros e retornar valores.
 
-Importante:
-Valores alterados dentro da função também serão alterados fora dela.
+**⚠️ Importante:**
+- Valores alterados dentro da função também serão alterados fora dela.
+- **Os parâmetros definidos para as funções devem obrigatoriamente ser Numéricos**
+- **Parâmetros do tipo Alfanuméricos (Alfa) NÃO são suportados por funções definidas nas regras**
 
-Os parâmetros definidos para as funções devem obrigatoriamente ser Numéricos. Parâmetros do tipo Alfanuméricos ainda não são suportados por funções definidas nas regras.
+**❌ Incorreto - NÃO funciona:**
+```lsp
+Funcao alterarNome(Alfa vaNome); {
+   vaNome = "Nome Alterado"; @ ERRO: Parâmetro Alfa não suportado @
+}
+```
+
+**✅ Correto - Usar variáveis globais:**
+```lsp
+Definir Alfa vaNome;
+
+vaNome = "João Silva";
+
+Funcao alterarNome(); {
+  vaNome = "João da Silva"; @ Correto: variável global @
+}
+```
 
 ### Exemplos de Funções
 
@@ -1745,7 +3344,7 @@ Definir Funcao funcaoSimples();
 
 funcaoSimples();
 
-Funcao funcaoSimples() {  
+Funcao funcaoSimples(); {  
   @ Corpo da Função @
 }
 ```
@@ -1781,7 +3380,7 @@ incrementar(vnValor);
 incrementar(vnValor);
 @ o valor de vnValor será 4 @
 
-Funcao incrementar(Numero End vnParametro) {
+Funcao incrementar(Numero End vnParametro); {
   vnParametro = vnParametro + 1;
 }
 ```
@@ -1797,12 +3396,30 @@ vnHorario = 2;
 adicionarQuantidadeHoras(vnHorario, 2, vnNovoHorario);
 @ o valor de vnNovoHorario será 4 @
 
-Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero End vnRetorno) {
+Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero End vnRetorno); {
   vnRetorno = vnHoraAtual + vnQuantidade;
 }
 ```
 
 ### Organização das Funções
+
+**⚠️ REGRA OBRIGATÓRIA:** Em LSP, as funções devem ser declaradas **SEMPRE APÓS** o código principal que as chama. A chamada da função deve aparecer ANTES da declaração da função no código.
+
+**❌ Incorreto - NÃO funciona:**
+```lsp
+Funcao minhaFuncao(); {
+  @ Corpo da função @
+}
+
+minhaFuncao(); @ ERRO: Chamada após declaração @
+```
+
+**✅ Correto - Ordem obrigatória:**
+```lsp
+@ 1. Variáveis globais @
+@ 2. Código principal (chamadas) @
+@ 3. Declaração das funções @
+```
 
 Para evitar problemas de execução, as funções devem sempre ficar no final do código. Aqui está um exemplo de como organizar o código corretamente:
 
@@ -1841,22 +3458,22 @@ adicionarQuantidadeHoras(vnHorario, 2, vnNovoHorario); @ o valor de vnNovoHorari
 @ ------------------------------------FUNÇÕES----------------------------------@
 
 @ Função Simples @
-Funcao funcaoSimples() {  
+Funcao funcaoSimples(); {  
   @ Corpo da Função @
 }
 
 @ Função com Parâmetro Numérico @
-Funcao adicionarHoras(Numero vnParametro) { 
+Funcao adicionarHoras(Numero vnParametro); { 
   vnHoras = vnHoras + vnParametro; 
 }
 
 @ Função com Parâmetro Numérico e Retorno no Mesmo Parâmetro @
-Funcao incrementar(Numero End vnParametro) {  
+Funcao incrementar(Numero End vnParametro); {  
   vnParametro = vnParametro + 1;
 }
 
 @ Função com Dois Parâmetros Numéricos e Retorno em uma Variável Específica @
-Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero End vnRetorno) {
+Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero End vnRetorno); {
   vnRetorno = vnHoraAtual + vnQuantidade;
 }
 ```
@@ -1914,7 +3531,6 @@ As funções gerais na LSP são utilizadas para realizar operações comuns, com
 | Encriptar                   | Criptografa a cadeia de caracteres.                                       |
 | ExcluirArquivoTemporario    | Exclui um arquivo criado pela função CriarArquivoTemporario.              |
 | ExecProg                    | Permite a execução de aplicativos durante a execução de regras.           |
-| FinalizaBarraProgresso      | Finaliza a tela de barra de progresso.                                    |
 | FormatarData                | Formata a data.                                                           |
 | GeraHash                    | Retorna um Hash do texto informado.                                       |
 | GerarNonce                  | Gera o valor do campo Nonce, um número aleatório.                         |
@@ -1923,6 +3539,8 @@ As funções gerais na LSP são utilizadas para realizar operações comuns, com
 | GeraToken                   | Retorna um token criptografado.                                           |
 | HoraParaMinuto              | Converte em minutos os valores que representam hora e minuto.             |
 | IniciaBarraProgresso        | Inicia a barra de progresso utilizada para mostrar ao usuário o andamento de um processo mais extenso. |
+| OcultaBarraProgressoRelatorio | Oculta a barra de progresso padrão durante a execução de relatórios.    |
+| FinalizaBarraProgresso      | Finaliza a tela de barra de progresso.                                    |
 | IntParaAlfa                 | Converte um número para formato alfanumérico, desprezando as casas decimais.|
 | LerPosicaoAlfa              | Identifica qual caracter está em determinada posição do campo/variável de origem. |
 | LinhasArquivo               | Leitura da quantidade de linhas existentes em um determinado arquivo.     |
@@ -1931,7 +3549,7 @@ As funções gerais na LSP são utilizadas para realizar operações comuns, com
 | Mensagem                    | Apresenta a mensagem em tela de acordo com a parametrização do tipo de retorno e da mensagem que será visualizada. |
 | ObtemIdiomaAtivo            | Retorna o código do idioma utilizado pelo usuário.                        |
 | ObterVersaoSistema          | Esta função retorna a versão do sistema.                                  |
-| OcultaBarraProgressoRelatorio | Oculta a barra de progresso padrão durante a execução de relatórios.    |
+
 | PosicaoAlfa                 | Procura por uma parte de texto dentro de um campo/variável do tipo Alfa, retornando a posição em que o texto inicia. |
 | RemoveExpressoesProibidas   | Não permite que campos de relatórios/regras aceitem algum tipo de script. |
 | RestoDivisao                | Retorna o resto da divisão de um número por outro.                        |
@@ -2109,202 +3727,105 @@ SQL_FecharCursor(xCursor);
 SQL_Destruir(xCursor);
 ```
 
-# Manipulação de Arquivos
+## Manipulação de Arquivos
 
-## Visão Geral
-A LSP oferece um conjunto de funções para manipulação de arquivos texto e binários. Estas funções permitem operações de leitura, escrita e gerenciamento de arquivos no sistema.
+A LSP permite a manipulação de arquivos utilizando comandos específicos para abrir, ler, gravar e fechar arquivos.
 
-## Funções Principais
+### Abrir (Open)
 
-### Abrir
-Abre um arquivo para leitura ou escrita.
+Abre o arquivo informado em nome do arquivo para o modo de abertura informado (Ler/Gravar). Se o arquivo não existir, ele é criado. Ele retorna um manipulador de arquivos.
 
-**Sintaxe**: `numero Abrir(Alfa NomeArq, TModeAbert ModoAbertura);`
+**Sintaxe:**
 
-**Parâmetros**:
-- `NomeArq`: Caminho do arquivo (ex: "C:\\Pasta\\arquivo.txt")
-- `ModoAbertura`: Modo de abertura do arquivo
-  - `Ler`: Leitura binária
-  - `Gravar`: Escrita binária
-  - `Lernl`: Leitura em modo texto
-  - `Gravarnl`: Escrita em modo texto
-
-**Retorno**: Manipulador do arquivo (número)
-
-**Exemplo**:
 ```lsp
-Definir numero vnArquivo;
-vnArquivo = Abrir("C:\\Logs\\sistema.log", Lernl);
+Abrir ("<nome do arquivo>",<modo de abertura>);
 ```
 
-### Fechar
-Fecha um arquivo previamente aberto.
+**Exemplo:**
 
-**Sintaxe**: `Fechar(numero ManArquivo);`
-
-**Parâmetro**:
-- `ManArquivo`: Manipulador do arquivo retornado pela função Abrir
-
-**Exemplo**:
 ```lsp
-Fechar(vnArquivo);
+arq = Abrir("Teste.txt", Ler);
 ```
 
-### Ler
-Lê bytes de um arquivo binário.
+### Ler (Read)
 
-**Sintaxe**: `numero Ler(numero ManArquivo, alfa end Var, numero NumBytes);`
+Lê uma quantidade de caracteres especificados em tamanho do arquivo especificado no manipulador de arquivo e joga o valor lido na variável especificada.
 
-**Parâmetros**:
-- `ManArquivo`: Manipulador do arquivo
-- `Var`: Variável que receberá os dados lidos
-- `NumBytes`: Quantidade de bytes a serem lidos
+**Sintaxe:**
 
-**Retorno**: Número de bytes lidos
-
-**Exemplo**:
 ```lsp
-Definir Alfa vaConteudo;
-Definir numero vnBytesLidos;
-vnBytesLidos = Ler(vnArquivo, vaConteudo, 1024);
+Ler(<manipulador de arquivo>,<variável>,<tamanho>);
 ```
 
-### LerNL
-Lê uma linha de um arquivo texto.
+**Exemplo:**
 
-**Sintaxe**: `numero Lernl(numero ManArquivo, alfa end Var);`
-
-**Parâmetros**:
-- `ManArquivo`: Manipulador do arquivo
-- `Var`: Variável que receberá a linha lida
-
-**Retorno**: 1 se leu com sucesso, 0 se chegou ao final do arquivo
-
-**Exemplo**:
 ```lsp
-Definir Alfa vaLinha;
-Definir numero vnLeu;
-vnLeu = Lernl(vnArquivo, vaLinha);
+Ler(arq, S, 20);
 ```
 
-### Gravar
-Escreve bytes em um arquivo binário.
+### Lernl (ReadLn)
 
-**Sintaxe**: `numero Gravar(numero ManArquivo, alfa Var, numero NumBytes);`
+Lê uma linha do arquivo indicado pelo manipulador de arquivo e joga o valor lido para a variável indicada.
 
-**Parâmetros**:
-- `ManArquivo`: Manipulador do arquivo
-- `Var`: Dados a serem gravados
-- `NumBytes`: Quantidade de bytes a serem gravados
+**Sintaxe:**
 
-**Retorno**: Número de bytes gravados
-
-**Exemplo**:
 ```lsp
-Definir Alfa vaDados;
-vaDados = "Conteúdo do arquivo";
-Gravar(vnArquivo, vaDados, 1);
+Lernl(<manipulador de arquivo>,<variável>);
 ```
 
-### GravarNL
-Grava uma linha em um arquivo texto.
+**Exemplo:**
 
-**Sintaxe**: `Gravarnl(numero ManArquivo, alfa Var);`
-
-**Parâmetros**:
-- `ManArquivo`: Manipulador do arquivo
-- `Var`: Linha a ser gravada
-
-**Exemplo**:
 ```lsp
-Gravarnl(vnArquivo, "Nova linha de texto");
+Lernl(arq, S);
 ```
 
-### GravarNLEOL
-Grava uma linha em um arquivo texto com opção de quebra de linha.
+### Gravar (Write)
 
-**Sintaxe**: `numero GravarNLEOL(numero ManArquivo, alfa Var, logico UseEOL);`
+Grava o valor de uma constante ou de uma variável, e uma quantidade de caracteres especificados em tamanho no arquivo especificado no manipulador de arquivo.
 
-**Parâmetros**:
-- `ManArquivo`: Manipulador do arquivo
-- `Var`: Linha a ser gravada
-- `UseEOL`: Se verdadeiro, adiciona quebra de linha
+**Sintaxe:**
 
-**Exemplo**:
 ```lsp
-GravarNLEOL(vnArquivo, "Linha com quebra", 1);
+Gravar(<manipulador de arquivo>,<<variável> ou <constante>>,<tamanho>);
 ```
 
-## Exemplos Práticos
+**Exemplo:**
 
-### 1. Leitura de Arquivo Texto
 ```lsp
-Definir Alfa vaCaminho;
-Definir Alfa vaConteudo;
-Definir Alfa vaLinha;
-Definir numero vnArquivo;
-Definir numero vnLeu;
-
-vaCaminho = "C:\\Logs\\sistema.log";
-vnArquivo = Abrir(vaCaminho, Lernl);
-vnLeu = 1;
-
-Enquanto (vnLeu = 1) {
-    vnLeu = Lernl(vnArquivo, vaLinha);
-    Se (vnLeu = 1) {
-        vaConteudo = vaConteudo + vaLinha;
-    }
-}
-Fechar(vnArquivo);
+Gravar(arq, S, 20);
 ```
 
-### 2. Escrita em Arquivo de Log
+### Gravarnl (WriteLn)
+
+Grava uma linha no arquivo indicado pelo manipulador de arquivo com o valor de uma variável ou constante, passada como parâmetro.
+
+**Sintaxe:**
+
 ```lsp
-Definir Alfa vaCaminho;
-Definir Alfa vaMensagem;
-Definir Alfa vaData;
-Definir numero vnArquivo;
-
-vaCaminho = "C:\\Logs\\sistema.log";
-vaMensagem = "Operação realizada com sucesso";
-DataHora(vnDataHora);
-FormatarData(vnDataHora, "DD/MM/YYYY - HH:mm:ss", vaData);
-
-vnArquivo = Abrir(vaCaminho, Gravarnl);
-GravarNLEOL(vnArquivo, vaData + ": " + vaMensagem, 1);
-Fechar(vnArquivo);
+Gravarnl(<manipulador de arquivo>,<<variável> ou <constante>>);
 ```
 
-## Observações Importantes
+**Exemplo:**
 
-1. **Quebra de Linha**:
-   - No Windows, use CRLF (#13#10)
-   - Exemplo de configuração:
-   ```lsp
-   Definir Alfa vaEnter;
-   Definir Alfa vaNovaLinha;
-   RetornaAscii(13, vaEnter);
-   RetornaAscii(10, vaNovaLinha);
-   ```
+```lsp
+Gravarnl(arq, Str);
+```
 
-2. **Verificação de Existência**:
-   - Use a função `ArqExiste` antes de manipular o arquivo
-   ```lsp
-   Se (ArqExiste(vaCaminho) = 1) {
-       @ Arquivo existe @
-   }
-   ```
+### Fechar (Close)
 
-3. **Tratamento de Erros**:
-   - Sempre feche o arquivo após o uso
-   - Verifique o retorno das funções de leitura/escrita
-   - Trate casos de arquivo inexistente
+Fecha um arquivo aberto anteriormente pelo comando Abrir.
 
-4. **Boas Práticas**:
-   - Use caminhos absolutos
-   - Escape corretamente as barras invertidas
-   - Mantenha o arquivo aberto pelo menor tempo possível
-   - Sempre feche o arquivo após o uso
+**Sintaxe:**
+
+```lsp
+Fechar (<manipulador do arquivo>);
+```
+
+**Exemplo:**
+
+```lsp
+Fechar(arq);
+```
 
 ## Chamada de Web Service
 
@@ -2365,58 +3886,1425 @@ Caso desejar ignorar os parâmetros, acesse a Central de Configurações Senior 
 
 ## Chamada HTTP
 
-A LSP permite a chamada de endpoints HTTP utilizando comandos específicos para enviar e receber dados.
+A LSP oferece um conjunto robusto de funções para realizar requisições HTTP/HTTPS, permitindo integração com APIs REST, web services e outros endpoints HTTP. Estas funções suportam todos os métodos HTTP principais e oferecem controle granular sobre cabeçalhos, timeouts e tratamento de respostas.
 
-### Funções para Requisições HTTP
+### Visão Geral das Funções HTTP
 
-Funções que possibilitam a execução de requisições HTTP, oferecendo suporte à utilização de servidor proxy e requisições sobre SSL, permitindo o acesso a sites da web que utilizem HTTPs.
+| Função | Descrição |
+|--------|-----------|
+| **Métodos HTTP Principais** |
+| HttpGet | Executa requisições GET para obter dados |
+| HttpPost | Executa requisições POST para enviar dados |
+| HttpPut | Executa requisições PUT para atualizar recursos |
+| HttpPatch | Executa requisições PATCH para modificações parciais |
+| HttpDelete | Executa requisições DELETE para remover recursos |
+| HttpDeleteBody | Executa requisições DELETE com corpo da mensagem |
+| HttpDownload | Faz download de arquivos diretamente para disco |
+| **Configuração e Upload** |
+| HttpSetAttachment | Anexa arquivos locais ao corpo da requisição |
+| HttpAlteraCabecalhoRequisicao | Configura cabeçalhos HTTP personalizados |
+| HttpAlteraCodifCaracPadrao | Define codificação de caracteres padrão |
+| HttpAlteraRedirecionamento | Controla tratamento de redirecionamentos |
+| HttpSetaTimeout | Define timeout para requisições |
+| **Gerenciamento de Sessão** |
+| HttpHabilitarCookies | Habilita armazenamento automático de cookies |
+| HttpDesabilitarCookies | Desabilita armazenamento de cookies |
+| **Leitura de Respostas** |
+| HttpLeCabecalhoResposta | Obtém cabeçalhos de resposta do servidor |
+| HttpLeCodigoResposta | Consulta código de status da resposta |
+| HttpNormalizaRetorno | Normaliza caracteres Unicode em respostas |
+| **Configuração de Proxy** |
+| HttpAlteraConfiguracaoProxy | Configura definições de servidor proxy |
+| HttpLeConfiguracaoProxy | Lê configurações atuais de proxy |
+| **Configuração SSL/TLS** |
+| HttpAlteraConfiguracaoSSL | Configura opções SSL/TLS |
+| HttpLeConfiguracaoSSL | Lê configurações SSL atuais |
+| HttpHabilitaSNI | Habilita Server Name Indication |
+| HttpDesabilitaSNI | Desabilita Server Name Indication |
+| **Utilitários** |
+| HttpObjeto | Cria objeto HTTP com configurações padrão |
+| HttpDesabilitaErroResposta | Desabilita erros automáticos HTTP |
+| HttpHabilitaErroResposta | Habilita erros automáticos HTTP |
+| Base64Encode | Codifica strings em Base64 para autenticação |
+| Base64Decode | Decodifica strings Base64 de volta para texto |
 
-| Nome                          | Descrição                                                                 |
-|-------------------------------|---------------------------------------------------------------------------|
-| HttpAdicionaExcecaoProxy      | Adiciona o endereço passado no parâmetro Endereço na lista de exceções de proxy. |
-| HttpAlteraAutenticacaoProxy   | Faz o inverso da função HttpLeAutenticacaoProxy, ou seja, altera os valores ao invés de ler. |
-| HttpAlteraCabecalhoRequisicao | Altera valores de cabeçalhos HTTP que serão enviados junto com a requisição. |
-| HttpAlteraCodifCaracPadrao    | Altera a codificação de caracteres que é usado por padrão nas respostas do servidor. |
-| HttpAlteraConfiguracaoProxy   | Faz o inverso da função HttpLeConfiguracaoProxy, ou seja, altera os valores ao invés de ler. |
-| HttpAlteraConfiguracaoSSL     | Faz o inverso da função HttpLeConfiguracaoSSL, ou seja, altera o valor ao invés de ler. |
-| HttpAlteraMostrarProgresso    | Faz o inverso da função HttpLeMostrarProgresso, ou seja, altera o valor ao invés de ler. |
-| HttpAlteraRedirecionamento    | Especifica se as requisições realizadas devem tratar os redirecionamentos retornados pelo servidor destino. |
-| HttpDelete                    | Executa uma requisição HTTP usando o método DELETE. |
-| HttpDeleteBody                | Executa uma requisição HTTP usando o método DELETE (com parâmetro Body). |
-| HttpDesabilitaErroResposta    | Desabilita a geração automática de erros de execução. |
-| HttpDesabilitarCookies        | Desabilita o recurso de manter os cookies ao utilizar requisições HTTP em regras LSP. |
-| HttpDesabilitaSNI             | Desabilita o SNI (Server Name Indication) na requisição HTTP. |
-| HttpDownload                  | Funciona da mesma maneira que a função HttpGet, porém o retorno não é na memória, mas sim em um arquivo salvo diretamente em disco. |
-| HttpExcluiExcecaoProxy        | Exclui da lista de exceções de proxy o endereço do índice passado como parâmetro em Índice, contado a partir do 0 (zero). |
-| HttpGet                       | Executa uma requisição HTTP (inclusive HTTPS) de acordo com a URL passada como parâmetro e salva a resposta da requisição, por exemplo, uma página HTML, no parâmetro de retorno HTML. |
-| HttpHabilitaErroResposta      | Habilita a geração automática de erros de execução. |
-| HttpHabilitarCookies          | Habilita o recurso de manter os cookies ao utilizar requisições HTTP. |
-| HttpHabilitaSNI               | Habilita o SNI (Server Name Indication) na requisição HTTP. |
-| HttpLeAutenticacaoProxy       | Faz a leitura e retorna os valores do usuário e senha de autenticação no servidor proxy. |
-| HttpLeCabecalhoResposta       | Consulta os valores associados à cabeçalhos de respostas das requisições. |
-| HttpLeCodigoResposta          | Consulta o código de resposta de uma requisição enviada ao servidor. |
-| HttpLeConfiguracaoProxy       | Faz a leitura do valor das propriedades Utilizar servidor proxy, Servidor, Porta e Utilizar autenticação por usuário do objeto HTTP e os retorna nos parâmetros UsarProxy, Servidor, Porta e AutPorUsu, respectivamente. |
-| HttpLeConfiguracaoSSL         | Faz a leitura da propriedade Utilizar SSL do objeto HTTP e retorna o valor em SSL. |
-| HttpLeContadorExcecoesProxy   | Neste contexto, exceções de proxy são endereços (URLs) que podem ser acessadas sem passar pelo servidor proxy. |
-| HttpLeExcecaoProxy            | Retorna no parâmetro Endereço o endereço cadastrado na lista de exceções de proxy no índice passado como parâmetro em Índice, contado a partir do 0 (zero). |
-| HttpLeMostrarProgresso        | Faz a leitura da propriedade Exibir progresso de download do objeto HTTP e retorna o valor em Mostrar. |
-| HttpLimpaExcecoesProxy        | Exclui todos os endereços cadastrados na lista de exceções de proxy. |
-| HttpNormalizaRetorno          | Aplica a normalização de texto para caracteres de combinação na resposta da requisição HTTP. |
-| HttpObjeto                    | Esta função retorna um objeto HTTP inicializado com as configurações definidas na tela de Configurações de Internet da Central de Configurações. |
-| HttpPatch                     | Realiza uma chamada de verbo PATCH do HTTP. |
-| HttpPost                      | Executa uma requisição HTTP usando o método POST. |
-| HttpPut                       | Executa uma requisição HTTP usando o método PUT. |
-| HttpSetAttachment             | Adiciona arquivo no corpo da requisição HTTP. |
-| HttpSetaTimeout               | Atribui um timeout (tempo de espera) para uma requisição HTTP. |
+### Configuração Inicial
 
-Para mais detalhes sobre cada função, consulte a @documentação da Senior.
-
-### Exemplos de Código
-
-#### Exemplo 1: Busca o CEP na API VIA CEP
+Antes de realizar qualquer requisição HTTP, é necessário criar um objeto HTTP:
 
 ```lsp
-Funcao buscarCepApi(Numero vnCepApi) {
+Definir Alfa vaHTTP;
+HttpObjeto(vaHTTP);
+```
+
+### ⚠️ **Importante: Configurações e Limitações HTTP**
+
+#### **Configurações de Acesso**
+
+As funções que executam requisições (HttpGet, HttpPost, HttpPut, HttpPatch, HttpDelete e HttpDownload) necessitam de um **HttpObjeto** que contenha as configurações de acesso como:
+- Servidor proxy
+- Configurações SSL/TLS
+- Codificação de caracteres
+- Timeouts
+- Cookies
+
+#### **Formas de Configurar:**
+
+1. **🌐 Central de Configurações Senior**
+   - Configure na tela "Configurações de Internet"
+   - Aplicadas automaticamente para todos os objetos HTTP
+
+2. **💻 Dentro da regra LSP** 
+   - Configure programaticamente usando as funções de manipulação
+   - Alterações feitas apenas **em memória** no objeto HTTP específico
+   - Sobrescreve as configurações da Central de Configurações
+
+#### **⚠️ Limitações Importantes:**
+
+- **❌ Certificados digitais**: As funções HTTP LSP **NÃO oferecem suporte** ao uso de certificados digitais
+- **✅ Parâmetros suportados**: Apenas parâmetros que compõem as requisições (headers, content-type, autenticação básica, etc.)
+
+**Exemplo de configuração programática:**
+```lsp
+Definir Alfa vaHTTP;
+
+HttpObjeto(vaHTTP);
+
+@ Configurações específicas para esta requisição @
+HttpAlteraConfiguracaoProxy(vaHTTP, 1, "proxy.empresa.com", 8080, 1);
+HttpAlteraConfiguracaoSSL(vaHTTP, 2); @ Sempre SSL @
+HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8");
+HttpSetaTimeout(vaHTTP, 30);
+
+@ Essas configurações só afetam este objeto vaHTTP @
+HttpGet(vaHTTP, "https://api.exemplo.com/dados", vaResposta);
+```
+
+### HttpGet
+
+Executa uma requisição HTTP GET para obter dados de um servidor. É o método mais utilizado para consulta de dados em APIs REST.
+
+**Sintaxe:** `HttpGet(Alfa Objeto, Alfa URL, Alfa end HTML);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `URL`: URL completa do endpoint (deve incluir http:// ou https://)
+- `HTML`: Variável que receberá a resposta do servidor
+
+**Exemplo Básico:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+HttpGet(vaHTTP, "https://www.senior.com.br/index.htm", vaResposta);
+Mensagem(Retorna, vaResposta);
+```
+
+**Exemplo com Cabeçalhos Personalizados:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Configurar cabeçalhos @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "User-Agent", "SeniorApp/1.0");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer token123");
+
+HttpGet(vaHTTP, "https://api.exemplo.com/dados", vaResposta);
+```
+
+**Exemplo com Verificação de Status:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Numero vnStatus;
+
+HttpObjeto(vaHTTP);
+HttpDesabilitaErroResposta(vaHTTP);
+
+HttpGet(vaHTTP, "https://api.exemplo.com/usuarios", vaResposta);
+HttpLeCodigoResposta(vaHTTP, vnStatus);
+
+Se (vnStatus = 200) {
+  @ Processar resposta @
+  Mensagem(Retorna, "Dados recebidos com sucesso!");
+} Senao {
+  @ Tratar erro @
+  Mensagem(Erro, "Erro na requisição. Status: " + vnStatus);
+}
+```
+
+**Observações:**
+- Sempre informe a URL completa com protocolo (http:// ou https://)
+- Para HTTPS sem certificado, use `HttpHabilitaSNI(vaHTTP)` antes da requisição
+- Caracteres especiais na URL podem causar erros em alguns sistemas
+- Use `HttpDesabilitaErroResposta` para controle manual de erros
+
+### HttpPost
+
+Executa uma requisição HTTP POST para enviar dados ao servidor. Utilizado para criação de recursos, envio de formulários e dados em geral.
+
+**Sintaxe:** `HttpPost(Alfa Objeto, Alfa URL, Alfa Dados, Alfa end HTML);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `URL`: URL do endpoint
+- `Dados`: Dados a serem enviados no corpo da requisição
+- `HTML`: Variável que receberá a resposta
+
+**Exemplo com Dados de Formulário:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+
+HttpObjeto(vaHTTP);
+
+@ Dados no formato application/x-www-form-urlencoded @
+vaDados = "NomeUsuario=SENIOR&EmailUsuario=senior@senior.com.br&Texto=SENIOR+SA";
+
+HttpPost(vaHTTP, "https://www.senior.com.br/cadastro.html", vaDados, vaResposta);
+Mensagem(Retorna, vaResposta);
+```
+
+**Exemplo com JSON:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+
+HttpObjeto(vaHTTP);
+
+@ Configurar para JSON @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "text/plain");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+
+@ Dados em formato JSON @
+vaDados = "{\"NomeParametro1\": \"valor1\", \"NomeParametro2\": \"valor2\"}";
+
+HttpPost(vaHTTP, "https://exemplo.com/app/path", vaDados, vaResposta);
+```
+
+**Exemplo com Autenticação:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+Definir Alfa vaToken;
+
+HttpObjeto(vaHTTP);
+
+@ Configurar autenticação @
+vaToken = "Bearer seu_token_aqui";
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaToken);
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+
+vaDados = "{\"nome\": \"João\", \"email\": \"joao@exemplo.com\"}";
+HttpPost(vaHTTP, "https://api.exemplo.com/usuarios", vaDados, vaResposta);
+```
+
+**Observações:**
+- O Content-Type padrão é `application/x-www-form-urlencoded; charset=windows-1252`
+- Para JSON, sempre configure `Content-Type: application/json`
+- Para UTF-8, configure explicitamente com `HttpAlteraCodifCaracPadrao`
+- Quando usar JSON, os dados devem estar no formato correto, caso contrário retornará erro 400
+
+### HttpPut
+
+Executa uma requisição HTTP PUT para atualizar recursos existentes. Usado para modificar dados de um recurso específico.
+
+**Sintaxe:** `HttpPut(Alfa Objeto, Alfa URL, Alfa Dados, Alfa end HTML);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `URL`: URL do recurso a ser atualizado
+- `Dados`: Dados de atualização
+- `HTML`: Variável que receberá a resposta
+
+**Exemplo Básico:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+
+HttpObjeto(vaHTTP);
+
+vaDados = "NomeUsuario=SENIOR&EmailUsuario=senior@senior.com.br&Texto=SENIOR+SA";
+HttpPut(vaHTTP, "https://www.senior.com.br/cadastro.html", vaDados, vaResposta);
+Mensagem(Retorna, vaResposta);
+```
+
+**Exemplo com JSON:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+
+HttpObjeto(vaHTTP);
+
+@ Configurar cabeçalhos @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer token123");
+
+@ Dados para atualização @
+vaDados = "{\"nome\": \"João Silva\", \"status\": \"ativo\", \"email\": \"joao.silva@exemplo.com\"}";
+
+HttpPut(vaHTTP, "https://api.exemplo.com/usuarios/123", vaDados, vaResposta);
+```
+
+**Observações:**
+- PUT é usado para atualização completa de recursos
+- Só suporta formato texto, não arquivos binários
+- Sempre inclua todos os campos necessários do recurso
+
+### HttpDelete
+
+Executa uma requisição HTTP DELETE para remover recursos. Usado para exclusão de dados específicos.
+
+**Sintaxe:** `HttpDelete(Alfa Objeto, Alfa URL, Alfa end HTML);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `URL`: URL do recurso a ser removido
+- `HTML`: Variável que receberá a resposta
+
+**Exemplo Básico:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+HttpDelete(vaHTTP, "https://www.senior.com.br/registro/1", vaResposta);
+Mensagem(Retorna, vaResposta);
+```
+
+**Exemplo com Autenticação:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Numero vnStatus;
+
+HttpObjeto(vaHTTP);
+HttpDesabilitaErroResposta(vaHTTP);
+
+@ Configurar autenticação @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer token123");
+
+HttpDelete(vaHTTP, "https://api.exemplo.com/usuarios/123", vaResposta);
+
+@ Verificar resultado @
+HttpLeCodigoResposta(vaHTTP, vnStatus);
+Se (vnStatus = 204) {
+  Mensagem(Retorna, "Usuário excluído com sucesso!");
+} Senao {
+  Mensagem(Erro, "Erro ao excluir usuário. Status: " + vnStatus);
+}
+```
+
+### HttpDeleteBody
+
+Executa uma requisição HTTP DELETE com dados no corpo da mensagem. Útil para exclusões em lote ou com parâmetros específicos.
+
+**Sintaxe:** `HttpDeleteBody(Alfa Objeto, Alfa URL, Alfa Dados, Alfa end HTML);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `URL`: URL do endpoint
+- `Dados`: Dados a serem enviados no corpo
+- `HTML`: Variável que receberá a resposta
+
+**Exemplo Básico:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+
+HttpObjeto(vaHTTP);
+
+vaDados = "[{\"id\": \"123\"}]";
+HttpDeleteBody(vaHTTP, "https://www.senior.com.br/registro", vaDados, vaResposta);
+Mensagem(Retorna, vaResposta);
+```
+
+**Exemplo com Múltiplos IDs:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+
+HttpObjeto(vaHTTP);
+
+@ Configurar cabeçalhos @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer token123");
+
+@ Lista de IDs para exclusão em lote @
+vaDados = "[{\"id\": \"123\"}, {\"id\": \"456\"}, {\"id\": \"789\"}]";
+
+HttpDeleteBody(vaHTTP, "https://api.exemplo.com/usuarios/lote", vaDados, vaResposta);
+```
+
+### HttpDownload
+
+Faz download de arquivos diretamente para o disco, sem carregar na memória. Ideal para arquivos grandes.
+
+**Sintaxe:** `HttpDownload(Alfa Objeto, Alfa URL, Alfa Arquivo);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `URL`: URL do arquivo para download
+- `Arquivo`: Caminho completo onde salvar o arquivo
+
+**Exemplo Básico:**
+```lsp
+Definir Alfa vaHTTP;
+
+HttpObjeto(vaHTTP);
+HttpDownload(vaHTTP, "https://www.senior.com.br/product.zip", "C:\\Senior\\product.zip");
+```
+
+**Exemplo com Verificação:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Numero vnStatus;
+Definir Alfa vaCaminho;
+
+HttpObjeto(vaHTTP);
+HttpDesabilitaErroResposta(vaHTTP);
+
+vaCaminho = "C:\\Downloads\\relatorio.pdf";
+HttpDownload(vaHTTP, "https://exemplo.com/relatorio.pdf", vaCaminho);
+
+HttpLeCodigoResposta(vaHTTP, vnStatus);
+Se (vnStatus = 200) {
+  Mensagem(Retorna, "Download concluído: " + vaCaminho);
+} Senao {
+  Mensagem(Erro, "Erro no download. Status: " + vnStatus);
+}
+```
+
+**Observações:**
+- Funciona como HttpGet, mas salva diretamente em arquivo
+- Recomendado para arquivos grandes para evitar consumo excessivo de memória
+- O diretório de destino deve existir
+
+### HttpSetaTimeout
+
+Define um timeout (tempo limite) para requisições HTTP. Evita travamentos em requisições lentas.
+
+**Sintaxe:** `HttpSetaTimeout(Alfa Objeto, Numero Timeout);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `Timeout`: Tempo limite em segundos
+
+**Exemplo Básico:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Definir timeout de 5 segundos @
+HttpSetaTimeout(vaHTTP, 5);
+
+HttpGet(vaHTTP, "https://httpstat.us/200?sleep=4000", vaResposta);
+Mensagem(Retorna, vaResposta);
+```
+
+**Exemplo com Diferentes Timeouts:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Para APIs rápidas - timeout baixo @
+HttpSetaTimeout(vaHTTP, 10);
+HttpGet(vaHTTP, "https://api-rapida.exemplo.com/dados", vaResposta);
+
+@ Para APIs lentas - timeout maior @
+HttpSetaTimeout(vaHTTP, 120);
+HttpGet(vaHTTP, "https://api-lenta.exemplo.com/relatorio", vaResposta);
+```
+
+### HttpPatch
+
+Executa uma requisição HTTP PATCH para aplicar modificações parciais em um recurso. Ideal para atualizações que modificam apenas alguns campos.
+
+**Sintaxe:** `HttpPatch(Alfa end Objeto, Alfa URL, Alfa Dados, Alfa end Retorno);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `URL`: URL do recurso a ser modificado parcialmente
+- `Dados`: Dados de modificação parcial no formato texto
+- `Retorno`: Variável que receberá a resposta
+
+**Exemplo Básico:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+
+HttpObjeto(vaHTTP);
+
+@ Dados para modificação parcial (apenas os campos que mudaram) @
+vaDados = "{\"status\": \"ativo\", \"ultimo_acesso\": \"2024-01-15\"}";
+
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+HttpPatch(vaHTTP, "https://api.exemplo.com/usuarios/123", vaDados, vaResposta);
+```
+
+**Exemplo com Verificação:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaDados;
+Definir Numero vnStatus;
+
+HttpObjeto(vaHTTP);
+HttpDesabilitaErroResposta(vaHTTP);
+
+vaDados = "{\"email\": \"novo@exemplo.com\"}";
+
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer token123");
+
+HttpPatch(vaHTTP, "https://api.exemplo.com/perfil", vaDados, vaResposta);
+
+HttpLeCodigoResposta(vaHTTP, vnStatus);
+Se (vnStatus = 200) {
+  Mensagem(Retorna, "Perfil atualizado com sucesso!");
+} Senao {
+  Mensagem(Erro, "Erro ao atualizar. Status: " + vnStatus);
+}
+```
+
+**Observações:**
+- PATCH é usado para modificações parciais (só os campos alterados)
+- Diferente do PUT, que substitui o recurso completo
+- Suporta apenas formato texto, não arquivos binários
+
+### HttpSetAttachment
+
+Permite o envio de arquivos locais no corpo de uma requisição HTTP. Disponível para os métodos POST, PUT e PATCH.
+
+**Sintaxe:** `HttpSetAttachment(Alfa end Objeto, Alfa CaminhoArquivo);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `CaminhoArquivo`: Caminho completo do arquivo local a ser anexado
+
+**Exemplo com POST:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Anexar arquivo @
+HttpSetAttachment(vaHTTP, "C:\\temp\\documento.pdf");
+
+@ Configurar cabeçalhos @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer token123");
+
+HttpPost(vaHTTP, "https://api.exemplo.com/upload", "", vaResposta);
+```
+
+**Exemplo com Múltiplos Arquivos (conceitual):**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Para múltiplos arquivos, fazer requisições separadas @
+HttpSetAttachment(vaHTTP, "C:\\docs\\relatorio.pdf");
+HttpPost(vaHTTP, "https://api.exemplo.com/upload", "", vaResposta);
+
+HttpSetAttachment(vaHTTP, "C:\\docs\\planilha.xlsx");
+HttpPost(vaHTTP, "https://api.exemplo.com/upload", "", vaResposta);
+```
+
+**Observações:**
+- O arquivo deve existir no caminho especificado
+- Funciona com POST, PUT e PATCH
+- Para múltiplos arquivos, faça requisições separadas
+
+### Base64Encode / Base64Decode
+
+Funções para codificar e decodificar strings em Base64, essenciais para autenticação HTTP básica e transmissão segura de dados.
+
+#### Base64Encode
+
+Codifica strings em Base64, comumente usado para autenticação básica HTTP.
+
+**Sintaxe:** `Base64Encode(Alfa valor, Alfa end Base64Encode);`
+
+**Parâmetros:**
+- `valor`: String a ser codificada em Base64
+- `Base64Encode`: Variável que receberá o resultado codificado
+
+#### Base64Decode
+
+Decodifica um valor Base64 de volta para texto original.
+
+**Sintaxe:** `Base64Decode(Alfa valor, Alfa end Base64Decode);`
+
+**Parâmetros:**
+- `valor`: Valor em Base64 a ser decodificado
+- `Base64Decode`: Variável que receberá o conteúdo decodificado
+
+**Exemplo Básico de Codificação:**
+```lsp
+Definir Alfa vaValor;
+Definir Alfa vaBase64;
+
+vaValor = "valor para converter";
+Base64Encode(vaValor, vaBase64);
+Mensagem(Retorna, vaBase64); @ Exibirá: dmFsb3IgcGFyYSBjb252ZXJ0ZXI= @
+```
+
+**Exemplo Básico de Decodificação:**
+```lsp
+Definir Alfa vaValorBase64;
+Definir Alfa vaValor;
+
+vaValorBase64 = "dmFsb3IgcGFyYSBjb252ZXJ0ZXI=";
+Base64Decode(vaValorBase64, vaValor);
+Mensagem(Retorna, vaValor); @ Exibirá: valor para converter @
+```
+
+**Exemplo para Autenticação HTTP:**
+```lsp
+Definir Alfa vaUsuario;
+Definir Alfa vaSenha;
+Definir Alfa vaCredenciais;
+Definir Alfa vaBase64;
+Definir Alfa vaAuth;
+
+vaUsuario = "admin";
+vaSenha = "senha123";
+vaCredenciais = vaUsuario + ":" + vaSenha;
+
+@ Codificar credenciais @
+Base64Encode(vaCredenciais, vaBase64);
+vaAuth = "Basic " + vaBase64;
+
+@ Usar vaAuth no cabeçalho Authorization @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuth);
+```
+
+**Exemplo de Uso Completo (Codificar e Decodificar):**
+```lsp
+Definir Alfa vaTextoOriginal;
+Definir Alfa vaTextoCodificado;
+Definir Alfa vaTextoDecodificado;
+
+vaTextoOriginal = "dados sensíveis da aplicação";
+
+@ Codificar para transmissão segura @
+Base64Encode(vaTextoOriginal, vaTextoCodificado);
+Mensagem(Retorna, "Dados codificados: " + vaTextoCodificado);
+
+@ Decodificar após receber @
+Base64Decode(vaTextoCodificado, vaTextoDecodificado);
+Mensagem(Retorna, "Dados decodificados: " + vaTextoDecodificado);
+
+@ Verificar se são iguais @
+Se (vaTextoOriginal = vaTextoDecodificado) {
+  Mensagem(Retorna, "Codificação/Decodificação realizada com sucesso!");
+}
+```
+
+**Casos de Uso Comuns:**
+- **Autenticação HTTP Basic**: Codificar usuário:senha
+- **Tokens de API**: Decodificar tokens JWT recebidos 
+- **Transmissão de dados**: Codificar dados binários como texto
+- **Armazenamento**: Codificar credenciais para armazenamento temporário
+- **Integração**: Decodificar dados recebidos de APIs externas
+
+### Exemplo Completo: Sistema de Autenticação
+
+Aqui está um exemplo completo de geração de token com autenticação básica:
+
+```lsp
+Definir Alfa vaToken;
+Definir Funcao gerarToken();
+
+gerarToken();
+
+Funcao gerarToken(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaJSON;
+  Definir Alfa vaCodRes;
+  Definir Alfa vaMsgUsu;
+  Definir Numero vnCodRes;
+  
+  Definir Alfa vaUsuario;
+  Definir Alfa vaAPIKey;
+  Definir Alfa vaEncode;
+  Definir Alfa vaAuthToken;
+  Definir Alfa vaURL;
+  Definir Alfa vaDados;
+
+  @ Credenciais de exemplo (substitua pelas reais) @
+  vaUsuario = "usuario_demo";  
+  vaAPIKey = "sk_test_1234567890abcdef1234567890abcdef12345678";
+  
+  @ Criar token de autenticação Basic @
+  vaEncode = vaUsuario + ":" + vaAPIKey;
+  Base64Encode(vaEncode, vaAuthToken); 
+  vaAuthToken = "Basic " + vaAuthToken;
+  
+  @ Configurar URL e dados @
+  vaURL = "https://api.exemplo.com/v1/auth/token"; 
+  vaDados = "{\"numero_cartao\": \"0012345678\"}";
+  
+  @ Criar objeto HTTP @
+  HttpObjeto(vaHTTP);
+
+  @ Configurar tratamento de erros @
+  HttpDesabilitaErroResposta(vaHTTP); 
+  
+  @ Configurar timeout @
+  HttpSetaTimeout(vaHTTP, 30);
+  
+  @ Configurar cabeçalhos @
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json;charset=utf-8");
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json;charset=utf-8");
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept-Charset", "utf-8");
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Cache-Control", "no-cache");
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuthToken);
+  HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8");
+  
+  @ Executar requisição @
+  HttpPost(vaHTTP, vaURL, vaDados, vaJSON);
+  
+  @ Verificar código de resposta @
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+  
+  @ Processar resposta de sucesso @
+  Se ((vnCodRes >= 200) e (vnCodRes <= 204)) {
+    @ Extrair token do JSON @
+    ValorElementoJson(vaJSON, "", "token", vaToken);
+    
+    @ Log de sucesso @
+    Mensagem(Retorna, "Token gerado com sucesso!");
+  }
+  
+  @ Tratamento de erro @
+  Se ((vnCodRes < 200) ou (vnCodRes >= 300)) {
+    IntParaAlfa(vnCodRes, vaCodRes);
+    vaMsgUsu = "Erro HTTP [" + vaCodRes + "]: Falha na autenticação. Verifique as credenciais.";
+    Mensagem(Erro, vaMsgUsu);
+  }
+}
+```
+
+### Funções de Configuração Avançada
+
+#### HttpAlteraCabecalhoRequisicao
+
+Configura cabeçalhos HTTP personalizados para requisições. Válido para todos os métodos HTTP.
+
+**Sintaxe:** `HttpAlteraCabecalhoRequisicao(Alfa end Objeto, Alfa Nome, Alfa Valor);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `Nome`: Nome do cabeçalho (não pode ser vazio)
+- `Valor`: Valor do cabeçalho (vazio remove o cabeçalho)
+
+**Exemplo com API REST:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "text/plain");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer token123");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "User-Agent", "MeuApp/1.0");
+
+HttpPost(vaHTTP, "https://exemplo.com/app/path", "<dados>", vaResposta);
+```
+
+#### HttpAlteraCodifCaracPadrao
+
+Configura a codificação de caracteres para respostas do servidor quando não especificada.
+
+**Sintaxe:** `HttpAlteraCodifCaracPadrao(Alfa end Objeto, Alfa Codificacao);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `Codificacao`: Nome da codificação (UTF-8, ISO-8859-1, Windows-1252)
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Configurar para UTF-8 @
+HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8");
+
+HttpGet(vaHTTP, "https://api.exemplo.com/dados", vaResposta);
+```
+
+**Observações:**
+- Valor padrão: ISO-8859-1
+- Codificações suportadas: UTF-8, ISO-8859-1, Windows-1252
+- Se a codificação for inválida, pode retornar vazio ou erro
+
+#### HttpAlteraRedirecionamento
+
+Controla o tratamento automático de redirecionamentos HTTP (3xx).
+
+**Sintaxe:** `HttpAlteraRedirecionamento(Alfa Objeto, Numero AceitaRedirecionamento);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP criado com HttpObjeto
+- `AceitaRedirecionamento`: 0 = Não trata, 1 = Trata redirecionamentos
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Habilitar tratamento automático de redirecionamentos @
+HttpAlteraRedirecionamento(vaHTTP, 1);
+
+HttpGet(vaHTTP, "https://site-com-redirect.exemplo.com", vaResposta);
+```
+
+### Funções de Gerenciamento de Cookies
+
+#### HttpHabilitarCookies / HttpDesabilitarCookies
+
+Controla o armazenamento e envio automático de cookies durante as requisições.
+
+**Sintaxe:** 
+- `HttpHabilitarCookies(Alfa Objeto);`
+- `HttpDesabilitarCookies(Alfa Objeto);`
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Habilitar cookies para manter sessão @
+HttpHabilitarCookies(vaHTTP);
+
+@ Fazer login @
+HttpPost(vaHTTP, "https://app.exemplo.com/login", "user=admin&pass=123", vaResposta);
+
+@ Os cookies de sessão serão enviados automaticamente @
+HttpGet(vaHTTP, "https://app.exemplo.com/dashboard", vaResposta);
+
+@ Desabilitar cookies se necessário @
+HttpDesabilitarCookies(vaHTTP);
+```
+
+### Funções de Leitura de Respostas
+
+#### HttpLeCabecalhoResposta
+
+Obtém valores de cabeçalhos retornados pelo servidor após uma requisição.
+
+**Sintaxe:** `HttpLeCabecalhoResposta(Alfa end Objeto, Alfa Nome, Alfa end Valor);`
+
+**Parâmetros:**
+- `Objeto`: Objeto HTTP após uma requisição
+- `Nome`: Nome do cabeçalho a consultar
+- `Valor`: Variável que receberá o valor (vazio se não existir)
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Alfa vaContentType;
+Definir Alfa vaContentLength;
+Definir Alfa vaServer;
+
+HttpObjeto(vaHTTP);
+
+HttpGet(vaHTTP, "https://exemplo.com/api/dados", vaResposta);
+
+@ Ler cabeçalhos de resposta @
+HttpLeCabecalhoResposta(vaHTTP, "Content-Type", vaContentType);
+HttpLeCabecalhoResposta(vaHTTP, "Content-Length", vaContentLength);
+HttpLeCabecalhoResposta(vaHTTP, "Server", vaServer);
+
+Mensagem(Retorna, "Tipo: " + vaContentType + ", Tamanho: " + vaContentLength);
+```
+
+**Observações:**
+- Disponível apenas após realizar uma requisição
+- Se o mesmo cabeçalho aparecer múltiplas vezes, retorna apenas o primeiro
+- Exceção: WWW-Authenticate e Proxy-Authenticate podem retornar múltiplos valores
+
+#### HttpNormalizaRetorno
+
+Aplica normalização Unicode para caracteres acentuados em respostas HTTP.
+
+**Sintaxe:** `HttpNormalizaRetorno(Alfa end Objeto);`
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Habilitar normalização Unicode @
+HttpNormalizaRetorno(vaHTTP);
+
+HttpGet(vaHTTP, "https://api.exemplo.com/dados-acentuados", vaResposta);
+
+@ A resposta terá caracteres acentuados normalizados @
+Mensagem(Retorna, vaResposta);
+```
+
+**Observações:**
+- Converte caracteres como Á (dois code points) para Á (um code point)
+- Útil para compatibilidade com sistemas que usam diferentes representações Unicode
+- Aplica normalização canônica Unicode C
+
+### Configuração de Proxy
+
+#### HttpAlteraConfiguracaoProxy
+
+Configura as definições de servidor proxy para as requisições.
+
+**Sintaxe:** `HttpAlteraConfiguracaoProxy(Alfa Objeto, Numero UsarProxy, Alfa Servidor, Numero Porta, Numero AutPorUsu);`
+
+**Parâmetros:**
+- `UsarProxy`: 0 = Não usar, 1 = Usar proxy
+- `Servidor`: Endereço do servidor proxy
+- `Porta`: Porta do servidor proxy
+- `AutPorUsu`: 0 = Sem autenticação, 1 = Com autenticação
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+
+HttpObjeto(vaHTTP);
+
+@ Configurar proxy corporativo @
+HttpAlteraConfiguracaoProxy(vaHTTP, 1, "proxy.empresa.com.br", 8080, 1);
+
+HttpGet(vaHTTP, "https://api.externa.com/dados", vaResposta);
+```
+
+#### HttpLeConfiguracaoProxy
+
+Lê as configurações atuais de proxy do objeto HTTP.
+
+**Sintaxe:** `HttpLeConfiguracaoProxy(Alfa Objeto, Numero end UsarProxy, Alfa end Servidor, Numero end Porta, Numero end AutPorUsu);`
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Numero vnUsarProxy;
+Definir Alfa vaServidor;
+Definir Numero vnPorta;
+Definir Numero vnAutPorUsu;
+
+HttpObjeto(vaHTTP);
+
+HttpLeConfiguracaoProxy(vaHTTP, vnUsarProxy, vaServidor, vnPorta, vnAutPorUsu);
+
+Se (vnUsarProxy = 1) {
+  Mensagem(Retorna, "Proxy: " + vaServidor + ":" + vnPorta);
+}
+```
+
+#### HttpAlteraAutenticacaoProxy / HttpLeAutenticacaoProxy
+
+Configura e lê as credenciais de autenticação para o servidor proxy.
+
+**Sintaxe:**
+- `HttpAlteraAutenticacaoProxy(Alfa Objeto, Alfa Usuario, Alfa Senha);`
+- `HttpLeAutenticacaoProxy(Alfa Objeto, Alfa end Usuario, Alfa end Senha);`
+
+**Parâmetros:**
+- `Usuario`: Nome de usuário para autenticação no proxy
+- `Senha`: Senha para autenticação no proxy
+
+**Exemplo de Configuração:**
+```lsp
+Definir Alfa vaHTTP;
+
+HttpObjeto(vaHTTP);
+
+@ Configurar credenciais do proxy @
+HttpAlteraAutenticacaoProxy(vaHTTP, "nome", "senha");
+```
+
+**Exemplo de Leitura:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaUsuario;
+Definir Alfa vaSenha;
+
+HttpObjeto(vaHTTP);
+
+@ Ler credenciais configuradas @
+HttpLeAutenticacaoProxy(vaHTTP, vaUsuario, vaSenha);
+
+Mensagem(Retorna, "Usuário proxy: " + vaUsuario);
+```
+
+**⚠️ Observações Importantes:**
+
+#### **Autenticação Automática:**
+- Se não informar usuário/senha válidos e a conexão exigir autenticação em servidor proxy, será exibida uma **tela de autenticação**
+
+#### **🌐 Limitação WEB 5.0:**
+- A **tela de autenticação NÃO está disponível na WEB 5.0**
+- Para conexões que exigem autenticação, **deve-se obrigatoriamente** informar usuário e senha válidos
+- Configure através de uma das opções:
+  1. **Configuração padrão** na Central de Configurações
+  2. **SGU** (Sistema de Gerenciamento de Usuários)
+  3. **Regra LSP** usando `HttpAlteraAutenticacaoProxy`
+
+#### **Comportamento da Leitura:**
+- Se configurado para **autenticação por usuário**: retorna valores do **SGU**
+- Caso contrário: retorna valores das propriedades **Usuário padrão** e **Senha padrão**
+
+#### Gerenciamento de Exceções de Proxy
+
+##### HttpAdicionaExcecaoProxy
+
+Adiciona endereços à lista de exceções de proxy (URLs que não passam pelo proxy).
+
+**Sintaxe:** `HttpAdicionaExcecaoProxy(Alfa Objeto, Alfa Endereco);`
+
+**Observação:** O endereço não deve ser precedido do protocolo (ex: "localhost" em vez de "http://localhost").
+
+##### HttpLeContadorExcecoesProxy
+
+Retorna a quantidade de exceções cadastradas na lista de proxy.
+
+**Sintaxe:** `HttpLeContadorExcecoesProxy(Alfa Objeto, Numero end Quantidade);`
+
+##### HttpLeExcecaoProxy
+
+Retorna um endereço específico da lista de exceções de proxy pelo índice.
+
+**Sintaxe:** `HttpLeExcecaoProxy(Alfa Objeto, Numero Indice, Alfa end Endereco);`
+
+##### HttpExcluiExcecaoProxy
+
+Remove um endereço específico da lista de exceções pelo índice.
+
+**Sintaxe:** `HttpExcluiExcecaoProxy(Alfa Objeto, Numero Indice);`
+
+##### HttpLimpaExcecoesProxy
+
+Remove todos os endereços da lista de exceções de proxy.
+
+**Sintaxe:** `HttpLimpaExcecoesProxy(Alfa Objeto);`
+
+**Exemplo completo de gerenciamento de exceções:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaEndereco;
+Definir Numero vnQuantidade;
+Definir Numero vnIndice;
+
+HttpObjeto(vaHTTP);
+
+@ Limpar exceções existentes @
+HttpLimpaExcecoesProxy(vaHTTP);
+
+@ Adicionar exceções para serviços internos @
+HttpAdicionaExcecaoProxy(vaHTTP, "localhost");
+HttpAdicionaExcecaoProxy(vaHTTP, "127.0.0.1");
+HttpAdicionaExcecaoProxy(vaHTTP, "api-interna.empresa.com.br");
+HttpAdicionaExcecaoProxy(vaHTTP, "10.0.30.25");
+
+@ Verificar quantidade de exceções @
+HttpLeContadorExcecoesProxy(vaHTTP, vnQuantidade);
+Mensagem(Retorna, "Total de exceções: " + vnQuantidade);
+
+@ Listar todas as exceções @
+Para (vnIndice = 0; vnIndice < vnQuantidade; vnIndice++) {
+  HttpLeExcecaoProxy(vaHTTP, vnIndice, vaEndereco);
+  Mensagem(Retorna, "Exceção " + vnIndice + ": " + vaEndereco);
+}
+
+@ Remover uma exceção específica (índice 2) @
+HttpExcluiExcecaoProxy(vaHTTP, 2);
+```
+
+### Configuração SSL
+
+#### HttpAlteraConfiguracaoSSL / HttpLeConfiguracaoSSL
+
+Controla as configurações SSL/TLS para requisições HTTPS.
+
+**Sintaxe:** 
+- `HttpAlteraConfiguracaoSSL(Alfa Objeto, Numero SSL);`
+- `HttpLeConfiguracaoSSL(Alfa Objeto, Numero end SSL);`
+
+**Valores SSL:**
+- 0 = Automático
+- 1 = Nunca
+- 2 = Sempre
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Numero vnSSL;
+
+HttpObjeto(vaHTTP);
+
+@ Sempre usar SSL @
+HttpAlteraConfiguracaoSSL(vaHTTP, 2);
+
+@ Verificar configuração @
+HttpLeConfiguracaoSSL(vaHTTP, vnSSL);
+```
+
+### Configuração de Progresso de Download
+
+#### HttpAlteraMostrarProgresso / HttpLeMostrarProgresso
+
+Controla a exibição da barra de progresso durante downloads de arquivos.
+
+**Sintaxe:**
+- `HttpAlteraMostrarProgresso(Alfa Objeto, Numero Mostrar);`
+- `HttpLeMostrarProgresso(Alfa Objeto, Numero end Mostrar);`
+
+**Parâmetros:**
+- `Mostrar`: 0 = Não exibir progresso, 1 = Exibir progresso
+
+**Exemplo Básico:**
+```lsp
+Definir Alfa vaHTTP;
+
+HttpObjeto(vaHTTP);
+
+@ Habilitar barra de progresso @
+HttpAlteraMostrarProgresso(vaHTTP, 1);
+```
+
+**Exemplo Completo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Numero vnMostrarProgresso;
+
+HttpObjeto(vaHTTP);
+
+@ Habilitar barra de progresso para downloads @
+HttpAlteraMostrarProgresso(vaHTTP, 1);
+
+@ Verificar configuração atual @
+HttpLeMostrarProgresso(vaHTTP, vnMostrarProgresso);
+
+Se (vnMostrarProgresso = 1) {
+  Mensagem(Retorna, "Progresso de download habilitado");
+}
+
+@ Fazer download com progresso visível @
+HttpDownload(vaHTTP, "https://exemplo.com/arquivo-grande.zip", "C:\\Downloads\\arquivo.zip");
+
+@ Desabilitar progresso para próximas operações @
+HttpAlteraMostrarProgresso(vaHTTP, 0);
+```
+
+**Casos de Uso:**
+- **Downloads grandes**: Habilite para mostrar progresso ao usuário
+- **Downloads automáticos**: Desabilite para não interromper o fluxo
+- **Experiência do usuário**: Use conforme a necessidade de feedback visual
+
+### Configuração SNI (Server Name Indication)
+
+#### HttpHabilitaSNI / HttpDesabilitaSNI
+
+Controla o envio do nome do servidor na requisição HTTPS.
+
+**Sintaxe:**
+- `HttpHabilitaSNI(Alfa Objeto);`
+- `HttpDesabilitaSNI(Alfa Objeto);`
+
+**Exemplo:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ Habilitar SNI para sites que exigem @
+HttpHabilitaSNI(vaHTTP);
+
+HttpGet(vaHTTP, "https://www.google.com.br/", vaResposta);
+
+@ O nome "google.com.br" será enviado na requisição @
+```
+
+**Observações:**
+- SNI é desabilitado por padrão
+- Necessário para alguns servidores que hospedam múltiplos domínios
+- Obrigatório para alguns certificados SSL modernos
+
+### Funções Auxiliares Importantes
+
+As funções HTTP da LSP contam com várias funções auxiliares que permitem controle granular sobre as requisições.
+
+#### Configuração de Cabeçalhos
+```lsp
+@ Cabeçalhos comuns para APIs REST @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "User-Agent", "MeuApp/1.0");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer " + vaToken);
+
+@ Cabeçalhos para cache @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Cache-Control", "no-cache");
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Pragma", "no-cache");
+```
+
+#### Verificação de Status HTTP
+```lsp
+HttpLeCodigoResposta(vaHTTP, vnCodigo);
+
+Se (vnCodigo = 200) {
+  @ Sucesso @
+} Senao Se (vnCodigo = 201) {
+  @ Criado com sucesso @
+} Senao Se (vnCodigo = 401) {
+  @ Não autorizado @
+} Senao Se (vnCodigo = 404) {
+  @ Não encontrado @
+} Senao Se (vnCodigo >= 500) {
+  @ Erro do servidor @
+} Senao {
+  @ Outros erros @
+}
+```
+
+#### Controle de Erros
+```lsp
+@ Desabilita exceções automáticas para códigos 4xx/5xx @
+HttpDesabilitaErroResposta(vaHTTP);
+
+@ Habilita exceções automáticas (padrão) @
+HttpHabilitaErroResposta(vaHTTP);
+```
+
+#### Configurações SSL e Proxy
+```lsp
+@ Para HTTPS sem certificado válido @
+HttpHabilitaSNI(vaHTTP);
+
+@ Configurar codificação @
+HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8");
+
+@ Configurar proxy se necessário @
+HttpAlteraConfiguracaoProxy(vaHTTP, 1, "proxy.exemplo.com", 8080, 1);
+```
+
+### Exemplo Completo: Configuração Corporativa
+
+Aqui está um exemplo abrangente mostrando como configurar um objeto HTTP para um ambiente corporativo:
+
+```lsp
+Definir Funcao configurarHttpCorporativo();
+Definir Funcao exemploRequisicaoCompleta();
+
+configurarHttpCorporativo();
+exemploRequisicaoCompleta();
+
+Funcao configurarHttpCorporativo(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaResposta;
+  Definir Numero vnStatus;
+  
+  @ Criar objeto HTTP @
+  HttpObjeto(vaHTTP);
+  
+  @ Configurar proxy corporativo @
+  HttpAlteraConfiguracaoProxy(vaHTTP, 1, "proxy.empresa.com.br", 8080, 1);
+  
+  @ Adicionar exceções de proxy para serviços internos @
+  HttpAdicionaExcecaoProxy(vaHTTP, "localhost");
+  HttpAdicionaExcecaoProxy(vaHTTP, "127.0.0.1");
+  HttpAdicionaExcecaoProxy(vaHTTP, "api-interna.empresa.com.br");
+  
+  @ Configurar SSL @
+  HttpAlteraConfiguracaoSSL(vaHTTP, 2); @ Sempre usar SSL @
+  HttpHabilitaSNI(vaHTTP);
+  
+  @ Configurar codificação @
+  HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8");
+  
+  @ Configurar redirecionamentos @
+  HttpAlteraRedirecionamento(vaHTTP, 1);
+  
+  @ Habilitar cookies para sessões @
+  HttpHabilitarCookies(vaHTTP);
+  
+  @ Configurar normalização Unicode @
+  HttpNormalizaRetorno(vaHTTP);
+  
+  @ Configurar timeout @
+  HttpSetaTimeout(vaHTTP, 60);
+  
+  @ Desabilitar erros automáticos para controle manual @
+  HttpDesabilitaErroResposta(vaHTTP);
+  
+  @ Configurar cabeçalhos padrão @
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "User-Agent", "SistemaCorporativo/1.0");
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json");
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Cache-Control", "no-cache");
+  
+  @ Exemplo de requisição com toda configuração @
+  HttpGet(vaHTTP, "https://api.externa.com/dados", vaResposta);
+  
+  @ Verificar resultado @
+  HttpLeCodigoResposta(vaHTTP, vnStatus);
+  Se (vnStatus = 200) {
+    Mensagem(Retorna, "Configuração corporativa funcionando!");
+  } Senao {
+    Mensagem(Erro, "Erro na configuração. Status: " + vnStatus);
+  }
+}
+
+Funcao exemploRequisicaoCompleta(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaResposta;
+  Definir Alfa vaContentType;
+  Definir Alfa vaServer;
+  Definir Numero vnStatus;
+  
+  HttpObjeto(vaHTTP);
+  
+  @ Upload de arquivo com configuração completa @
+  HttpSetAttachment(vaHTTP, "C:\\temp\\relatorio.pdf");
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", "Bearer token123");
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "X-Upload-Type", "document");
+  
+  HttpPost(vaHTTP, "https://api.exemplo.com/upload", "", vaResposta);
+  
+  @ Analisar resposta @
+  HttpLeCodigoResposta(vaHTTP, vnStatus);
+  HttpLeCabecalhoResposta(vaHTTP, "Content-Type", vaContentType);
+  HttpLeCabecalhoResposta(vaHTTP, "Server", vaServer);
+  
+  Se (vnStatus = 201) {
+    Mensagem(Retorna, "Upload realizado com sucesso!");
+    Mensagem(Retorna, "Servidor: " + vaServer);
+  } Senao {
+    Mensagem(Erro, "Falha no upload. Status: " + vnStatus);
+  }
+}
+```
+
+### Boas Práticas
+
+1. **Sempre configure timeouts** para evitar travamentos em requisições lentas
+2. **Use HttpDesabilitaErroResposta** para controle manual de erros HTTP
+3. **Configure cabeçalhos adequados** para cada tipo de API (Accept, Content-Type, etc.)
+4. **Valide códigos de status HTTP** antes de processar respostas
+5. **Use HTTPS** sempre que possível para garantir segurança
+6. **Trate erros de rede** adequadamente com mensagens claras
+7. **Para arquivos grandes**, use `HttpDownload` em vez de `HttpGet`
+8. **Mantenha credenciais seguras** e nunca faça hardcode em produção
+9. **Use Base64Encode/Base64Decode** para autenticação básica e decodificação de tokens
+10. **Configure User-Agent** para identificar sua aplicação
+11. **Configure proxy adequadamente** em ambientes corporativos
+12. **Use exceções de proxy** para acessos internos sem proxy
+13. **Habilite SNI** para sites que requerem certificados modernos
+14. **Configure codificação UTF-8** para suporte internacional
+15. **Use cookies** para manter sessões em aplicações web
+
+### Códigos de Status HTTP Comuns
+
+| Código | Significado | Uso Típico |
+|--------|-------------|------------|
+| 200 | OK | Requisição bem-sucedida |
+| 201 | Created | Recurso criado com sucesso |
+| 204 | No Content | Sucesso sem conteúdo de retorno |
+| 400 | Bad Request | Requisição inválida ou malformada |
+| 401 | Unauthorized | Autenticação necessária |
+| 403 | Forbidden | Acesso negado |
+| 404 | Not Found | Recurso não encontrado |
+| 409 | Conflict | Conflito no estado do recurso |
+| 422 | Unprocessable Entity | Dados inválidos |
+| 500 | Internal Server Error | Erro interno do servidor |
+| 502 | Bad Gateway | Erro de gateway |
+| 503 | Service Unavailable | Serviço temporariamente indisponível |
+
+### Observações Importantes
+
+#### **Codificação e Caracteres**
+- **Codificação padrão**: windows-1252. Para UTF-8, use `HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8")`
+- **Caracteres especiais**: Evite caracteres como `|` em URLs em alguns sistemas Senior
+- **Unicode**: Use `HttpNormalizaRetorno` para normalizar caracteres acentuados
+- **Codificações suportadas**: UTF-8, ISO-8859-1, Windows-1252
+
+#### **SSL/TLS e Certificados**
+- **SNI**: Use `HttpHabilitaSNI` para sites que requerem certificados modernos
+- **Configuração SSL**: 0=Automático, 1=Nunca, 2=Sempre
+- **HTTPS**: Sempre prefira HTTPS para segurança em produção
+
+#### **Proxy e Rede**
+- **Ambientes corporativos**: Configure proxy com `HttpAlteraConfiguracaoProxy`
+- **Exceções de proxy**: Use `HttpAdicionaExcecaoProxy` para serviços internos
+- **Redirecionamentos**: Habilite com `HttpAlteraRedirecionamento(vaHTTP, 1)`
+
+#### **Upload e Download**
+- **Upload de arquivos**: Use `HttpSetAttachment` para anexar arquivos
+- **Download de arquivos grandes**: Prefira `HttpDownload` em vez de `HttpGet`
+- **Formatos suportados**: POST/PUT/PATCH são limitados a formato texto
+- **Múltiplos arquivos**: Faça requisições separadas para cada arquivo
+
+#### **Sessões e Cookies**
+- **Manter sessão**: Use `HttpHabilitarCookies` para login automático
+- **Segurança**: Desabilite cookies quando não necessários
+- **Persistência**: Cookies são mantidos durante toda a sessão do objeto HTTP
+
+#### **Cabeçalhos e Respostas**
+- **Content-Type**: Configure corretamente (application/json, application/x-www-form-urlencoded)
+- **Leitura de cabeçalhos**: Use `HttpLeCabecalhoResposta` após requisições
+- **User-Agent**: Sempre identifique sua aplicação
+- **Authorization**: Use Base64Encode para autenticação básica
+- **Tokens**: Use Base64Decode para decodificar tokens JWT recebidos
+
+#### **Tratamento de Erros**
+- **Controle manual**: Use `HttpDesabilitaErroResposta` para tratar erros manualmente
+- **Verificação de status**: Sempre verifique códigos HTTP antes de processar
+- **Timeouts**: Configure valores apropriados baseados na velocidade esperada
+- **Logs**: Implemente logging adequado para depuração
+
+#### **Performance e Boas Práticas**
+- **Timeouts**: Configure sempre para evitar travamentos
+- **Reutilização**: Um objeto HTTP pode ser reutilizado para múltiplas requisições
+- **Conexões**: LSP gerencia automaticamente o pool de conexões
+- **Cache**: Configure cabeçalhos Cache-Control adequadamente
+
+## 🚀 **Exemplos Práticos de APIs**
+
+Esta seção contém exemplos reais de integração com APIs públicas usando as funções HTTP da LSP.
+
+### Exemplo 1: Busca CEP na API ViaCEP
+
+Função completa para buscar informações de CEP usando a API gratuita do ViaCEP.
+
+```lsp
+Funcao buscarCepApi(Numero vnCepApi); {
   Definir Alfa vaCepApi;
   Definir Alfa vaHTTP;
   Definir Alfa vaURL;
@@ -2425,21 +5313,21 @@ Funcao buscarCepApi(Numero vnCepApi) {
   Definir Alfa vaMsgUsu;
   Definir Numero vnCodRes;
 
-  @Tratamento de Variáveis@
-  vaURL = "https://viacep.com.br/ws/__NUMCEP__/json/"; @URL do ViaCEP@
-  vaJSON = ""; @Objeto de Retorno da Requisição@
-  vnCodRes = 0; @Cód. HTTP Response@
+  @ Tratamento de Variáveis @
+  vaURL = "https://viacep.com.br/ws/__NUMCEP__/json/"; @ URL do ViaCEP @
+  vaJSON = ""; @ Objeto de Retorno da Requisição @
+  vnCodRes = 0; @ Cód. HTTP Response @
 
   ConverteMascara(1, vnCepApi, vaCepApi, "99999999");
   TrocaString(vaURL, "__NUMCEP__", vaCepApi);
 
-  @Cria Objeto HTTP@
+  @ Cria Objeto HTTP @
   HttpObjeto(vaHTTP);
 
-  @Desabilita Erro Padrão, evita que mensagens de erros HTTP 4XX/5XX gerem Exceptions em tela ao usuário@
+  @ Desabilita Erro Padrão, evita que mensagens de erros HTTP 4XX/5XX gerem Exceptions em tela ao usuário @
   HttpDesabilitaErroResposta(vaHTTP);
 
-  @Altera os Cabeçalhos da Requisição@
+  @ Altera os Cabeçalhos da Requisição @
   HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json;charset=utf-8");
   HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept-Encoding", "gzip, deflate, br");
   HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept-Charset", "utf-8");
@@ -2447,49 +5335,51 @@ Funcao buscarCepApi(Numero vnCepApi) {
   HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json;charset=utf-8");
   HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8");
 
-  @Efetua a Requisição@
+  @ Efetua a Requisição @
   HttpGet(vaHTTP, vaURL, vaJSON);
 
-  @Verifica Cód. HTTP Response@
+  @ Verifica Cód. HTTP Response @
   HttpLeCodigoResposta(vaHTTP, vnCodRes);
 
-  @Se a resposta foi "OK", extrai os dados do JSON@
+  @ Se a resposta foi "OK", extrai os dados do JSON @
   Se ((vnCodRes >= 200) e (vnCodRes <= 204)) {
-    @Logradouro@
+    @ Logradouro @
     ValorElementoJson(vaJSON, "", "logradouro", vaLogradouro);
 
-    @Complemento@
+    @ Complemento @
     ValorElementoJson(vaJSON, "", "complemento", vaComplemento);
 
-    @Bairro@
+    @ Bairro @
     ValorElementoJson(vaJSON, "", "bairro", vaBairro);
 
-    @Cidade@
+    @ Cidade @
     ValorElementoJson(vaJSON, "", "localidade", vaCidadeCep);
 
-    @Estado@
+    @ Estado @
     ValorElementoJson(vaJSON, "", "uf", vaEstadoCep);
 
-    @IBGE@
+    @ IBGE @
     ValorElementoJson(vaJSON, "", "ibge", vaIbge);
   }
 
-  @Tratamento de Erro@
+  @ Tratamento de Erro @
   Se ((vnCodRes < 200) ou (vnCodRes >= 300)) {
-    @Tratamento de Variáveis@
+    @ Tratamento de Variáveis @
     IntParaAlfa(vnCodRes, vaCodRes);
 
-    @Mensagem@
+    @ Mensagem @
     vaMsgUsu = "HTTP [" + vaCodRes + "]: Verifique os parâmetros da requisição";
     Mensagem(Retorna, vaMsgUsu);
   }
 }
 ```
 
-#### Exemplo 2: Busca a Cidade na API IBGE
+### Exemplo 2: Busca Cidade na API IBGE
+
+Função para obter informações de municípios usando a API do IBGE.
 
 ```lsp
-Funcao buscarCidadeApi(Numero vnCidApi) {
+Funcao buscarCidadeApi(Numero vnCidApi); {
   Definir Alfa vaCidApi;
   Definir Alfa vaHTTP;
   Definir Alfa vaURL;
@@ -2498,53 +5388,485 @@ Funcao buscarCidadeApi(Numero vnCidApi) {
   Definir Alfa vaMsgUsu;
   Definir Numero vnCodRes;
 
-  vdDatSis = DatSis;
-
-  @Tratamento de Variáveis@
-  vaURL = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios/__NUMCID__?view=nivelado"; @URL do IBGE@
-  vaJSON = ""; @Objeto de Retorno da Requisição@
-  vnCodRes = 0; @Cód. HTTP Response@
+  @ Tratamento de Variáveis @
+  vaURL = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios/__NUMCID__?view=nivelado"; @ URL do IBGE @
+  vaJSON = ""; @ Objeto de Retorno da Requisição @
+  vnCodRes = 0; @ Cód. HTTP Response @
 
   ConverteMascara(1, vnCidApi, vaCidApi, "9999999");
   TrocaString(vaURL, "__NUMCID__", vaCidApi);
 
-  @Cria Objeto HTTP@
+  @ Cria Objeto HTTP @
   HttpObjeto(vaHTTP);
 
-  @Desabilita Erro Padrão, evita que mensagens de erros HTTP 4XX/5XX gerem Exceptions em tela ao usuário@
+  @ Desabilita Erro Padrão, evita que mensagens de erros HTTP 4XX/5XX gerem Exceptions em tela ao usuário @
   HttpDesabilitaErroResposta(vaHTTP);
 
-  @Altera os Cabeçalhos da Requisição@
+  @ Altera os Cabeçalhos da Requisição @
   HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json;charset=utf-8");
-  @HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept-Encoding", "gzip, deflate, br");@
+  @ HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept-Encoding", "gzip, deflate, br"); @
   HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept-Charset", "utf-8");
   HttpAlteraCabecalhoRequisicao(vaHTTP, "Cache-Control", "no-cache");
   HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json;charset=utf-8");
   HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8");
 
-  @Efetua a Requisição@
+  @ Efetua a Requisição @
   HttpGet(vaHTTP, vaURL, vaJSON);
 
-  @Verifica Cód. HTTP Response@
+  @ Verifica Cód. HTTP Response @
   HttpLeCodigoResposta(vaHTTP, vnCodRes);
 
-  @Se a resposta foi "OK", extrai os dados do JSON@
+  @ Se a resposta foi "OK", extrai os dados do JSON @
   Se ((vnCodRes >= 200) e (vnCodRes <= 204)) {
-    @Cidade@
+    @ Cidade @
     ValorElementoJson(vaJSON, "", "municipio-nome", vaCidadeRai);
 
-    @Estado@
+    @ Estado @
     ValorElementoJson(vaJSON, "", "UF-sigla", vaEstadoRai);
   }
 
-  @Tratamento de Erro@
+  @ Tratamento de Erro @
   Se ((vnCodRes < 200) ou (vnCodRes >= 300)) {
-    @Tratamento de Variáveis@
+    @ Tratamento de Variáveis @
     IntParaAlfa(vnCodRes, vaCodRes);
 
-    @Mensagem@
+    @ Mensagem @
     vaMsgUsu = "HTTP [" + vaCodRes + "]: Verifique os parâmetros da requisição";
     Mensagem(Retorna, vaMsgUsu);
   }
 }
 ```
+
+### 💡 **Características dos Exemplos**
+
+#### **🔧 Exemplo ViaCEP:**
+- **Método**: GET
+- **Formato**: JSON
+- **Encoding**: UTF-8
+- **Tratamento**: Erros HTTP e parsing JSON
+- **Casos de uso**: Autocompletar endereços, validação de CEP
+
+#### **🌐 Exemplo IBGE:**
+- **Método**: GET
+- **Formato**: JSON com view nivelada
+- **API**: Gratuita e confiável do governo
+- **Casos de uso**: Listagem de municípios, dados geográficos
+
+#### **🎯 Boas Práticas Demonstradas:**
+1. **Configuração de encoding UTF-8** para caracteres especiais
+2. **Desabilitação de erros automáticos** para controle manual
+3. **Verificação de códigos de status** antes de processar
+4. **Formatação adequada de parâmetros** com ConverteMascara
+5. **Tratamento de erros** com mensagens informativas
+
+## 🚀 **Exemplos Práticos de APIs**
+
+Esta seção demonstra operações HTTP essenciais usando APIs reais. Os exemplos são organizados por funcionalidade e incluem autenticação completa.
+
+### 🔧 **CRUD Básico - ReqRes API**
+
+A **ReqRes API** (https://reqres.in) oferece operações CRUD funcionais sem necessidade de autenticação.
+
+#### **GET - Buscar Usuário**
+
+```lsp
+Funcao buscarUsuario(Numero vnIdUsuario); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaURL;
+  Definir Alfa vaJSON;
+  Definir Alfa vaId;
+  Definir Alfa vaMensagem;
+  Definir Alfa vaNome;
+  Definir Alfa vaEmail;
+  Definir Numero vnCodRes;
+
+  @ Monta URL @
+  IntParaAlfa(vnIdUsuario, vaId);
+  vaURL = "https://reqres.in/api/users/" + vaId;
+
+  @ Configura requisição @
+  HttpObjeto(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json");
+
+  @ Executa GET @
+  HttpGet(vaHTTP, vaURL, vaJSON);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+  Se (vnCodRes = 200) {
+    ValorElementoJson(vaJSON, "data", "first_name", vaNome);
+    ValorElementoJson(vaJSON, "data", "email", vaEmail);
+    vaMensagem = "✅ Usuário encontrado: " + vaNome + " (" + vaEmail + ")";
+    Mensagem(Retorna, vaMensagem);
+  } Senao Se (vnCodRes = 404) {
+    Mensagem(Retorna, "❌ Usuário não encontrado");
+  } Senao {
+    IntParaAlfa(vnCodRes, vaId);
+    Mensagem(Erro, "❌ Erro na requisição: " + vaId);
+  }
+}
+```
+
+#### **POST - Criar Usuário**
+
+```lsp
+@ Variáveis globais para dados do usuário @
+Definir Alfa vaNomeUsuario;
+Definir Alfa vaCargoUsuario;
+
+@ Exemplo de uso @
+vaNomeUsuario = "João Silva";
+vaCargoUsuario = "Desenvolvedor";
+criarUsuario();
+
+Funcao criarUsuario(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaJSON;
+  Definir Alfa vaBody;
+  Definir Alfa vaId;
+  Definir Alfa vaMensagem;
+  Definir Numero vnCodRes;
+
+  @ Monta JSON usando variáveis globais @
+  vaBody = "{\"name\": \"" + vaNomeUsuario + "\", \"job\": \"" + vaCargoUsuario + "\"}";
+
+  @ Configura requisição @
+  HttpObjeto(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+
+  @ Executa POST @
+  HttpPost(vaHTTP, "https://reqres.in/api/users", vaBody, vaJSON);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+  Se (vnCodRes = 201) {
+    ValorElementoJson(vaJSON, "", "id", vaId);
+    vaMensagem = "✅ Usuário criado! ID: " + vaId;
+    Mensagem(Retorna, vaMensagem);
+  } Senao {
+    IntParaAlfa(vnCodRes, vaId);
+    Mensagem(Erro, "❌ Erro ao criar: " + vaId);
+  }
+}
+```
+
+#### **PUT - Atualizar Completo**
+
+```lsp
+@ Variáveis globais para atualização @
+Definir Numero vnIdUsuario;
+Definir Alfa vaNomeAtualizar;
+Definir Alfa vaCargoAtualizar;
+
+@ Exemplo de uso @
+vnIdUsuario = 2;
+vaNomeAtualizar = "João Santos";
+vaCargoAtualizar = "Analista Senior";
+atualizarUsuario();
+
+Funcao atualizarUsuario(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaURL;
+  Definir Alfa vaJSON;
+  Definir Alfa vaBody;
+  Definir Alfa vaIdStr;
+  Definir Numero vnCodRes;
+
+  IntParaAlfa(vnIdUsuario, vaIdStr);
+  vaURL = "https://reqres.in/api/users/" + vaIdStr;
+  vaBody = "{\"name\": \"" + vaNomeAtualizar + "\", \"job\": \"" + vaCargoAtualizar + "\"}";
+
+  HttpObjeto(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+
+  @ PUT substitui recurso completo @
+  HttpPut(vaHTTP, vaURL, vaBody, vaJSON);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+  Se (vnCodRes = 200) {
+    Mensagem(Retorna, "✅ Usuário " + vaIdStr + " atualizado completamente");
+  } Senao {
+    IntParaAlfa(vnCodRes, vaIdStr);
+    Mensagem(Erro, "❌ Erro ao atualizar: " + vaIdStr);
+  }
+}
+
+@ Exemplo de uso @
+vnIdUsuario = 2;
+vaNomeAtualizar = "João Santos";
+vaCargoAtualizar = "Analista Senior";
+atualizarUsuario();
+```
+
+#### **PATCH - Atualizar Parcial**
+
+```lsp
+@ Variáveis globais para PATCH @
+Definir Numero vnIdCargo;
+Definir Alfa vaNovoCargo;
+
+@ Exemplo de uso @
+vnIdCargo = 2;
+vaNovoCargo = "Tech Lead";
+atualizarCargo();
+
+Funcao atualizarCargo(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaURL;
+  Definir Alfa vaJSON;
+  Definir Alfa vaBody;
+  Definir Alfa vaIdStr;
+  Definir Numero vnCodRes;
+
+  IntParaAlfa(vnIdCargo, vaIdStr);
+  vaURL = "https://reqres.in/api/users/" + vaIdStr;
+  vaBody = "{\"job\": \"" + vaNovoCargo + "\"}"; @ Apenas o campo alterado @
+
+  HttpObjeto(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+
+  @ PATCH modifica apenas campos específicos @
+  HttpPatch(vaHTTP, vaURL, vaBody, vaJSON);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+  Se (vnCodRes = 200) {
+    Mensagem(Retorna, "✅ Cargo atualizado para: " + vaNovoCargo);
+  } Senao {
+    IntParaAlfa(vnCodRes, vaIdStr);
+    Mensagem(Erro, "❌ Erro ao atualizar cargo: " + vaIdStr);
+  }
+}
+
+@ Exemplo de uso @
+vnIdCargo = 2;
+vaNovoCargo = "Tech Lead";
+atualizarCargo();
+```
+
+#### **DELETE - Excluir Usuário**
+
+```lsp
+Funcao excluirUsuario(Numero vnId); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaURL;
+  Definir Alfa vaJSON;
+  Definir Alfa vaIdStr;
+  Definir Numero vnCodRes;
+
+  IntParaAlfa(vnId, vaIdStr);
+  vaURL = "https://reqres.in/api/users/" + vaIdStr;
+
+  HttpObjeto(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+
+  HttpDelete(vaHTTP, vaURL, vaJSON);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+  Se (vnCodRes = 204) {
+    Mensagem(Retorna, "✅ Usuário " + vaIdStr + " excluído com sucesso");
+  } Senao {
+    IntParaAlfa(vnCodRes, vaIdStr);
+    Mensagem(Erro, "❌ Erro ao excluir: " + vaIdStr);
+  }
+}
+```
+
+### 🔐 **Autenticação Basic Auth - HTTPBin**
+
+Demonstra autenticação básica real usando usuário e senha.
+
+```lsp
+@ Variáveis globais para Basic Auth @
+Definir Alfa vaUsuarioAuth;
+Definir Alfa vaSenhaAuth;
+
+@ Exemplo de uso @
+vaUsuarioAuth = "admin";
+vaSenhaAuth = "senha123";
+testarBasicAuth();
+
+Funcao testarBasicAuth(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaURL;
+  Definir Alfa vaJSON;
+  Definir Alfa vaCredenciais;
+  Definir Alfa vaAuth;
+  Definir Alfa vaUsuarioRetornado;
+  Definir Numero vnCodRes;
+
+  @ Monta URL com credenciais @
+  vaURL = "https://httpbin.org/basic-auth/" + vaUsuarioAuth + "/" + vaSenhaAuth;
+
+  @ Gera header Authorization @
+  vaCredenciais = vaUsuarioAuth + ":" + vaSenhaAuth;
+  Base64Encode(vaCredenciais, vaAuth);
+  vaAuth = "Basic " + vaAuth;
+
+  @ Configura requisição @
+  HttpObjeto(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuth);
+
+  @ Executa requisição @
+  HttpGet(vaHTTP, vaURL, vaJSON);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+  Se (vnCodRes = 200) {
+    ValorElementoJson(vaJSON, "", "user", vaUsuarioRetornado);
+    Mensagem(Retorna, "✅ Autenticação Basic Auth: " + vaUsuarioRetornado);
+  } Senao Se (vnCodRes = 401) {
+    Mensagem(Retorna, "❌ Credenciais inválidas - 401 Unauthorized");
+  } Senao {
+    IntParaAlfa(vnCodRes, vaAuth);
+    Mensagem(Erro, "❌ Erro inesperado: " + vaAuth);
+  }
+}
+
+@ Exemplo de uso @
+vaUsuarioAuth = "admin";
+vaSenhaAuth = "senha123";
+testarBasicAuth();
+```
+
+### 🎫 **Autenticação Bearer Token - HTTPBin**
+
+Demonstra autenticação com token Bearer.
+
+```lsp
+@ Variável global para Bearer Token @
+Definir Alfa vaTokenBearer;
+
+@ Exemplo de uso @
+vaTokenBearer = "meu-token-secreto";
+testarBearerToken();
+
+Funcao testarBearerToken(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaJSON;
+  Definir Alfa vaAuth;
+  Definir Alfa vaTokenRetornado;
+  Definir Numero vnCodRes;
+
+  @ Monta header Authorization @
+  vaAuth = "Bearer " + vaTokenBearer;
+
+  @ Configura requisição @
+  HttpObjeto(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuth);
+
+  @ Executa requisição @
+  HttpGet(vaHTTP, "https://httpbin.org/bearer", vaJSON);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+  Se (vnCodRes = 200) {
+    ValorElementoJson(vaJSON, "", "token", vaTokenRetornado);
+    Mensagem(Retorna, "✅ Autenticação Bearer: " + vaTokenRetornado);
+  } Senao Se (vnCodRes = 401) {
+    Mensagem(Retorna, "❌ Token inválido - 401 Unauthorized");
+  } Senao {
+    IntParaAlfa(vnCodRes, vaAuth);
+    Mensagem(Erro, "❌ Erro inesperado: " + vaAuth);
+  }
+}
+
+@ Exemplo de uso @
+vaTokenBearer = "meu-token-secreto";
+testarBearerToken();
+```
+
+### 🔑 **Fluxo Completo: Login + Token + CRUD**
+
+Exemplo completo simulando login para obter token e usar em operações subsequentes.
+
+```lsp
+Funcao exemploFluxoCompleto(); {
+  Definir Alfa vaHTTP;
+  Definir Alfa vaJSON;
+  Definir Alfa vaBody;
+  Definir Alfa vaToken;
+  Definir Alfa vaAuth;
+  Definir Numero vnCodRes;
+
+  HttpObjeto(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+
+  @ 1. LOGIN - Simula obtenção de token @
+  vaBody = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}";
+  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+  
+  HttpPost(vaHTTP, "https://reqres.in/api/login", vaBody, vaJSON);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+  Se (vnCodRes = 200) {
+    @ Extrai token @
+    ValorElementoJson(vaJSON, "", "token", vaToken);
+    Mensagem(Retorna, "✅ Login realizado! Token: " + vaToken);
+
+    @ 2. USA TOKEN - Em requisição subsequente @
+    vaAuth = "Bearer " + vaToken;
+    HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuth);
+
+    @ 3. OPERAÇÃO AUTENTICADA - Buscar usuários @
+    HttpGet(vaHTTP, "https://reqres.in/api/users?page=1", vaJSON);
+    HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+    Se (vnCodRes = 200) {
+      Mensagem(Retorna, "✅ Dados obtidos com token de autenticação!");
+    } Senao {
+      Mensagem(Erro, "❌ Erro ao usar token autenticado");
+    }
+  } Senao {
+    Mensagem(Erro, "❌ Falha no login");
+  }
+}
+```
+
+### 📋 **Exemplos de Uso**
+
+```lsp
+@ CRUD Básico @
+buscarUsuario(2);
+
+vaNomeUsuario = "João Silva";
+vaCargoUsuario = "Desenvolvedor";
+criarUsuario();
+
+vnIdUsuario = 2;
+vaNomeAtualizar = "João Santos";
+vaCargoAtualizar = "Analista Senior";
+atualizarUsuario();
+
+vnIdCargo = 2;
+vaNovoCargo = "Tech Lead";
+atualizarCargo();
+
+excluirUsuario(2);
+
+@ Autenticação @
+vaUsuarioAuth = "admin";
+vaSenhaAuth = "senha123";
+testarBasicAuth();
+
+vaTokenBearer = "meu-token-secreto";
+testarBearerToken();
+
+@ Fluxo completo @
+exemploFluxoCompleto();
+```
+
+### ✅ **Resumo das APIs Utilizadas**
+
+| API | Funcionalidade | Autenticação | Status |
+|-----|---------------|--------------|--------|
+| **ReqRes** | CRUD completo funcional | ❌ Não requer | ✅ Real |
+| **HTTPBin Basic** | Teste Basic Auth | ✅ user:pass | ✅ Real |
+| **HTTPBin Bearer** | Teste Bearer Token | ✅ Bearer token | ✅ Real |
+
+**💡 Vantagens desta abordagem:**
+- 🎯 **Foco didático**: Um exemplo claro de cada conceito
+- ✅ **Funcionalidade real**: Todas as operações funcionam de verdade
+- 🔐 **Autenticação completa**: Basic Auth e Bearer Token reais
+- 📚 **Progressão lógica**: Do básico ao avançado
