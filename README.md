@@ -465,6 +465,37 @@ AlfaParaDecimal(vaTexto, vnValor);
 MinhaGrid.CampoDecimal = vnValor;
 ```
 
+### 🚫 **Regra #5: Interrupção de Fluxo com Cancel**
+```lsp
+@ ❌ NUNCA USE - NÃO EXISTE NA LSP @
+Mensagem(Erro, "Dado inválido");
+Retorna;
+
+@ ✅ SEMPRE USE - PADRÃO CORRETO @
+Mensagem(Erro, "Dado inválido");
+Cancel(1);
+```
+
+**Explicação:** Em LSP, o comando `Retorna;` não existe. Para interromper a execução de uma função após uma mensagem de erro, use `Cancel(1);`. O parâmetro `1` indica que a execução deve ser cancelada.
+
+**Exemplo de uso correto:**
+```lsp
+EstaNulo(vaDado, vnEhNulo);
+Se (vnEhNulo = 1) {
+  Mensagem(Erro, "Dado não pode ser nulo");
+  Cancel(1);
+}
+
+TamanhoAlfa(vaDado, vnTamanho);
+Se (vnTamanho < 3) {
+  Mensagem(Erro, "Dado deve ter pelo menos 3 caracteres");
+  Cancel(1);
+}
+
+@ Se chegou até aqui, o dado é válido @
+Mensagem(Retorna, "Dado validado com sucesso!");
+```
+
 ## 🚨 **Erros Comuns e Soluções**
 
 ### **⚠️ AVISO IMPORTANTE: Problemas de Sintaxe Corrigidos**
