@@ -3013,8 +3013,8 @@ Definir Funcao obterDatasAtuais();
 
 @ Variáveis globais @
 Definir Data vdDataAtual;
-Definir Numero vnDataHoraAtual;      @ Corrigido: Numero em vez de Data @
-Definir Numero vnDataHoraUTC;        @ Corrigido: Numero em vez de Data @
+Definir Numero vnDataHoraAtual;
+Definir Numero vnDataHoraUTC;
 Definir Alfa vaDataFormatada;
 Definir Alfa vaNumeroStr;
 
@@ -3580,14 +3580,14 @@ FormatarData(vnDataHora, "dd/MM/yyyy", vaFormatada); @ Funciona! @
 Definir Funcao exemploFormatacoes();
 
 @ Variáveis globais @
-Definir Data vdDataAtual;           @ Corrigido: usar DataHoje @
+Definir Data vdDataAtual;
 Definir Alfa vaFormatoBR;
 Definir Alfa vaFormatoUS;
 Definir Alfa vaFormatoISO;
 Definir Alfa vaFormatoCompleto;
 Definir Alfa vaApenasHora;
 
-DataHoje(vdDataAtual);              @ Corrigido: DataHoje em vez de DataHora @
+DataHoje(vdDataAtual);
 
 exemploFormatacoes();
 
@@ -9985,7 +9985,7 @@ AlfaParaDecimal(vaTexto, vnDecimal);
 
 @ === DATAS === @
 DataHoje(vdDataAtual);
-DataHora(vnDataHoraAtual);          @ Corrigido: DataHora retorna Numero @
+DataHora(vnDataHoraAtual);         
 @ Para formatação, converta para número @
 Definir Numero vnData;
 vnData = vdData;
