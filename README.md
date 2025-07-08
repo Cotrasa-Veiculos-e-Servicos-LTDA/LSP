@@ -142,6 +142,29 @@ Se (vnCondicao = 1) {
 }
 ```
 
+#### **Problema: "Função não funciona"**
+**Causa:** Parâmetros incorretos ou ordem errada
+**Solução:** Verifique a documentação da função
+```lsp
+@ ❌ INCORRETO @
+TamanhoAlfa(vnTamanho, vaTexto);  @ Ordem errada @
+
+@ ✅ CORRETO @
+TamanhoAlfa(vaTexto, vnTamanho);  @ Ordem correta @
+```
+
+#### **Problema: "Comparação com função sem retorno"**
+**Causa:** Tentar comparar função que usa parâmetro de retorno
+**Solução:** Execute a função primeiro, depois compare a variável
+```lsp
+@ ❌ INCORRETO @
+Se (EstaNulo(vaDado, vnEhNulo) = 0) {  @ Função não retorna valor @
+
+@ ✅ CORRETO @
+EstaNulo(vaDado, vnEhNulo);  @ Executa função primeiro @
+Se (vnEhNulo = 0) {          @ Compara variável preenchida @
+```
+
 #### **Problema: "Erro de tipo"**
 **Causa:** Tentativa de atribuir tipo incorreto
 **Solução:** Use funções de conversão apropriadas
@@ -204,12 +227,17 @@ Mensagem(Retorna, vaDebug);
 #### **Técnica 2: Validação de Dados**
 ```lsp
 @ Sempre valide dados antes de processar @
-TamanhoAlfa(vaDado, vnTamanho);
-Se (vnTamanho > 0) {
-  @ Processa apenas se válido @
-  Mensagem(Retorna, "Dado válido: " + vaDado);
+EstaNulo(vaDado, vnEhNulo);
+Se (vnEhNulo = 0) {
+  TamanhoAlfa(vaDado, vnTamanho);
+  Se (vnTamanho > 0) {
+    @ Processa apenas se válido @
+    Mensagem(Retorna, "Dado válido: " + vaDado);
+  } Senao {
+    Mensagem(Erro, "Dado vazio");
+  }
 } Senao {
-  Mensagem(Erro, "Dado vazio ou inválido");
+  Mensagem(Erro, "Dado nulo");
 }
 ```
 
@@ -260,14 +288,20 @@ Mensagem(Retorna, vaMensagem);
 @ Validador de Nome @
 Definir Alfa vaNome;
 Definir Numero vnTamanho;
+Definir Numero vnEhNulo;
 
 vaNome = "João";
-TamanhoAlfa(vaNome, vnTamanho);
+EstaNulo(vaNome, vnEhNulo);
 
-Se (vnTamanho >= 3) {
-  Mensagem(Retorna, "Nome válido!");
+Se (vnEhNulo = 0) {
+  TamanhoAlfa(vaNome, vnTamanho);
+  Se (vnTamanho >= 3) {
+    Mensagem(Retorna, "Nome válido!");
+  } Senao {
+    Mensagem(Erro, "Nome deve ter pelo menos 3 caracteres");
+  }
 } Senao {
-  Mensagem(Erro, "Nome deve ter pelo menos 3 caracteres");
+  Mensagem(Erro, "Nome não pode ser nulo");
 }
 ```
 
@@ -307,10 +341,12 @@ Definir Alfa vaIdadeStr;
 Definir Alfa vaMensagem;
 
 @ Define data de nascimento (exemplo: 15/08/1990) @
-vdDataNascimento = 15/08/1990;
+MontaData(15, 8, 1990, vdDataNascimento);
 DataHoje(vdDataAtual);
 
 @ Extrai anos @
+Definir Numero vnDia;
+Definir Numero vnMes;
 DecodData(vdDataNascimento, vnDia, vnMes, vnAnoNascimento);
 DecodData(vdDataAtual, vnDia, vnMes, vnAnoAtual);
 
@@ -334,8 +370,16 @@ Definir Alfa vaEmail;
 Definir Numero vnPosArroba;
 Definir Numero vnPosPonto;
 Definir Numero vnTamanho;
+Definir Numero vnEhNulo;
 
 vaEmail = "usuario@empresa.com.br";
+
+@ Verifica se não é nulo @
+EstaNulo(vaEmail, vnEhNulo);
+Se (vnEhNulo = 1) {
+  Mensagem(Erro, "Email não pode ser nulo");
+  Retorna;
+}
 
 @ Verifica se tem @ @
 PosicaoAlfa("@", vaEmail, vnPosArroba);
@@ -345,6 +389,7 @@ Se (vnPosArroba = 0) {
 }
 
 @ Verifica se tem ponto após @ @
+TamanhoAlfa(vaEmail, vnTamanho);
 CopiarAlfa(vaEmail, vnPosArroba + 1, vnTamanho - vnPosArroba);
 PosicaoAlfa(".", vaEmail, vnPosPonto);
 Se (vnPosPonto <= vnPosArroba) {
@@ -422,6 +467,81 @@ MinhaGrid.CampoDecimal = vnValor;
 
 ## 🚨 **Erros Comuns e Soluções**
 
+### **⚠️ AVISO IMPORTANTE: Problemas de Sintaxe Corrigidos**
+
+#### **❌ Problema #1: Função `Chr()` Inexistente**
+**Problema:** A função `Chr()` não existe na LSP
+```lsp
+@ ❌ INCORRETO @
+vaStrProcura = "Primeira linha" + Chr(13) + Chr(10) + "Segunda linha";
+```
+
+**Solução:** Use `CaracterParaAlfa()` para caracteres especiais
+```lsp
+@ ✅ CORRETO @
+Definir Alfa vaEnter;
+CaracterParaAlfa(13, vaEnter);
+vaStrProcura = "Primeira linha" + vaEnter + "Segunda linha";
+```
+
+#### **❌ Problema #2: `FormatarData` com Tipo Data**
+**Problema:** `FormatarData` aceita apenas tipo `Numero`, não `Data`
+```lsp
+@ ❌ INCORRETO @
+DataHoje(vdData);
+FormatarData(vdData, "dd/MM/yyyy", vaFormatada);
+```
+
+**Solução:** Use `DataHora()` que retorna `Numero`
+```lsp
+@ ✅ CORRETO @
+Definir Numero vnDataHora;
+DataHora(vnDataHora);
+FormatarData(vnDataHora, "dd/MM/yyyy", vaFormatada);
+```
+
+#### **❌ Problema #3: Atribuição Direta de Data**
+**Problema:** Não é possível atribuir data diretamente
+```lsp
+@ ❌ INCORRETO @
+vdData = 15/08/1990;
+```
+
+**Solução:** Use `MontaData()` ou `CodData()`
+```lsp
+@ ✅ CORRETO @
+MontaData(15, 8, 1990, vdData);
+```
+
+#### **❌ Problema #4: Variáveis Não Declaradas**
+**Problema:** Variáveis usadas sem declaração
+```lsp
+@ ❌ INCORRETO @
+DecodData(vdData, vnDia, vnMes, vnAno);
+```
+
+**Solução:** Declare todas as variáveis
+```lsp
+@ ✅ CORRETO @
+Definir Numero vnDia;
+Definir Numero vnMes;
+Definir Numero vnAno;
+DecodData(vdData, vnDia, vnMes, vnAno);
+```
+
+#### **❌ Problema #5: Função `Truncar` Inexistente**
+**Problema:** A função `Truncar` não existe na LSP
+```lsp
+@ ❌ INCORRETO @
+vnParteInteira = Truncar(vnDataHora);
+```
+
+**Solução:** Use conversão para inteiro ou outras funções
+```lsp
+@ ✅ CORRETO @
+vnParteInteira = vnDataHora;  @ Conversão implícita @
+```
+
 ### **❌ Erro #1: Concatenação em Parâmetros de Funções**
 **Problema:** Tentar concatenar strings diretamente nos parâmetros
 ```lsp
@@ -448,6 +568,7 @@ TamanhoAlfa(vaTextoCompleto, vnTamanho);
 @ ❌ INCORRETO - NÃO FUNCIONA @
 vnTamanho = TamanhoAlfa(vaTexto);
 vaResultado = IntParaAlfa(vnNumero);
+Se (EstaNulo(vaDado, vnEhNulo) = 0) {  @ Função não retorna valor @
 ```
 
 **Solução:** LSP usa parâmetros de retorno
@@ -455,6 +576,8 @@ vaResultado = IntParaAlfa(vnNumero);
 @ ✅ CORRETO - FUNCIONA @
 TamanhoAlfa(vaTexto, vnTamanho);
 IntParaAlfa(vnNumero, vaResultado);
+EstaNulo(vaDado, vnEhNulo);  @ Executa função primeiro @
+Se (vnEhNulo = 0) {          @ Depois compara variável @
 ```
 
 ### **❌ Erro #3: Declaração de Variáveis no Meio do Código**
@@ -523,7 +646,8 @@ Definir Funcao validarDados();
 
 Funcao validarDados(); {
   @ 1. Verifica se não é nulo @
-  Se (EstaNulo(vaDado, vnEhNulo) = 0) {
+  EstaNulo(vaDado, vnEhNulo);
+  Se (vnEhNulo = 0) {
     @ 2. Verifica se não é vazio @
     TamanhoAlfa(vaDado, vnTamanho);
     Se (vnTamanho > 0) {
@@ -613,9 +737,12 @@ Diferente de linguagens tradicionais como Java, C# ou Python, a LSP foi projetad
 ```lsp
 @ ❌ Pensamento INCORRETO (estilo outras linguagens) @
 vnTamanho = TamanhoAlfa(vaTexto);  @ "A função retorna um valor" @
+Se (EstaNulo(vaDado, vnEhNulo) = 0) {  @ "A função retorna um valor" @
 
 @ ✅ Pensamento CORRETO (estilo LSP) @
 TamanhoAlfa(vaTexto, vnTamanho);   @ "A função preenche vnTamanho" @
+EstaNulo(vaDado, vnEhNulo);        @ "A função preenche vnEhNulo" @
+Se (vnEhNulo = 0) {                @ "Compara a variável preenchida" @
 ```
 
 ### **💭 Modelo Mental #2: "Manipulação Primeiro, Função Depois"**
@@ -715,28 +842,49 @@ Definir Funcao validarCliente();
 
 Funcao validarCliente(); {
   @ 1. Validação de CNPJ @
-  DeixaNumeros(vaCNPJ);
-  Se (TamanhoAlfa(vaCNPJ) <> 14) {
-    Mensagem(Erro, "CNPJ deve ter 14 dígitos");
+  EstaNulo(vaCNPJ, vnEhNulo);
+  Se (vnEhNulo = 0) {
+    DeixaNumeros(vaCNPJ);
+    TamanhoAlfa(vaCNPJ, vnTamanho);
+    Se (vnTamanho <> 14) {
+      Mensagem(Erro, "CNPJ deve ter 14 dígitos");
+      Retorna;
+    }
+  } Senao {
+    Mensagem(Erro, "CNPJ não pode ser nulo");
     Retorna;
   }
   
   @ 2. Validação de email @
-  PosicaoAlfa("@", vaEmail, vnPosArroba);
-  Se (vnPosArroba = 0) {
-    Mensagem(Erro, "Email inválido - deve conter @");
+  EstaNulo(vaEmail, vnEhNulo);
+  Se (vnEhNulo = 0) {
+    PosicaoAlfa("@", vaEmail, vnPosArroba);
+    Se (vnPosArroba = 0) {
+      Mensagem(Erro, "Email inválido - deve conter @");
+      Retorna;
+    }
+  } Senao {
+    Mensagem(Erro, "Email não pode ser nulo");
     Retorna;
   }
   
   @ 3. Validação de telefone @
-  DeixaNumeros(vaTelefone);
-  Se (TamanhoAlfa(vaTelefone) < 10) {
-    Mensagem(Erro, "Telefone inválido - mínimo 10 dígitos");
+  EstaNulo(vaTelefone, vnEhNulo);
+  Se (vnEhNulo = 0) {
+    DeixaNumeros(vaTelefone);
+    TamanhoAlfa(vaTelefone, vnTamanho);
+    Se (vnTamanho < 10) {
+      Mensagem(Erro, "Telefone inválido - mínimo 10 dígitos");
+      Retorna;
+    }
+  } Senao {
+    Mensagem(Erro, "Telefone não pode ser nulo");
     Retorna;
   }
   
   @ 4. Validação de data de nascimento @
-  Se (vdDataNascimento > DataHoje()) {
+  DataHoje(vdDataAtual);
+  Se (vdDataNascimento > vdDataAtual) {
     Mensagem(Erro, "Data de nascimento não pode ser futura");
     Retorna;
   }
@@ -752,9 +900,16 @@ Definir Funcao consultarCEP();
 
 Funcao consultarCEP(); {
   @ 1. Limpa e valida CEP @
-  DeixaNumeros(vaCEP);
-  Se (TamanhoAlfa(vaCEP) <> 8) {
-    Mensagem(Erro, "CEP deve ter 8 dígitos");
+  EstaNulo(vaCEP, vnEhNulo);
+  Se (vnEhNulo = 0) {
+    DeixaNumeros(vaCEP);
+    TamanhoAlfa(vaCEP, vnTamanho);
+    Se (vnTamanho <> 8) {
+      Mensagem(Erro, "CEP deve ter 8 dígitos");
+      Retorna;
+    }
+  } Senao {
+    Mensagem(Erro, "CEP não pode ser nulo");
     Retorna;
   }
   
@@ -839,14 +994,21 @@ Funcao gerarRelatorioVendas(); {
 Definir Funcao validarSenha();
 
 Funcao validarSenha(); {
-  @ 1. Verifica tamanho mínimo @
+  @ 1. Verifica se não é nulo @
+  EstaNulo(vaSenha, vnEhNulo);
+  Se (vnEhNulo = 1) {
+    Mensagem(Erro, "Senha não pode ser nula");
+    Retorna;
+  }
+  
+  @ 2. Verifica tamanho mínimo @
   TamanhoAlfa(vaSenha, vnTamanho);
   Se (vnTamanho < 8) {
     Mensagem(Erro, "Senha deve ter pelo menos 8 caracteres");
     Retorna;
   }
   
-  @ 2. Verifica se tem letra maiúscula @
+  @ 3. Verifica se tem letra maiúscula @
   vnContador = 1;
   vnTemMaiuscula = 0;
   Enquanto (vnContador <= vnTamanho) {
@@ -862,14 +1024,16 @@ Funcao validarSenha(); {
     Retorna;
   }
   
-  @ 3. Verifica se tem número @
-  DeixaNumeros(vaSenha);
-  Se (TamanhoAlfa(vaSenha) = 0) {
+  @ 4. Verifica se tem número @
+  vaSenhaNumeros = vaSenha;  @ Faz cópia para não modificar original @
+  DeixaNumeros(vaSenhaNumeros);
+  TamanhoAlfa(vaSenhaNumeros, vnTamanhoNumeros);
+  Se (vnTamanhoNumeros = 0) {
     Mensagem(Erro, "Senha deve conter pelo menos um número");
     Retorna;
   }
   
-  @ 4. Verifica se tem caractere especial @
+  @ 5. Verifica se tem caractere especial @
   PosicaoAlfa("!", vaSenha, vnPos);
   Se (vnPos = 0) {
     PosicaoAlfa("@", vaSenha, vnPos);
@@ -1002,6 +1166,9 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 │ VrfAbrA(valor, min, max)        │
 │ TamanhoAlfa(texto, tamanho)     │
 │ PosicaoAlfa(busca, texto, pos)  │
+│                                 │
+│ ⚠️ Lembre-se: Execute primeiro, │
+│    depois compare a variável!   │
 └─────────────────────────────────┘
 ```
 
@@ -1947,7 +2114,7 @@ Definir Alfa vaStrProcura;
 Definir Alfa vaStrImp;
 Definir Alfa vaStrResto;
 
-vaStrProcura = "Primeira linha" + Chr(13) + Chr(10) + "Segunda linha";
+vaStrProcura = "Primeira linha" + vaEnter + "Segunda linha";
 ProcuraEnter(vaStrProcura, vaStrImp, vaStrResto);
 @ vaStrImp será "Primeira linha" @
 @ vaStrResto será "Segunda linha" @
@@ -2946,7 +3113,10 @@ Funcao extrairComponentesHora(); {
   
   @ Obtém a data atual @
   DataHoje(vdDataAtual);
-  FormatarData(vdDataAtual, "dd/MM/yyyy", vaDataFormatada);
+  @ Para formatação, use DataHora que retorna Numero @
+  Definir Numero vnDataHora;
+  DataHora(vnDataHora);
+  FormatarData(vnDataHora, "dd/MM/yyyy", vaDataFormatada);
   
   @ Extrai componentes usando CopiarAlfa @
   vaApenasHora = vaHoraCompleta;
@@ -2995,13 +3165,14 @@ Funcao extrairComponentesDataHora(); {
   DataHora(vnDataHora);
   
   @ Separa parte inteira (data) da fracionária (hora) @
-  vnParteInteira = Truncar(vnDataHora);
-  vnParteFracionaria = vnDataHora - vnParteInteira;
-  
-  @ Calcula horas, minutos e segundos @
-  vnHoras = Truncar(vnParteFracionaria * 24);
-  vnMinutos = Truncar((vnParteFracionaria * 24 - vnHoras) * 60);
-  vnSegundos = Truncar(((vnParteFracionaria * 24 - vnHoras) * 60 - vnMinutos) * 60);
+@ Nota: LSP não tem função Truncar, use conversão para inteiro @
+vnParteInteira = vnDataHora;
+vnParteFracionaria = vnDataHora - vnParteInteira;
+
+@ Calcula horas, minutos e segundos @
+vnHoras = vnParteFracionaria * 24;
+vnMinutos = (vnParteFracionaria * 24 - vnHoras) * 60;
+vnSegundos = ((vnParteFracionaria * 24 - vnHoras) * 60 - vnMinutos) * 60;
   
   @ Formata resultado @
   Definir Alfa vaHorasStr;
@@ -3314,11 +3485,17 @@ calcularPrazos();
 Funcao calcularPrazos(); {
   @ Calcula vencimento (30 dias) @
   AdicionarDias(vdDataBase, 30, vdDataVencimento);
-  FormatarData(vdDataVencimento, "dd/MM/yyyy", vaDataVencimentoStr);
-  
+  @ Para formatação, converta para número @
+  Definir Numero vnDataVencimento;
+  vnDataVencimento = vdDataVencimento;
+  FormatarData(vnDataVencimento, "dd/MM/yyyy", vaDataVencimentoStr);
+
   @ Calcula limite (60 dias) @
   AdicionarDias(vdDataBase, 60, vdDataLimite);
-  FormatarData(vdDataLimite, "dd/MM/yyyy", vaDataLimiteStr);
+  @ Para formatação, converta para número @
+  Definir Numero vnDataLimite;
+  vnDataLimite = vdDataLimite;
+  FormatarData(vnDataLimite, "dd/MM/yyyy", vaDataLimiteStr);
   
   Definir Alfa vaMensagem;
   vaMensagem = "Vencimento: " + vaDataVencimentoStr;
@@ -3328,10 +3505,13 @@ Funcao calcularPrazos(); {
   
   @ Exemplo com subtração (data passada) @
   AdicionarDias(vdDataBase, -15, vdDataBase);
-  FormatarData(vdDataBase, "dd/MM/yyyy", vaDataVencimentoStr);
-  vaMensagem = "15 dias atrás: " + vaDataVencimentoStr;
-  Mensagem(Retorna, vaMensagem);
-}
+  @ Para formatação, converta para número @
+  Definir Numero vnDataBase;
+  vnDataBase = vdDataBase;
+  FormatarData(vnDataBase, "dd/MM/yyyy", vaDataVencimentoStr);
+    vaMensagem = "15 dias atrás: " + vaDataVencimentoStr;
+    Mensagem(Retorna, vaMensagem);
+  }
 ```
 
 ### Formatação Avançada de Datas
@@ -3412,14 +3592,18 @@ DataHoje(vdDataAtual);              @ Corrigido: DataHoje em vez de DataHora @
 exemploFormatacoes();
 
 Funcao exemploFormatacoes(); {
+  @ Para formatação, use DataHora que retorna Numero @
+  Definir Numero vnDataHora;
+  DataHora(vnDataHora);
+
   @ Formato brasileiro @
-  FormatarData(vdDataAtual, "dd/MM/yyyy", vaFormatoBR);
-  
+  FormatarData(vnDataHora, "dd/MM/yyyy", vaFormatoBR);
+
   @ Formato americano @
-  FormatarData(vdDataAtual, "MM/dd/yyyy", vaFormatoUS);
-  
+  FormatarData(vnDataHora, "MM/dd/yyyy", vaFormatoUS);
+
   @ Formato ISO 8601 @
-  FormatarData(vdDataAtual, "yyyy-MM-dd", vaFormatoISO);
+  FormatarData(vnDataHora, "yyyy-MM-dd", vaFormatoISO);
   
   @ ⚠️ NOTA: FormatarData só formata datas, não horas para variáveis do tipo Data @
   @ Para hora atual, use HorSis ou outros métodos @
@@ -9802,7 +9986,10 @@ AlfaParaDecimal(vaTexto, vnDecimal);
 @ === DATAS === @
 DataHoje(vdDataAtual);
 DataHora(vnDataHoraAtual);          @ Corrigido: DataHora retorna Numero @
-FormatarData(vdData, "dd/MM/yyyy", vaDataFormatada);
+@ Para formatação, converta para número @
+Definir Numero vnData;
+vnData = vdData;
+FormatarData(vnData, "dd/MM/yyyy", vaDataFormatada);
 MontaData(1, 1, 2024, vdData);      @ Monta data a partir de componentes @
 DesMontaData(vdData, vnDia, vnMes, vnAno); @ Desmonta data em componentes @
 AnoBissexto(vdData, vnBissexto);    @ Verifica se ano é bissexto @
