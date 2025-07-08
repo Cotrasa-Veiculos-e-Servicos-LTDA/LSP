@@ -1,262 +1,161 @@
 # Documentação da Linguagem LSP - Linguagem Sênior de Programação
 
-Sênior Sistemas
+[![Senior Sistemas](https://img.shields.io/badge/Senior-Sistemas-blue)](https://www.senior.com.br)
+[![LSP](https://img.shields.io/badge/Linguagem-LSP-green)](https://documentacao.senior.com.br/tecnologia)
+[![Status](https://img.shields.io/badge/Status-Ativo-brightgreen)]()
 
-- Documentação da Linguagem LSP - <https://documentacao.senior.com.br/tecnologia>
+> **Documentação Oficial:** <https://documentacao.senior.com.br/tecnologia>
 
-## Índice
+---
 
+## 🚀 **Início Rápido**
+
+### **Primeiro Programa LSP**
+```lsp
+@ Meu primeiro programa em LSP @
+Definir Alfa vaMensagem;
+vaMensagem = "Olá, mundo LSP!";
+Mensagem(Retorna, vaMensagem);
+```
+
+### **Conceitos Fundamentais**
+- **Case Insensitive**: `vaNome` = `VANOME` = `vanome`
+- **Terminador obrigatório**: Toda linha termina com `;`
+- **Comentários**: `@ uma linha @` ou `/* múltiplas linhas */`
+- **Identação**: 2 espaços (padrão Senior)
+
+### **Tipos de Dados Essenciais**
+```lsp
+Definir Alfa vaNome;        @ Texto/String @
+Definir Numero vnIdade;     @ Número (int/decimal) @
+Definir Data vdNascimento;  @ Data @
+```
+
+### **⚠️ Lembre-se Sempre**
+1. **Não concatene dentro de parâmetros de funções**
+2. **Use variáveis intermediárias para conversões**
+3. **Siga o padrão de nomenclatura (va, vn, vd)**
+
+---
+
+## 📖 **Índice Completo**
+
+### **🎯 Fundamentos**
 - [Introdução](#introdução)
 - [Sintaxe e Estrutura](#sintaxe-e-estrutura)
-  * [Estrutura Básica](#estrutura-básica)
-  * [Case Sensitivity](#case-sensitivity)
-  * [Identação e Espaçamento](#identação-e-espaçamento)
-  * [Estruturas de Bloco](#estruturas-de-bloco)
-- [Caracteres com Comportamento Especial](#caracteres-com-comportamento-especial)
 - [Comentários](#comentários)
 - [Palavras Reservadas](#palavras-reservadas)
 - [Variáveis de Sistema](#variáveis-de-sistema)
 - [Operadores](#operadores)
-  * [Operadores Lógicos](#operadores-lógicos)
-  * [Operadores Aritméticos](#operadores-aritméticos)
-  * [Operadores Extras](#operadores-extras)
-    + [Observação sobre o operador %](#observação-sobre-o-operador-%)
-  * [Comportamentos Especiais](#comportamentos-especiais)
+
+### **📊 Dados e Variáveis**
 - [Tipo de Dados e Variáveis](#tipo-de-dados-e-variáveis)
-  * [Tipos de Dados](#tipos-de-dados)
-  * [Declaração ou Definição de Variáveis](#declaração-ou-definição-de-variáveis)
-  * [Declaração ou Definição de Variáveis com Tamanho](#declaração-ou-definição-de-variáveis-com-tamanho)
-  * [Forma de Acesso](#forma-de-acesso)
-  * [Regras](#regras)
-- [Manipulação Avançada de Strings](#manipulação-avançada-de-strings)
-  * [Conceitos Fundamentais](#conceitos-fundamentais)
-    + [Concatenação de Strings](#concatenação-de-strings)
-    + [Quebra de Linha](#quebra-de-linha)
-    + [CaracterParaAlfa](#caracterparaalfa)
-  * [Funções Básicas de Manipulação](#funções-básicas-de-manipulação)
-    + [CopiarAlfa e CopiarStr](#copiaralfa-e-copiarstr)
-    + [TamanhoAlfa e TamanhoStr](#tamanhoalfa-e-tamanhostr)
-    + [PosicaoAlfa e PosicaoStr](#posicaoalfa-e-posicaostr)
-    + [SubstAlfa e SubstAlfaUmaVez](#substalfa-e-substalfaumavez)
-    + [Concatenar](#concatenar)
-  * [Funções Avançadas de Manipulação](#funções-avançadas-de-manipulação)
-    + [DeletarAlfa](#deletaralfa)
-    + [ConverteParaMaiusculo e ConverteParaMinusculo](#converteparamaiusculo-e-converteparaminusculo)
-    + [TrocaString](#trocastring)
-    + [LerPosicaoAlfa](#lerposicaoalfa)
-  * [Funções de Lista e Separação](#funções-de-lista-e-separação)
-    + [ListaItem](#listaitem)
-    + [ListaQuantidade](#listaquantidade)
-  * [Funções de Codificação](#funções-de-codificação)
-    + [ConverteCodificacaoString](#converteccodificacaostring)
-    + [ConverteTexto](#convertetexto)
-- [Criptografia e Segurança](#criptografia-e-segurança)
-  * [Funções de Hash](#funções-de-hash)
-    + [GeraHash](#gerahash)
-  * [Criptografia de Dados](#criptografia-de-dados)
-    + [Encriptar](#encriptar)
-    + [Desencriptar](#desencriptar)
-  * [Geração de Tokens e Nonces](#geração-de-tokens-e-nonces)
-    + [GerarNonce](#gerarnonce)
-    + [GeraToken](#geratoken)
-    + [GeraSenha](#gerasenha)
-  * [WS-Security e Digest](#ws-security-e-digest)
-    + [GerarPwdDigest](#gerarpwddigest)
-  * [Codificação Base64](#codificação-base64)
-    + [Base64Encode](#base64encode)
-    + [Base64Decode](#base64decode)
-- [Cast de Variável](#cast-de-variável)
-  * [AlfaParaData](#alfaparadata)
-  * [AlfaParaDecimal](#alfaparadecimal)
-  * [AlfaParaInt](#alfaparaint)
-  * [IntParaAlfa](#intparaalfa)
-  * [ConverteMascara](#convertemascara)
-- [Manipulação Avançada de Datas](#manipulação-avançada-de-datas)
-  * [Funções de Data Atual](#funções-de-data-atual)
-    + [DataHoje](#datahoje)
-    + [DataHora](#datahora)
-    + [DataHoraUTC](#datahorautc)
-  * [Construção e Decomposição de Datas](#construção-e-decomposição-de-datas)
-    + [CodData](#coddata)
-    + [DecodData](#decoddata)
-  * [Operações Aritméticas com Datas](#operações-aritméticas-com-datas)
-    + [AdicionarDias](#adicionardias)
-  * [Formatação Avançada de Datas](#formatação-avançada-de-datas)
-    + [FormatarData](#formatardata)
-  * [Manipulação de Componentes de Hora](#manipulação-de-componentes-de-hora)
-  * [Validação e Comparação de Datas](#validação-e-comparação-de-datas)
-- [Validação e Verificação](#validação-e-verificação)
-  * [Verificação de Abrangências](#verificação-de-abrangências)
-    + [VrfAbrA](#vrfabra)
-    + [VrfAbrN](#vrfabrn)
-    + [MontaAbrangencia](#montaabrangencia)
-  * [Validação de Arquivos](#validação-de-arquivos)
-    + [ArqExiste](#arqexiste)
-  * [Validação de Dados Estruturados](#validação-de-dados-estruturados)
-    + [RemoveExpressoesProibidas](#removeexpressoesproibidas)
-  * [Verificação de Abas Ativas](#verificação-de-abas-ativas)
-    + [VerificaAbaAtiva](#verificaabaativa)
-- [Operações Numéricas Avançadas](#operações-numéricas-avançadas)
-  * [Arredondamento e Truncamento](#arredondamento-e-truncamento)
-    + [Arredondar](#arredondar)
-    + [Truncar](#truncar)
-  * [Operações Especiais](#operações-especiais)
-    + [Dividir](#dividir)
-    + [RestoDivisao](#restodivisao)
-    + [HoraParaMinuto](#horaparaminuto)
-- [Interface e Feedback do Usuário](#interface-e-feedback-do-usuário)
-  * [Barra de Progresso](#barra-de-progresso)
-    + [IniciaBarraProgresso](#iniciabarraprogresso)
-    + [AtualizaBarraProgresso](#atualizabarraprogresso)
-    + [FinalizaBarraProgresso](#finalizabarraprogresso)
-    + [OcultaBarraProgressoRelatorio](#ocultabarraprogressorelatorio)
-  * [Controle de Interface](#controle-de-interface)
-    + [ObterVersaoSistema](#obterversaosistema)
-    + [ObtemIdiomaAtivo](#obtemidiomaativo)
-    + [sleep](#sleep)
-  * [Gerenciamento de Configuração](#gerenciamento-de-configuração)
-    + [RetornaValorCFG](#retornavalorcfg)
-- [Gerenciamento Avançado de Arquivos](#gerenciamento-avançado-de-arquivos)
-  * [Criação e Exclusão de Arquivos Temporários](#criação-e-exclusão-de-arquivos-temporários)
-    + [CriarArquivoTemporario](#criararquivotemporario)
-    + [ExcluirArquivoTemporario](#excluirarquivotemporario)
-    + [LinhasArquivo](#linhasarquivo)
-  * [Execução de Programas Externos](#execução-de-programas-externos)
-    + [ExecProg](#execprog)
-  * [Abrir (Open)](#abrir-open)
-  * [Ler (Read)](#ler-read)
-  * [Lernl (ReadLn)](#lernl-readln)
-  * [Gravar (Write)](#gravar-write)
-  * [Gravarnl (WriteLn)](#gravarnl-writeln)
-  * [Fechar (Close)](#fechar-close)
-- [Mensagens](#mensagens)
-- [Cancel](#cancel)
-- [Padrões e Boas Práticas](#padrões-e-boas-práticas)
-  * [Boas Práticas e Regras Gerais](#boas-práticas-e-regras-gerais)
-  * [Declaração de Variáveis](#declaração-de-variáveis)
-  * [Padrão de Nomenclatura de Variáveis](#padrão-de-nomenclatura-de-variáveis)
-  * [Identação e Espaçamento](#identação-e-espaçamento-1)
-  * [Estruturas de Bloco](#estruturas-de-bloco-1)
-  * [Comentários](#comentários-1)
-- [Controle de Fluxo](#controle-de-fluxo)
-  * [Condicionais](#condicionais)
-  * [Estrutura de Repetição](#estrutura-de-repetição)
-  * [Pare](#pare)
-  * [VaPara](#vapara)
-  * [Recursividade](#recursividade)
 - [Definição de Arrays](#definição-de-arrays)
-  * [Declaração de Arrays](#declaração-de-arrays)
-  * [Atribuição de Valores](#atribuição-de-valores)
-  * [Acesso aos Valores](#acesso-aos-valores)
-  * [Iteração sobre Arrays](#iteração-sobre-arrays)
-  * [Exemplo Completo](#exemplo-completo)
-- [Definição de Listas](#definição-de-listas)
-  * [Comandos para Definição de Listas](#comandos-para-definição-de-listas)
-  * [Acesso aos Campos](#acesso-aos-campos)
-  * [Comandos para Manipulação de Registros](#comandos-para-manipulação-de-registros)
-  * [Comandos para Posicionamento de Listas](#comandos-para-posicionamento-de-listas)
-  * [Comandos para Procura de Registros](#comandos-para-procura-de-registros)
-  * [Comandos para Posicionamento Absoluto](#comandos-para-posicionamento-absoluto)
-  * [Comandos Diversos de Listas](#comandos-diversos-de-listas)
-  * [Exemplo](#exemplo)
-  * [Atribuição de Valores para a Lista](#atribuição-de-valores-para-a-lista)
-  * [Utilização de Dados de uma Lista](#utilização-de-dados-de-uma-lista)
-  * [Exclusão de Dados da Lista](#exclusão-de-dados-da-lista)
-  * [Algoritmos de Leitura de Dados da Lista](#algoritmos-de-leitura-de-dados-da-lista)
-    + [Utilizando o Retorno das Funções](#utilizando-o-retorno-das-funções)
-    + [Utilizando Propriedade Indicadora de Fim de Arquivo (FDA)](#utilizando-propriedade-indicadora-de-fim-de-arquivo-fda)
-    + [Utilizando Diretamente o Retorno das Funções de Movimentação](#utilizando-diretamente-o-retorno-das-funções-de-movimentação)
 - [Definição de Tabelas](#definição-de-tabelas)
-  * [Sintaxe](#sintaxe)
-  * [Exemplo](#exemplo-1)
-  * [Forma de Acesso à Variável](#forma-de-acesso-à-variável)
-- [Definição de Cursor](#definição-de-cursor)
-  * [Cursor Simples](#cursor-simples)
-  * [Cursor Completo](#cursor-completo)
-  * [Vantagens e Desvantagens dos Cursores](#vantagens-e-desvantagens-dos-cursores)
-    + [Cursor Simples](#cursor-simples-1)
-    + [Cursor Completo](#cursor-completo-1)
-  * [Funções de Retorno SQL](#funções-de-retorno-sql)
-    + [Exemplo Completo com Todos os Tipos de Retorno](#exemplo-completo-com-todos-os-tipos-de-retorno)
-    + [Referência Rápida das Funções](#referência-rápida-das-funções)
-    + [Funções de Controle de Posicionamento do Cursor](#funções-de-controle-de-posicionamento-do-cursor)
-    + [Observações Importantes](#observações-importantes)
+### **🔧 Manipulação de Dados**
+- [Manipulação Avançada de Strings](#manipulação-avançada-de-strings)
+- [Manipulação Avançada de Datas](#manipulação-avançada-de-datas)
+- [Manipulação Dinâmica de Variáveis](#manipulação-dinâmica-de-variáveis)
+- [Cast de Variável](#cast-de-variável)
+
+### **🔒 Segurança e Validação**
+- [Criptografia e Segurança](#criptografia-e-segurança)
+- [Validação e Verificação](#validação-e-verificação)
+
+### **🧮 Operações e Cálculos**
+- [Operações Numéricas Avançadas](#operações-numéricas-avançadas)
+
+### **🎮 Controle de Fluxo**
+- [Controle de Fluxo](#controle-de-fluxo)
 - [Definição de Funções](#definição-de-funções)
-  * [Exemplos de Funções](#exemplos-de-funções)
-    + [Função Simples](#função-simples)
-    + [Função com Parâmetro Numérico](#função-com-parâmetro-numérico)
-    + [Função com Parâmetro Numérico e Retorno no Mesmo Parâmetro](#função-com-parâmetro-numérico-e-retorno-no-mesmo-parâmetro)
-    + [Função com Dois Parâmetros Numéricos e Retorno em uma Variável Específica](#função-com-dois-parâmetros-numéricos-e-retorno-em-uma-variável-específica)
-  * [Organização das Funções](#organização-das-funções)
-- [Retorno para Aplicação](#retorno-para-aplicação)
-  * [ValRet](#valret)
-  * [ValStr](#valstr)
-- [Funções Gerais](#funções-gerais)
+
+### **🗃️ Banco de Dados**
+- [Definição de Cursor](#definição-de-cursor)
 - [Funções SQL](#funções-sql)
-  * [SQL Senior 2](#sql-senior-2)
-    + [Ativação da Linguagem](#ativação-da-linguagem)
-    + [Restrições](#restrições)
-  * [Exemplos](#exemplos)
-    + [Utilização de INSERT](#utilização-de-insert)
-    + [Utilização de SELECT](#utilização-de-select)
-    + [Utilização de UPDATE](#utilização-de-update)
-  * [Passagem de Parâmetros](#passagem-de-parâmetros)
-    + [Exemplo com `__inserir`](#exemplo-com-inserir)
-    + [Exemplo com `SQL_Definir<tipo_variavel>`](#exemplo-com-sql_definirtipo_variavel)
+- [Funções de Lista de Regras](#funções-de-lista-de-regras)
+
+### **🌐 Integração e APIs**
 - [Manipulação de Arquivos](#manipulação-de-arquivos)
 - [Chamada de Web Service](#chamada-de-web-service)
-  * [Modos de Execução](#modos-de-execução)
-  * [WS-Security](#ws-security)
-  * [Autenticação](#autenticação)
 - [Chamada HTTP](#chamada-http)
-  * [Visão Geral das Funções HTTP](#visão-geral-das-funções-http)
-  * [Configuração Inicial](#configuração-inicial)
-  * [HttpGet](#httpget)
-  * [HttpPost](#httppost)
-  * [HttpPut](#httpput)
-  * [HttpDelete](#httpdelete)
-  * [HttpDeleteBody](#httpdeletebody)
-  * [HttpDownload](#httpdownload)
-  * [HttpSetaTimeout](#httpsetatimeout)
-  * [HttpPatch](#httppatch)
-  * [HttpSetAttachment](#httpsetattachment)
-  * [Base64Encode / Base64Decode](#base64encode--base64decode)
-    + [Base64Encode](#base64encode-1)
-    + [Base64Decode](#base64decode-1)
-  * [Funções de Configuração Avançada](#funções-de-configuração-avançada)
-    + [HttpAlteraCabecalhoRequisicao](#httpAlteracabecalhorequisicao)
-    + [HttpAlteraCodifCaracPadrao](#httpAlteracodifcaracpadrao)
-    + [HttpAlteraRedirecionamento](#httpAlteraredirecionamento)
-  * [Funções de Gerenciamento de Cookies](#funções-de-gerenciamento-de-cookies)
-    + [HttpHabilitarCookies / HttpDesabilitarCookies](#httphabilitarcookies--httpdesabilitarcookies)
-  * [Funções de Leitura de Respostas](#funções-de-leitura-de-respostas)
-    + [HttpLeCabecalhoResposta](#httplecabecalhoresposta)
-    + [HttpNormalizaRetorno](#httpnormalizaretorno)
-  * [Configuração de Proxy](#configuração-de-proxy)
-    + [HttpAlteraConfiguracaoProxy](#httpAlteraconfiguracaoproxy)
-    + [HttpLeConfiguracaoProxy](#httpleconfiguracaoproxy)
-    + [HttpAlteraAutenticacaoProxy / HttpLeAutenticacaoProxy](#httpAlteraautenticacaoproxy--httpleautenticacaoproxy)
-    + [Gerenciamento de Exceções de Proxy](#gerenciamento-de-exceções-de-proxy)
-  * [Configuração SSL](#configuração-ssl)
-    + [HttpAlteraConfiguracaoSSL / HttpLeConfiguracaoSSL](#httpAlteraconfiguracaossl--httpleconfiguracaossl)
-  * [Configuração de Progresso de Download](#configuração-de-progresso-de-download)
-    + [HttpAlteraMostrarProgresso / HttpLeMostrarProgresso](#httpAlteramostrarprogresso--httplemostrarprogresso)
-  * [Configuração SNI (Server Name Indication)](#configuração-sni-server-name-indication)
-    + [HttpHabilitaSNI / HttpDesabilitaSNI](#httphabilitasni--httpdesabilitasni)
-  * [Funções Auxiliares Importantes](#funções-auxiliares-importantes)
-  * [Exemplo Completo: Configuração Corporativa](#exemplo-completo-configuração-corporativa)
-  * [Boas Práticas](#boas-práticas)
-  * [Códigos de Status HTTP Comuns](#códigos-de-status-http-comuns)
-  * [Observações Importantes](#observações-importantes)
-  * [Manipulação de JSON](#manipulação-de-json)
-    + [ValorElementoJson](#valorelementojson)
-  * [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis)
-    + [Exemplo 1: Busca CEP na API ViaCEP](#exemplo-1-busca-cep-na-api-viacep)
-    + [Exemplo 2: Busca Cidade na API IBGE](#exemplo-2-busca-cidade-na-api-ibge)
-    + [🔧 CRUD Básico - ReqRes API](#-crud-básico---reqres-api)
-    + [🔐 Autenticação Basic Auth - HTTPBin](#-autenticação-basic-auth---httpbin)
-    + [🎫 Autenticação Bearer Token - HTTPBin](#-autenticação-bearer-token---httpbin)
-    + [🔑 Fluxo Completo: Login + Token + CRUD](#-fluxo-completo-login--token--crud)
+- [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis)
+
+### **🎨 Interface do Usuário**
+- [Interface e Feedback do Usuário](#interface-e-feedback-do-usuário)
+- [Mensagens](#mensagens)
+- [Cancel](#cancel)
+
+### **📋 Referência e Boas Práticas**
+- [Funções Gerais](#funções-gerais)
+- [Padrões e Boas Práticas](#padrões-e-boas-práticas)
+- [⚠️ LIMITAÇÕES CRÍTICAS DA LSP](#️-limitações-críticas-da-lsp)
+
+---
+
+## 🎯 **Guia de Aprendizado Progressivo**
+
+### **📖 Nível 1: Iniciante (Conceitos Básicos)**
+1. **Primeiro**: [Sintaxe e Estrutura](#sintaxe-e-estrutura) - Aprenda a sintaxe básica
+2. **Segundo**: [Tipo de Dados e Variáveis](#tipo-de-dados-e-variáveis) - Entenda os tipos de dados
+3. **Terceiro**: [Operadores](#operadores) - Domine os operadores
+4. **Quarto**: [Controle de Fluxo](#controle-de-fluxo) - Aprenda if/else e loops
+5. **Quinto**: [Mensagens](#mensagens) - Saiba como exibir mensagens
+
+### **🚀 Nível 2: Intermediário (Funcionalidades Essenciais)**
+1. **Sexto**: [Manipulação Avançada de Strings](#manipulação-avançada-de-strings) - Manipule textos
+2. **Sétimo**: [Manipulação Avançada de Datas](#manipulação-avançada-de-datas) - Trabalhe com datas
+3. **Oitavo**: [Definição de Funções](#definição-de-funções) - Crie suas próprias funções
+4. **Nono**: [Validação e Verificação](#validação-e-verificação) - Valide dados
+5. **Décimo**: [Cast de Variável](#cast-de-variável) - Converta entre tipos
+
+### **⚡ Nível 3: Avançado (Recursos Especializados)**
+1. **Décimo primeiro**: [Definição de Cursor](#definição-de-cursor) - Acesse bancos de dados
+2. **Décimo segundo**: [Funções SQL](#funções-sql) - Execute SQL diretamente
+3. **Décimo terceiro**: [Chamada HTTP](#chamada-http) - Integre com APIs
+4. **Décimo quarto**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
+5. **Décimo quinto**: [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) - Exemplos reais
+
+---
+
+## ⚠️ **Avisos Importantes para Iniciantes**
+
+### 🚫 **Limitação #1: Parâmetros de Funções**
+```lsp
+@ NUNCA FAÇA - NÃO FUNCIONA @
+Mensagem(Retorna, "Resultado: " + vaValor);
+
+@  SEMPRE FAÇA - FUNCIONA @
+Definir Alfa vaMensagem;
+vaMensagem = "Resultado: " + vaValor;
+Mensagem(Retorna, vaMensagem);
+```
+
+### 📤 **Limitação #2: Funções Usam Parâmetros de Retorno**
+```lsp
+@ INCORRETO @
+vnTamanho = TamanhoAlfa(vaTexto);
+
+@  CORRETO @
+TamanhoAlfa(vaTexto, vnTamanho);
+```
+
+### 🏷️ **Regra #3: Padrão de Nomenclatura**
+```lsp
+Definir Alfa vaNome;     @ va = variável alfa @
+Definir Numero vnIdade;  @ vn = variável numero @
+Definir Data vdData;     @ vd = variável data @
+```
+
+### 🔧 **Regra #4: Grids Precisam de Variáveis Intermediárias**
+```lsp
+@ INCORRETO @
+AlfaParaDecimal(vaTexto, MinhaGrid.CampoDecimal);
+
+@  CORRETO @
+Definir Numero vnValor;
+AlfaParaDecimal(vaTexto, vnValor);
+MinhaGrid.CampoDecimal = vnValor;
+```
 
 ## Introdução
 
@@ -264,7 +163,118 @@ A Linguagem Senior de Programação (LSP) é uma linguagem proprietária utiliza
 
 Diferente de linguagens tradicionais como Java, C# ou Python, a LSP foi projetada especificamente para interagir com os sistemas Senior, possuindo sintaxe e estrutura próprias. Seu uso é essencial para desenvolvedores que desejam criar soluções personalizadas dentro da plataforma.
 
-Nesta documentação, abordaremos a sintaxe, estrutura, operadores, controle de fluxo, manipulação de arquivos, chamadas de web service e outros aspectos da linguagem, sempre com exemplos práticos para facilitar a compreensão.
+### **🎯 Características Principais da LSP**
+
+- **🏢 Integração Nativa**: Desenvolvida especificamente para o ecossistema Senior
+- **📝 Sintaxe Simples**: Fácil de aprender para quem conhece programação básica
+- **🔄 Case Insensitive**: Não diferencia maiúsculas de minúsculas
+- **💾 Tipagem Específica**: Tipos otimizados para dados empresariais
+- **🚀 Execução Direta**: Roda diretamente no ambiente Senior
+
+### **📚 Como Usar Esta Documentação**
+
+1. **Iniciantes**: Comece pelo [Guia de Aprendizado Progressivo](#-guia-de-aprendizado-progressivo)
+2. **Experientes**: Use o [Índice Completo](#-índice-completo) para navegação rápida
+3. **Referência**: Consulte [Funções Gerais](#funções-gerais) para encontrar funções específicas
+4. **Práticos**: Veja [Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) para casos reais
+
+### **🎯 Casos de Uso Comuns da LSP**
+
+#### **📊 Automação de Processos**
+- Cálculos automáticos em formulários
+- Validação de dados em tempo real
+- Geração de relatórios personalizados
+- Processamento em lote
+
+#### **🌐 Integrações**
+- Consumo de APIs REST
+- Integração com sistemas externos
+- Sincronização de dados
+- Importação/exportação de arquivos
+
+#### **🔧 Customizações Senior**
+- Regras de negócio específicas
+- Workflows personalizados
+- Validações complexas
+- Transformação de dados
+
+#### **💼 Exemplos Práticos**
+```lsp
+@ Validação de CNPJ @
+Se (TamanhoAlfa(vaCNPJ) <> 14) {
+  Mensagem(Erro, "CNPJ deve ter 14 dígitos");
+}
+
+@ Integração com CEP @
+HttpGet(vaHTTP, "https://viacep.com.br/ws/" + vaCEP + "/json/", vaResposta);
+ValorElementoJson(vaResposta, "", "logradouro", vaEndereco);
+
+@ Cálculo automático @
+vnDesconto = (vnValor * vnPercentual) / 100;
+vnTotal = vnValor - vnDesconto;
+```
+
+---
+
+## 📋 **Referência Rápida**
+
+### **Declaração de Variáveis**
+```lsp
+Definir Alfa vaNome;        @ Texto/String @
+Definir Numero vnIdade;     @ Número (int/decimal) @
+Definir Data vdNascimento;  @ Data @
+```
+
+### **Operadores Básicos**
+```lsp
+@ Aritméticos @
+vnSoma = vnA + vnB;         @ Adição @
+vnSub = vnA - vnB;          @ Subtração @
+vnMult = vnA * vnB;         @ Multiplicação @
+vnDiv = vnA / vnB;          @ Divisão @
+
+@ Lógicos @
+Se (vnA = vnB) { }          @ Igual @
+Se (vnA <> vnB) { }         @ Diferente @
+Se (vnA > vnB) { }          @ Maior @
+Se (vnA < vnB) { }          @ Menor @
+```
+
+### **Estruturas de Controle**
+```lsp
+@ Condicional @
+Se (condição) {
+  @ código @
+} Senao {
+  @ código alternativo @
+}
+
+@ Loop @
+Para (vnI = 1; vnI <= 10; vnI++) {
+  @ código repetido @
+}
+
+Enquanto (condição) {
+  @ código repetido @
+}
+```
+
+### **Funções Essenciais**
+```lsp
+@ Mensagens @
+Mensagem(Retorna, vaMensagem);
+Mensagem(Erro, vaErro);
+
+@ Conversões @
+IntParaAlfa(vnNumero, vaTexto);
+AlfaParaInt(vaTexto, vnNumero);
+
+@ Strings @
+TamanhoAlfa(vaTexto, vnTamanho);
+PosicaoAlfa("busca", vaTexto, vnPosicao);
+```
+
+---
 
 ## Sintaxe e Estrutura
 
@@ -283,7 +293,9 @@ Definir Numero vnResultado;
 vnX = 10;
 vnY = 20;
 vnResultado = vnX + vnY;
-Mensagem(Retorna, vnResultado);
+Definir Alfa vaResultadoStr;
+IntParaAlfa(vnResultado, vaResultadoStr);
+Mensagem(Retorna, vaResultadoStr);
 ```
 
 ### Case Sensitivity
@@ -525,16 +537,6 @@ Parâmetros:
 - Divisor: Campo/Variável pelo qual o Dividendo será dividido
 - Resto: Variável que receberá o resto da divisão 
 
-### Comportamentos Especiais
-
-Existem determinados caracteres que, quando inseridos em uma expressão literal nas regras, devem ser precedidos do caractere `\` (barra) para indicar que estes caracteres serão usados literalmente e não como caracteres especiais. Estes caracteres são: `"` (aspas) e `\` (barra).
-
-Exemplo:
-
-```lsp
-EnviaEMail("Joao","joao@senior.com.br", "", "", "Teste","\"\\\\Servidor\\teste.txt\"", "");
-```
-
 ## Tipo de Dados e Variáveis
 
 ### Tipos de Dados
@@ -548,7 +550,7 @@ Os tipos de dados suportados pela LSP são:
 - **Tabela**: Estrutura semelhante a um objeto em JavaScript.
 - **Grid**: Estrutura de grade.
 - **Cursor**: Estrutura para manipulação de consultas SQL.
-- **Funcao**: Funções definidas pelo usuário.
+- **Funcao**: Funções definidas pelo programador.
 
 ### Declaração ou Definição de Variáveis
 
@@ -671,6 +673,69 @@ Definir Numero vnX; @ Incorreto: muito genérico @
 
 As funções de manipulação de strings na LSP permitem realizar operações complexas de processamento de texto, desde operações básicas até transformações avançadas e limpeza de dados.
 
+### **📋 Resumo das Funções de String**
+
+| **Categoria** | **Função** | **Uso** | **Exemplo** |
+|---|---|---|---|
+| **📏 Tamanho** | `TamanhoAlfa` | Obtém tamanho de texto | `TamanhoAlfa(vaTexto, vnTamanho)` |
+| **🔍 Busca** | `PosicaoAlfa` | Encontra posição de texto | `PosicaoAlfa("@", vaEmail, vnPos)` |
+| **✂️ Extração** | `CopiarAlfa` | Extrai parte do texto | `CopiarAlfa(vaTexto, 1, 5)` |
+| **🔄 Substituição** | `SubstAlfa` | Substitui texto | `SubstAlfa("old", "new", vaTexto)` |
+| **🔤 Conversão** | `ConverteParaMaiusculo` | Maiúsculo/minúsculo | `ConverteParaMaiusculo(vaTexto)` |
+| **📝 Limpeza** | `DeixaNumeros` | Remove não-números | `DeixaNumeros(vaCEP)` |
+
+### **🚀 Exemplo Prático: Processamento de Email**
+
+```lsp
+@ === EXEMPLO COMPLETO: VALIDAÇÃO DE EMAIL === @
+Definir Funcao validarEmail();
+
+@ Variáveis globais @
+Definir Alfa vaEmail;
+Definir Numero vnPosArroba;
+Definir Numero vnPosPonto;
+Definir Numero vnTamanho;
+Definir Alfa vaUsuario;
+Definir Alfa vaDominio;
+
+vaEmail = "joao.silva@empresa.com.br";
+validarEmail();
+
+Funcao validarEmail(); {
+  @ 1. Verificar tamanho @
+  TamanhoAlfa(vaEmail, vnTamanho);
+  Se (vnTamanho < 5) {
+    Mensagem(Erro, "Email muito curto!");
+    Pare;
+  }
+  
+  @ 2. Encontrar @ @
+  PosicaoAlfa("@", vaEmail, vnPosArroba);
+  Se (vnPosArroba = 0) {
+    Mensagem(Erro, "Email deve conter @");
+    Pare;
+  }
+  
+  @ 3. Extrair usuário @
+  vaUsuario = vaEmail;
+  CopiarAlfa(vaUsuario, 1, vnPosArroba - 1);
+  
+  @ 4. Extrair domínio @
+  vaDominio = vaEmail;
+  CopiarAlfa(vaDominio, vnPosArroba + 1, vnTamanho - vnPosArroba);
+  
+  @ 5. Verificar domínio @
+  PosicaoAlfa(".", vaDominio, vnPosPonto);
+  Se (vnPosPonto = 0) {
+    Mensagem(Erro, "Domínio deve conter ponto");
+  } Senao {
+    Definir Alfa vaMensagem;
+    vaMensagem = "Email válido! Usuário: " + vaUsuario + ", Domínio: " + vaDominio;
+    Mensagem(Retorna, vaMensagem);
+  }
+}
+```
+
 ### Conceitos Fundamentais
 
 #### Concatenação de Strings
@@ -740,43 +805,62 @@ CaracterParaAlfa(13, vaEnter); @ vaEnter será quebra de linha @
 
 #### CopiarAlfa e CopiarStr
 
-Copiam parte do conteúdo de uma variável/campo alfanumérico para outra variável alfanumérica.
+Copiam parte do conteúdo de uma variável/campo alfanumérico modificando a própria variável de origem.
 
 **Sintaxe:**
 
 ```lsp
-CopiarAlfa(<origem>, <destino>, <posicao>, <tamanho>);
-CopiarStr(<origem>, <destino>, <posicao>, <tamanho>);
+CopiarAlfa(<variavel>, <posicao>, <tamanho>);
+CopiarStr(<variavel>, <posicao>, <tamanho>);
 ```
 
 **Parâmetros:**
-- `origem`: Texto de origem
-- `destino`: Variável que receberá o texto copiado
+- `variavel`: Variável que contém o texto e que será modificada para conter apenas a parte copiada
 - `posicao`: Posição inicial (baseada em 1)
 - `tamanho`: Quantidade de caracteres a copiar
+
+**⚠️ Importante:** A função **modifica diretamente** a variável de origem, substituindo seu conteúdo pela parte copiada.
 
 **Exemplo Prático:**
 
 ```lsp
-Definir Alfa vaOrigem;
+Definir Alfa vaTexto;
 Definir Alfa vaNome;
 Definir Alfa vaSobrenome;
 
-vaOrigem = "João Silva Santos";
-CopiarAlfa(vaOrigem, vaNome, 1, 4); @ vaNome será "João" @
-CopiarAlfa(vaOrigem, vaSobrenome, 6, 5); @ vaSobrenome será "Silva" @
+@ Para extrair "João" @
+vaTexto = "João Silva Santos";
+vaNome = vaTexto;  @ Faz uma cópia primeiro @
+CopiarAlfa(vaNome, 1, 4); @ vaNome será "João" @
+
+@ Para extrair "Silva" @
+vaSobrenome = vaTexto;  @ Faz uma cópia primeiro @
+CopiarAlfa(vaSobrenome, 6, 5); @ vaSobrenome será "Silva" @
+```
+
+**📋 Exemplo da Documentação Oficial Senior:**
+
+```lsp
+Definir Alfa exemplo;
+exemplo = "texto de exemplo";
+CopiarAlfa(exemplo, 12, 3);
+@ Após o uso da função, o conteúdo da variável "exemplo" seria "emp" @
 ```
 
 #### TamanhoAlfa e TamanhoStr
 
-Retornam o tamanho de uma variável/campo alfanumérico.
+Retornam o tamanho de uma variável/campo alfanumérico através de parâmetro de retorno.
 
 **Sintaxe:**
 
 ```lsp
-vnTamanho = TamanhoAlfa(<origem>);
-vnTamanho = TamanhoStr(<origem>);
+TamanhoAlfa(<origem>, <tamanho>);
+TamanhoStr(<origem>, <tamanho>);
 ```
+
+**Parâmetros:**
+- `origem`: Campo/Variável que se deseja saber o tamanho
+- `tamanho`: Variável Numero que receberá o tamanho
 
 **Exemplo de Validação:**
 
@@ -787,7 +871,7 @@ Definir Alfa vaMensagem;
 Definir Alfa vaNumeroStr;
 
 vaSenha = "minhasenha123";
-vnTamanho = TamanhoAlfa(vaSenha);
+TamanhoAlfa(vaSenha, vnTamanho);
 
 Se (vnTamanho < 8) {
   vaMensagem = "Senha deve ter pelo menos 8 caracteres";
@@ -799,16 +883,23 @@ Se (vnTamanho < 8) {
 }
 ```
 
+**⚠️ Importante:** Essas funções **não retornam valor diretamente**. O resultado é passado através do parâmetro de retorno.
+
 #### PosicaoAlfa e PosicaoStr
 
-Procuram por uma parte de texto dentro de um campo/variável, retornando a posição inicial.
+Procuram por uma parte de texto dentro de um campo/variável, retornando a posição inicial através de parâmetro.
 
 **Sintaxe:**
 
 ```lsp
-vnPosicao = PosicaoAlfa(<texto>, <subtexto>);
-vnPosicao = PosicaoStr(<texto>, <subtexto>);
+PosicaoAlfa(<subtexto>, <texto>, <posicao>);
+PosicaoStr(<subtexto>, <texto>, <posicao>);
 ```
+
+**Parâmetros:**
+- `subtexto`: Texto que se está procurando
+- `texto`: Campo/variável onde fazer a busca
+- `posicao`: Variável que receberá a posição inicial (0 se não encontrar)
 
 **Exemplo de Validação de Email:**
 
@@ -818,8 +909,8 @@ Definir Numero vnPosArroba;
 Definir Numero vnPosPonto;
 
 vaEmail = "usuario@empresa.com.br";
-vnPosArroba = PosicaoAlfa(vaEmail, "@");
-vnPosPonto = PosicaoAlfa(vaEmail, ".");
+PosicaoAlfa("@", vaEmail, vnPosArroba);
+PosicaoAlfa(".", vaEmail, vnPosPonto);
 
 Se (vnPosArroba = 0) {
   Mensagem(Erro, "Email inválido: falta @");
@@ -830,6 +921,8 @@ Se (vnPosArroba = 0) {
 }
 ```
 
+**⚠️ Importante:** Essas funções **usam parâmetro de retorno**, não retorno direto.
+
 #### SubstAlfa e SubstAlfaUmaVez
 
 Substituem trechos específicos dentro de um texto por outro texto.
@@ -837,9 +930,14 @@ Substituem trechos específicos dentro de um texto por outro texto.
 **Sintaxe:**
 
 ```lsp
-SubstAlfa(<texto>, <subtexto>, <novoTexto>);      @ Substitui todas as ocorrências @
-SubstAlfaUmaVez(<texto>, <subtexto>, <novoTexto>); @ Substitui apenas a primeira @
+SubstAlfa(<subtexto>, <novoTexto>, <texto>);      @ Substitui todas as ocorrências @
+SubstAlfaUmaVez(<subtexto>, <novoTexto>, <texto>); @ Substitui apenas a primeira @
 ```
+
+**Parâmetros:**
+- `subtexto`: Texto a ser localizado e substituído
+- `novoTexto`: Texto que irá substituir
+- `texto`: Variável que contém o texto original e receberá o resultado
 
 **Exemplo de Limpeza de Dados:**
 
@@ -851,35 +949,45 @@ vaTexto = "João--Silva--Santos";
 vaTextoLimpo = vaTexto;
 
 @ Substitui todos os traços duplos por espaço simples @
-SubstAlfa(vaTextoLimpo, "--", " ");
+SubstAlfa("--", " ", vaTextoLimpo);
 @ vaTextoLimpo será "João Silva Santos" @
 
 @ Exemplo com SubstAlfaUmaVez @
 vaTexto = "teste teste teste";
-SubstAlfaUmaVez(vaTexto, "teste", "TESTE");
+SubstAlfaUmaVez("teste", "TESTE", vaTexto);
 @ vaTexto será "TESTE teste teste" (apenas o primeiro) @
 ```
 
-#### Concatenar
+#### Concatena
 
-Concatena duas ou mais strings.
+Concatena até 3 campo/variáveis tipo alfa, formando uma só variável.
 
 **Sintaxe:**
 
 ```lsp
-vaResultado = Concatenar(<texto1>, <texto2>, ...);
+Concatena(<str1>, <str2>, <str3>, <destino>);
 ```
+
+**Parâmetros:**
+- `str1`: Campo/Variável que será concatenado
+- `str2`: Campo/Variável que será concatenado  
+- `str3`: Campo/Variável que será concatenado
+- `destino`: Variável que receberá o resultado da concatenação (retorno)
 
 **Exemplo:**
 
 ```lsp
 Definir Alfa vaTexto1;
 Definir Alfa vaTexto2;
+Definir Alfa vaTexto3;
 Definir Alfa vaResultado;
 
-vaTexto1 = "Exemplo";
-vaTexto2 = " de string";
-vaResultado = Concatenar(vaTexto1, vaTexto2); @ vaResultado será "Exemplo de string" @
+vaTexto1 = "Pedro Luiz Souza";
+vaTexto2 = " - ";
+vaTexto3 = "Pedrão";
+
+Concatena(vaTexto1, vaTexto2, vaTexto3, vaResultado);
+@ vaResultado será "Pedro Luiz Souza - Pedrão" @
 ```
 
 ### Funções Avançadas de Manipulação
@@ -906,6 +1014,269 @@ DeletarAlfa(vaCPF, 4, 1);  @ Remove primeiro ponto @
 DeletarAlfa(vaCPF, 7, 1);  @ Remove segundo ponto @
 DeletarAlfa(vaCPF, 10, 1); @ Remove traço @
 @ vaCPF será "12345678910" @
+
+#### DeletarStr
+
+Elimina parte de um texto.
+
+**Sintaxe:**
+```lsp
+DeletarStr(<origem>, <posicao>, <quantidade>);
+```
+
+**Parâmetros:**
+- `origem`: Variável que passará o texto cuja parte será deletada
+- `posicao`: Variável que indica a posição de início da eliminação
+- `quantidade`: Variável que indica a quantidade de caracteres a serem eliminados
+
+**Exemplo:**
+```lsp
+Definir Alfa vaOrigem;
+vaOrigem = "Senior empresa de Sistemas";
+DeletarStr(vaOrigem, 8, 11);
+@ vaOrigem será "Senior Sistemas" @
+```
+
+#### InserirAlfa
+
+Insere um ou mais caracteres em uma variável/campo, a partir da posição indicada.
+
+**Sintaxe:**
+```lsp
+InserirAlfa(<valor>, <origem>, <posicao>);
+```
+
+**Parâmetros:**
+- `valor`: Variável que contém a string que deseja-se inserir
+- `origem`: Variável que contém a string de origem e que receberá o conteúdo da inserção
+- `posicao`: Variável que indica a posição em Origem a partir de onde Valor será inserido
+
+**Exemplo:**
+```lsp
+Definir Alfa vaOrigem;
+vaOrigem = "Senior Sistemas";
+InserirAlfa("empresa de ", vaOrigem, 8);
+@ vaOrigem será "Senior empresa de Sistemas" @
+```
+
+**Observação:** O conteúdo da variável Origem será truncado caso o tamanho definido para o campo/variável não for respeitado.
+
+#### InserirStr
+
+Esta função insere um ou mais caracteres em uma Variável/Campo, a partir da posição indicada.
+
+**Sintaxe:**
+```lsp
+InserirStr(<valor>, <origem>, <posicao>);
+```
+
+**Parâmetros:**
+- `valor`: Variável que contém a string que deseja-se inserir
+- `origem`: Variável que contém a string de origem e que receberá o conteúdo da inserção
+- `posicao`: Variável que indica a posição em Origem a partir de onde Valor será inserido
+
+**Exemplo:**
+```lsp
+Definir Alfa vaOrigem;
+vaOrigem = "Senior Sistemas";
+InserirStr("empresa de ", vaOrigem, 8);
+@ vaOrigem será "Senior empresa de Sistemas" @
+```
+
+**Observação:** O conteúdo da variável Origem será truncado caso o tamanho definido para o campo/variável não for respeitado.
+
+#### LimpaEspacos
+
+Limpa os espaços em branco à direita e à esquerda de uma variável alfanumérica.
+
+**Sintaxe:**
+```lsp
+LimpaEspacos(<texto>);
+```
+
+**Exemplo:**
+```lsp
+Definir Alfa vaTexto;
+vaTexto = "  texto com espaços  ";
+LimpaEspacos(vaTexto);
+@ vaTexto será "texto com espaços" @
+```
+
+#### LimpaEspacosDireita
+
+Limpa os espaços em branco à direita de uma variável alfanumérica.
+
+**Sintaxe:**
+```lsp
+LimpaEspacosDireita(<texto>);
+```
+
+**Exemplo:**
+```lsp
+Definir Alfa vaTexto;
+vaTexto = "  texto com espaços  ";
+LimpaEspacosDireita(vaTexto);
+@ vaTexto será "  texto com espaços" @
+```
+
+#### LimpaEspacosEsquerda
+
+Limpa os espaços em branco à esquerda de uma variável alfanumérica.
+
+**Sintaxe:**
+```lsp
+LimpaEspacosEsquerda(<texto>);
+```
+
+**Exemplo:**
+```lsp
+Definir Alfa vaTexto;
+vaTexto = "  texto com espaços  ";
+LimpaEspacosEsquerda(vaTexto);
+@ vaTexto será "texto com espaços  " @
+```
+
+#### QuebraTexto
+
+Esta função pega o texto indicado e faz assinalamentos de quebra de linha conforme o Tamanho_Linha especificado, retornando a quantidade de linhas que será usada para imprimir o texto.
+
+**Sintaxe:**
+```lsp
+QuebraTexto(<texto>, <tamanhoLinha>, <quantidadeLinhas>);
+```
+
+**Parâmetros:**
+- `texto`: Campo/Variável que se deseja imprimir em mais de uma linha
+- `tamanhoLinha`: Variável que indica a quantidade máxima de caracteres por linha
+- `quantidadeLinhas`: Variável que indica qual é a quantidade de linhas que serão necessárias para imprimir o texto
+
+**Exemplo:**
+```lsp
+Definir Alfa vaTexto;
+Definir Alfa vaFrase;
+Definir Numero vnNumLin;
+Definir Numero vnLinAtu;
+
+vaTexto = "Vamos ver o que acontece quando usamos estas funções para controle de impressão de linhas de um texto mais extenso";
+QuebraTexto(vaTexto, 30, vnNumLin);
+
+vnLinAtu = 1;
+Enquanto (vnLinAtu <= vnNumLin) {
+  BuscaLinhaTexto(vaTexto, vnLinAtu, vaFrase);
+  @ Processa cada linha @
+  vnLinAtu++;
+}
+```
+
+**Utilização da Função (dependentes):** BuscaLinhaTexto(Alfa Texto, Numero NroLin, Alfa End LinTex);
+
+#### ProcuraEnter
+
+Esta função procura um caractere que indica "enter" ou nova linha (#13 ou #10) em uma string e retorna a string antes do primeiro enter, e o restante da string original, em variáveis separadas.
+
+**Sintaxe:**
+```lsp
+ProcuraEnter(<strProcura>, <strImp>, <strResto>);
+```
+
+**Parâmetros:**
+- `strProcura`: String na qual será procurada o enter ou nova linha (#13 ou #10)
+- `strImp`: A primeira parte da string procurada, até o primeiro caracter que indica nova linha (retorno)
+- `strResto`: O restante da string, depois do primeiro caracter que indica nova linha (retorno)
+
+**Exemplo:**
+```lsp
+Definir Alfa vaStrProcura;
+Definir Alfa vaStrImp;
+Definir Alfa vaStrResto;
+
+vaStrProcura = "Primeira linha" + Chr(13) + Chr(10) + "Segunda linha";
+ProcuraEnter(vaStrProcura, vaStrImp, vaStrResto);
+@ vaStrImp será "Primeira linha" @
+@ vaStrResto será "Segunda linha" @
+```
+
+**Observações:** Para imprimir cada obs separada por enter basta mandar imprimir a variável StrImp e depois procurar sempre pela StrResto.
+
+#### CalculaAlfa
+
+Realiza operações matemáticas com valores alfanuméricos.
+
+**Sintaxe:**
+```lsp
+CalculaAlfa(<operacao>, <argumento1>, <argumento2>, <resultado>);
+```
+
+**Parâmetros:**
+- `operacao`: Campo indicando que operação deve ser realizada:
+  - "+": soma
+  - "-": subtração
+  - "*": multiplicação
+- `argumento1`: Campo contendo o primeiro argumento a ser usado no cálculo
+- `argumento2`: Campo contendo o segundo argumento a ser usado no cálculo
+- `resultado`: Variável alfa que receberá o resultado do cálculo
+
+**Exemplo:**
+```lsp
+Definir Alfa vaOperacao;
+Definir Alfa vaArg1;
+Definir Alfa vaArg2;
+Definir Alfa vaResultado;
+
+vaOperacao = "+";
+vaArg1 = "100";
+vaArg2 = "50";
+CalculaAlfa(vaOperacao, vaArg1, vaArg2, vaResultado);
+@ vaResultado será "150" @
+```
+
+**Observações:** Estão disponíveis as operações de soma, subtração e multiplicação. Todos os cálculos são realizados com números inteiros, caso seja informado um número não inteiro um erro ocorrerá. Cálculos feitos com esta função demoram muito mais para serem processados do que cálculos diretos (c = a + b).
+
+#### CarregarTextoArq
+
+Esta função carrega para uma variável alfanumérica o conteúdo de um arquivo texto.
+
+**Sintaxe:**
+```lsp
+CarregarTextoArq(<arquivo>, <texto>);
+```
+
+**Parâmetros:**
+- `arquivo`: Variável com o caminho do arquivo a ser lido
+- `texto`: Variável que retorna o texto lido do arquivo
+
+**Exemplo:**
+```lsp
+Definir Alfa vaTexto;
+CarregarTextoArq("C:\\Senior\\Sapiens\\Arquivo.txt", vaTexto);
+```
+
+#### Concatena
+
+Esta função concatena até 3 campo/variáveis tipo alfa, formando uma só variável.
+
+**Sintaxe:**
+```lsp
+Concatena(<str1>, <str2>, <str3>, <destino>);
+```
+
+**Parâmetros:**
+- `str1`: Campo/Variável que será concatenado
+- `str2`: Campo/Variável que será concatenado
+- `str3`: Campo/Variável que será concatenado
+- `destino`: Variável que receberá o resultado da concatenação (retorno)
+
+**Exemplo:**
+```lsp
+Definir Alfa vaResultado;
+Definir Alfa vaNome;
+Definir Alfa vaApelido;
+
+vaNome = "Pedro Luiz Souza";
+vaApelido = "Pedrão";
+
+Concatena(vaNome, " - ", vaApelido, vaResultado);
+@ vaResultado será "Pedro Luiz Souza - Pedrão" @
 ```
 
 #### ConverteParaMaiusculo e ConverteParaMinusculo
@@ -966,34 +1337,48 @@ TrocaString(vaMensagemFinal, "__EMPRESA__", vaEmpresa);
 
 #### LerPosicaoAlfa
 
-Identifica qual caractere está em uma posição específica.
+Identifica qual caracter está em determinada posição do campo/variável de origem.
 
 **Sintaxe:**
 
 ```lsp
-LerPosicaoAlfa(<texto>, <posicao>, <caractere>);
+LerPosicaoAlfa(<origem>, <destino>, <posicao>);
 ```
 
-**Exemplo de Validação:**
+**Parâmetros:**
+- `origem`: Campo/Variável Alfa que se deseja verificar
+- `destino`: Variável Numero que receberá o código ASCII do caracter lido
+- `posicao`: Posição do Campo/Variável de Origem que se deseja identificar o caracter
+
+**Exemplo:**
 
 ```lsp
 Definir Alfa vaTexto;
-Definir Alfa vaCaractere;
+Definir Numero vnCodigoCaractere;
 Definir Numero vnPosicao;
-Definir Alfa vaPosicaoStr;
 
-vaTexto = "ABC123XYZ";
-vnPosicao = 4;
+vaTexto = "TESTE";
+vnPosicao = 1;
 
-LerPosicaoAlfa(vaTexto, vnPosicao, vaCaractere);
-@ vaCaractere será "1" @
+@ Obtém o código ASCII do primeiro caractere @
+LerPosicaoAlfa(vaTexto, vnCodigoCaractere, vnPosicao);
+@ vnCodigoCaractere será 84 (código ASCII de 'T') @
 
-@ Validação se é número @
-Se ((vaCaractere >= "0") e (vaCaractere <= "9")) {
-  IntParaAlfa(vnPosicao, vaPosicaoStr);
-  Mensagem(Retorna, "Posição " + vaPosicaoStr + " é um número");
+@ Comparação com código ASCII @
+Se (vnCodigoCaractere = 84) { @ 'T' @
+  Mensagem(Retorna, "Primeiro caractere é T");
+}
+
+@ Para comparar diretamente com caractere, use aspas simples @
+Se (vnCodigoCaractere = 'T') {
+  Mensagem(Retorna, "Primeiro caractere é T");
 }
 ```
+
+**Observações:**
+- A função retorna o código ASCII do caractere, não o caractere em si
+- Para obter o caractere como string, use `CopiarAlfa` em vez de `LerPosicaoAlfa`
+- Para comparações diretas com caracteres, use aspas simples (`'T'`)
 
 ### Funções de Lista e Separação
 
@@ -1024,13 +1409,18 @@ ListaItem(vaLinhaCsv, ";", 3, vaCargo);   @ vaCargo = "Desenvolvedor" @
 
 #### ListaQuantidade
 
-Retorna a quantidade de itens em uma lista concatenada.
+Retorna a quantidade de itens em uma lista concatenada através de parâmetro de retorno.
 
 **Sintaxe:**
 
 ```lsp
-vnQuantidade = ListaQuantidade(<texto>, <separador>);
+ListaQuantidade(<texto>, <separador>, <quantidade>);
 ```
+
+**Parâmetros:**
+- `texto`: Texto com itens separados
+- `separador`: Caractere que separa os itens
+- `quantidade`: Variável que receberá a quantidade de itens
 
 **Exemplo de Contagem:**
 
@@ -1041,12 +1431,14 @@ Definir Alfa vaMensagem;
 Definir Alfa vaQuantidadeStr;
 
 vaEmails = "user1@teste.com,user2@teste.com,user3@teste.com";
-vnQuantidade = ListaQuantidade(vaEmails, ",");
+ListaQuantidade(vaEmails, ",", vnQuantidade);
 
 IntParaAlfa(vnQuantidade, vaQuantidadeStr);
 vaMensagem = "Total de emails: " + vaQuantidadeStr;
 Mensagem(Retorna, vaMensagem); @ "Total de emails: 3" @
 ```
+
+**⚠️ Importante:** Esta função **usa parâmetro de retorno**, seguindo o padrão LSP.
 
 ### Funções de Codificação
 
@@ -1233,18 +1625,20 @@ vaDadosSensiveis = "CPF:12345678901;SENHA:minhasenha123";
 protegerDadosSensiveis();
 
 Funcao protegerDadosSensiveis(); {
+  Definir Alfa vaMensagem;
   @ Criptografa dados @
   Encriptar(vaDadosSensiveis, vaDadosCriptografados);
-  Mensagem(Retorna, "Dados criptografados: " + vaDadosCriptografados);
+  vaMensagem = "Dados criptografados: " + vaDadosCriptografados;
+  Mensagem(Retorna, vaMensagem);
 
   @ Descriptografa para uso @
   Desencriptar(vaDadosCriptografados, vaDadosRecuperados);
   
   @ Verifica integridade @
   Se (vaDadosRecuperados = vaDadosSensiveis) {
-    Mensagem(Retorna, "✅ Dados recuperados com sucesso!");
+    Mensagem(Retorna, "Dados recuperados com sucesso!");
   } Senao {
-    Mensagem(Erro, "❌ Erro na integridade dos dados!");
+    Mensagem(Erro, "Erro na integridade dos dados!");
   }
 }
 ```
@@ -1298,6 +1692,8 @@ vaUsuario = "joao.silva";
 criarSessaoSegura();
 
 Funcao criarSessaoSegura(); {
+  Definir Alfa vaMensagem;
+
   @ 1. Gera nonce para a sessão @
   GerarNonce(vaNonce);
 
@@ -1311,9 +1707,12 @@ Funcao criarSessaoSegura(); {
   vaChaveSeguranca = vaUsuario + ":" + vaNonce + ":" + vaTokenSessao;
   
   @ 5. Registra sessão @
-  Mensagem(Retorna, "Sessão criada para: " + vaUsuario);
-  Mensagem(Retorna, "Token: " + vaTokenSessao);
-  Mensagem(Retorna, "Senha temporária: " + vaSenhaTemporaria);
+  vaMensagem = "Sessão criada para: " + vaUsuario;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Token: " + vaTokenSessao;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Senha temporária: " + vaSenhaTemporaria;
+  Mensagem(Retorna, vaMensagem);
 }
 ```
 
@@ -1349,9 +1748,10 @@ Funcao autenticacaoWSecurity(); {
   @ 1. Gera nonce @
   GerarNonce(vaNonce);
 
-  @ 2. Data/hora atual @
-  DataHora(vaCreated);
-  FormatarData(vaCreated, "yyyy-MM-ddTHH:mm:ssZ", vaCreated);
+  @ 2. Data/hora atual formatada para WS-Security @
+  Definir Data vdDataAtual;
+  DataHoje(vdDataAtual);
+  FormatarData(vdDataAtual, "yyyy-MM-ddTHH:mm:ssZ", vaCreated);
 
   @ 3. Gera digest @
   GerarPwdDigest(vaNonce, vaCreated, vaSenha, vaDigest);
@@ -1426,9 +1826,9 @@ Funcao transmitirDadosSeguro(); {
 
   @ 5. Verifica integridade @
   Se (vaDadosOriginais = vaDados) {
-    Mensagem(Retorna, "✅ Transmissão segura concluída!");
+    Mensagem(Retorna, " Transmissão segura concluída!");
   } Senao {
-    Mensagem(Erro, "❌ Falha na integridade dos dados!");
+    Mensagem(Erro, "Falha na integridade dos dados!");
   }
 }
 ```
@@ -1457,6 +1857,8 @@ vaTexto = "01/01/2020";
 AlfaParaData(vaTexto, vdData); @ vdData será 01/01/2020 @
 ```
 
+**⚠️ Importante:** Para grids/tabelas, use variável intermediária como mostrado em `AlfaParaDecimal`.
+
 ### AlfaParaDecimal
 
 Converte um valor alfanumérico para o tipo Decimal.
@@ -1467,14 +1869,30 @@ Converte um valor alfanumérico para o tipo Decimal.
 AlfaParaDecimal(<texto>, <decimal>);
 ```
 
+**Parâmetros:**
+- `texto`: Valor alfanumérico a ser convertido (formato brasileiro com vírgula)
+- `decimal`: Variável que receberá o valor convertido
+
 **Exemplo:**
 
 ```lsp
 Definir Alfa vaTexto;
-Definir Decimal vdDecimal;
+Definir Numero vnDecimal;
 
-vaTexto = "123.45";
-AlfaParaDecimal(vaTexto, vdDecimal); @ vdDecimal será 123.45 @
+vaTexto = "123,45";  @ Formato brasileiro com vírgula @
+AlfaParaDecimal(vaTexto, vnDecimal); @ vnDecimal será 123.45 @
+```
+
+**⚠️ Importante para Grids/Tabelas:**
+
+```lsp
+@ INCORRETO - Não funciona diretamente em campos de grid @
+AlfaParaDecimal(vaTexto, MinhaGrid.CampoDecimal);
+
+@  CORRETO - Use variável intermediária @
+Definir Numero vnValor;
+AlfaParaDecimal(vaTexto, vnValor);
+MinhaGrid.CampoDecimal = vnValor;
 ```
 
 ### AlfaParaInt
@@ -1497,6 +1915,8 @@ vaTexto = "123";
 AlfaParaInt(vaTexto, vnInteiro); @ vnInteiro será 123 @
 ```
 
+**⚠️ Importante:** Para grids/tabelas, use variável intermediária como mostrado em `AlfaParaDecimal`.
+
 ### IntParaAlfa
 
 Converte um valor inteiro para o tipo Alfanumérico.
@@ -1516,6 +1936,58 @@ Definir Alfa vaTexto;
 vnInteiro = 123;
 IntParaAlfa(vnInteiro, vaTexto); @ vaTexto será "123" @
 ```
+
+### StrParaInt
+
+Converte um valor alfanumérico (string) para o tipo Inteiro. Esta função é equivalente a `AlfaParaInt` e é mantida para compatibilidade.
+
+**Sintaxe:**
+
+```lsp
+StrParaInt(<texto>, <inteiro>);
+```
+
+**Parâmetros:**
+- `texto`: Valor alfanumérico a ser convertido
+- `inteiro`: Variável que receberá o valor convertido
+
+**Exemplo:**
+
+```lsp
+Definir Alfa vaTexto;
+Definir Numero vnInteiro;
+
+vaTexto = "456";
+StrParaInt(vaTexto, vnInteiro); @ vnInteiro será 456 @
+```
+
+**⚠️ Importante:** Para grids/tabelas, use variável intermediária como mostrado em `AlfaParaDecimal`.
+
+### IntParaStr
+
+Converte um valor inteiro para o tipo String (Alfanumérico). Esta função é equivalente a `IntParaAlfa` e é mantida para compatibilidade.
+
+**Sintaxe:**
+
+```lsp
+IntParaStr(<inteiro>, <texto>);
+```
+
+**Parâmetros:**
+- `inteiro`: Valor inteiro a ser convertido
+- `texto`: Variável alfanumérica que receberá o resultado da conversão
+
+**Exemplo:**
+
+```lsp
+Definir Numero vnInteiro;
+Definir Alfa vaTexto;
+
+vnInteiro = 789;
+IntParaStr(vnInteiro, vaTexto); @ vaTexto será "789" @
+```
+
+**⚠️ Importante:** Para grids/tabelas, use variável intermediária como mostrado em `AlfaParaDecimal`.
 
 ### ConverteMascara
 
@@ -1576,23 +2048,39 @@ DataHoje(<data>);
 
 #### DataHora
 
-Obtém a data e hora atual do sistema operacional.
+Retorna um número fracionário onde a parte inteira é a data e a fração são as horas. A parte inteira é a quantidade de dias e a parte fracionada representa as horas do dia.
 
 **Sintaxe:**
 
 ```lsp
-DataHora(<dataHora>);
+DataHora(<numeroDataHora>);
 ```
+
+**Parâmetros:**
+- `numeroDataHora`: Variável do tipo Numero que receberá a data e hora corrente
+
+**Observação:** Para adicionar horas, minutos e segundos na data, use as frações:
+- 1 Hora: 1/24 = 0.04166666666
+- 1 Minuto: 1/24/60 = 0.00069444444  
+- 1 Segundo: 1/24/60/60 = 0.00001157407
 
 #### DataHoraUTC
 
-Obtém a data e hora atual em UTC (Tempo Universal Coordenado).
+Retorna a data em um número fracionário (onde a parte inteira é a data e a fração são as horas) em UTC (Tempo Universal Coordenado).
 
 **Sintaxe:**
 
 ```lsp
-DataHoraUTC(<dataHoraUTC>);
+DataHoraUTC(<numeroDataHoraUTC>);
 ```
+
+**Parâmetros:**
+- `numeroDataHoraUTC`: Variável do tipo Numero que receberá a data e hora corrente UTC
+
+**Observação:** Para adicionar horas, minutos e segundos na data, use as frações:
+- 1 Hora: 1/24 = 0.04166666666
+- 1 Minuto: 1/24/60 = 0.00069444444
+- 1 Segundo: 1/24/60/60 = 0.00001157407
 
 **Exemplo Completo de Obtenção de Datas:**
 
@@ -1601,31 +2089,44 @@ Definir Funcao obterDatasAtuais();
 
 @ Variáveis globais @
 Definir Data vdDataAtual;
-Definir Data vdDataHoraAtual;
-Definir Data vdDataHoraUTC;
+Definir Numero vnDataHoraAtual;      @ Corrigido: Numero em vez de Data @
+Definir Numero vnDataHoraUTC;        @ Corrigido: Numero em vez de Data @
 Definir Alfa vaDataFormatada;
-Definir Alfa vaHoraFormatada;
-Definir Alfa vaUTCFormatada;
+Definir Alfa vaNumeroStr;
 
 obterDatasAtuais();
 
 Funcao obterDatasAtuais(); {
+  Definir Alfa vaMensagem;
+
   @ 1. Obtém apenas a data @
   DataHoje(vdDataAtual);
   FormatarData(vdDataAtual, "dd/MM/yyyy", vaDataFormatada);
   
-  @ 2. Obtém data e hora local @
-  DataHora(vdDataHoraAtual);
-  FormatarData(vdDataHoraAtual, "dd/MM/yyyy HH:mm:ss", vaHoraFormatada);
+  @ 2. Obtém data e hora local (número fracionário) @
+  DataHora(vnDataHoraAtual);
+  IntParaAlfa(vnDataHoraAtual, vaNumeroStr);
   
-  @ 3. Obtém data e hora UTC @
-  DataHoraUTC(vdDataHoraUTC);
-  FormatarData(vdDataHoraUTC, "yyyy-MM-ddTHH:mm:ssZ", vaUTCFormatada);
+  @ 3. Obtém data e hora UTC (número fracionário) @
+  DataHoraUTC(vnDataHoraUTC);
   
   @ 4. Exibe resultados @
-  Mensagem(Retorna, "Data atual: " + vaDataFormatada);
-  Mensagem(Retorna, "Data/Hora local: " + vaHoraFormatada);
-  Mensagem(Retorna, "Data/Hora UTC: " + vaUTCFormatada);
+  vaMensagem = "Data atual: " + vaDataFormatada;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Data/Hora local (número): " + vaNumeroStr;
+  Mensagem(Retorna, vaMensagem);
+  
+  @ Exemplo de uso das frações para calcular horas @
+  Definir Numero vnSomenteParte;
+  Definir Numero vnHoras;
+  
+  @ Calcular apenas a parte fracionária (horas do dia) @
+  vnSomenteParte = vnDataHoraAtual - Truncar(vnDataHoraAtual);
+  vnHoras = vnSomenteParte * 24;
+  
+  IntParaAlfa(vnHoras, vaNumeroStr);
+  vaMensagem = "Horas do dia: " + vaNumeroStr;
+  Mensagem(Retorna, vaMensagem);
 }
 ```
 
@@ -1633,96 +2134,155 @@ Funcao obterDatasAtuais(); {
 
 Existem duas abordagens principais para extrair e manipular componentes de hora do sistema:
 
-#### **Abordagem 1: Usando DataHora + FormatarData (Recomendada)**
+#### **⚠️ ATENÇÃO: DataHora retorna NUMERO, não Data**
 
-Método moderno e direto para obter componentes específicos da data/hora:
+**DataHora** e **DataHoraUTC** retornam números fracionários, NÃO variáveis do tipo Data. Para formatação com FormatarData, use o número retornado por DataHora diretamente.
+
+#### **🚨 ERRO COMUM: Confundir tipos para FormatarData**
 
 ```lsp
-Definir Funcao extrairComponentesHoraModerno();
+@ ❌ INCORRETO: FormatarData NÃO aceita tipo Data @
+Definir Data vdData;
+DataHoje(vdData);
+FormatarData(vdData, "dd/MM/yyyy", vaData);  @ ERRO: FormatarData só aceita Numero @
+
+@ ✅ CORRETO: FormatarData aceita apenas NUMERO (de DataHora) @
+Definir Numero vnDataHora;         @ Correto: DataHora retorna Numero @
+DataHora(vnDataHora);              @ Correto: Obtém número fracionário @
+FormatarData(vnDataHora, "dd/MM/yyyy", vaData);  @ Correto: Funciona! @
+
+@ ✅ ALTERNATIVA: Para datas simples, use DataHoje + outras funções @
+Definir Data vdDataAtual;          @ Para comparações e operações @
+DataHoje(vdDataAtual);             @ DataHoje retorna tipo Data @
+@ Use DecodData, CodData, etc. para manipular vdDataAtual @
+```
+
+#### **📋 Guia Rápido: Quando Usar Cada Função**
+
+| **Função** | **Retorna** | **Uso** | **Exemplo** |
+|------------|-------------|---------|-------------|
+| `DataHoje` | Tipo Data | Comparações, operações com datas | `Se (vdDataVencimento < vdDataAtual)` |
+| `DataHora` | Tipo Numero | FormatarData, cálculos matemáticos | `FormatarData(vnDataHora, "dd/MM/yyyy", vaTexto)` |
+| `DataHoraUTC` | Tipo Numero | Cálculos UTC, sincronização | `vnUTC = vnDataHoraUTC + (1/24)` @ +1 hora @ |
+
+#### **Abordagem 1: Usando HorSis + CopiarAlfa (Recomendada)**
+
+Método direto para obter componentes específicos da hora atual:
+
+```lsp
+Definir Funcao extrairComponentesHora();
 
 @ Variáveis globais @
-Definir Data vdDataHora;
 Definir Alfa vaHoraCompleta;
 Definir Alfa vaApenasHora;
 Definir Alfa vaApenasMinuto;
 Definir Alfa vaApenasSegundo;
+Definir Data vdDataAtual;
 Definir Alfa vaDataFormatada;
 
-extrairComponentesHoraModerno();
+extrairComponentesHora();
 
-Funcao extrairComponentesHoraModerno(); {
-  @ Obtém data e hora atual @
-  DataHora(vdDataHora);
+Funcao extrairComponentesHora(); {
+  Definir Alfa vaMensagem;
+  @ Obtém a hora do sistema no formato HH:MM:SS @
+  vaHoraCompleta = HorSis;
   
-  @ Formata data e hora completa @
-  FormatarData(vdDataHora, "dd/MM/yyyy - HH:mm:ss", vaDataFormatada);
+  @ Obtém a data atual @
+  DataHoje(vdDataAtual);
+  FormatarData(vdDataAtual, "dd/MM/yyyy", vaDataFormatada);
   
-  @ Extrai apenas componentes da hora @
-  FormatarData(vdDataHora, "HH", vaApenasHora);      @ Apenas hora (ex: "14") @
-  FormatarData(vdDataHora, "mm", vaApenasMinuto);    @ Apenas minuto (ex: "30") @
-  FormatarData(vdDataHora, "ss", vaApenasSegundo);   @ Apenas segundo (ex: "45") @
-  FormatarData(vdDataHora, "HH:mm:ss", vaHoraCompleta); @ Hora completa (ex: "14:30:45") @
+  @ Extrai componentes usando CopiarAlfa @
+  vaApenasHora = vaHoraCompleta;
+  CopiarAlfa(vaApenasHora, 1, 2);     @ Extrai hora (posição 1-2) @
+  
+  vaApenasMinuto = vaHoraCompleta;
+  CopiarAlfa(vaApenasMinuto, 4, 2);   @ Extrai minuto (posição 4-5) @
+  
+  vaApenasSegundo = vaHoraCompleta;
+  CopiarAlfa(vaApenasSegundo, 7, 2);  @ Extrai segundo (posição 7-8) @
   
   @ Exibe resultados @
-  Mensagem(Retorna, "Data/Hora formatada: " + vaDataFormatada);
-  Mensagem(Retorna, "Hora completa: " + vaHoraCompleta);
-  Mensagem(Retorna, "Hora: " + vaApenasHora);
-  Mensagem(Retorna, "Minuto: " + vaApenasMinuto);
-  Mensagem(Retorna, "Segundo: " + vaApenasSegundo);
+  vaMensagem = "Data: " + vaDataFormatada;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Hora completa: " + vaHoraCompleta;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Hora: " + vaApenasHora;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Minuto: " + vaApenasMinuto;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Segundo: " + vaApenasSegundo;
+  Mensagem(Retorna, vaMensagem);
 }
 ```
 
-#### **Abordagem 2: Usando HorSis + CopiarAlfa (Clássica)**
+#### **Abordagem 2: Usando DataHora com Número Fracionário**
 
-Método tradicional usando a variável de sistema e manipulação de strings:
+Método usando o número fracionário retornado por DataHora para calcular componentes:
 
 ```lsp
-Definir Funcao extrairComponentesHoraClassico();
+Definir Funcao extrairComponentesDataHora();
 
 @ Variáveis globais @
-Definir Alfa vaHora[8];
-Definir Numero vnMinuto;
-Definir Numero vnSegundo;
-Definir Numero vnHoraNum;
-Definir Alfa vaMinutoStr;
-Definir Alfa vaSegundoStr;
-Definir Alfa vaHoraStr;
+Definir Numero vnDataHora;
+Definir Numero vnParteInteira;
+Definir Numero vnParteFracionaria;
+Definir Numero vnHoras;
+Definir Numero vnMinutos;
+Definir Numero vnSegundos;
+Definir Alfa vaHoraFormatada;
 
-extrairComponentesHoraClassico();
+extrairComponentesDataHora();
 
-Funcao extrairComponentesHoraClassico(); {
-  @ Obtém a hora do sistema no formato HH:MM:SS @
-  vaHora = HorSis;
+Funcao extrairComponentesDataHora(); {
+  @ Obtém data e hora como número fracionário @
+  DataHora(vnDataHora);
   
-  @ Extrai componentes usando CopiarAlfa @
-  CopiarAlfa(vaHora, vaHoraStr, 1, 2);     @ Extrai hora (posição 1-2) @
-  CopiarAlfa(vaHora, vaMinutoStr, 4, 2);   @ Extrai minuto (posição 4-5) @
-  CopiarAlfa(vaHora, vaSegundoStr, 7, 2);  @ Extrai segundo (posição 7-8) @
+  @ Separa parte inteira (data) da fracionária (hora) @
+  vnParteInteira = Truncar(vnDataHora);
+  vnParteFracionaria = vnDataHora - vnParteInteira;
   
-  @ Converte para números se necessário @
-  AlfaParaInt(vaHoraStr, vnHoraNum);
-  AlfaParaInt(vaMinutoStr, vnMinuto);
-  AlfaParaInt(vaSegundoStr, vnSegundo);
+  @ Calcula horas, minutos e segundos @
+  vnHoras = Truncar(vnParteFracionaria * 24);
+  vnMinutos = Truncar((vnParteFracionaria * 24 - vnHoras) * 60);
+  vnSegundos = Truncar(((vnParteFracionaria * 24 - vnHoras) * 60 - vnMinutos) * 60);
+  
+  @ Formata resultado @
+  Definir Alfa vaHorasStr;
+  Definir Alfa vaMinutosStr;
+  Definir Alfa vaSegundosStr;
+  Definir Alfa vaDataStr;
+  
+  IntParaAlfa(vnParteInteira, vaDataStr);
+  IntParaAlfa(vnHoras, vaHorasStr);
+  IntParaAlfa(vnMinutos, vaMinutosStr);
+  IntParaAlfa(vnSegundos, vaSegundosStr);
+  
+  vaHoraFormatada = vaHorasStr + ":" + vaMinutosStr + ":" + vaSegundosStr;
   
   @ Exibe resultados @
-  Mensagem(Retorna, "Hora completa (HorSis): " + vaHora);
-  Mensagem(Retorna, "Hora extraída: " + vaHoraStr + " (" + IntParaAlfa(vnHoraNum) + ")");
-  Mensagem(Retorna, "Minuto extraído: " + vaMinutoStr + " (" + IntParaAlfa(vnMinuto) + ")");
-  Mensagem(Retorna, "Segundo extraído: " + vaSegundoStr + " (" + IntParaAlfa(vnSegundo) + ")");
+  Definir Alfa vaNumeroStr;
+  Definir Alfa vaMensagem;
+  IntParaAlfa(vnDataHora, vaNumeroStr);
+  vaMensagem = "Número fracionário: " + vaNumeroStr;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Parte inteira (data): " + vaDataStr;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Hora calculada: " + vaHoraFormatada;
+  Mensagem(Retorna, vaMensagem);
 }
 ```
 
 #### **Comparação das Abordagens:**
 
-| Aspecto | DataHora + FormatarData | HorSis + CopiarAlfa |
-|---------|-------------------------|---------------------|
-| **Flexibilidade** | ✅ Muito alta (múltiplos formatos) | ❌ Limitada (formato fixo) |
-| **Simplicidade** | ✅ Direta e clara | ❌ Requer manipulação manual |
-| **Performance** | ✅ Otimizada | ⚠️ Múltiplas operações |
-| **Manutenibilidade** | ✅ Fácil de manter | ❌ Propensa a erros |
-| **Compatibilidade** | ✅ Moderna | ✅ Tradicional |
+| Aspecto | HorSis + CopiarAlfa | DataHora + Cálculos |
+|---------|---------------------|---------------------|
+| **Flexibilidade** |  Formato padrão HH:MM:SS | ⚠️ Requer cálculos manuais |
+| **Simplicidade** |  Direta e clara | Matemática complexa |
+| **Performance** |  Rápida | ⚠️ Múltiplas operações |
+| **Precisão** |  Hora formatada |  Cálculo exato |
+| **Compatibilidade** |  Tradicional e confiável |  Usa função oficial |
 
-**Recomendação:** Use a **Abordagem 1** (DataHora + FormatarData) para novos desenvolvimentos, pois é mais robusta e flexível.
+**Recomendação:** Use a **Abordagem 1** (HorSis + CopiarAlfa) para simplicidade, ou **Abordagem 2** (DataHora) quando precisar de cálculos específicos com datas/horas.
 
 ### Construção e Decomposição de Datas
 
@@ -1790,6 +2350,127 @@ MontaData(vnDia, vnMes, vnAno, vdData);
 
 **Observação:** Quando a variável de retorno for numérica, não será necessário defini-la. No entanto, se for utilizada em um cursor, é obrigatório defini-la como Data.
 
+#### DesMontaData
+
+Esta função desmonta uma data, separando em três variáveis, as informações Dia/Mês/Ano da data.
+
+**Sintaxe:**
+```lsp
+DesMontaData(<data>, <dia>, <mes>, <ano>);
+```
+
+**Parâmetros:**
+- `data`: Campo/Variável a ser desmontada
+- `dia`: Variável tipo Numero que receberá o dia da data a ser desmontada
+- `mes`: Variável tipo Numero que receberá o mês da data a ser desmontada
+- `ano`: Variável tipo Numero que receberá o ano da data a ser desmontada
+
+**Exemplo:**
+```lsp
+Definir Data vdDataEmissao;
+Definir Numero vnDia;
+Definir Numero vnMes;
+Definir Numero vnAno;
+
+vdDataEmissao = E140NFV.DatEmi;
+DesMontaData(vdDataEmissao, vnDia, vnMes, vnAno);
+@ Se a data fosse 24/04/1995: vnDia=24, vnMes=04, vnAno=1995 @
+```
+
+#### ConverteDataBanco
+
+Converter uma data qualquer, para o formato de data do banco de dados.
+
+**Sintaxe:**
+```lsp
+ConverteDataBanco(<datNum>, <datAlf>);
+```
+
+**Parâmetros:**
+- `datNum`: É o campo de tabela ou variável que se deseja converter
+- `datAlf`: É uma variável que conterá o retorno da conversão
+
+**Exemplo:**
+```lsp
+Definir Alfa vaDataStr;
+Definir Data vdData;
+
+vdData = 31/12/1900;
+ConverteDataBanco(vdData, vaDataStr);
+@ vaDataStr = "to_date('31/12/1900','DD/MM/YYYY')" ou formato do banco usado @
+```
+
+#### ConverteDataSqlSenior2
+
+Converter datas para o formato SQL Senior 2.
+
+**Sintaxe:**
+```lsp
+ConverteDataSqlSenior2(<datNum>, <datSql>);
+```
+
+**Parâmetros:**
+- `datNum`: Data a ser convertida
+- `datSql`: Data em formato SQL Senior 2 (retorno)
+
+**Exemplo:**
+```lsp
+Definir Alfa vaSqlAux;
+ConverteDataSqlSenior2(DatSis, vaSqlAux);
+vaSqlAux = "E000LPA.DATINI = " + vaSqlAux;
+InsClauSQLWhere("Detalhe_000LPA", vaSqlAux);
+```
+
+**Observações:** Esta função deve ser utilizada em lugar das funções ConverteDataToDB e ConverteDataBanco, quando for necessário inserir uma data em um comando SQL Senior 2.
+
+#### ConverteDataToDB
+
+Converter uma data qualquer, para o formato de data do banco de dados.
+
+**Sintaxe:**
+```lsp
+ConverteDataToDB(<datNum>, <datAlf>);
+```
+
+**Parâmetros:**
+- `datNum`: É o campo de tabela ou variável que se deseja converter
+- `datAlf`: É uma variável tipo Alfa, que conterá o retorno da conversão
+
+**Exemplo:**
+```lsp
+Definir Alfa vaDataStr;
+Definir Data vdData;
+
+vdData = 31/12/1900;
+ConverteDataToDB(vdData, vaDataStr);
+@ vaDataStr = "to_date('31/12/1900','DD/MM/YYYY')" ou formato do banco usado @
+```
+
+#### AnoBissexto
+
+Esta função tem por objetivo retornar a informação se um ano é ou não bissexto tomando como base o ano da data passada.
+
+**Sintaxe:**
+```lsp
+AnoBissexto(<data>, <bissexto>);
+```
+
+**Parâmetros:**
+- `data`: Recebe a data base a ser verificada
+- `bissexto`: Retorna a indicação se o ano é bissexto:
+  - 0: se o ano não for bissexto
+  - 1: se o ano for bissexto
+
+**Exemplo:**
+```lsp
+Definir Data vdData;
+Definir Numero vnBissexto;
+
+vdData = 02/07/2018;
+AnoBissexto(vdData, vnBissexto);
+@ vnBissexto será 0 (não bissexto) @
+```
+
 #### DecodData
 
 Decompõe uma data em dia, mês e ano separadamente.
@@ -1836,7 +2517,11 @@ Funcao validarDataNascimento(); {
       vnIdade = vnIdade * -1;
     }
     
-    Mensagem(Retorna, "Data válida! Idade aproximada: " + IntParaAlfa(vnIdade));
+    Definir Alfa vaIdadeStr;
+    IntParaAlfa(vnIdade, vaIdadeStr);
+    Definir Alfa vaMensagem;
+    vaMensagem = "Data válida! Idade aproximada: " + vaIdadeStr;
+    Mensagem(Retorna, vaMensagem);
   }
 }
 ```
@@ -1878,13 +2563,17 @@ Funcao calcularPrazos(); {
   AdicionarDias(vdDataBase, 60, vdDataLimite);
   FormatarData(vdDataLimite, "dd/MM/yyyy", vaDataLimiteStr);
   
-  Mensagem(Retorna, "Vencimento: " + vaDataVencimentoStr);
-  Mensagem(Retorna, "Limite: " + vaDataLimiteStr);
+  Definir Alfa vaMensagem;
+  vaMensagem = "Vencimento: " + vaDataVencimentoStr;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Limite: " + vaDataLimiteStr;
+  Mensagem(Retorna, vaMensagem);
   
   @ Exemplo com subtração (data passada) @
   AdicionarDias(vdDataBase, -15, vdDataBase);
   FormatarData(vdDataBase, "dd/MM/yyyy", vaDataVencimentoStr);
-  Mensagem(Retorna, "15 dias atrás: " + vaDataVencimentoStr);
+  vaMensagem = "15 dias atrás: " + vaDataVencimentoStr;
+  Mensagem(Retorna, vaMensagem);
 }
 ```
 
@@ -1892,64 +2581,478 @@ Funcao calcularPrazos(); {
 
 #### FormatarData
 
-Formata uma data usando máscaras personalizadas.
+Formata a data em milissegundos gerada pela função DataHora.
 
 **Sintaxe:**
 
 ```lsp
-FormatarData(<data>, <mascara>, <textoFormatado>);
+FormatarData(<data>, <formato>, <dataFormatada>);
 ```
 
+**Parâmetros:**
+- `data`: Valor numérico da data (tipo Numero)
+- `formato`: Formato da data (tipo Alfa)  
+- `dataFormatada`: Variável que receberá a data formatada (tipo Alfa)
+
+**⚠️ CRÍTICO - Case Sensitivity das Máscaras:**
+- **SEMPRE use letras minúsculas**: `yyyy` para ano, `dd` para dia
+- **NUNCA use maiúsculas**: `YYYY` ou `DD` geram datas inválidas!
+
 **Máscaras Suportadas:**
-- `dd`: Dia (01-31)
+- `dd`: Dia (01-31) ⚠️ **Minúsculo obrigatório**
 - `MM`: Mês (01-12)
-- `yyyy`: Ano com 4 dígitos
+- `yyyy`: Ano com 4 dígitos ⚠️ **Minúsculo obrigatório**
 - `yy`: Ano com 2 dígitos
 - `HH`: Hora (00-23)
 - `mm`: Minuto (00-59)
 - `ss`: Segundo (00-59)
 
+**Exemplo Correto (conforme documentação oficial):**
+
+```lsp
+Definir Numero vnDataHora;        @ Tipo NUMERO obrigatório @
+Definir Alfa vaDataFormatada;
+
+@ DataHora retorna número fracionário @
+DataHora(vnDataHora);
+
+@ FormatarData aceita NUMERO, não Data @
+FormatarData(vnDataHora, "yyyy-MM-dd'T'HH:mm:ss'Z'", vaDataFormatada);
+@ Resultado: "2024-01-15T14:30:45Z" @
+```
+
+**⚠️ ERRO COMUM - Confundir tipos:**
+
+```lsp
+@ ❌ INCORRETO - FormatarData NÃO aceita tipo Data @
+Definir Data vdData;
+DataHoje(vdData);
+FormatarData(vdData, "dd/MM/yyyy", vaFormatada); @ ERRO! @
+
+@ ✅ CORRETO - Use DataHora (retorna Numero) @
+Definir Numero vnDataHora;
+DataHora(vnDataHora);
+FormatarData(vnDataHora, "dd/MM/yyyy", vaFormatada); @ Funciona! @
+```
+
 **Exemplo de Formatações Diversas:**
+
+⚠️ **IMPORTANTE**: Este exemplo está **INCORRETO** porque `DataHora` retorna um número fracionário, não uma variável do tipo Data. Para usar `FormatarData`, você precisa de variáveis do tipo Data obtidas com `DataHoje` ou `CodData`.
 
 ```lsp
 Definir Funcao exemploFormatacoes();
 
 @ Variáveis globais @
-Definir Data vdDataHora;
+Definir Data vdDataAtual;           @ Corrigido: usar DataHoje @
 Definir Alfa vaFormatoBR;
 Definir Alfa vaFormatoUS;
 Definir Alfa vaFormatoISO;
 Definir Alfa vaFormatoCompleto;
 Definir Alfa vaApenasHora;
 
-DataHora(vdDataHora);
+DataHoje(vdDataAtual);              @ Corrigido: DataHoje em vez de DataHora @
 
 exemploFormatacoes();
 
 Funcao exemploFormatacoes(); {
   @ Formato brasileiro @
-  FormatarData(vdDataHora, "dd/MM/yyyy", vaFormatoBR);
+  FormatarData(vdDataAtual, "dd/MM/yyyy", vaFormatoBR);
   
   @ Formato americano @
-  FormatarData(vdDataHora, "MM/dd/yyyy", vaFormatoUS);
+  FormatarData(vdDataAtual, "MM/dd/yyyy", vaFormatoUS);
   
   @ Formato ISO 8601 @
-  FormatarData(vdDataHora, "yyyy-MM-dd", vaFormatoISO);
+  FormatarData(vdDataAtual, "yyyy-MM-dd", vaFormatoISO);
   
-  @ Formato completo @
-  FormatarData(vdDataHora, "dd/MM/yyyy HH:mm:ss", vaFormatoCompleto);
-  
-  @ Apenas hora @
-  FormatarData(vdDataHora, "HH:mm", vaApenasHora);
+  @ ⚠️ NOTA: FormatarData só formata datas, não horas para variáveis do tipo Data @
+  @ Para hora atual, use HorSis ou outros métodos @
+  vaFormatoCompleto = vaFormatoBR + " " + HorSis;  @ Concatena data + hora sistema @
+  vaApenasHora = HorSis;                           @ Hora do sistema @
   
   @ Exibe resultados @
-  Mensagem(Retorna, "Brasileiro: " + vaFormatoBR);
-  Mensagem(Retorna, "Americano: " + vaFormatoUS);
-  Mensagem(Retorna, "ISO 8601: " + vaFormatoISO);
-  Mensagem(Retorna, "Completo: " + vaFormatoCompleto);
-  Mensagem(Retorna, "Hora: " + vaApenasHora);
+  Definir Alfa vaMensagem;
+  vaMensagem = "Brasileiro: " + vaFormatoBR;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Americano: " + vaFormatoUS;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "ISO 8601: " + vaFormatoISO;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Completo: " + vaFormatoCompleto;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Hora: " + vaApenasHora;
+  Mensagem(Retorna, vaMensagem);
 }
 ```
+
+### Funções de Extenso
+
+#### Extenso
+
+Esta função gera o extenso de um valor.
+
+**⚠️ Importante:** Esta função contempla no máximo duas casas decimais após a vírgula. Caso o valor tenha três ou mais casas decimais após a vírgula, ele será arredondado para o valor real de duas.
+
+**Sintaxe:**
+```lsp
+Extenso(<valor>, <tamanhoLinha1>, <tamanhoLinha2>, <tamanhoLinha3>, <linha1>, <linha2>, <linha3>);
+```
+
+**Parâmetros:**
+- `valor`: Campo/Variável do qual se deseja obter o extenso
+- `tamanhoLinha1`: Quantidade de caracteres que será usado na primeira linha para geração do extenso
+- `tamanhoLinha2`: Quantidade de caracteres que será usado na segunda linha para geração do extenso
+- `tamanhoLinha3`: Quantidade de caracteres que será usado na terceira linha para geração do extenso
+- `linha1`: Variável que receberá a primeira linha do extenso do valor (retorno)
+- `linha2`: Variável que receberá a segunda linha do extenso do valor (retorno)
+- `linha3`: Variável que receberá a terceira linha do extenso do valor (retorno)
+
+**Exemplo:**
+```lsp
+Definir Alfa vaExtLin1;
+Definir Alfa vaExtLin2;
+Definir Alfa vaExtLin3;
+Definir Numero vnQuantidade;
+
+vnQuantidade = 1577350;
+Extenso(vnQuantidade, 30, 30, 30, vaExtLin1, vaExtLin2, vaExtLin3);
+@ vaExtLin1 = "Um milhao, quinhentos e ******" @
+@ vaExtLin2 = "setenta e sete mil e *********" @
+@ vaExtLin3 = "trezentos e cinquenta reais **" @
+```
+
+#### ExtensoMes
+
+Esta função monta o extenso do mês de uma determinada data.
+
+**Sintaxe:**
+```lsp
+ExtensoMes(<datMon>, <extMes>);
+```
+
+**Parâmetros:**
+- `datMon`: Campo/Variável do qual se deseja obter o extenso do mês
+- `extMes`: Variável tipo Alfa que receberá o extenso do mês
+
+**Exemplo:**
+```lsp
+Definir Alfa vaMesExt;
+Definir Data vdData;
+
+DataHoje(vdData);
+ExtensoMes(vdData, vaMesExt);
+@ Se a data fosse 31/12/1900, vaMesExt seria "Dezembro" @
+```
+
+#### ExtensoMoeda
+
+Esta função gera o extenso de um valor com a moeda informada.
+
+**Sintaxe:**
+```lsp
+ExtensoMoeda(<vlrExt>, <tamLn1>, <tamLn2>, <tamLn3>, <moeIS>, <moeIP>, <moeDS>, <moeDP>, <extLn1>, <extLn2>, <extLn3>);
+```
+
+**Parâmetros:**
+- `vlrExt`: Campo/Variável do qual se deseja obter o extenso
+- `tamLn1`: Quantidade de caracteres que será usado na primeira linha para geração do extenso
+- `tamLn2`: Quantidade de caracteres que será usado na segunda linha para geração do extenso
+- `tamLn3`: Quantidade de caracteres que será usado na terceira linha para geração do extenso
+- `moeIS`: Moeda, parte inteira no singular
+- `moeIP`: Moeda, parte inteira no plural
+- `moeDS`: Moeda, parte decimal no singular
+- `moeDP`: Moeda, parte decimal no plural
+- `extLn1`: Variável que receberá a primeira linha do extenso do valor (retorno)
+- `extLn2`: Variável que receberá a segunda linha do extenso do valor (retorno)
+- `extLn3`: Variável que receberá a terceira linha do extenso do valor (retorno)
+
+**Exemplo:**
+```lsp
+Definir Alfa vaExtLin1;
+Definir Alfa vaExtLin2;
+Definir Alfa vaExtLin3;
+Definir Numero vnValorSalario;
+
+vnValorSalario = 1577.95;
+ExtensoMoeda(vnValorSalario, 30, 30, 30, "dólar", "dólares", "cent", "cents", vaExtLin1, vaExtLin2, vaExtLin3);
+@ vaExtLin1 = "um mil, quinhentos e setenta *" @
+@ vaExtLin2 = "e sete dólares e noventa e ***" @
+@ vaExtLin3 = "cinco cents ******************" @
+```
+
+#### ExtensoSemana
+
+Esta função monta o extenso do dia da semana de uma determinada data.
+
+**Sintaxe:**
+```lsp
+ExtensoSemana(<datMon>, <extSem>);
+```
+
+**Parâmetros:**
+- `datMon`: Campo/Variável do qual se deseja obter o extenso da semana
+- `extSem`: Variável que receberá o extenso da Semana
+
+**Exemplo:**
+```lsp
+Definir Alfa vaSemExt;
+Definir Data vdData;
+
+DataHoje(vdData);
+ExtensoSemana(vdData, vaSemExt);
+@ Se a data fosse 31/12/1900, vaSemExt seria "Sexta-Feira" @
+```
+
+#### DataExtenso
+
+Esta função gera o extenso de determinada data.
+
+**Sintaxe:**
+```lsp
+DataExtenso(<data>, <extenso>);
+```
+
+**Parâmetros:**
+- `data`: Campo/Variável a partir do qual se deseja gerar o extenso
+- `extenso`: Variável que retornará o extenso da data
+
+**Exemplo:**
+```lsp
+Definir Data vdData;
+Definir Alfa vaExtenso;
+
+vdData = E210MVP.DatMov;
+DataExtenso(vdData, vaExtenso);
+@ vaExtenso vai conter a data por extenso @
+```
+
+### Operações Matemáticas e Formatação
+
+#### MultiplicaValor
+
+Esta função multiplica um número no formato alfanumérico por um fator de multiplicação numérico e retorna o resultado desta multiplicação em uma variável alfanumérica.
+
+**Sintaxe:**
+```lsp
+MultiplicaValor(<multiplicando>, <fator>, <retorno>);
+```
+
+**Parâmetros:**
+- `multiplicando`: Campo/Variável que contém o valor a ser multiplicado
+- `fator`: Campo/Variável que contém o fator de multiplicação
+- `retorno`: Campo/Variável que retorna o resultado da multiplicação
+
+**Exemplo:**
+```lsp
+Definir Alfa vaNumOriginal;
+Definir Alfa vaNumMultiplicado;
+Definir Numero vnFator;
+
+vaNumOriginal = "0000237259400000216555";
+vnFator = 5;
+MultiplicaValor(vaNumOriginal, vnFator, vaNumMultiplicado);
+@ vaNumMultiplicado será "1186297000001082775" @
+```
+
+#### ConverteUnidadeMedida
+
+Calcula a quantidade convertida de uma unidade de medida (de) para outra unidade de medida (para).
+
+**Sintaxe:**
+```lsp
+ConverteUnidadeMedida(<codPro>, <codDer>, <uniMedDe>, <uniMedPara>, <qtde>, <codFor>, <qtdDec>, <codEmp>, <qtdCnv>);
+```
+
+**Parâmetros:**
+- `codPro`: Variável que indica o código de produto (opcional)
+- `codDer`: Variável que indica o código da derivação (opcional)
+- `uniMedDe`: Variável que indica a unidade de medida origem (obrigatório)
+- `uniMedPara`: Variável que indica a unidade de medida destino (obrigatório)
+- `qtde`: Variável que indica a quantidade a ser convertida (obrigatório)
+- `codFor`: Variável que indica o código do fornecedor (opcional)
+- `qtdDec`: Variável que indica a quantidade de decimais usada na conversão (obrigatório), se não sabe-se a precisão, informar 5
+- `codEmp`: Variável que indica o código da empresa (opcional), caso for informado zero, será utilizado a empresa logada
+- `qtdCnv`: Variável que retorna a quantidade convertida da unidade de medida origem para a unidade de medida destino
+
+**Exemplo:**
+```lsp
+Definir Numero vnQtdConv;
+ConverteUnidadeMedida("", "", "KM", "M", 100, 0, 3, 0, vnQtdConv);
+@ vnQtdConv será 100000 (100 km = 100000 metros) @
+```
+
+#### Arredonda
+
+Esta função arredonda um valor, conforme a precisão informada.
+
+**Sintaxe:**
+```lsp
+Arredonda(<valor>, <decimais>);
+```
+
+**Parâmetros:**
+- `valor`: Variável que será arredondada
+- `decimais`: Variável numérica que indica a quantidade de casas decimais do arredondamento
+
+**Exemplo:**
+```lsp
+Definir Numero vnValor;
+vnValor = 1577.87;
+Arredonda(vnValor, 1);
+@ vnValor será 1577.90 @
+
+Arredonda(vnValor, 0);
+@ vnValor será 1578.00 @
+```
+
+#### ArredondaABNT
+
+Esta função aplica a regra de arredondamento da ABNT, conforme a precisão informada.
+
+**Sintaxe:**
+```lsp
+ArredondaABNT(<valor>, <decimais>);
+```
+
+**Parâmetros:**
+- `valor`: Variável que será arredondada
+- `decimais`: Variável numérica que indica a quantidade de casas decimais do arredondamento
+
+**Regras ABNT:**
+- Quando o algarismo a ser conservado for seguido de algarismo inferior a 5, o algarismo a ser conservado permanece sem alteração
+- Quando o algarismo a ser conservado for seguido de algarismo superior a 5, ou igual a 5 seguindo de um algorismo diferente de zero, soma-se uma unidade ao algarismo a ser conservado
+- Quando o algarismo a ser conservado for ímpar, seguido de 5 e posteriormente de zeros, soma-se uma unidade ao algarismo a ser conservado
+- Quando o algarismo a ser conservado for par, seguido de 5 e posteriormente de zeros, o algarismo a ser conservado permanece sem alteração
+
+**Exemplo:**
+```lsp
+Definir Numero vnValor;
+vnValor = 1577.87;
+ArredondaABNT(vnValor, 1);
+@ vnValor será 1577.90 @
+
+ArredondaABNT(vnValor, 0);
+@ vnValor será 1578.00 @
+```
+
+#### ArredondarValor
+
+Esta função arredonda determinado valor, conforme a precisão informada.
+
+**Sintaxe:**
+```lsp
+ArredondarValor(<valorVariavel>, <precisao>);
+```
+
+**Parâmetros:**
+- `valorVariavel`: Campo ou variável que deseja-se arredondar
+- `precisao`: Quantidade de casas decimais para precisão do arredondamento. Se for informado 0 (zero), faz o arredondamento na parte inteira do resultado
+
+**Exemplo:**
+```lsp
+Definir Numero vnVlrNum;
+vnVlrNum = 1577.87;
+ArredondarValor(vnVlrNum, 1); @ Retorno será 1577.90 @
+ArredondarValor(vnVlrNum, 0); @ Retorno será 1578.00 @
+```
+
+#### Arredonda Valor Tipo Acerto
+
+Esta função arredonda um valor tipo acerto, conforme a precisão informada.
+
+**Sintaxe:**
+```lsp
+Arredonda Valor Tipo Acerto(<valor>, <tipoAcerto>);
+```
+
+**Parâmetros:**
+- `valor`: Qualquer valor que se deseja arredondar
+- `tipoAcerto`: 
+  - Tipo 1: O valor passado por parâmetro será arredondado para duas casas decimais
+  - Tipo 2: O valor passado por parâmetro será arredondado ignorando a terceira casa decimais
+
+**Exemplo:**
+```lsp
+Definir Numero vnValor;
+vnValor = 1475.12845;
+Arredonda Valor Tipo Acerto(vnValor, 1); @ Retorna 1475.13 @
+Arredonda Valor Tipo Acerto(vnValor, 2); @ Retorna 1475.12 @
+```
+
+#### Formatar
+
+Formata números de acordo com os parâmetros definidos. O formato é o mesmo usado no Borland Delphi 2.0.
+
+**Sintaxe:**
+```lsp
+<variável> = Formatar(<dado>, "<formato>");
+```
+
+**Parâmetros:**
+- `dado`: Variável tipo numérica a ser convertida
+- `formato`: Formato de conversão. Por exemplo, %3.0f para converter o valor 354 e %3.2f para converter o valor 345,43
+
+**Exemplo:**
+```lsp
+Definir Alfa vaFmt;
+vaFmt = Formatar(123, "%s");
+```
+
+#### FormatarN
+
+Formata números com casas decimais de acordo com os parâmetros definidos. O formato é o mesmo usado no Borland Delphi 2.0.
+
+**Sintaxe:**
+```lsp
+FormatarN(<dado>, "<formato>", "<separador decimal>", <variável>);
+```
+
+**Parâmetros:**
+- `dado`: Variável tipo numérica a ser convertida
+- `formato`: Formato de conversão
+- `separador decimal`: Qual será o separador de casas decimais
+- `variável`: Armazena o resultado da formatação
+
+**Exemplo:**
+```lsp
+Definir Alfa vaFmt;
+FormatarN(123, "%3.2f", ".", vaFmt);
+```
+
+### Arrays e Listas
+
+#### LimpaGerTabAlf
+
+Limpa o conteúdo do Registro GerTabAlf.
+
+**Sintaxe:**
+```lsp
+LimpaGerTabAlf();
+```
+
+**Exemplo:**
+```lsp
+GerTabAlf[1] = "xxx";
+LimpaGerTabAlf();
+@ Todos os elementos do GerTabAlf serão limpos @
+```
+
+#### LimpaGerTabNum
+
+Limpa o conteúdo do Registro GerTabNum.
+
+**Sintaxe:**
+```lsp
+LimpaGerTabNum();
+```
+
+**Exemplo:**
+```lsp
+GerTabNum[1] = 1;
+LimpaGerTabNum();
+@ Todos os elementos do GerTabNum serão limpos @
+```
+
+**⚠️ Observação sobre Arrays:** A estrutura do GerTabAlf e GerTabNum não permite múltiplos arrays simultâneos. Como fica em memória, não é possível atribuir valores diferentes para o mesmo indexador. Para trabalhar com múltiplos arrays, é necessário vincular valores diferentes em indexadores diferentes ou considerar o uso de listas dinâmicas.
 
 ### Validação e Comparação de Datas
 
@@ -1991,18 +3094,293 @@ Funcao validarPeriodo(); {
   } Senao Se (vdDataFim < vdDataAtual) {
     Mensagem(Erro, "Período já expirado!");
   } Senao Se (vdDataInicio > vdDataAtual) {
-    Mensagem(Retorna, "⏳ Período ainda não iniciado");
+    Mensagem(Retorna, "Período ainda não iniciado");
   } Senao Se ((vdDataAtual >= vdDataInicio) e (vdDataAtual <= vdDataFim)) {
-    Mensagem(Retorna, "✅ Período ativo");
+    Mensagem(Retorna, "Período ativo");
   } Senao {
-    Mensagem(Retorna, "❌ Fora do período");
+    Mensagem(Retorna, "Fora do período");
   }
 }
 ```
 
+## Manipulação Dinâmica de Variáveis
+
+A LSP oferece funções especializadas para trabalhar com variáveis cujos nomes são construídos dinamicamente durante a execução. Essas funções são úteis quando o nome da variável não é conhecido em tempo de desenvolvimento.
+
+### Verificação de Tipo de Variável
+
+#### PegarTipoVar
+
+Retorna o tipo de uma variável qualquer, passada como string.
+
+**Sintaxe:**
+
+```lsp
+PegarTipoVar(<nomeVariavel>, <tipo>);
+```
+
+**Parâmetros:**
+- `nomeVariavel`: String contendo o nome da variável a ser verificada
+- `tipo`: Variável numérica que receberá o código do tipo (retorno)
+
+**Códigos de Retorno:**
+- `-1`: Variável não encontrada
+- `0`: Variável do tipo Numero
+- `1`: Variável do tipo Data
+- `2`: Variável do tipo Alfa
+- `9`: Variável de outros tipos (Cursor, Lista, etc.)
+
+**Exemplo:**
+
+```lsp
+Definir Numero vNum;
+Definir Data vDat;
+Definir Alfa vAlf;
+Definir Cursor vCur;
+Definir Numero vTipo;
+
+PegarTipoVar("vNum", vTipo); @ vTipo = 0 @
+PegarTipoVar("vDat", vTipo); @ vTipo = 1 @
+PegarTipoVar("vAlf", vTipo); @ vTipo = 2 @
+PegarTipoVar("vCur", vTipo); @ vTipo = 9 @
+PegarTipoVar("vXXX", vTipo); @ vTipo = -1 @
+```
+
+### Obtenção de Valores de Variáveis
+
+#### PegarValorVarAlf
+
+Retorna o valor de uma variável alfanumérica identificada por nome.
+
+**Sintaxe:**
+
+```lsp
+PegarValorVarAlf(<nomeVariavel>, <valorRetorno>);
+```
+
+**Parâmetros:**
+- `nomeVariavel`: String contendo o nome da variável
+- `valorRetorno`: Variável alfa que receberá o valor
+
+**Exemplo:**
+
+```lsp
+Definir Alfa vTexto;
+Definir Alfa vValor;
+Definir Alfa vNomeVar;
+
+vTexto = "Conteúdo da variável";
+vNomeVar = "vTexto";
+
+PegarValorVarAlf(vNomeVar, vValor);
+@ vValor será "Conteúdo da variável" @
+
+@ Erro se tentar acessar variável de tipo diferente @
+@ PegarValorVarAlf("vnNumero", vValor); @ Gerará erro @
+```
+
+#### PegarValorVarNum
+
+Retorna o valor de uma variável numérica ou de data identificada por nome.
+
+**Sintaxe:**
+
+```lsp
+PegarValorVarNum(<nomeVariavel>, <valorRetorno>);
+```
+
+**Parâmetros:**
+- `nomeVariavel`: String contendo o nome da variável
+- `valorRetorno`: Variável numérica que receberá o valor
+
+**Exemplo:**
+
+```lsp
+Definir Numero vNumero;
+Definir Data vData;
+Definir Numero vValor;
+
+vNumero = 15;
+vData = 39647;
+
+PegarValorVarNum("vNumero", vValor); @ vValor = 15 @
+PegarValorVarNum("vData", vValor);   @ vValor = 39647 @
+```
+
+### Atribuição de Valores a Variáveis
+
+#### SetarValorVarAlf
+
+Define o valor de uma variável alfanumérica identificada por nome.
+
+**Sintaxe:**
+
+```lsp
+SetarValorVarAlf(<nomeVariavel>, <valor>);
+```
+
+**Parâmetros:**
+- `nomeVariavel`: String contendo o nome da variável
+- `valor`: Valor alfa a ser atribuído à variável
+
+**Exemplo:**
+
+```lsp
+Definir Alfa vTexto;
+Definir Alfa vNovoValor;
+
+vNovoValor = "Novo conteúdo";
+SetarValorVarAlf("vTexto", vNovoValor);
+@ vTexto agora contém "Novo conteúdo" @
+```
+
+#### SetarValorVarNum
+
+Define o valor de uma variável numérica ou de data identificada por nome.
+
+**Sintaxe:**
+
+```lsp
+SetarValorVarNum(<nomeVariavel>, <valor>);
+```
+
+**Parâmetros:**
+- `nomeVariavel`: String contendo o nome da variável
+- `valor`: Valor numérico a ser atribuído à variável
+
+**Exemplo:**
+
+```lsp
+Definir Numero vNumero;
+Definir Data vData;
+
+SetarValorVarNum("vNumero", 100);   @ vNumero = 100 @
+SetarValorVarNum("vData", 39685);   @ vData = 39685 @
+```
+
+### Exemplo Prático: Acesso Dinâmico a Variáveis
+
+```lsp
+Definir Funcao exemploAcessoDinamico();
+
+@ Variáveis globais @
+Definir Alfa vaTexto1;
+Definir Alfa vaTexto2;
+Definir Alfa vaTexto3;
+Definir Numero vnNumero1;
+Definir Numero vnNumero2;
+
+exemploAcessoDinamico();
+
+Funcao exemploAcessoDinamico(); {
+  Definir Numero vnContador;
+  Definir Alfa vaNomeVar;
+  Definir Alfa vaValor;
+  Definir Numero vnTipo;
+  Definir Numero vnValorNum;
+
+  @ Inicializar algumas variáveis @
+  vaTexto1 = "Primeiro texto";
+  vaTexto2 = "Segundo texto";
+  vnNumero1 = 100;
+  vnNumero2 = 200;
+
+  @ Loop dinâmico para acessar variáveis @
+  Para (vnContador = 1; vnContador <= 2; vnContador++) {
+    @ Construir nome da variável dinamicamente @
+    IntParaAlfa(vnContador, vaValor);
+    vaNomeVar = "vaTexto" + vaValor;
+
+    @ Verificar se variável existe e seu tipo @
+    PegarTipoVar(vaNomeVar, vnTipo);
+    
+    Se (vnTipo = 2) { @ Tipo Alfa @
+      PegarValorVarAlf(vaNomeVar, vaValor);
+      Definir Alfa vaMensagem;
+      vaMensagem = "Variável " + vaNomeVar + ": " + vaValor;
+      Mensagem(Retorna, vaMensagem);
+    } Senao Se (vnTipo = 0) { @ Tipo Numero @
+      PegarValorVarNum(vaNomeVar, vnValorNum);
+      IntParaAlfa(vnValorNum, vaValor);
+      vaMensagem = "Variável " + vaNomeVar + ": " + vaValor;
+      Mensagem(Retorna, vaMensagem);
+    } Senao Se (vnTipo = -1) {
+      vaMensagem = "Variável " + vaNomeVar + " não encontrada";
+      Mensagem(Retorna, vaMensagem);
+    }
+  }
+}
+```
+
+**⚠️ Observações Importantes:**
+- Essas funções devem ser usadas apenas quando o acesso direto não for possível
+- Para situações simples, use acesso direto: `vVar = valor` em vez de `SetarValorVarAlf("vVar", valor)`
+- Úteis para sistemas de configuração dinâmica e processamento de formulários genéricos
+- Sempre verifique o tipo da variável antes de tentar acessar seu valor
+
 ## Validação e Verificação
 
 A LSP oferece funções especializadas para validação de dados, verificação de abrangências e controle de qualidade de informações.
+
+### Verificação de Nulidade e Limpeza de Dados
+
+#### EstaNulo
+
+Verifica se uma variável está nula (vazia ou não inicializada).
+
+**Sintaxe:**
+
+```lsp
+EstaNulo(<variavel>, <resultado>);
+```
+
+**Parâmetros:**
+- `variavel`: Variável a ser verificada
+- `resultado`: Variável numérica que receberá 1 se nula, 0 se não nula
+
+**Exemplo:**
+
+```lsp
+Definir Alfa vaTexto;
+Definir Numero vnEhNulo;
+
+EstaNulo(vaTexto, vnEhNulo);
+Se (vnEhNulo = 1) {
+  Mensagem(Retorna, "Variável está nula");
+} Senao {
+  Mensagem(Retorna, "Variável contém dados");
+}
+```
+
+#### DeixaNumeros
+
+Remove todos os caracteres não numéricos de uma string, mantendo apenas os dígitos.
+
+**Sintaxe:**
+
+```lsp
+DeixaNumeros(<texto>);
+```
+
+**Parâmetros:**
+- `texto`: Variável alfa que será modificada, mantendo apenas números
+
+**Exemplo:**
+
+```lsp
+Definir Alfa vaCEP;
+Definir Alfa vaTelefone;
+
+vaCEP = "86710-180";
+DeixaNumeros(vaCEP);
+@ vaCEP será "86710180" @
+
+vaTelefone = "(43) 3234-5678";
+DeixaNumeros(vaTelefone);
+@ vaTelefone será "4332345678" @
+```
+
+**Observação:** A função modifica diretamente a variável passada como parâmetro.
 
 ### Verificação de Abrangências
 
@@ -2013,8 +3391,13 @@ Verifica se um valor alfanumérico está dentro de uma abrangência especificada
 **Sintaxe:**
 
 ```lsp
-VrfAbrA(<valor>, <abrangencia>);
+VrfAbrA(<valor>, <abrangencia>, <resultado>);
 ```
+
+**Parâmetros:**
+- `valor`: Valor a ser verificado
+- `abrangencia`: Abrangência especificada
+- `resultado`: Variável que receberá 1 se válido, 0 se inválido
 
 #### VrfAbrN
 
@@ -2023,8 +3406,13 @@ Verifica se um valor numérico está dentro de uma abrangência especificada.
 **Sintaxe:**
 
 ```lsp
-VrfAbrN(<valor>, <abrangencia>);
+VrfAbrN(<valor>, <abrangencia>, <resultado>);
 ```
+
+**Parâmetros:**
+- `valor`: Valor numérico a ser verificado
+- `abrangencia`: Abrangência especificada
+- `resultado`: Variável que receberá 1 se válido, 0 se inválido
 
 #### MontaAbrangencia
 
@@ -2078,13 +3466,14 @@ Chsa.SQL "SELECT * FROM R038HSA WHERE NUMEMP = :xnumemp AND TIPCOL = :xtipcol AN
 ```lsp
 Definir Funcao validarCodigos();
 
-@ Variáveis globais @
-Definir Alfa vaCodigo;
-Definir Numero vnNumero;
-Definir Alfa vaAbrangenciaAlfa;
-Definir Alfa vaAbrangenciaNum;
-Definir Numero vnResultadoAlfa;
-Definir Numero vnResultadoNum;
+  @ Variáveis globais @
+  Definir Alfa vaCodigo;
+  Definir Numero vnNumero;
+  Definir Alfa vaAbrangenciaAlfa;
+  Definir Alfa vaAbrangenciaNum;
+  Definir Numero vnResultadoAlfa;
+  Definir Numero vnResultadoNum;
+  Definir Alfa vaMensagem;
 
 vaCodigo = "B";
 vnNumero = 150;
@@ -2095,19 +3484,28 @@ validarCodigos();
 
 Funcao validarCodigos(); {
   @ Verifica abrangência alfanumérica @
-  vnResultadoAlfa = VrfAbrA(vaCodigo, vaAbrangenciaAlfa);
+  VrfAbrA(vaCodigo, vaAbrangenciaAlfa, vnResultadoAlfa);
   Se (vnResultadoAlfa = 1) {
-    Mensagem(Retorna, "✅ Código '" + vaCodigo + "' válido na abrangência " + vaAbrangenciaAlfa);
+    Definir Alfa vaMensagemCodigo;
+    vaMensagemCodigo = "Código '" + vaCodigo + "' válido na abrangência " + vaAbrangenciaAlfa;
+    Mensagem(Retorna, vaMensagemCodigo);
   } Senao {
-    Mensagem(Erro, "❌ Código '" + vaCodigo + "' fora da abrangência " + vaAbrangenciaAlfa);
+    vaMensagemCodigo = "Código '" + vaCodigo + "' fora da abrangência " + vaAbrangenciaAlfa;
+    Mensagem(Erro, vaMensagemCodigo);
   }
   
   @ Verifica abrangência numérica @
-  vnResultadoNum = VrfAbrN(vnNumero, vaAbrangenciaNum);
+  VrfAbrN(vnNumero, vaAbrangenciaNum, vnResultadoNum);
   Se (vnResultadoNum = 1) {
-    Mensagem(Retorna, "✅ Número " + IntParaAlfa(vnNumero) + " válido na abrangência " + vaAbrangenciaNum);
+    Definir Alfa vaNumeroStr;
+    IntParaAlfa(vnNumero, vaNumeroStr);
+    Definir Alfa vaMensagemNumero;
+    vaMensagemNumero = " Número " + vaNumeroStr + " válido na abrangência " + vaAbrangenciaNum;
+    Mensagem(Retorna, vaMensagemNumero);
   } Senao {
-    Mensagem(Erro, "❌ Número " + IntParaAlfa(vnNumero) + " fora da abrangência " + vaAbrangenciaNum);
+    IntParaAlfa(vnNumero, vaNumeroStr);
+    vaMensagemNumero = "Número " + vaNumeroStr + " fora da abrangência " + vaAbrangenciaNum;
+    Mensagem(Erro, vaMensagemNumero);
   }
 }
 ```
@@ -2121,21 +3519,26 @@ Verifica se um arquivo físico existe no local especificado.
 **Sintaxe:**
 
 ```lsp
-vnExiste = ArqExiste(<caminhoArquivo>);
+ArqExiste(<caminhoArquivo>, <existe>);
 ```
+
+**Parâmetros:**
+- `caminhoArquivo`: Caminho completo do arquivo
+- `existe`: Variável que receberá 1 se existe, 0 se não existe
 
 **Exemplo de Verificação de Arquivos:**
 
 ```lsp
 Definir Funcao verificarArquivos();
 
-@ Variáveis globais @
-Definir Alfa vaCaminhoArquivo;
-Definir Alfa vaCaminhoConfig;
-Definir Alfa vaCaminhoLog;
-Definir Numero vnExisteArquivo;
-Definir Numero vnExisteConfig;
-Definir Numero vnExisteLog;
+  @ Variáveis globais @
+  Definir Alfa vaCaminhoArquivo;
+  Definir Alfa vaCaminhoConfig;
+  Definir Alfa vaCaminhoLog;
+  Definir Numero vnExisteArquivo;
+  Definir Numero vnExisteConfig;
+  Definir Numero vnExisteLog;
+  Definir Alfa vaMensagem;
 
 vaCaminhoArquivo = "C:\\temp\\dados.txt";
 vaCaminhoConfig = "C:\\config\\app.ini";
@@ -2145,25 +3548,28 @@ verificarArquivos();
 
 Funcao verificarArquivos(); {
   @ Verifica arquivo de dados @
-  vnExisteArquivo = ArqExiste(vaCaminhoArquivo);
+  ArqExiste(vaCaminhoArquivo, vnExisteArquivo);
   Se (vnExisteArquivo = 1) {
-    Mensagem(Retorna, "✅ Arquivo de dados encontrado");
+    Mensagem(Retorna, "Arquivo de dados encontrado");
   } Senao {
-    Mensagem(Erro, "❌ Arquivo de dados não encontrado: " + vaCaminhoArquivo);
+    Definir Alfa vaMensagem;
+    vaMensagem = "Arquivo de dados não encontrado: " + vaCaminhoArquivo;
+    Mensagem(Erro, vaMensagem);
   }
   
   @ Verifica arquivo de configuração @
-  vnExisteConfig = ArqExiste(vaCaminhoConfig);
+  ArqExiste(vaCaminhoConfig, vnExisteConfig);
   Se (vnExisteConfig = 1) {
-    Mensagem(Retorna, "✅ Arquivo de configuração encontrado");
+    Mensagem(Retorna, "Arquivo de configuração encontrado");
   } Senao {
-    Mensagem(Retorna, "⚠️ Arquivo de configuração não encontrado, usando padrão");
+    Mensagem(Retorna, "Arquivo de configuração não encontrado, usando padrão");
   }
   
   @ Verifica arquivo de log @
-  vnExisteLog = ArqExiste(vaCaminhoLog);
+  ArqExiste(vaCaminhoLog, vnExisteLog);
   Se (vnExisteLog = 0) {
-    Mensagem(Retorna, "📝 Arquivo de log será criado: " + vaCaminhoLog);
+    vaMensagem = "Arquivo de log será criado: " + vaCaminhoLog;
+    Mensagem(Retorna, vaMensagem);
   }
 }
 ```
@@ -2196,19 +3602,24 @@ vaDadosEntrada = "Nome: João <script>alert('xss')</script> Silva";
 limparDadosEntrada();
 
 Funcao limparDadosEntrada(); {
-  vnTamanhoOriginal = TamanhoAlfa(vaDadosEntrada);
+  Definir Alfa vaMensagem;
+  TamanhoAlfa(vaDadosEntrada, vnTamanhoOriginal);
   
   @ Remove expressões perigosas @
   RemoveExpressoesProibidas(vaDadosEntrada, vaDadosLimpos);
   
-  vnTamanhoLimpo = TamanhoAlfa(vaDadosLimpos);
+  TamanhoAlfa(vaDadosLimpos, vnTamanhoLimpo);
   
   Se (vnTamanhoOriginal <> vnTamanhoLimpo) {
-    Mensagem(Retorna, "⚠️ Expressões perigosas removidas!");
-    Mensagem(Retorna, "Original: " + vaDadosEntrada);
-    Mensagem(Retorna, "Limpo: " + vaDadosLimpos);
+    vaMensagem = "Expressões perigosas removidas!";
+    Mensagem(Retorna, vaMensagem);
+    vaMensagem = "Original: " + vaDadosEntrada;
+    Mensagem(Retorna, vaMensagem);
+    vaMensagem = "Limpo: " + vaDadosLimpos;
+    Mensagem(Retorna, vaMensagem);
   } Senao {
-    Mensagem(Retorna, "✅ Dados seguros: " + vaDadosLimpos);
+    vaMensagem = " Dados seguros: " + vaDadosLimpos;
+    Mensagem(Retorna, vaMensagem);
   }
 }
 ```
@@ -2222,8 +3633,12 @@ Verifica se uma aba específica está ativa na interface.
 **Sintaxe:**
 
 ```lsp
-vnAtiva = VerificaAbaAtiva(<descricaoAba>);
+VerificaAbaAtiva(<descricaoAba>, <ativa>);
 ```
+
+**Parâmetros:**
+- `descricaoAba`: Descrição da aba a ser verificada
+- `ativa`: Variável que receberá 1 se ativa, 0 se não ativa
 
 **Exemplo de Controle de Interface:**
 
@@ -2243,17 +3658,17 @@ verificarContextoInterface();
 
 Funcao verificarContextoInterface(); {
   @ Verifica qual aba está ativa @
-  vnAbaClientesAtiva = VerificaAbaAtiva(vaAbaClientes);
-  vnAbaProdutosAtiva = VerificaAbaAtiva(vaAbaProdutos);
+  VerificaAbaAtiva(vaAbaClientes, vnAbaClientesAtiva);
+  VerificaAbaAtiva(vaAbaProdutos, vnAbaProdutosAtiva);
   
   Se (vnAbaClientesAtiva = 1) {
-    Mensagem(Retorna, "🧑‍💼 Contexto: Gestão de Clientes");
+    Mensagem(Retorna, "Contexto: Gestão de Clientes");
     @ Lógica específica para clientes @
   } Senao Se (vnAbaProdutosAtiva = 1) {
-    Mensagem(Retorna, "📦 Contexto: Gestão de Produtos");
+    Mensagem(Retorna, "Contexto: Gestão de Produtos");
     @ Lógica específica para produtos @
   } Senao {
-    Mensagem(Retorna, "📋 Contexto: Genérico");
+    Mensagem(Retorna, "Contexto: Genérico");
     @ Lógica geral @
   }
 }
@@ -2264,12 +3679,13 @@ Funcao verificarContextoInterface(); {
 ```lsp
 Definir Funcao validacaoCompleta();
 
-@ Variáveis globais @
-Definir Alfa vaNomeArquivo;
-Definir Alfa vaCodigo;
-Definir Numero vnNumero;
-Definir Data vdData;
-Definir Numero vnValidacaoGeral;
+  @ Variáveis globais @
+  Definir Alfa vaNomeArquivo;
+  Definir Alfa vaCodigo;
+  Definir Numero vnNumero;
+  Definir Data vdData;
+  Definir Numero vnValidacaoGeral;
+  Definir Alfa vaMensagem;
 
 vaNomeArquivo = "C:\\dados\\cliente.txt";
 vaCodigo = "CLI001";
@@ -2282,28 +3698,40 @@ Funcao validacaoCompleta(); {
   vnValidacaoGeral = 1; @ Assume válido inicialmente @
   
   @ 1. Verifica arquivo @
-  Se (ArqExiste(vaNomeArquivo) = 0) {
-    Mensagem(Erro, "❌ Arquivo não encontrado: " + vaNomeArquivo);
+  Definir Numero vnArquivoExiste;
+  ArqExiste(vaNomeArquivo, vnArquivoExiste);
+  Se (vnArquivoExiste = 0) {
+    Definir Alfa vaMensagem;
+    vaMensagem = "Arquivo não encontrado: " + vaNomeArquivo;
+    Mensagem(Erro, vaMensagem);
     vnValidacaoGeral = 0;
   }
   
   @ 2. Verifica código na abrangência @
-  Se (VrfAbrA(vaCodigo, "CLI001..CLI999") = 0) {
-    Mensagem(Erro, "❌ Código fora da abrangência: " + vaCodigo);
+  Definir Numero vnCodigoValido;
+  VrfAbrA(vaCodigo, "CLI001..CLI999", vnCodigoValido);
+  Se (vnCodigoValido = 0) {
+    vaMensagem = "Código fora da abrangência: " + vaCodigo;
+    Mensagem(Erro, vaMensagem);
     vnValidacaoGeral = 0;
   }
   
   @ 3. Verifica número na faixa @
-  Se (VrfAbrN(vnNumero, "1000..2000") = 0) {
-    Mensagem(Erro, "❌ Número fora da faixa: " + IntParaAlfa(vnNumero));
+  Definir Numero vnNumeroValido;
+  VrfAbrN(vnNumero, "1000..2000", vnNumeroValido);
+  Se (vnNumeroValido = 0) {
+    Definir Alfa vaNumeroStr;
+    IntParaAlfa(vnNumero, vaNumeroStr);
+    vaMensagem = "Número fora da faixa: " + vaNumeroStr;
+    Mensagem(Erro, vaMensagem);
     vnValidacaoGeral = 0;
   }
   
   @ 4. Resultado final @
   Se (vnValidacaoGeral = 1) {
-    Mensagem(Retorna, "✅ Todas as validações passaram!");
+    Mensagem(Retorna, "Todas as validações passaram!");
   } Senao {
-    Mensagem(Erro, "❌ Falha na validação geral do sistema");
+    Mensagem(Erro, "Falha na validação geral do sistema");
   }
 }
 ```
@@ -2339,13 +3767,14 @@ Truncar(<numero>, <resultado>);
 ```lsp
 Definir Funcao calculosFinanceiros();
 
-@ Variáveis globais @
-Definir Numero vnValorOriginal;
-Definir Numero vnValorArredondado;
-Definir Numero vnValorTruncado;
-Definir Numero vnPorcentagem;
-Definir Numero vnDesconto;
-Definir Numero vnValorFinal;
+  @ Variáveis globais @
+  Definir Numero vnValorOriginal;
+  Definir Numero vnValorArredondado;
+  Definir Numero vnValorTruncado;
+  Definir Numero vnPorcentagem;
+  Definir Numero vnDesconto;
+  Definir Numero vnValorFinal;
+  Definir Alfa vaMensagem;
 
 vnValorOriginal = 1234.6789;
 vnPorcentagem = 15.5;
@@ -2355,11 +3784,18 @@ calculosFinanceiros();
 Funcao calculosFinanceiros(); {
   @ Arredonda para 2 casas decimais (padrão monetário) @
   Arredondar(vnValorOriginal, 2, vnValorArredondado);
-  Mensagem(Retorna, "Valor arredondado: R$ " + IntParaAlfa(vnValorArredondado));
+  Definir Alfa vaValorArredondadoStr;
+  IntParaAlfa(vnValorArredondado, vaValorArredondadoStr);
+  Definir Alfa vaMensagem;
+  vaMensagem = "Valor arredondado: R$ " + vaValorArredondadoStr;
+  Mensagem(Retorna, vaMensagem);
   
   @ Trunca para inteiro @
   Truncar(vnValorOriginal, vnValorTruncado);
-  Mensagem(Retorna, "Valor truncado: R$ " + IntParaAlfa(vnValorTruncado));
+  Definir Alfa vaValorTruncadoStr;
+  IntParaAlfa(vnValorTruncado, vaValorTruncadoStr);
+  vaMensagem = "Valor truncado: R$ " + vaValorTruncadoStr;
+  Mensagem(Retorna, vaMensagem);
   
   @ Calcula desconto @
   vnDesconto = (vnValorOriginal * vnPorcentagem) / 100;
@@ -2369,8 +3805,15 @@ Funcao calculosFinanceiros(); {
   vnValorFinal = vnValorOriginal - vnDesconto;
   Arredondar(vnValorFinal, 2, vnValorFinal);
   
-  Mensagem(Retorna, "Desconto aplicado: R$ " + IntParaAlfa(vnDesconto));
-  Mensagem(Retorna, "Valor final: R$ " + IntParaAlfa(vnValorFinal));
+  Definir Alfa vaDescontoStr;
+  Definir Alfa vaValorFinalStr;
+  IntParaAlfa(vnDesconto, vaDescontoStr);
+  IntParaAlfa(vnValorFinal, vaValorFinalStr);
+  
+  vaMensagem = "Desconto aplicado: R$ " + vaDescontoStr;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Valor final: R$ " + vaValorFinalStr;
+  Mensagem(Retorna, vaMensagem);
 }
 ```
 
@@ -2403,24 +3846,27 @@ Converte em minutos os valores que representam hora e minuto.
 **Sintaxe:**
 
 ```lsp
-vnMinutos = HoraParaMinuto(<hora>, <minuto>);
+HoraParaMinuto(<hora>, <minuto>, <minutos>);
 ```
 
 **Parâmetros:**
 - `hora`: Valor correspondente à hora inteira
 - `minuto`: Valor correspondente aos minutos de uma hora
+- `minutos`: Variável que receberá o total em minutos
 
 **Exemplo:**
 
 ```lsp
 Definir Numero vnResultado;
 Definir Alfa vaResultadoStr;
+Definir Alfa vaMensagem;
 
-vnResultado = HoraParaMinuto(1, 30);
+HoraParaMinuto(1, 30, vnResultado);
 IntParaAlfa(vnResultado, vaResultadoStr);
 
 @ vnResultado será 90 (1 hora e 30 minutos = 90 minutos) @
-Mensagem(Retorna, "Resultado: " + vaResultadoStr + " minutos");
+vaMensagem = "Resultado: " + vaResultadoStr + " minutos";
+Mensagem(Retorna, vaMensagem);
 ```
 
 **Exemplo de Validações Numéricas:**
@@ -2445,21 +3891,40 @@ Funcao validacoesNumericas(); {
   @ Divisão segura @
   Se (vnDivisor <> 0) {
     Dividir(vnDividendo, vnDivisor, vnResultado);
-    Mensagem(Retorna, "Divisão: " + IntParaAlfa(vnDividendo) + " ÷ " + IntParaAlfa(vnDivisor) + " = " + IntParaAlfa(vnResultado));
-    
-    @ Resto da divisão @
-    RestoDivisao(vnDividendo, vnDivisor, vnResto);
-    Mensagem(Retorna, "Resto: " + IntParaAlfa(vnResto));
+      @ Preparar mensagem da divisão @
+  Definir Alfa vaDividendoStr;
+  Definir Alfa vaDivisorStr;
+  Definir Alfa vaResultadoStr;
+  Definir Alfa vaRestoStr;
+  Definir Alfa vaMensagem;
+  
+  IntParaAlfa(vnDividendo, vaDividendoStr);
+  IntParaAlfa(vnDivisor, vaDivisorStr);
+  IntParaAlfa(vnResultado, vaResultadoStr);
+  
+  vaMensagem = "Divisão: " + vaDividendoStr + " ÷ " + vaDivisorStr + " = " + vaResultadoStr;
+  Mensagem(Retorna, vaMensagem);
+  
+  @ Resto da divisão @
+  RestoDivisao(vnDividendo, vnDivisor, vnResto);
+  IntParaAlfa(vnResto, vaRestoStr);
+  vaMensagem = "Resto: " + vaRestoStr;
+  Mensagem(Retorna, vaMensagem);
   } Senao {
-    Mensagem(Erro, "❌ Divisão por zero não permitida!");
+    Mensagem(Erro, "Divisão por zero não permitida!");
   }
   
   @ Verificação de número par/ímpar @
   RestoDivisao(vnNumero, 2, vnResto);
+  Definir Alfa vaNumeroStr;
+  IntParaAlfa(vnNumero, vaNumeroStr);
+  
   Se (vnResto = 0) {
-    Mensagem(Retorna, "✅ " + IntParaAlfa(vnNumero) + " é par");
+    vaMensagem = " " + vaNumeroStr + " é par";
+    Mensagem(Retorna, vaMensagem);
   } Senao {
-    Mensagem(Retorna, "✅ " + IntParaAlfa(vnNumero) + " é ímpar");
+    vaMensagem = " " + vaNumeroStr + " é ímpar";
+    Mensagem(Retorna, vaMensagem);
   }
 }
 ```
@@ -2539,7 +4004,9 @@ Funcao processarDadosComFeedback(); {
     @ Monta mensagem @
     IntParaAlfa(vnRegistroAtual, vaRegistroStr);
     IntParaAlfa(vnPercentual, vaPercentualStr);
-    vaMensagem = "Processando registro " + vaRegistroStr + " de " + IntParaAlfa(vnTotalRegistros);
+    Definir Alfa vaTotalRegistrosStr;
+    IntParaAlfa(vnTotalRegistros, vaTotalRegistrosStr);
+    vaMensagem = "Processando registro " + vaRegistroStr + " de " + vaTotalRegistrosStr;
     
     @ Atualiza barra @
     AtualizaBarraProgresso(vnPercentual, vaMensagem);
@@ -2549,17 +4016,19 @@ Funcao processarDadosComFeedback(); {
     
     @ Simula erro no meio do processo @
     Se (vnRegistroAtual = 50) {
-      AtualizaBarraProgresso(50, "⚠️ Problema detectado, continuando...");
+      AtualizaBarraProgresso(50, "Problema detectado, continuando...");
       sleep(1000); @ Pausa 1 segundo @
     }
   }
   
   @ Finaliza @
-  AtualizaBarraProgresso(100, "✅ Processamento concluído!");
+  AtualizaBarraProgresso(100, " Processamento concluído!");
   sleep(1000);
   FinalizaBarraProgresso();
   
-  Mensagem(Retorna, "Processamento de " + IntParaAlfa(vnTotalRegistros) + " registros concluído!");
+  IntParaAlfa(vnTotalRegistros, vaTotalRegistrosStr);
+  vaMensagem = "Processamento de " + vaTotalRegistrosStr + " registros concluído!";
+  Mensagem(Retorna, vaMensagem);
 }
 ```
 
@@ -2593,7 +4062,17 @@ Definir Alfa vaMensagem;
 ObterVersaoSistema(vnMajorVersion, vnMinorVersion, vnRelease, vnBuild);
 
 @ Após a chamada da função as variáveis conterão a versão do sistema @
-vaMensagem = "Versão: " + IntParaAlfa(vnMajorVersion) + "." + IntParaAlfa(vnMinorVersion) + "." + IntParaAlfa(vnRelease) + "." + IntParaAlfa(vnBuild);
+Definir Alfa vaMajorStr;
+Definir Alfa vaMinorStr;
+Definir Alfa vaReleaseStr;
+Definir Alfa vaBuildStr;
+
+IntParaAlfa(vnMajorVersion, vaMajorStr);
+IntParaAlfa(vnMinorVersion, vaMinorStr);
+IntParaAlfa(vnRelease, vaReleaseStr);
+IntParaAlfa(vnBuild, vaBuildStr);
+
+vaMensagem = "Versão: " + vaMajorStr + "." + vaMinorStr + "." + vaReleaseStr + "." + vaBuildStr;
 Mensagem(Retorna, vaMensagem);
 ```
 
@@ -2616,7 +4095,9 @@ ObtemIdiomaAtivo(<valorIdioma>);
 Definir Alfa vaValorIdioma;
 
 ObtemIdiomaAtivo(vaValorIdioma);
-Mensagem(Retorna, "Idioma ativo: " + vaValorIdioma);
+Definir Alfa vaMensagemIdioma;
+vaMensagemIdioma = "Idioma ativo: " + vaValorIdioma;
+Mensagem(Retorna, vaMensagemIdioma);
 ```
 
 #### sleep
@@ -2736,18 +4217,21 @@ RetornaValorCFG(<chave>, <retorno>);
 ```lsp
 Definir Alfa vaChave;
 Definir Alfa vaRetorno;
+Definir Alfa vaMensagem;
 
 @ Obter diretório de logs @
 vaChave = "LOGS";
 RetornaValorCFG(vaChave, vaRetorno);
 @ Retorna algo como "\\servidor\ERP\Sapiens\Logs" @
-Mensagem(Retorna, "Diretório de logs: " + vaRetorno);
+vaMensagem = "Diretório de logs: " + vaRetorno;
+Mensagem(Retorna, vaMensagem);
 
 @ Obter chave específica @
 vaChave = "com.senior.printers.path";
 RetornaValorCFG(vaChave, vaRetorno);
 @ Retorna algo como "\\servidor\ERP\Impressoras" @
-Mensagem(Retorna, "Diretório de impressoras: " + vaRetorno);
+vaMensagem = "Diretório de impressoras: " + vaRetorno;
+Mensagem(Retorna, vaMensagem);
 ```
 
 **Observações:**
@@ -2773,22 +4257,24 @@ vaChaveDebug = "app.debug.enabled";
 carregarConfiguracoes();
 
 Funcao carregarConfiguracoes(); {
+  Definir Alfa vaMensagem;
   @ Carrega timeout da requisição @
   RetornaValorCFG(vaChaveTimeout, vaValorTimeout);
   Se (TamanhoAlfa(vaValorTimeout) > 0) {
     AlfaParaInt(vaValorTimeout, vnTimeout);
-    Mensagem(Retorna, "⏱️ Timeout configurado: " + vaValorTimeout + "ms");
+    vaMensagem = "Timeout configurado: " + vaValorTimeout + "ms";
+    Mensagem(Retorna, vaMensagem);
   } Senao {
     vnTimeout = 30000; @ Padrão: 30 segundos @
-    Mensagem(Retorna, "⚠️ Timeout não configurado, usando padrão: 30000ms");
+    Mensagem(Retorna, "Timeout não configurado, usando padrão: 30000ms");
   }
   
   @ Carrega modo debug @
   RetornaValorCFG(vaChaveDebug, vaValorDebug);
   Se (vaValorDebug = "true") {
-    Mensagem(Retorna, "🐛 Modo debug ativado");
+    Mensagem(Retorna, "Modo debug ativado");
   } Senao {
-    Mensagem(Retorna, "🔒 Modo debug desativado");
+    Mensagem(Retorna, "Modo debug desativado");
   }
 }
 ```
@@ -2821,32 +4307,39 @@ ExcluirArquivoTemporario(<caminhoArquivo>);
 
 #### LinhasArquivo
 
-Conta o número de linhas em um arquivo.
+Conta o número de linhas em um arquivo através de parâmetro de retorno.
 
 **Sintaxe:**
 
 ```lsp
-vnLinhas = LinhasArquivo(<caminhoArquivo>);
+LinhasArquivo(<caminhoArquivo>, <linhas>);
 ```
+
+**Parâmetros:**
+- `caminhoArquivo`: Caminho do arquivo a ser analisado
+- `linhas`: Variável que receberá a quantidade de linhas
 
 **Exemplo de Processamento de Arquivo Temporário:**
 
 ```lsp
 Definir Funcao processarArquivoTemporario();
 
-@ Variáveis globais @
-Definir Alfa vaCaminhoTemp;
-Definir Numero vnArquivo;
-Definir Numero vnLinhas;
-Definir Alfa vaConteudo;
-Definir Numero vnContador;
+  @ Variáveis globais @
+  Definir Alfa vaCaminhoTemp;
+  Definir Numero vnArquivo;
+  Definir Numero vnLinhas;
+  Definir Alfa vaConteudo;
+  Definir Numero vnContador;
+  Definir Alfa vaQuantidadeStr;
+  Definir Alfa vaMensagem;
 
 processarArquivoTemporario();
 
 Funcao processarArquivoTemporario(); {
   @ 1. Cria arquivo temporário @
   CriarArquivoTemporario("processamento_", vaCaminhoTemp);
-  Mensagem(Retorna, "📄 Arquivo temporário criado: " + vaCaminhoTemp);
+  vaMensagem = "Arquivo temporário criado: " + vaCaminhoTemp;
+  Mensagem(Retorna, vaMensagem);
   
   @ 2. Escreve dados no arquivo @
   vnArquivo = Abrir(vaCaminhoTemp, Gravarnl);
@@ -2857,8 +4350,10 @@ Funcao processarArquivoTemporario(); {
   Fechar(vnArquivo);
   
   @ 3. Verifica o arquivo criado @
-  vnLinhas = LinhasArquivo(vaCaminhoTemp);
-  Mensagem(Retorna, "📊 Arquivo criado com " + IntParaAlfa(vnLinhas) + " linhas");
+  LinhasArquivo(vaCaminhoTemp, vnLinhas);
+  IntParaAlfa(vnLinhas, vaQuantidadeStr);
+  vaMensagem = "Arquivo criado com " + vaQuantidadeStr + " linhas";
+  Mensagem(Retorna, vaMensagem);
   
   @ 4. Processa o arquivo @
   IniciaBarraProgresso("Processando Arquivo", "Lendo linhas...");
@@ -2875,7 +4370,7 @@ Funcao processarArquivoTemporario(); {
   
   @ 5. Remove arquivo temporário @
   ExcluirArquivoTemporario(vaCaminhoTemp);
-  Mensagem(Retorna, "🗑️ Arquivo temporário removido");
+  Mensagem(Retorna, "Arquivo temporário removido");
 }
 ```
 
@@ -2906,35 +4401,272 @@ vaCaminhoArquivo = "C:\\temp\\relatorio.txt";
 integracaoFerramentasExternas();
 
 Funcao integracaoFerramentasExternas(); {
+  Definir Alfa vaMensagem;
   @ 1. Abre arquivo no Bloco de Notas @
   vaComando = "notepad.exe";
   vaParametros = vaCaminhoArquivo;
   
   Se (ArqExiste(vaCaminhoArquivo) = 1) {
     ExecProg(vaComando, vaParametros, 0); @ Não aguarda terminar @
-    Mensagem(Retorna, "📝 Arquivo aberto no Bloco de Notas");
+    vaMensagem = "Arquivo aberto no Bloco de Notas";
+    Mensagem(Retorna, vaMensagem);
   } Senao {
-    Mensagem(Erro, "❌ Arquivo não encontrado: " + vaCaminhoArquivo);
+    vaMensagem = "Arquivo não encontrado: " + vaCaminhoArquivo;
+    Mensagem(Erro, vaMensagem);
   }
   
   @ 2. Abre explorador de arquivos @
   vaComando = "explorer.exe";
   vaParametros = "C:\\temp";
   ExecProg(vaComando, vaParametros, 0);
-  Mensagem(Retorna, "📁 Explorador de arquivos aberto");
+  Mensagem(Retorna, "Explorador de arquivos aberto");
   
   @ 3. Executa comando do sistema @
   vaComando = "cmd.exe";
   vaParametros = "/c dir C:\\temp > C:\\temp\\listagem.txt";
   ExecProg(vaComando, vaParametros, 1); @ Aguarda terminar @
-  Mensagem(Retorna, "⚙️ Listagem de arquivos gerada");
+  Mensagem(Retorna, "Listagem de arquivos gerada");
 }
 ```
+
+## ⚠️ **LIMITAÇÕES CRÍTICAS DA LSP**
+
+> **🚨 ATENÇÃO:** Esta seção é **OBRIGATÓRIA** para todos os desenvolvedores LSP!
+
+### **📚 Resumo Executivo das Limitações**
+
+| **Limitação** | **Problema** | ** Solução** |
+|---|---|---|
+| **Parâmetros** | Não aceita operações dentro de parâmetros | Faça operações antes, passe resultado |
+| **Retorno** | Funções usam parâmetros de retorno | Use variável de retorno, não `=` |
+| **Grids** | Conversões diretas falham | Use variável intermediária |
+| **Nomenclatura** | Nomes devem seguir padrão | Use prefixos: va, vn, vd |
+
+---
+
+### **🚫 Limitação #1: Manipulação em Parâmetros**
+
+**A LSP NÃO suporta manipulações/operações dentro dos parâmetros de funções**
+
+#### **❌ Operações NÃO Permitidas nos Parâmetros:**
+
+- **Concatenação** com operador `+`
+- **Chamadas de função** dentro de parâmetros
+- **Operações matemáticas** (`*`, `/`, `-`, etc.)
+- **Conversões de tipo** (`IntParaAlfa`, `AlfaParaInt`, etc.)
+
+### **❌ Exemplos INCORRETOS:**
+
+```lsp
+@ ERRO: Concatenação no parâmetro @
+Mensagem(Retorna, "Resultado: " + vaValor + " pontos");
+
+@ ERRO: Função dentro de parâmetro @
+Mensagem(Retorna, "Idade: " + IntParaAlfa(vnIdade));
+
+@ ERRO: Operação matemática no parâmetro @
+SubstAlfa("]}", vaObjeto + "]}", vaTexto);
+
+@ ERRO: Múltiplas concatenações @
+Mensagem(Retorna, vaNome + " - " + vaEmail + " (" + IntParaAlfa(vnId) + ")");
+```
+
+### **✅ Forma CORRETA:**
+
+```lsp
+@ CORRETO: Fazer manipulações antes @
+Definir Alfa vaMensagem;
+Definir Alfa vaIdade;
+
+IntParaAlfa(vnIdade, vaIdade);
+vaMensagem = "Resultado: " + vaValor + " pontos";
+Mensagem(Retorna, vaMensagem);
+
+@ CORRETO: Para SubstAlfa @
+vaObjeto = vaObjeto + "]}";
+SubstAlfa("]}", vaObjeto, vaTexto);
+
+@ CORRETO: Para múltiplas concatenações @
+vaMensagem = vaNome + " - " + vaEmail + " (" + vaIdade + ")";
+Mensagem(Retorna, vaMensagem);
+```
+
+### **🎯 Regra de Ouro:**
+**Sempre faça as manipulações ANTES de passar para a função!**
+
+### **⚠️ ATENÇÃO ESPECIAL: Função Mensagem**
+
+A função `Mensagem` é **extremamente sensível** a esta limitação. É muito fácil cometer erro:
+
+```lsp
+@ MUITO COMUM mas INCORRETO @
+Mensagem(Retorna, "Total: " + vaTexto + " itens");
+Mensagem(Erro, "Erro no produto: " + vaProduto);
+Mensagem(Retorna, "Valor: " + IntParaAlfa(vnValor));
+
+@  CORRETO @
+Definir Alfa vaMensagem;
+vaMensagem = "Total: " + vaTexto + " itens";
+Mensagem(Retorna, vaMensagem);
+
+vaMensagem = "Erro no produto: " + vaProduto;
+Mensagem(Erro, vaMensagem);
+
+Definir Alfa vaValorStr;
+IntParaAlfa(vnValor, vaValorStr);
+vaMensagem = "Valor: " + vaValorStr;
+Mensagem(Retorna, vaMensagem);
+```
+
+### **🚨 LIMITAÇÃO CRÍTICA: JSON e Dados Grandes**
+
+**NUNCA** passe dados JSON grandes ou strings muito extensas para `Mensagem`:
+
+```lsp
+@ PERIGOSO - Pode travar o sistema @
+Mensagem(Retorna, vaJSONResposta);  @ JSON grande @
+Mensagem(Retorna, vaXMLCompleto);   @ XML grande @
+Mensagem(Retorna, vaLogCompleto);   @ Log extenso @
+
+@  SEGURO - Mostrar apenas informações resumidas @
+Definir Alfa vaMensagem;
+Definir Numero vnTamanho;
+Definir Alfa vaTamanhoStr;
+TamanhoAlfa(vaJSONResposta, vnTamanho);
+IntParaAlfa(vnTamanho, vaTamanhoStr);
+vaMensagem = "JSON recebido com " + vaTamanhoStr + " caracteres";
+Mensagem(Retorna, vaMensagem);
+
+@  SEGURO - Mostrar apenas parte do conteúdo @
+Definir Alfa vaJSONTrecho;
+vaJSONTrecho = vaJSONResposta;
+CopiarAlfa(vaJSONTrecho, 1, 50);
+vaMensagem = "JSON início: " + vaJSONTrecho + "...";
+Mensagem(Retorna, vaMensagem);
+```
+
+### **🚫 Retorno Direto de Funções**
+
+**A maioria das funções LSP NÃO retorna valores diretamente - elas usam parâmetros de retorno**
+
+#### **❌ Sintaxe INCORRETA:**
+
+```lsp
+@ ERRO: Tentativa de retorno direto @
+vnTamanho = TamanhoAlfa(vaTexto);
+vnPosicao = PosicaoAlfa("@", vaEmail);
+vnLinhas = LinhasArquivo(vaCaminho);
+vnExiste = ArqExiste(vaCaminho);
+vnQuantidade = ListaQuantidade(vaLista, ",");
+vnResultado = HoraParaMinuto(1, 30);
+vnValido = VrfAbrA(vaCodigo, "A..Z");
+vnAtiva = VerificaAbaAtiva(vaDescricao);
+
+@ ERRO MUITO COMUM: Usar em condicionais @
+Se (TamanhoAlfa(vaCNPJ) <> 14) {
+  Mensagem(Erro, "CNPJ deve ter 14 dígitos");
+}
+
+Se (ArqExiste(vaCaminho)) {
+  Mensagem(Retorna, "Arquivo encontrado");
+}
+```
+
+#### ** Sintaxe CORRETA:**
+
+```lsp
+@ CORRETO: Usar parâmetro de retorno @
+TamanhoAlfa(vaTexto, vnTamanho);
+PosicaoAlfa("@", vaEmail, vnPosicao);
+LinhasArquivo(vaCaminho, vnLinhas);
+ArqExiste(vaCaminho, vnExiste);
+ListaQuantidade(vaLista, ",", vnQuantidade);
+HoraParaMinuto(1, 30, vnResultado);
+VrfAbrA(vaCodigo, "A..Z", vnValido);
+VerificaAbaAtiva(vaDescricao, vnAtiva);
+
+@ CORRETO: Usar em condicionais @
+Definir Numero vnTamanhoCNPJ;
+TamanhoAlfa(vaCNPJ, vnTamanhoCNPJ);
+Se (vnTamanhoCNPJ <> 14) {
+  Mensagem(Erro, "CNPJ deve ter 14 dígitos");
+}
+
+Definir Numero vnArquivoExiste;
+ArqExiste(vaCaminho, vnArquivoExiste);
+Se (vnArquivoExiste = 1) {
+  Mensagem(Retorna, "Arquivo encontrado");
+}
+```
+
+#### ** Exceções - Funções que RETORNAM diretamente:**
+
+```lsp
+@ Estas funções SIM retornam valores diretamente @
+vnRetorno = ConverteCodificacaoString(vaTexto, "UTF-8", vaDestino);
+vnArquivo = Abrir("arquivo.txt", Ler);
+vdData = CodData(vnDia, vnMes, vnAno);
+vnRetorno = Mensagem(Retorna, "Mensagem [&Ok,&Cancelar]");
+vnNulo = SQL_RetornarSeNulo(xCursor, "CAMPO");
+vnTem = Lst.Primeiro();
+vnTem = Lst.Proximo();
+```
+
+#### **📋 Resumo - Funções que usam PARÂMETRO DE RETORNO:**
+
+| **Categoria** | **Funções** |
+|---|---|
+| **Strings** | `TamanhoAlfa`, `TamanhoStr`, `PosicaoAlfa`, `PosicaoStr`, `ListaQuantidade` |
+| **Validação** | `VrfAbrA`, `VrfAbrN`, `ArqExiste`, `VerificaAbaAtiva`, `EstaNulo` |
+| **Sistema** | `LinhasArquivo`, `HoraParaMinuto`, `ObtemIdiomaAtivo`, `RetornaValorCFG` |
+| **Conversão** | `AlfaParaDecimal`, `AlfaParaInt`, `AlfaParaData`, `IntParaAlfa` |
+| **Manipulação Dinâmica** | `PegarTipoVar`, `PegarValorVarAlf`, `PegarValorVarNum` |
+
+### **🚫 Atribuição Direta em Grids/Tabelas**
+
+**Funções de conversão NÃO podem atribuir diretamente para campos de grids ou tabelas**
+
+#### **Operações NÃO Permitidas:**
+
+- **Atribuição direta** em campos de grid/tabela
+- **Conversões diretas** para propriedades de objetos
+- **Funções de cast** diretamente em campos estruturados
+
+#### **Exemplos INCORRETOS:**
+
+```lsp
+@ ERRO: Atribuição direta em grid @
+AlfaParaDecimal(vaTexto, MinhaGrid.CampoDecimal);
+AlfaParaInt(vaTexto, MinhaTabela.CampoInteiro);
+AlfaParaData(vaTexto, MinhaGrid.CampoData);
+```
+
+#### ** Forma CORRETA:**
+
+```lsp
+@ CORRETO: Usar variável intermediária @
+Definir Numero vnValorDecimal;
+Definir Numero vnValorInteiro;
+Definir Data vdDataConvertida;
+
+AlfaParaDecimal(vaTexto, vnValorDecimal);
+MinhaGrid.CampoDecimal = vnValorDecimal;
+
+AlfaParaInt(vaTexto, vnValorInteiro);
+MinhaTabela.CampoInteiro = vnValorInteiro;
+
+AlfaParaData(vaTexto, vdDataConvertida);
+MinhaGrid.CampoData = vdDataConvertida;
+```
+
+#### **🎯 Regra de Ouro para Grids:**
+**Sempre use variável intermediária para conversões em grids/tabelas!**
 
 ## Mensagens
 
 A função `Mensagem` é utilizada para exibir mensagens ao usuário. Existem diferentes tipos de mensagens, como `Retorna`, `Erro`, e `Refaz`.
 
+**📋 Regras Importantes:**
 1. Não é possível fazer concatenação diretamente no parâmetro da função `Mensagem()`
 2. É necessário definir uma variável Alfa antes, fazer as concatenações e atribuir nessa variável
 3. A variável Alfa deve ser passada como parâmetro para a função `Mensagem()`
@@ -2971,6 +4703,10 @@ vaMensagem = "Aluno: " + vaNome + vaEnter + "Média: " + vaMedia;
 Mensagem(Retorna, vaMensagem);
 ```
 
+**⚠️ FUNDAMENTAL:** A função `Mensagem` **NÃO aceita concatenação ou qualquer manipulação** dentro de seus parâmetros. **Sempre** faça a concatenação em uma variável separada primeiro.
+
+**🚨 CRÍTICO:** **NUNCA** passe variáveis contendo **JSON grandes** para `Mensagem`. Pode causar **travamento do sistema Senior**.
+
 - Exemplo com botões especificados entre colchetes:
 
    - Entre colchetes podem conter 1 ou mais parâmetros, o retorno será de acordo com a sequencia do parâmetro, iniciando com 0
@@ -2989,7 +4725,8 @@ vnRetorno = Mensagem(retorna,"Escolha uma opção ? [&Voltar,&Avançar, $Cancela
 - Exemplo de uso incorreto:
 
 ```lsp
-Mensagem(Retorna, "Aluno: " + vaNome + vaEnter + "Média: " + vaMedia); @ Erro: concatenação no parâmetro @
+@ ERRO: Concatenação no parâmetro - NÃO FUNCIONA @
+Mensagem(Retorna, "Aluno: " + vaNome + vaEnter + "Média: " + vaMedia);
 ```
 
 ## Cancel
@@ -3024,37 +4761,37 @@ Cancel(3); @ Exclui o registro atual do relatório em controles do tipo fórmula
 
 ### Boas Práticas e Regras Gerais
 
-- Sempre termine uma instrução de código com `;`.
-- Evite duplicação de código, reutilize funções sempre que possível.
-- Mantenha o código modularizado e organizado em funções.
-- Utilize nomes descritivos para funções.
-- Teste o código extensivamente para garantir que ele funcione corretamente em todas as situações esperadas.
+✅ **Sempre termine uma instrução de código com `;`.**
+✅ **Evite duplicação de código, reutilize funções sempre que possível.**
+✅ **Mantenha o código modularizado e organizado em funções.**
+✅ **Utilize nomes descritivos para funções.**
+✅ **Teste o código extensivamente para garantir que ele funcione corretamente em todas as situações esperadas.**
 
 ### Declaração de Variáveis
 
-- Declare as variáveis no início do código ou da função.
-- Inicialize as variáveis sempre que possível no início do código ou da função.
-- Em relatórios, declare e inicialize variáveis nos eventos de Inicialização ou Pré-Seleção.
+✅ **Declare as variáveis no início do código ou da função.**
+✅ **Inicialize as variáveis sempre que possível no início do código ou da função.**
+✅ **Em relatórios, declare e inicialize variáveis nos eventos de Inicialização ou Pré-Seleção.**
 
 ### Padrão de Nomenclatura de Variáveis
 
-- Utilize nomes descritivos para as variáveis.
-- Utilize o padrão CamelCase nos nomes das variáveis.
-- Utilize o padrão "v + inicial do tipo de dado" antes do nome da variável:
+✅ **Utilize nomes descritivos para as variáveis.**
+✅ **Utilize o padrão CamelCase nos nomes das variáveis.**
+✅ **Utilize o padrão "v + inicial do tipo de dado" antes do nome da variável:**
   - `va` para variáveis do tipo `Alfa`
   - `vn` para variáveis do tipo `Numero`
   - `vd` para variáveis do tipo `Data`
-- Evite usar nomes de variáveis que possam ser confundidos com palavras reservadas ou nomes de funções.
+❌ **Evite usar nomes de variáveis que possam ser confundidos com palavras reservadas ou nomes de funções.**
 
 ### Identação e Espaçamento
 
-- Utilize 2 espaços para identação.
-- Mantenha o código organizado e legível, evitando linhas de código muito longas.
+✅ **Utilize 2 espaços para identação.**
+✅ **Mantenha o código organizado e legível, evitando linhas de código muito longas.**
 
 ### Estruturas de Bloco
 
-- Utilize `{` para abrir um bloco e `}` para fechar um bloco, delimitando assim os blocos de código.
-- Se o bloco contiver apenas uma linha, não é necessário informar `{ }`, basta adicionar o código identado na linha de baixo.
+✅ **Utilize `{` para abrir um bloco e `}` para fechar um bloco, delimitando assim os blocos de código.**
+✅ **Se o bloco contiver apenas uma linha, não é necessário informar `{ }`, basta adicionar o código identado na linha de baixo.**
 
 Exemplo de estrutura de bloco com apenas uma linha:
 
@@ -3073,8 +4810,8 @@ Se (<Condição>) {
 
 ### Comentários
 
-- Utilize comentários para explicar o código e facilitar a manutenção.
-- Utilize `@` para comentários de uma linha e `/* */` para comentários de múltiplas linhas.
+✅ **Utilize comentários para explicar o código e facilitar a manutenção.**
+✅ **Utilize `@` para comentários de uma linha e `/* */` para comentários de múltiplas linhas.**
 
 Exemplo de comentário de uma linha:
 
@@ -3095,12 +4832,19 @@ Definir Numero vnX;
 
 ## Controle de Fluxo
 
-### Condicionais
+### **📋 Resumo das Estruturas de Controle**
 
-As estruturas condicionais são utilizadas para executar blocos de código com base em condições.
+| **Estrutura** | **Uso** | **Sintaxe** |
+|---|---|---|
+| **🔀 Se/Senao** | Decisões | `Se (condição) { } Senao { }` |
+| **🔄 Para** | Loop contado | `Para (i=1; i<=10; i++) { }` |
+| **🔁 Enquanto** | Loop condicional | `Enquanto (condição) { }` |
+| **⏹️ Pare** | Interromper loop | `Pare;` |
+| **↩️ VaPara** | Pular para rótulo | `VaPara etiqueta;` |
 
-Exemplo de uso do `Se` e `Senao`:
+### **🎯 Condicionais Progressivos**
 
+#### **Nível 1: Condicional Simples**
 ```lsp
 Definir Numero vnIdade;
 vnIdade = 20;
@@ -3112,6 +4856,53 @@ Se (vnIdade >= 18) {
 }
 ```
 
+#### **Nível 2: Múltiplas Condições**
+```lsp
+Definir Numero vnNota;
+Definir Alfa vaConceito;
+Definir Alfa vaMensagem;
+
+vnNota = 85;
+
+Se (vnNota >= 90) {
+  vaConceito = "Excelente";
+} Senao Se (vnNota >= 80) {
+  vaConceito = "Bom";
+} Senao Se (vnNota >= 70) {
+  vaConceito = "Regular";
+} Senao Se (vnNota >= 60) {
+  vaConceito = "Suficiente";
+} Senao {
+  vaConceito = "Insuficiente";
+}
+
+vaMensagem = "Conceito: " + vaConceito;
+Mensagem(Retorna, vaMensagem);
+```
+
+#### **Nível 3: Condições Complexas**
+```lsp
+Definir Numero vnIdade;
+Definir Alfa vaCategoria;
+Definir Numero vnRenda;
+Definir Numero vnPontuacao;
+
+vnIdade = 25;
+vaCategoria = "PREMIUM";
+vnRenda = 5000;
+
+Se ((vnIdade >= 18) e (vnIdade <= 65) e (vaCategoria = "PREMIUM") e (vnRenda > 3000)) {
+  vnPontuacao = 100;
+  Mensagem(Retorna, " Cliente aprovado com pontuação máxima!");
+} Senao Se ((vnIdade >= 18) e (vnRenda > 1500)) {
+  vnPontuacao = 70;
+  Mensagem(Retorna, "Cliente aprovado com restrições");
+} Senao {
+  vnPontuacao = 0;
+  Mensagem(Retorna, "Cliente não aprovado");
+}
+```
+
 ### Estrutura de Repetição
 
 As estruturas de repetição são utilizadas para executar blocos de código repetidamente.
@@ -3120,10 +4911,12 @@ Exemplo de uso do `Enquanto`:
 
 ```lsp
 Definir Numero vnContador;
+Definir Alfa vaContadorStr;
 vnContador = 0;
 
 Enquanto (vnContador < 10) {
-  Mensagem(Retorna, vnContador);
+  IntParaAlfa(vnContador, vaContadorStr);
+  Mensagem(Retorna, vaContadorStr);
   vnContador++;
 }
 ```
@@ -3131,8 +4924,10 @@ Enquanto (vnContador < 10) {
 Exemplo de uso do `Para`:
 
 ```lsp
+Definir Alfa vaIStr;
 Para (i = 0; i < 10; i++) {
-  Mensagem(Retorna, i);
+  IntParaAlfa(i, vaIStr);
+  Mensagem(Retorna, vaIStr);
 }
 ```
 
@@ -3143,11 +4938,13 @@ O comando `Pare` é utilizado para interromper a execução de um bloco de repet
 Exemplo de uso do `Pare`:
 
 ```lsp
+Definir Alfa vaContadorStr;
 Para (vnContador = 0; vnContador < 10; vnContador++) {
   Se (vnContador = 5) {
     Pare;
   }
-  Mensagem(Retorna, vnContador);
+  IntParaAlfa(vnContador, vaContadorStr);
+  Mensagem(Retorna, vaContadorStr);
 }
 ```
 
@@ -3335,7 +5132,9 @@ Exemplo de acesso aos valores:
 
 ```lsp
 Mensagem(Retorna, vaNomes[0]); @ Exibe "João" @
-Mensagem(Retorna, vnIdades[1]); @ Exibe 30 @
+Definir Alfa vaIdadeStr;
+IntParaAlfa(vnIdades[1], vaIdadeStr);
+Mensagem(Retorna, vaIdadeStr); @ Exibe 30 @
 Mensagem(Retorna, vdDatas[2]); @ Exibe "10/10/2022" @
 ```
 
@@ -3346,6 +5145,8 @@ Os arrays podem ser iterados utilizando estruturas de repetição como `Para` ou
 Exemplo de iteração sobre arrays:
 
 ```lsp
+Definir Alfa vaIdadeStr;
+
 Para (i = 0; i < 3; i++) {
   Mensagem(Retorna, vaNomes[i]);
 }
@@ -3353,7 +5154,8 @@ Para (i = 0; i < 3; i++) {
 Definir Numero j;
 j = 0;
 Enquanto (j < 3) {
-  Mensagem(Retorna, vnIdades[j]);
+  IntParaAlfa(vnIdades[j], vaIdadeStr);
+  Mensagem(Retorna, vaIdadeStr);
   j++;
 }
 ```
@@ -3366,6 +5168,7 @@ Aqui está um exemplo completo de declaração, atribuição, acesso e iteraçã
 Definir Alfa vaNomes[3];
 Definir Numero vnIdades[3];
 Definir Data vdDatas[3];
+Definir Alfa vaIdadeStr;
 
 vaNomes[0] = "João";
 vaNomes[1] = "Maria";
@@ -3386,7 +5189,8 @@ Para (i = 0; i < 3; i++) {
 Definir Numero j;
 j = 0;
 Enquanto (j < 3) {
-  Mensagem(Retorna, vnIdades[j]);
+  IntParaAlfa(vnIdades[j], vaIdadeStr);
+  Mensagem(Retorna, vaIdadeStr);
   j++;
 }
 ```
@@ -3687,6 +5491,350 @@ enquanto (Lst.Proximo() = 1) {
 
 Da mesma forma, estes algoritmos podem ser utilizados começando pelo último registro e subindo até o primeiro. Para isto basta utilizar as funções Ultimo e Anterior.
 
+### Disponibilização do Recurso
+
+Recurso disponível para SVCL em todas as ferramentas e telas que utilizem regras.
+
+### Cursores vs Listas em Memória
+
+#### Cursores
+
+Os cursores são melhores utilizados quando precisa-se de dados atualizados ou que serão lidos apenas uma vez.
+
+**Vantagens:**
+✅ **Permite acesso a dados atualizados**
+✅ **Permite filtragem dos dados diretamente no banco de dados**
+✅ **Filtros elaborados através de expressões (cláusula where)**
+
+**Desvantagens:**
+❌ **A performance de resposta depende da rede e do banco de dados**
+❌ **Não suporta o comando Anterior, permitindo que os registros sejam lidos de trás para a frente**
+❌ **Para se alterar a ordenação, precisa-se executar outro comando SQL**
+
+#### Listas em Memória
+
+As listas em memória podem ser usadas quando precisa-se navegar muitas vezes nos dados ou quando é necessário armazenar dados calculados. Também pode ser usada quando é necessário armazenar valores durante um processamento (onde não se sabe o número total de registros) e que, posteriormente, precisam ser recuperados para uma impressão ou algum outro processamento.
+
+**Vantagens:**
+✅ **Acesso rápido aos dados**
+✅ **A liberação da memória é de responsabilidade da lista, não cabendo ao usuário a chamada de um comando para isto. Pode-se apenas excluir os registros. Isto pode ser feito individualmente, ou através do comando Limpar (que remove todos os registros da lista)**
+✅ **A ordenação pode ser realizada em qualquer momento, apenas configurando a chave da lista**
+✅ **Ordenação facilitada através da definição de uma chave, sem a necessidade de ler novamente os dados**
+✅ **Permite a inserção, atualização e exclusão de registros durante o uso**
+✅ **Permite a definição de campos customizados. Os campos não precisam seguir um padrão estipulado em alguma tabela**
+✅ **Pode-se navegar pela lista tanto para frente quanto para trás quantas vezes forem necessárias**
+✅ **Permite a procura de registros através de uma chave**
+✅ **Acesso aos campos tem a mesma sintaxe do acesso aos campos do cursor**
+
+**Desvantagens:**
+❌ **A lista não pode ser preenchida automaticamente por um cursor**
+❌ **Não é possível filtrar os dados depois de inseridos na lista**
+❌ **Não permitem interação direta com o sistema, ou seja, os valores da lista não podem ser preenchidos através de rotinas desenvolvidas do sistema**
+
+### ⚠️ IMPORTANTE - Observações Críticas de Uso
+
+#### No Gerador de Relatórios
+
+**🚨 OBRIGATÓRIO:**
+- Coloque a **definição, adição e efetivação dos campos** no evento **"Funções Globais do Modelo Gerador"**, pois esta é a primeira regra a ser compilada para os modelos
+- Se os campos das listas forem utilizados em uma regra que é compilada antes da adição dos campos da lista, o compilador não reconhece os mesmos dando **erro de compilação**
+- **Sempre redeclare** a definição das listas nas regras em que elas forem utilizadas
+
+#### Em Web Services de Geração de Relatórios
+
+**🚨 CRÍTICO - Access Violation:**
+- Na execução através de web service (exemplo: `com.senior.g5.co.ger.relatorio` do Gestão Empresarial | ERP)
+- Se não houver a **redeclaração da lista** em todas as regras onde são utilizadas, pode ocorrer **erro de Access Violation**
+- O Access Violation pode não ocorrer em modo "2 - Sincrono", mas **sempre ocorre** em modo "1 - Local"
+- **Solução:** Sempre redeclare as variáveis independentemente do modo de execução
+
+#### No Gerador de Importação e Exportação
+
+**📋 Regra Obrigatória:**
+- Coloque a **definição, adição e efetivação dos campos** no evento **"Início da Execução"**
+- **Redeclare** a definição da lista nas demais regras onde ela for utilizada
+
+**Exemplo de Declaração Correta:**
+
+```lsp
+@ ==> NO EVENTO "Funções Globais" (Gerador) ou "Início da Execução" (Import/Export) @
+Definir Lista LstDados;
+LstDados.DefinirCampos();
+LstDados.AdicionarCampo("Codigo", numero);
+LstDados.AdicionarCampo("Nome", alfa, 50);
+LstDados.EfetivarCampos();
+
+@ ==> EM CADA REGRA QUE USA A LISTA @
+Definir Lista LstDados;  @ OBRIGATÓRIO: Redeclarar @
+
+@ Agora pode usar a lista normalmente @
+LstDados.Adicionar();
+LstDados.Codigo = 123;
+LstDados.Nome = "Exemplo";
+LstDados.Gravar();
+```
+
+## Funções de Lista de Regras
+
+As funções de Lista de Regras (ListaRegra*) são utilizadas para manipular listas especiais que podem carregar dados diretamente de estruturas JSON ou outras fontes de dados estruturados. Essas funções oferecem uma forma simplificada de processar dados complexos.
+
+### Criação e Carregamento de Listas
+
+#### ListaRegraCriarLista
+
+Cria uma nova lista de regras para armazenar dados estruturados.
+
+**Sintaxe:**
+
+```lsp
+ListaRegraCriarLista(<numeroLista>);
+```
+
+**Parâmetros:**
+- `numeroLista`: Variável numérica que receberá o identificador da lista criada
+
+**Exemplo:**
+
+```lsp
+Definir Numero nLista;
+
+ListaRegraCriarLista(nLista);
+@ nLista agora contém o identificador da lista criada @
+```
+
+#### ListaRegraCarregarJson
+
+Carrega dados de uma estrutura JSON diretamente em uma lista de regras.
+
+**Sintaxe:**
+
+```lsp
+ListaRegraCarregarJson(<numeroLista>, <jsonString>, <grupo>, <campos>);
+```
+
+**Parâmetros:**
+- `numeroLista`: Identificador da lista criada com ListaRegraCriarLista
+- `jsonString`: String contendo o JSON a ser processado
+- `grupo`: Nome do grupo/objeto dentro do JSON (use "" para raiz)
+- `campos`: Lista de campos separados por ponto-e-vírgula (;)
+
+**Exemplo:**
+
+```lsp
+Definir Numero nLista;
+Definir Alfa vaJSON;
+Definir Alfa vaJSONModificado;
+
+@ JSON de exemplo (array de objetos) @
+vaJSON = "[{\"nome\":\"João\",\"idade\":\"30\"},{\"nome\":\"Maria\",\"idade\":\"25\"}]";
+
+@ Encapsular array em objeto para compatibilidade @
+vaJSONModificado = "{\"pessoas\":" + vaJSON + "}";
+
+@ Criar e carregar lista @
+ListaRegraCriarLista(nLista);
+ListaRegraCarregarJson(nLista, vaJSONModificado, "pessoas", "nome;idade");
+```
+
+**⚠️ Limitação Importante:** A função `ListaRegraCarregarJson` espera um objeto JSON que comece com `{`. Se você tiver um array JSON que comece com `[`, precisa encapsulá-lo em um objeto:
+
+```lsp
+@ Array original @
+vaArrayJSON = "[{\"campo1\":\"valor1\"},{\"campo2\":\"valor2\"}]";
+
+@ Encapsular em objeto @
+vaJSONObjeto = "{\"dados\":" + vaArrayJSON + "}";
+
+@ Agora pode usar ListaRegraCarregarJson @
+ListaRegraCarregarJson(nLista, vaJSONObjeto, "dados", "campo1;campo2");
+```
+
+### Navegação em Listas de Regras
+
+#### ListaRegraPrimeiro
+
+Posiciona a lista no primeiro registro.
+
+**Sintaxe:**
+
+```lsp
+ListaRegraPrimeiro(<numeroLista>, <achou>);
+```
+
+**Parâmetros:**
+- `numeroLista`: Identificador da lista
+- `achou`: Variável alfa que receberá "S" se encontrou registro, "N" se não encontrou
+
+**Exemplo:**
+
+```lsp
+Definir Numero nLista;
+Definir Alfa vaAchou;
+
+ListaRegraPrimeiro(nLista, vaAchou);
+Se (vaAchou = "S") {
+  @ Lista posicionada no primeiro registro @
+  Mensagem(Retorna, "Primeiro registro encontrado");
+} Senao {
+  @ Lista vazia @
+  Mensagem(Retorna, "Lista vazia");
+}
+```
+
+#### ListaRegraProximo
+
+Move para o próximo registro da lista.
+
+**Sintaxe:**
+
+```lsp
+ListaRegraProximo(<numeroLista>, <achou>);
+```
+
+**Parâmetros:**
+- `numeroLista`: Identificador da lista
+- `achou`: Variável alfa que receberá "S" se encontrou registro, "N" se chegou ao fim
+
+**Exemplo:**
+
+```lsp
+Definir Numero nLista;
+Definir Alfa vaAchou;
+
+ListaRegraProximo(nLista, vaAchou);
+Se (vaAchou = "S") {
+  @ Moveu para próximo registro @
+  Mensagem(Retorna, "Próximo registro encontrado");
+} Senao {
+  @ Chegou ao fim da lista @
+  Mensagem(Retorna, "Fim da lista");
+}
+```
+
+### Obtenção de Dados
+
+#### ListaRegraObterValorAlfa
+
+Obtém o valor de um campo específico do registro atual da lista.
+
+**Sintaxe:**
+
+```lsp
+ListaRegraObterValorAlfa(<numeroLista>, <nomeCampo>, <valor>, <obteve>);
+```
+
+**Parâmetros:**
+- `numeroLista`: Identificador da lista
+- `nomeCampo`: Nome do campo a ser obtido
+- `valor`: Variável alfa que receberá o valor do campo
+- `obteve`: Variável alfa que receberá "S" se obteve valor, "N" se não obteve
+
+**Exemplo:**
+
+```lsp
+Definir Numero nLista;
+Definir Alfa vaNome;
+Definir Alfa vaIdade;
+Definir Alfa vaObteve;
+
+@ Obter nome do registro atual @
+ListaRegraObterValorAlfa(nLista, "nome", vaNome, vaObteve);
+Se (vaObteve = "S") {
+  Mensagem(Retorna, "Nome: " + vaNome);
+}
+
+@ Obter idade do registro atual @
+ListaRegraObterValorAlfa(nLista, "idade", vaIdade, vaObteve);
+Se (vaObteve = "S") {
+  Mensagem(Retorna, "Idade: " + vaIdade);
+}
+```
+
+### Exemplo Prático Completo: Processamento de JSON
+
+```lsp
+Definir Funcao processarUsuariosJSON();
+
+@ Variáveis globais @
+Definir Alfa vaJSONResposta;
+Definir Numero nListaUsuarios;
+
+@ JSON de exemplo vindo de API @
+vaJSONResposta = "[{\"id\":\"1\",\"nome\":\"João Silva\",\"email\":\"joao@exemplo.com\"},{\"id\":\"2\",\"nome\":\"Maria Santos\",\"email\":\"maria@exemplo.com\"}]";
+
+processarUsuariosJSON();
+
+Funcao processarUsuariosJSON(); {
+  Definir Alfa vaJSONModificado;
+  Definir Alfa vaAchou;
+  Definir Alfa vaObteve;
+  Definir Alfa vaId;
+  Definir Alfa vaNome;
+  Definir Alfa vaEmail;
+  Definir Numero vnContador;
+  
+  @ Encapsular array em objeto @
+  vaJSONModificado = "{\"usuarios\":" + vaJSONResposta + "}";
+  
+  @ Criar e carregar lista @
+  ListaRegraCriarLista(nListaUsuarios);
+  ListaRegraCarregarJson(nListaUsuarios, vaJSONModificado, "usuarios", "id;nome;email");
+  
+  @ Verificar se carregou dados @
+  ListaRegraPrimeiro(nListaUsuarios, vaAchou);
+  
+  Se (vaAchou = "S") {
+    vnContador = 0;
+    
+    @ Processar todos os registros @
+    Enquanto (vaAchou = "S") {
+      vnContador++;
+      
+      @ Obter dados do registro atual @
+      ListaRegraObterValorAlfa(nListaUsuarios, "id", vaId, vaObteve);
+      ListaRegraObterValorAlfa(nListaUsuarios, "nome", vaNome, vaObteve);
+      ListaRegraObterValorAlfa(nListaUsuarios, "email", vaEmail, vaObteve);
+      
+      @ Processar dados @
+      Definir Alfa vaMensagem;
+      Definir Alfa vaContadorStr;
+      IntParaAlfa(vnContador, vaContadorStr);
+      vaMensagem = "Usuário " + vaContadorStr + ": " + vaNome + " (" + vaEmail + ")";
+      Mensagem(Retorna, vaMensagem);
+      
+      @ Mover para próximo @
+      ListaRegraProximo(nListaUsuarios, vaAchou);
+    }
+    
+    IntParaAlfa(vnContador, vaContadorStr);
+    vaMensagem = "Total de usuários processados: " + vaContadorStr;
+    Mensagem(Retorna, vaMensagem);
+  } Senao {
+    Mensagem(Erro, "Falha ao carregar dados JSON na lista");
+  }
+}
+```
+
+### Casos de Uso Comuns
+
+1. **Processamento de Respostas de API**: Carregar e processar dados JSON retornados por APIs REST
+2. **Integração de Sistemas**: Processar arquivos de dados estruturados
+3. **Transformação de Dados**: Converter estruturas complexas em dados tabulares
+4. **Validação em Lote**: Processar múltiplos registros para validação
+
+### Vantagens das Listas de Regras
+
+- **Simplicidade**: Carregamento direto de JSON sem parsing manual
+- **Performance**: Processamento otimizado para estruturas de dados
+- **Flexibilidade**: Suporte a estruturas JSON complexas
+- **Manutenibilidade**: Código mais limpo comparado ao parsing manual
+
+**⚠️ Observações Importantes:**
+- Sempre encapsule arrays JSON em objetos antes de usar `ListaRegraCarregarJson`
+- Verifique sempre o retorno das funções de navegação (`vaAchou`)
+- Use nomes de campos consistentes entre o JSON e a lista de campos
+- A lista deve ser criada antes de tentar carregar dados
+
 ## Definição de Tabelas
 
 Usado com o comando definir para declarar uma variável do tipo Tabela, com linhas e colunas. Cada coluna é um nome com um tipo específico de informação e as linhas são indexadas de 1 até N.
@@ -3780,26 +5928,26 @@ SQL_Destruir(xCursor);
 #### Cursor Simples
 
 **Vantagens:**
-- Simplicidade na definição e uso.
-- Menor quantidade de funções necessárias.
-- Ideal para consultas simples e rápidas.
+✅ **Simplicidade na definição e uso.**
+✅ **Menor quantidade de funções necessárias.**
+✅ **Ideal para consultas simples e rápidas.**
 
 **Desvantagens:**
-- Menos flexível para consultas complexas.
-- Não suporta múltiplos parâmetros ou tipos de dados avançados.
-- Não permite o uso de determinadas funções SQL.
+❌ **Menos flexível para consultas complexas.**
+❌ **Não suporta múltiplos parâmetros ou tipos de dados avançados.**
+❌ **Não permite o uso de determinadas funções SQL.**
 
 #### Cursor Completo
 
 **Vantagens:**
-- Permite acesso a dados atualizados.
-- Permite filtragem dos dados diretamente no banco de dados.
-- Suporta operações complexas com múltiplos parâmetros.
-- Pode utilizar ou não a sintaxe SQL Senior 2.
+✅ **Permite acesso a dados atualizados.**
+✅ **Permite filtragem dos dados diretamente no banco de dados.**
+✅ **Suporta operações complexas com múltiplos parâmetros.**
+✅ **Pode utilizar ou não a sintaxe SQL Senior 2.**
 
 **Desvantagens:**
-- A performance de resposta depende da rede e do banco de dados.
-- Requer mais funções e configurações em comparação ao cursor simples.
+❌ **A performance de resposta depende da rede e do banco de dados.**
+❌ **Requer mais funções e configurações em comparação ao cursor simples.**
 
 ### Funções de Retorno SQL
 
@@ -3855,9 +6003,15 @@ Funcao exemploCompletoRetornoSQL(); {
       
       @ Exemplo de processamento dos dados obtidos @
       Se (vnDeficienteFisico = 1) {
-        Mensagem(Retorna, "✅ " + vaNomeFuncionario + " - PCD");
+        Definir Alfa vaMensagem;
+        vaMensagem = vaNomeFuncionario + " - PCD";
+        Mensagem(Retorna, vaMensagem);
       } Senao {
-        Mensagem(Retorna, "📄 " + vaNomeFuncionario + " - Filial: " + IntParaAlfa(vnCodigoFilial));
+        Definir Alfa vaCodigoFilialStr;
+        Definir Alfa vaMensagem;
+        IntParaAlfa(vnCodigoFilial, vaCodigoFilialStr);
+        vaMensagem = vaNomeFuncionario + " - Filial: " + vaCodigoFilialStr;
+        Mensagem(Retorna, vaMensagem);
       }
     }
     
@@ -3885,7 +6039,7 @@ Funcao exemploRetornarBlob(); {
     
     @ Processar arquivo blob @
     Se (TamanhoAlfa(vaFotoFuncionario) > 0) {
-      Mensagem(Retorna, "📷 Foto encontrada");
+      Mensagem(Retorna, "Foto encontrada");
     }
     
     SQL_Proximo(xCursorBlob);
@@ -4007,7 +6161,7 @@ SQL_Destruir(xCursor);
 
 **❓ Pergunta Comum:** "Não há como otimizar o uso de todos os tipos de retorno em um mesmo cursor?"
 
-**✅ Resposta:** A sequência de `SQL_Retornar*` **é obrigatória** para cada campo, mas podemos otimizar a lógica de processamento:
+** Resposta:** A sequência de `SQL_Retornar*` **é obrigatória** para cada campo, mas podemos otimizar a lógica de processamento:
 
 #### **🚀 Versão Otimizada - Verificação Prévia de NULLs**
 
@@ -4061,8 +6215,13 @@ Funcao consultarFuncionariosOtimizado(); {
   SQL_FecharCursor(xCursor);
   SQL_Destruir(xCursor);
   
-  IntParaAlfa(vnContadorValidos, vaNomeFuncionario);
-  Mensagem(Retorna, "Registros processados: " + vaNomeFuncionario + " de " + IntParaAlfa(vnContadorTotal));
+  Definir Alfa vaContadorValidosStr;
+  Definir Alfa vaContadorTotalStr;
+  Definir Alfa vaMensagem;
+  IntParaAlfa(vnContadorValidos, vaContadorValidosStr);
+  IntParaAlfa(vnContadorTotal, vaContadorTotalStr);
+  vaMensagem = "Registros processados: " + vaContadorValidosStr + " de " + vaContadorTotalStr;
+  Mensagem(Retorna, vaMensagem);
 }
 ```
 
@@ -4107,10 +6266,10 @@ Se (precisaDetalhes = 1) {
 
 | **Aspecto** | **Limitação** | **Solução** |
 |-------------|---------------|-------------|
-| **Tipos de Dados** | Cada tipo precisa de função específica | ✅ **Obrigatório** - Use SQL_Retornar correto |
-| **Performance** | Recuperar dados desnecessários | ✅ **Otimizável** - Verificar NULLs primeiro |
-| **Lógica** | Processamento sequencial | ✅ **Otimizável** - Recuperação condicional |
-| **Memória** | Muitas variáveis | ✅ **Otimizável** - Reutilizar variáveis |
+| **Tipos de Dados** | Cada tipo precisa de função específica |  **Obrigatório** - Use SQL_Retornar correto |
+| **Performance** | Recuperar dados desnecessários |  **Otimizável** - Verificar NULLs primeiro |
+| **Lógica** | Processamento sequencial |  **Otimizável** - Recuperação condicional |
+| **Memória** | Muitas variáveis |  **Otimizável** - Reutilizar variáveis |
 
 **📌 Conclusão:** A sequência de `SQL_Retornar*` **não pode ser simplificada** (é obrigatória), mas a **lógica de quando e como recuperar** pode ser muito otimizada!
 
@@ -4128,14 +6287,14 @@ Uma função pode receber parâmetros e retornar valores.
 - **Os parâmetros definidos para as funções devem obrigatoriamente ser Numéricos**
 - **Parâmetros do tipo Alfanuméricos (Alfa) NÃO são suportados por funções definidas nas regras**
 
-**❌ Incorreto - NÃO funciona:**
+**Incorreto - NÃO funciona:**
 ```lsp
 Funcao alterarNome(Alfa vaNome); {
    vaNome = "Nome Alterado"; @ ERRO: Parâmetro Alfa não suportado @
 }
 ```
 
-**✅ Correto - Usar variáveis globais:**
+** Correto - Usar variáveis globais:**
 ```lsp
 Definir Alfa vaNome;
 
@@ -4240,7 +6399,7 @@ Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero 
 
 **⚠️ REGRA OBRIGATÓRIA:** Em LSP, as funções devem ser declaradas **SEMPRE APÓS** o código principal que as chama. A chamada da função deve aparecer ANTES da declaração da função no código.
 
-**❌ Incorreto - NÃO funciona:**
+**Incorreto - NÃO funciona:**
 ```lsp
 Funcao minhaFuncao(); {
   @ Corpo da função @
@@ -4249,7 +6408,7 @@ Funcao minhaFuncao(); {
 minhaFuncao(); @ ERRO: Chamada após declaração @
 ```
 
-**✅ Correto - Ordem obrigatória:**
+** Correto - Ordem obrigatória:**
 ```lsp
 @ 1. Variáveis globais @
 @ 2. Código principal (chamadas) @
@@ -4346,10 +6505,16 @@ As funções gerais na LSP são utilizadas para realizar operações comuns, com
 | Nome                        | Descrição                                                                 |
 |-----------------------------|---------------------------------------------------------------------------|
 | AlfaParaInt                 | Converte um número armazenado como Alfa e o retorna como um tipo Número.  |
+| StrParaInt                  | Converte um valor alfanumérico (string) para o tipo Inteiro. Equivalente a AlfaParaInt.|
 | ArqExiste                   | Verifica se um arquivo físico existe no local especificado.               |
 | AtualizaBarraProgresso      | Atualiza as mensagens apresentadas na tela da barra de progresso.         |
 | CaracterParaAlfa            | Converte um caracter (que fica armazenado pelo código ASCII) para o valor Alfanumérico correspondente. |
 | CodData                     | Possibilita a composição de uma data, montando-a através de dia, mês e ano.|
+| DesMontaData                | Desmonta uma data, separando em três variáveis, as informações Dia/Mês/Ano da data. |
+| ConverteDataBanco           | Converte uma data qualquer, para o formato de data do banco de dados. |
+| ConverteDataSqlSenior2      | Converte datas para o formato SQL Senior 2. |
+| ConverteDataToDB            | Converte uma data qualquer, para o formato de data do banco de dados. |
+| AnoBissexto                 | Retorna a informação se um ano é ou não bissexto tomando como base o ano da data passada. |
 | ConverteCodificacaoString   | Esta função converte a codificação de um texto para o formato definido pelo usuário. |
 | ConverteMascara             | Esta função converte um valor de entrada (numérico, data, hora ou cadeia de caracteres), para o tipo de dado cadeia de caracteres. |
 | ConverteParaMaiusculo       | Converte o conteúdo de uma variável do tipo Alfa para maiúsculo.          |
@@ -4358,25 +6523,50 @@ As funções gerais na LSP são utilizadas para realizar operações comuns, com
 | CopiarAlfa                  | Esta função copia parte do conteúdo de uma variável/campo alfanumérico para a variável alfanumérica Retorno. |
 | CriarArquivoTemporario      | Cria um arquivo temporário de nome aleatório e único prefixado com o valor do parâmetro prefixo. |
 | DataHoje                    | Retorna a data atual do sistema operacional.                              |
-| DataHora                    | Retorna data e hora atual.                                                |
+| DataHora                    | Retorna data e hora atual como número fracionário.                        |
 | DecodData                   | Permite a separação de uma data em dia, mês e ano para que os dados possam ser usados separadamente. |
 | DeletarAlfa                 | Esta função apaga uma determinada quantidade de caracteres de uma variável/campo a partir da posição informada. |
+| DeletarStr                  | Elimina parte de um texto a partir de uma posição específica. |
+| InserirAlfa                 | Insere um ou mais caracteres em uma variável/campo, a partir da posição indicada. |
+| InserirStr                  | Insere um ou mais caracteres em uma variável/campo, a partir da posição indicada. |
+| LimpaEspacos                | Limpa os espaços em branco à direita e à esquerda de uma variável alfanumérica. |
+| LimpaEspacosDireita         | Limpa os espaços em branco à direita de uma variável alfanumérica. |
+| LimpaEspacosEsquerda        | Limpa os espaços em branco à esquerda de uma variável alfanumérica. |
+| QuebraTexto                 | Quebra texto em linhas conforme o tamanho especificado. |
+| ProcuraEnter                | Procura caracteres de quebra de linha (#13 ou #10) em uma string. |
+| CalculaAlfa                 | Realiza operações matemáticas com valores alfanuméricos. |
+| CarregarTextoArq            | Carrega o conteúdo de um arquivo texto para uma variável alfanumérica. |
+| Concatena                   | Concatena até 3 campo/variáveis tipo alfa, formando uma só variável. |
 | Desencriptar                | Função para descriptografar uma cadeia de caracteres.                     |
 | Dividir                     | Função disponível para dividir um valor por outro.                        |
 | Encriptar                   | Criptografa a cadeia de caracteres.                                       |
 | ExcluirArquivoTemporario    | Exclui um arquivo criado pela função CriarArquivoTemporario.              |
 | ExecProg                    | Permite a execução de aplicativos durante a execução de regras.           |
+| Extenso                     | Gera o extenso de um valor. |
+| ExtensoMes                  | Monta o extenso do mês de uma determinada data. |
+| ExtensoMoeda                | Gera o extenso de um valor com a moeda informada. |
+| ExtensoSemana               | Monta o extenso do dia da semana de uma determinada data. |
+| DataExtenso                 | Gera o extenso de determinada data. |
 | FormatarData                | Formata a data.                                                           |
 | GeraHash                    | Retorna um Hash do texto informado.                                       |
 | GerarNonce                  | Gera o valor do campo Nonce, um número aleatório.                         |
 | GerarPwdDigest              | Gera o Digest da senha, a partir do Nonce, Data e senha, em formato base64.|
 | GeraSenha                   | Retorna uma sequência de caracteres alfanuméricos aleatoriamente.         |
 | GeraToken                   | Retorna um token criptografado.                                           |
+| MultiplicaValor             | Multiplica um número no formato alfanumérico por um fator de multiplicação numérico. |
+| ConverteUnidadeMedida       | Calcula a quantidade convertida de uma unidade de medida (de) para outra unidade de medida (para). |
+| Arredonda                   | Arredonda um valor, conforme a precisão informada. |
+| ArredondaABNT               | Aplica a regra de arredondamento da ABNT, conforme a precisão informada. |
+| ArredondarValor             | Arredonda determinado valor, conforme a precisão informada. |
+| Arredonda Valor Tipo Acerto | Arredonda um valor tipo acerto, conforme a precisão informada. |
+| Formatar                    | Formata números de acordo com os parâmetros definidos (formato Delphi). |
+| FormatarN                   | Formata números com casas decimais de acordo com os parâmetros definidos (formato Delphi). |
 | HoraParaMinuto              | Converte em minutos os valores que representam hora e minuto.             |
 | IniciaBarraProgresso        | Inicia a barra de progresso utilizada para mostrar ao usuário o andamento de um processo mais extenso. |
 | OcultaBarraProgressoRelatorio | Oculta a barra de progresso padrão durante a execução de relatórios.    |
 | FinalizaBarraProgresso      | Finaliza a tela de barra de progresso.                                    |
 | IntParaAlfa                 | Converte um número para formato alfanumérico, desprezando as casas decimais.|
+| IntParaStr                  | Converte um valor inteiro para o tipo String (Alfanumérico). Equivalente a IntParaAlfa.|
 | LerPosicaoAlfa              | Identifica qual caracter está em determinada posição do campo/variável de origem. |
 | LinhasArquivo               | Leitura da quantidade de linhas existentes em um determinado arquivo.     |
 | ListaItem                   | Retorna o valor de um item de uma lista de valores concatenados por um caracter separador. |
@@ -4396,6 +6586,24 @@ As funções gerais na LSP são utilizadas para realizar operações comuns, com
 | VrfAbrA                     | Verifica se um determinado valor está contido em uma abrangência especificada. |
 | VrfAbrN                     | Verifica se um determinado valor numérico está contido em uma abrangência especificada. |
 | sleep                       | Pausa a execução do código por X milesegundos |
+| **Manipulação Dinâmica de Variáveis** |
+| PegarTipoVar                | Retorna o tipo de uma variável qualquer, passada como string. |
+| PegarValorVarAlf            | Retorna o valor de uma variável alfanumérica identificada por nome. |
+| PegarValorVarNum            | Retorna o valor de uma variável numérica ou de data identificada por nome. |
+| SetarValorVarAlf            | Define o valor de uma variável alfanumérica identificada por nome. |
+| SetarValorVarNum            | Define o valor de uma variável numérica ou de data identificada por nome. |
+| **Verificação e Limpeza** |
+| EstaNulo                    | Verifica se uma variável está nula (vazia ou não inicializada). |
+| DeixaNumeros                | Remove todos os caracteres não numéricos de uma string. |
+| **Funções de Lista de Regras** |
+| ListaRegraCriarLista        | Cria uma nova lista de regras para armazenar dados estruturados. |
+| ListaRegraCarregarJson      | Carrega dados de uma estrutura JSON diretamente em uma lista de regras. |
+| ListaRegraPrimeiro          | Posiciona a lista no primeiro registro. |
+| ListaRegraProximo           | Move para o próximo registro da lista. |
+| ListaRegraObterValorAlfa    | Obtém o valor de um campo específico do registro atual da lista. |
+| **Arrays** |
+| LimpaGerTabAlf              | Limpa o conteúdo do Registro GerTabAlf. |
+| LimpaGerTabNum              | Limpa o conteúdo do Registro GerTabNum. |
 
 Para mais detalhes sobre cada função, consulte a @documentação da Senior.
 
@@ -4796,8 +7004,8 @@ As funções que executam requisições (HttpGet, HttpPost, HttpPut, HttpPatch, 
 
 #### **⚠️ Limitações Importantes:**
 
-- **❌ Certificados digitais**: As funções HTTP LSP **NÃO oferecem suporte** ao uso de certificados digitais
-- **✅ Parâmetros suportados**: Apenas parâmetros que compõem as requisições (headers, content-type, autenticação básica, etc.)
+- **Certificados digitais**: As funções HTTP LSP **NÃO oferecem suporte** ao uso de certificados digitais
+- ** Parâmetros suportados**: Apenas parâmetros que compõem as requisições (headers, content-type, autenticação básica, etc.)
 
 **Exemplo de configuração programática:**
 ```lsp
@@ -6049,21 +8257,21 @@ Funcao exemploRequisicaoCompleta(); {
 
 ### Boas Práticas
 
-1. **Sempre configure timeouts** para evitar travamentos em requisições lentas
-2. **Use HttpDesabilitaErroResposta** para controle manual de erros HTTP
-3. **Configure cabeçalhos adequados** para cada tipo de API (Accept, Content-Type, etc.)
-4. **Valide códigos de status HTTP** antes de processar respostas
-5. **Use HTTPS** sempre que possível para garantir segurança
-6. **Trate erros de rede** adequadamente com mensagens claras
-7. **Para arquivos grandes**, use `HttpDownload` em vez de `HttpGet`
-8. **Mantenha credenciais seguras** e nunca faça hardcode em produção
-9. **Use Base64Encode/Base64Decode** para autenticação básica e decodificação de tokens
-10. **Configure User-Agent** para identificar sua aplicação
-11. **Configure proxy adequadamente** em ambientes corporativos
-12. **Use exceções de proxy** para acessos internos sem proxy
-13. **Habilite SNI** para sites que requerem certificados modernos
-14. **Configure codificação UTF-8** para suporte internacional
-15. **Use cookies** para manter sessões em aplicações web
+✅ **Sempre configure timeouts** para evitar travamentos em requisições lentas
+✅ **Use HttpDesabilitaErroResposta** para controle manual de erros HTTP
+✅ **Configure cabeçalhos adequados** para cada tipo de API (Accept, Content-Type, etc.)
+✅ **Valide códigos de status HTTP** antes de processar respostas
+✅ **Use HTTPS** sempre que possível para garantir segurança
+✅ **Trate erros de rede** adequadamente com mensagens claras
+✅ **Para arquivos grandes**, use `HttpDownload` em vez de `HttpGet`
+✅ **Mantenha credenciais seguras** e nunca faça hardcode em produção
+✅ **Use Base64Encode/Base64Decode** para autenticação básica e decodificação de tokens
+✅ **Configure User-Agent** para identificar sua aplicação
+✅ **Configure proxy adequadamente** em ambientes corporativos
+✅ **Use exceções de proxy** para acessos internos sem proxy
+✅ **Habilite SNI** para sites que requerem certificados modernos
+✅ **Configure codificação UTF-8** para suporte internacional
+✅ **Use cookies** para manter sessões em aplicações web
 
 ### Códigos de Status HTTP Comuns
 
@@ -6401,13 +8609,13 @@ Funcao buscarUsuario(Numero vnIdUsuario); {
   Se (vnCodRes = 200) {
     ValorElementoJson(vaJSON, "data", "first_name", vaNome);
     ValorElementoJson(vaJSON, "data", "email", vaEmail);
-    vaMensagem = "✅ Usuário encontrado: " + vaNome + " (" + vaEmail + ")";
+    vaMensagem = " Usuário encontrado: " + vaNome + " (" + vaEmail + ")";
     Mensagem(Retorna, vaMensagem);
   } Senao Se (vnCodRes = 404) {
-    Mensagem(Retorna, "❌ Usuário não encontrado");
+    Mensagem(Retorna, "Usuário não encontrado");
   } Senao {
     IntParaAlfa(vnCodRes, vaId);
-    Mensagem(Erro, "❌ Erro na requisição: " + vaId);
+    Mensagem(Erro, "Erro na requisição: " + vaId);
   }
 }
 ```
@@ -6446,11 +8654,11 @@ Funcao criarUsuario(); {
 
   Se (vnCodRes = 201) {
     ValorElementoJson(vaJSON, "", "id", vaId);
-    vaMensagem = "✅ Usuário criado! ID: " + vaId;
+    vaMensagem = " Usuário criado! ID: " + vaId;
     Mensagem(Retorna, vaMensagem);
   } Senao {
     IntParaAlfa(vnCodRes, vaId);
-    Mensagem(Erro, "❌ Erro ao criar: " + vaId);
+    Mensagem(Erro, "Erro ao criar: " + vaId);
   }
 }
 ```
@@ -6490,10 +8698,10 @@ Funcao atualizarUsuario(); {
   HttpLeCodigoResposta(vaHTTP, vnCodRes);
 
   Se (vnCodRes = 200) {
-    Mensagem(Retorna, "✅ Usuário " + vaIdStr + " atualizado completamente");
+    Mensagem(Retorna, " Usuário " + vaIdStr + " atualizado completamente");
   } Senao {
     IntParaAlfa(vnCodRes, vaIdStr);
-    Mensagem(Erro, "❌ Erro ao atualizar: " + vaIdStr);
+    Mensagem(Erro, "Erro ao atualizar: " + vaIdStr);
   }
 }
 
@@ -6537,10 +8745,10 @@ Funcao atualizarCargo(); {
   HttpLeCodigoResposta(vaHTTP, vnCodRes);
 
   Se (vnCodRes = 200) {
-    Mensagem(Retorna, "✅ Cargo atualizado para: " + vaNovoCargo);
+    Mensagem(Retorna, " Cargo atualizado para: " + vaNovoCargo);
   } Senao {
     IntParaAlfa(vnCodRes, vaIdStr);
-    Mensagem(Erro, "❌ Erro ao atualizar cargo: " + vaIdStr);
+    Mensagem(Erro, "Erro ao atualizar cargo: " + vaIdStr);
   }
 }
 
@@ -6570,10 +8778,10 @@ Funcao excluirUsuario(Numero vnId); {
   HttpLeCodigoResposta(vaHTTP, vnCodRes);
 
   Se (vnCodRes = 204) {
-    Mensagem(Retorna, "✅ Usuário " + vaIdStr + " excluído com sucesso");
+    Mensagem(Retorna, " Usuário " + vaIdStr + " excluído com sucesso");
   } Senao {
     IntParaAlfa(vnCodRes, vaIdStr);
-    Mensagem(Erro, "❌ Erro ao excluir: " + vaIdStr);
+    Mensagem(Erro, "Erro ao excluir: " + vaIdStr);
   }
 }
 ```
@@ -6620,12 +8828,12 @@ Funcao testarBasicAuth(); {
 
   Se (vnCodRes = 200) {
     ValorElementoJson(vaJSON, "", "user", vaUsuarioRetornado);
-    Mensagem(Retorna, "✅ Autenticação Basic Auth: " + vaUsuarioRetornado);
+    Mensagem(Retorna, " Autenticação Basic Auth: " + vaUsuarioRetornado);
   } Senao Se (vnCodRes = 401) {
-    Mensagem(Retorna, "❌ Credenciais inválidas - 401 Unauthorized");
+    Mensagem(Retorna, "Credenciais inválidas - 401 Unauthorized");
   } Senao {
     IntParaAlfa(vnCodRes, vaAuth);
-    Mensagem(Erro, "❌ Erro inesperado: " + vaAuth);
+    Mensagem(Erro, "Erro inesperado: " + vaAuth);
   }
 }
 
@@ -6668,12 +8876,12 @@ Funcao testarBearerToken(); {
 
   Se (vnCodRes = 200) {
     ValorElementoJson(vaJSON, "", "token", vaTokenRetornado);
-    Mensagem(Retorna, "✅ Autenticação Bearer: " + vaTokenRetornado);
+    Mensagem(Retorna, " Autenticação Bearer: " + vaTokenRetornado);
   } Senao Se (vnCodRes = 401) {
-    Mensagem(Retorna, "❌ Token inválido - 401 Unauthorized");
+    Mensagem(Retorna, "Token inválido - 401 Unauthorized");
   } Senao {
     IntParaAlfa(vnCodRes, vaAuth);
-    Mensagem(Erro, "❌ Erro inesperado: " + vaAuth);
+    Mensagem(Erro, "Erro inesperado: " + vaAuth);
   }
 }
 
@@ -6708,7 +8916,7 @@ Funcao exemploFluxoCompleto(); {
   Se (vnCodRes = 200) {
     @ Extrai token @
     ValorElementoJson(vaJSON, "", "token", vaToken);
-    Mensagem(Retorna, "✅ Login realizado! Token: " + vaToken);
+    Mensagem(Retorna, " Login realizado! Token: " + vaToken);
 
     @ 2. USA TOKEN - Em requisição subsequente @
     vaAuth = "Bearer " + vaToken;
@@ -6719,12 +8927,12 @@ Funcao exemploFluxoCompleto(); {
     HttpLeCodigoResposta(vaHTTP, vnCodRes);
 
     Se (vnCodRes = 200) {
-      Mensagem(Retorna, "✅ Dados obtidos com token de autenticação!");
+      Mensagem(Retorna, " Dados obtidos com token de autenticação!");
     } Senao {
-      Mensagem(Erro, "❌ Erro ao usar token autenticado");
+      Mensagem(Erro, "Erro ao usar token autenticado");
     }
   } Senao {
-    Mensagem(Erro, "❌ Falha no login");
+    Mensagem(Erro, "Falha no login");
   }
 }
 ```
@@ -6762,16 +8970,193 @@ testarBearerToken();
 exemploFluxoCompleto();
 ```
 
-### ✅ **Resumo das APIs Utilizadas**
+###  **Resumo das APIs Utilizadas**
 
 | API | Funcionalidade | Autenticação | Status |
 |-----|---------------|--------------|--------|
-| **ReqRes** | CRUD completo funcional | ❌ Não requer | ✅ Real |
-| **HTTPBin Basic** | Teste Basic Auth | ✅ user:pass | ✅ Real |
-| **HTTPBin Bearer** | Teste Bearer Token | ✅ Bearer token | ✅ Real |
+| **ReqRes** | CRUD completo funcional | Não requer |  Real |
+| **HTTPBin Basic** | Teste Basic Auth |  user:pass |  Real |
+| **HTTPBin Bearer** | Teste Bearer Token |  Bearer token |  Real |
 
 **💡 Vantagens desta abordagem:**
 - 🎯 **Foco didático**: Um exemplo claro de cada conceito
-- ✅ **Funcionalidade real**: Todas as operações funcionam de verdade
+-  **Funcionalidade real**: Todas as operações funcionam de verdade
 - 🔐 **Autenticação completa**: Basic Auth e Bearer Token reais
 - 📚 **Progressão lógica**: Do básico ao avançado
+
+---
+
+## 📝 **Cheat Sheet LSP (Cola Rápida)**
+
+### **🚀 Essenciais para Todo Projeto**
+
+```lsp
+@ === ESTRUTURA BÁSICA === @
+Definir Alfa vaMensagem;
+Definir Numero vnContador;
+Definir Data vdDataAtual;
+
+@ === MENSAGENS === @
+vaMensagem = "Processamento concluído!";
+Mensagem(Retorna, vaMensagem);
+Mensagem(Erro, "Erro crítico!");
+
+@ === LOOPS COMUNS === @
+Para (vnContador = 1; vnContador <= 10; vnContador++) {
+  @ código repetido @
+}
+
+Enquanto (vnContador > 0) {
+  vnContador--;
+}
+
+@ === CONDICIONAIS === @
+Se (vnContador > 0) {
+  @ código @
+} Senao Se (vnContador = 0) {
+  @ código alternativo @
+} Senao {
+  @ código padrão @
+}
+```
+
+### **🔧 Manipulação de Dados Comuns**
+
+```lsp
+@ === STRINGS === @
+TamanhoAlfa(vaTexto, vnTamanho);
+PosicaoAlfa("busca", vaTexto, vnPosicao);
+SubstAlfa("antigo", "novo", vaTexto);
+SubstAlfaUmaVez("antigo", "novo", vaTexto);  @ Apenas primeira ocorrência @
+ConverteParaMaiusculo(vaTexto);
+CopiarAlfa(vaTexto, 1, 5);                   @ Extrai 5 chars da posição 1 @
+DeletarAlfa(vaTexto, 1, 3);                  @ Remove 3 chars da posição 1 @
+InserirAlfa("texto", vaTexto, 5);            @ Insere na posição 5 @
+LimpaEspacos(vaTexto);                       @ Remove espaços laterais @
+DeixaNumeros(vaTexto);                       @ Remove não-números @
+
+@ === CONVERSÕES === @
+IntParaAlfa(vnNumero, vaTexto);
+IntParaStr(vnNumero, vaTexto);      @ Equivalente a IntParaAlfa @
+AlfaParaInt(vaTexto, vnNumero);
+StrParaInt(vaTexto, vnNumero);      @ Equivalente a AlfaParaInt @
+AlfaParaDecimal(vaTexto, vnDecimal);
+
+@ === DATAS === @
+DataHoje(vdDataAtual);
+DataHora(vnDataHoraAtual);          @ Corrigido: DataHora retorna Numero @
+FormatarData(vdData, "dd/MM/yyyy", vaDataFormatada);
+MontaData(1, 1, 2024, vdData);      @ Monta data a partir de componentes @
+DesMontaData(vdData, vnDia, vnMes, vnAno); @ Desmonta data em componentes @
+AnoBissexto(vdData, vnBissexto);    @ Verifica se ano é bissexto @
+
+@ === VALIDAÇÕES === @
+EstaNulo(vaVariavel, vnEhNulo);
+ArqExiste(vaCaminho, vnExiste);
+VrfAbrA(vaCodigo, "A..Z", vnValido);
+
+@ === MATEMÁTICA === @
+Arredonda(vnValor, 2);              @ Arredonda para 2 casas decimais @
+ArredondaABNT(vnValor, 2);          @ Arredonda seguindo regra ABNT @
+MultiplicaValor(vaNumero, vnFator, vaResultado); @ Multiplica string numérica @
+
+@ === EXTENSO === @
+Extenso(vnValor, 30, 30, 30, vaLin1, vaLin2, vaLin3); @ Gera extenso do valor @
+ExtensoMes(vdData, vaMesExt);       @ Gera extenso do mês @
+ExtensoSemana(vdData, vaSemExt);    @ Gera extenso do dia da semana @
+```
+
+### **🌐 HTTP e APIs**
+
+```lsp
+@ === HTTP BÁSICO === @
+HttpObjeto(vaHTTP);
+HttpDesabilitaErroResposta(vaHTTP);
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+HttpGet(vaHTTP, vaURL, vaResposta);
+HttpLeCodigoResposta(vaHTTP, vnStatus);
+
+@ === JSON === @
+ValorElementoJson(vaJSON, "", "campo", vaValor);
+ValorElementoJson(vaJSON, "grupo", "campo", vaValor);
+
+@ === AUTENTICAÇÃO === @
+vaCredenciais = vaUsuario + ":" + vaSenha;
+Base64Encode(vaCredenciais, vaBase64);
+vaAuth = "Basic " + vaBase64;
+```
+
+### **🗃️ Banco de Dados**
+
+```lsp
+@ === CURSOR SIMPLES === @
+Definir Cursor curDados;
+curDados.SQL "SELECT * FROM TABELA WHERE ID = 1";
+curDados.AbrirCursor();
+Enquanto (curDados.Achou) {
+  @ processar curDados.CAMPO @
+  curDados.Proximo();
+}
+curDados.FecharCursor();
+
+@ === CURSOR COMPLETO === @
+SQL_Criar(xCursor);
+SQL_DefinirComando(xCursor, "SELECT * FROM TABELA");
+SQL_AbrirCursor(xCursor);
+Enquanto (SQL_EOF(xCursor) = 0) {
+  SQL_RetornarAlfa(xCursor, "CAMPO", vaValor);
+  SQL_Proximo(xCursor);
+}
+SQL_FecharCursor(xCursor);
+SQL_Destruir(xCursor);
+```
+
+### **⚠️ Armadilhas Comuns**
+
+```lsp
+@ NUNCA FAÇA @
+Mensagem(Retorna, "Valor: " + IntParaAlfa(vnNumero));  @ Erro! @
+vnTamanho = TamanhoAlfa(vaTexto);                      @ Erro! @
+AlfaParaDecimal(vaTexto, Grid.Campo);                  @ Erro! @
+
+@  SEMPRE FAÇA @
+IntParaAlfa(vnNumero, vaNumeroStr);
+vaMensagem = "Valor: " + vaNumeroStr;
+Mensagem(Retorna, vaMensagem);
+
+TamanhoAlfa(vaTexto, vnTamanho);
+
+AlfaParaDecimal(vaTexto, vnValor);
+Grid.Campo = vnValor;
+```
+
+---
+
+## 🚨 **LEMBRETE FINAL: Regra de Ouro da LSP**
+
+### **🎯 Manipule primeiro, chame a função depois!**
+
+**Esta é a regra mais importante da LSP. Memorize e aplique sempre:**
+
+1. **Faça todas as operações** (concatenação, conversões, cálculos)
+2. **Armazene em variáveis** 
+3. **Passe as variáveis** para as funções
+
+**Errado:**
+```lsp
+Mensagem(Retorna, "Total: " + IntParaAlfa(vnSoma + vnExtra));
+```
+
+** Correto:**
+```lsp
+vnTotal = vnSoma + vnExtra;
+IntParaAlfa(vnTotal, vaTotalStr);
+vaMensagem = "Total: " + vaTotalStr;
+Mensagem(Retorna, vaMensagem);
+```
+
+---
+
+**📚 Fim da Documentação LSP - Linguagem Sênior de Programação**
+
+*Desenvolvido pela Senior Sistemas | Atualizado em 2024*
