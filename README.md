@@ -378,14 +378,14 @@ vaEmail = "usuario@empresa.com.br";
 EstaNulo(vaEmail, vnEhNulo);
 Se (vnEhNulo = 1) {
   Mensagem(Erro, "Email não pode ser nulo");
-  Retorna;
+  Cancel(1);
 }
 
 @ Verifica se tem @ @
 PosicaoAlfa("@", vaEmail, vnPosArroba);
 Se (vnPosArroba = 0) {
   Mensagem(Erro, "Email deve conter @");
-  Retorna;
+  Cancel(1);
 }
 
 @ Verifica se tem ponto após @ @
@@ -394,7 +394,7 @@ CopiarAlfa(vaEmail, vnPosArroba + 1, vnTamanho - vnPosArroba);
 PosicaoAlfa(".", vaEmail, vnPosPonto);
 Se (vnPosPonto <= vnPosArroba) {
   Mensagem(Erro, "Email deve conter ponto após @");
-  Retorna;
+  Cancel(1);
 }
 
 Mensagem(Retorna, "Email válido!");
@@ -848,11 +848,11 @@ Funcao validarCliente(); {
     TamanhoAlfa(vaCNPJ, vnTamanho);
     Se (vnTamanho <> 14) {
       Mensagem(Erro, "CNPJ deve ter 14 dígitos");
-      Retorna;
+      Cancel(1);
     }
   } Senao {
     Mensagem(Erro, "CNPJ não pode ser nulo");
-    Retorna;
+    Cancel(1);
   }
   
   @ 2. Validação de email @
@@ -861,11 +861,11 @@ Funcao validarCliente(); {
     PosicaoAlfa("@", vaEmail, vnPosArroba);
     Se (vnPosArroba = 0) {
       Mensagem(Erro, "Email inválido - deve conter @");
-      Retorna;
+      Cancel(1);
     }
   } Senao {
     Mensagem(Erro, "Email não pode ser nulo");
-    Retorna;
+    Cancel(1);
   }
   
   @ 3. Validação de telefone @
@@ -875,18 +875,18 @@ Funcao validarCliente(); {
     TamanhoAlfa(vaTelefone, vnTamanho);
     Se (vnTamanho < 10) {
       Mensagem(Erro, "Telefone inválido - mínimo 10 dígitos");
-      Retorna;
+      Cancel(1);
     }
   } Senao {
     Mensagem(Erro, "Telefone não pode ser nulo");
-    Retorna;
+    Cancel(1);
   }
   
   @ 4. Validação de data de nascimento @
   DataHoje(vdDataAtual);
   Se (vdDataNascimento > vdDataAtual) {
     Mensagem(Erro, "Data de nascimento não pode ser futura");
-    Retorna;
+    Cancel(1);
   }
   
   Mensagem(Retorna, "Cliente validado com sucesso!");
@@ -906,11 +906,11 @@ Funcao consultarCEP(); {
     TamanhoAlfa(vaCEP, vnTamanho);
     Se (vnTamanho <> 8) {
       Mensagem(Erro, "CEP deve ter 8 dígitos");
-      Retorna;
+      Cancel(1);
     }
   } Senao {
     Mensagem(Erro, "CEP não pode ser nulo");
-    Retorna;
+    Cancel(1);
   }
   
   @ 2. Monta URL da API @
@@ -924,8 +924,7 @@ Funcao consultarCEP(); {
   PosicaoAlfa("erro", vaResposta, vnPosErro);
   Se (vnPosErro > 0) {
     Mensagem(Erro, "CEP não encontrado");
-    HttpClose(vaHTTP);
-    Retorna;
+    Cancel(1);
   }
   
   @ 5. Extrai dados do JSON @
@@ -937,9 +936,6 @@ Funcao consultarCEP(); {
   @ 6. Monta e exibe resultado @
   vaMensagem = vaEndereco + ", " + vaBairro + " - " + vaCidade + "/" + vaEstado;
   Mensagem(Retorna, vaMensagem);
-  
-  @ 7. Fecha conexão @
-  HttpClose(vaHTTP);
 }
 ```
 
@@ -952,7 +948,7 @@ Funcao gerarRelatorioVendas(); {
   @ 1. Valida período @
   Se (vdDataInicio > vdDataFim) {
     Mensagem(Erro, "Data inicial não pode ser maior que final");
-    Retorna;
+    Cancel(1);
   }
   
   @ 2. Consulta vendas no banco @
@@ -998,14 +994,14 @@ Funcao validarSenha(); {
   EstaNulo(vaSenha, vnEhNulo);
   Se (vnEhNulo = 1) {
     Mensagem(Erro, "Senha não pode ser nula");
-    Retorna;
+    Cancel(1);
   }
   
   @ 2. Verifica tamanho mínimo @
   TamanhoAlfa(vaSenha, vnTamanho);
   Se (vnTamanho < 8) {
     Mensagem(Erro, "Senha deve ter pelo menos 8 caracteres");
-    Retorna;
+    Cancel(1);
   }
   
   @ 3. Verifica se tem letra maiúscula @
@@ -1021,7 +1017,7 @@ Funcao validarSenha(); {
   
   Se (vnTemMaiuscula = 0) {
     Mensagem(Erro, "Senha deve conter pelo menos uma letra maiúscula");
-    Retorna;
+    Cancel(1);
   }
   
   @ 4. Verifica se tem número @
@@ -1030,7 +1026,7 @@ Funcao validarSenha(); {
   TamanhoAlfa(vaSenhaNumeros, vnTamanhoNumeros);
   Se (vnTamanhoNumeros = 0) {
     Mensagem(Erro, "Senha deve conter pelo menos um número");
-    Retorna;
+    Cancel(1);
   }
   
   @ 5. Verifica se tem caractere especial @
@@ -1044,7 +1040,7 @@ Funcao validarSenha(); {
   
   Se (vnPos = 0) {
     Mensagem(Erro, "Senha deve conter pelo menos um caractere especial (!@#)");
-    Retorna;
+    Cancel(1);
   }
   
   Mensagem(Retorna, "Senha válida!");
@@ -1181,7 +1177,6 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 │ HttpGet(http, url, resposta)    │
 │ HttpPost(http, url, dados)      │
 │ ValorElementoJson(json, path)   │
-│ HttpClose(http)                 │
 └─────────────────────────────────┘
 ```
 
