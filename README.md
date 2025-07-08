@@ -89,6 +89,12 @@ Definir Data vdNascimento;  @ Data @
 - [Funções Gerais](#funções-gerais)
 - [Padrões e Boas Práticas](#padrões-e-boas-práticas)
 - [⚠️ LIMITAÇÕES CRÍTICAS DA LSP](#️-limitações-críticas-da-lsp)
+- [🚨 Erros Comuns e Soluções](#️-erros-comuns-e-soluções)
+- [🎯 Padrões de Projeto LSP](#️-padrões-de-projeto-lsp)
+- [🔍 Debugging e Troubleshooting](#️-debugging-e-troubleshooting)
+- [🎓 Exercícios Práticos por Nível](#️-exercícios-práticos-por-nível)
+- [🎯 Quick Reference Cards](#️-quick-reference-cards)
+- [🎯 Casos de Uso Reais Detalhados](#️-casos-de-uso-reais-detalhados)
 
 ---
 
@@ -114,6 +120,263 @@ Definir Data vdNascimento;  @ Data @
 3. **Décimo terceiro**: [Chamada HTTP](#chamada-http) - Integre com APIs
 4. **Décimo quarto**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
 5. **Décimo quinto**: [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) - Exemplos reais
+
+## 🔍 **Debugging e Troubleshooting**
+
+### **🐛 Problemas Comuns e Soluções**
+
+#### **Problema: "Variável não definida"**
+**Causa:** Variável declarada dentro de bloco condicional ou não declarada
+**Solução:** Declare todas as variáveis no início da regra
+```lsp
+@ ❌ INCORRETO @
+Se (vnCondicao = 1) {
+  Definir Alfa vaVariavel;  @ Declaração no meio @
+  vaVariavel = "valor";
+}
+
+@ ✅ CORRETO @
+Definir Alfa vaVariavel;  @ Declaração no início @
+Se (vnCondicao = 1) {
+  vaVariavel = "valor";
+}
+```
+
+#### **Problema: "Erro de tipo"**
+**Causa:** Tentativa de atribuir tipo incorreto
+**Solução:** Use funções de conversão apropriadas
+```lsp
+@ ❌ INCORRETO @
+Definir Numero vnValor;
+vnValor = "123";  @ String em número @
+
+@ ✅ CORRETO @
+Definir Numero vnValor;
+Definir Alfa vaTexto;
+vaTexto = "123";
+AlfaParaInt(vaTexto, vnValor);
+```
+
+#### **Problema: "Loop infinito"**
+**Causa:** Condição de parada nunca atingida
+**Solução:** Verifique a lógica da condição e atualize variáveis de controle
+```lsp
+@ ❌ INCORRETO @
+vnContador = 1;
+Enquanto (vnContador > 0) {
+  @ Processamento sem incrementar @
+}
+
+@ ✅ CORRETO @
+vnContador = 1;
+Enquanto (vnContador <= 10) {
+  @ Processamento @
+  vnContador++;  @ Incrementa controle @
+}
+```
+
+#### **Problema: "Função não funciona"**
+**Causa:** Parâmetros incorretos ou ordem errada
+**Solução:** Verifique a documentação da função
+```lsp
+@ ❌ INCORRETO @
+TamanhoAlfa(vnTamanho, vaTexto);  @ Ordem errada @
+
+@ ✅ CORRETO @
+TamanhoAlfa(vaTexto, vnTamanho);  @ Ordem correta @
+```
+
+### **🔧 Técnicas de Debugging**
+
+#### **Técnica 1: Mensagens de Debug**
+```lsp
+@ Adicione mensagens para rastrear execução @
+Definir Alfa vaDebug;
+vaDebug = "Passo 1: Iniciando processamento";
+Mensagem(Retorna, vaDebug);
+
+@ ... código ... @
+
+vaDebug = "Passo 2: Dados processados";
+Mensagem(Retorna, vaDebug);
+```
+
+#### **Técnica 2: Validação de Dados**
+```lsp
+@ Sempre valide dados antes de processar @
+TamanhoAlfa(vaDado, vnTamanho);
+Se (vnTamanho > 0) {
+  @ Processa apenas se válido @
+  Mensagem(Retorna, "Dado válido: " + vaDado);
+} Senao {
+  Mensagem(Erro, "Dado vazio ou inválido");
+}
+```
+
+#### **Técnica 3: Tratamento de Erros**
+```lsp
+@ Use estruturas try-catch equivalentes @
+Se (operacaoCritica() = 1) {
+  @ Sucesso @
+  processarResultado();
+} Senao {
+  @ Falha @
+  Mensagem(Erro, "Operação falhou");
+  @ Log do erro @
+  registrarErro();
+}
+```
+
+## 🎓 **Exercícios Práticos por Nível**
+
+### **📖 Nível 1: Exercícios Básicos**
+
+#### **🔢 Exercício 1: Calculadora Simples**
+**Objetivo:** Criar uma calculadora que soma dois números
+**Conceitos:** Variáveis, operadores, conversões, mensagens
+
+```lsp
+@ Calculadora Simples @
+Definir Numero vnNumero1;
+Definir Numero vnNumero2;
+Definir Numero vnResultado;
+Definir Alfa vaResultadoStr;
+Definir Alfa vaMensagem;
+
+vnNumero1 = 10;
+vnNumero2 = 20;
+vnResultado = vnNumero1 + vnNumero2;
+
+IntParaAlfa(vnResultado, vaResultadoStr);
+vaMensagem = "Resultado: " + vaResultadoStr;
+Mensagem(Retorna, vaMensagem);
+```
+
+#### **📝 Exercício 2: Validador de Nome**
+**Objetivo:** Validar se um nome tem pelo menos 3 caracteres
+**Conceitos:** Validação, condicionais, funções de string
+
+```lsp
+@ Validador de Nome @
+Definir Alfa vaNome;
+Definir Numero vnTamanho;
+
+vaNome = "João";
+TamanhoAlfa(vaNome, vnTamanho);
+
+Se (vnTamanho >= 3) {
+  Mensagem(Retorna, "Nome válido!");
+} Senao {
+  Mensagem(Erro, "Nome deve ter pelo menos 3 caracteres");
+}
+```
+
+### **🚀 Nível 2: Exercícios Intermediários**
+
+#### **🏷️ Exercício 3: Formatador de CPF**
+**Objetivo:** Remover pontos e traços de um CPF
+**Conceitos:** Manipulação de strings, loops, funções avançadas
+
+```lsp
+@ Formatador de CPF @
+Definir Alfa vaCPF;
+Definir Numero vnPosicao;
+
+vaCPF = "123.456.789-10";
+
+@ Remove pontos @
+DeletarAlfa(vaCPF, 4, 1);
+DeletarAlfa(vaCPF, 7, 1);
+DeletarAlfa(vaCPF, 10, 1);
+
+Mensagem(Retorna, "CPF limpo: " + vaCPF);
+```
+
+#### **📅 Exercício 4: Calculadora de Idade**
+**Objetivo:** Calcular idade a partir da data de nascimento
+**Conceitos:** Datas, operações aritméticas, validação
+
+```lsp
+@ Calculadora de Idade @
+Definir Data vdDataNascimento;
+Definir Data vdDataAtual;
+Definir Numero vnAnoNascimento;
+Definir Numero vnAnoAtual;
+Definir Numero vnIdade;
+Definir Alfa vaIdadeStr;
+Definir Alfa vaMensagem;
+
+@ Define data de nascimento (exemplo: 15/08/1990) @
+vdDataNascimento = 15/08/1990;
+DataHoje(vdDataAtual);
+
+@ Extrai anos @
+DecodData(vdDataNascimento, vnDia, vnMes, vnAnoNascimento);
+DecodData(vdDataAtual, vnDia, vnMes, vnAnoAtual);
+
+@ Calcula idade @
+vnIdade = vnAnoAtual - vnAnoNascimento;
+
+IntParaAlfa(vnIdade, vaIdadeStr);
+vaMensagem = "Idade: " + vaIdadeStr + " anos";
+Mensagem(Retorna, vaMensagem);
+```
+
+### **⚡ Nível 3: Exercícios Avançados**
+
+#### **🌐 Exercício 5: Validador de Email**
+**Objetivo:** Validar formato básico de email
+**Conceitos:** Manipulação de strings, validação complexa
+
+```lsp
+@ Validador de Email @
+Definir Alfa vaEmail;
+Definir Numero vnPosArroba;
+Definir Numero vnPosPonto;
+Definir Numero vnTamanho;
+
+vaEmail = "usuario@empresa.com.br";
+
+@ Verifica se tem @ @
+PosicaoAlfa("@", vaEmail, vnPosArroba);
+Se (vnPosArroba = 0) {
+  Mensagem(Erro, "Email deve conter @");
+  Retorna;
+}
+
+@ Verifica se tem ponto após @ @
+CopiarAlfa(vaEmail, vnPosArroba + 1, vnTamanho - vnPosArroba);
+PosicaoAlfa(".", vaEmail, vnPosPonto);
+Se (vnPosPonto <= vnPosArroba) {
+  Mensagem(Erro, "Email deve conter ponto após @");
+  Retorna;
+}
+
+Mensagem(Retorna, "Email válido!");
+```
+
+#### **📊 Exercício 6: Processador de Lista CSV**
+**Objetivo:** Processar uma lista separada por vírgulas
+**Conceitos:** Listas, loops, funções de lista
+
+```lsp
+@ Processador de Lista CSV @
+Definir Alfa vaLista;
+Definir Alfa vaItem;
+Definir Numero vnQuantidade;
+Definir Numero vnContador;
+
+vaLista = "João,Maria,Pedro,Ana";
+
+@ Conta itens @
+ListaQuantidade(vaLista, ",", vnQuantidade);
+
+@ Processa cada item @
+Para (vnContador = 1; vnContador <= vnQuantidade; vnContador++) {
+  ListaItem(vaLista, ",", vnContador, vaItem);
+  Mensagem(Retorna, "Item " + vaItem + " processado");
+}
+```
 
 ---
 
@@ -157,6 +420,167 @@ AlfaParaDecimal(vaTexto, vnValor);
 MinhaGrid.CampoDecimal = vnValor;
 ```
 
+## 🚨 **Erros Comuns e Soluções**
+
+### **❌ Erro #1: Concatenação em Parâmetros de Funções**
+**Problema:** Tentar concatenar strings diretamente nos parâmetros
+```lsp
+@ ❌ INCORRETO - NÃO FUNCIONA @
+Mensagem(Retorna, "Resultado: " + vaValor);
+TamanhoAlfa("Texto: " + vaNome, vnTamanho);
+```
+
+**Solução:** Sempre use variáveis intermediárias
+```lsp
+@ ✅ CORRETO - FUNCIONA @
+Definir Alfa vaMensagem;
+vaMensagem = "Resultado: " + vaValor;
+Mensagem(Retorna, vaMensagem);
+
+Definir Alfa vaTextoCompleto;
+vaTextoCompleto = "Texto: " + vaNome;
+TamanhoAlfa(vaTextoCompleto, vnTamanho);
+```
+
+### **❌ Erro #2: Confundir Tipos de Retorno**
+**Problema:** Tentar usar funções LSP como se retornassem valores
+```lsp
+@ ❌ INCORRETO - NÃO FUNCIONA @
+vnTamanho = TamanhoAlfa(vaTexto);
+vaResultado = IntParaAlfa(vnNumero);
+```
+
+**Solução:** LSP usa parâmetros de retorno
+```lsp
+@ ✅ CORRETO - FUNCIONA @
+TamanhoAlfa(vaTexto, vnTamanho);
+IntParaAlfa(vnNumero, vaResultado);
+```
+
+### **❌ Erro #3: Declaração de Variáveis no Meio do Código**
+**Problema:** Declarar variáveis dentro de blocos condicionais
+```lsp
+@ ❌ INCORRETO - PODE CAUSAR ERROS @
+Se (vnCondicao = 1) {
+  Definir Alfa vaVariavel;  @ Declaração no meio do código @
+  vaVariavel = "valor";
+}
+```
+
+**Solução:** Declare todas as variáveis no início da regra
+```lsp
+@ ✅ CORRETO - SEMPRE FUNCIONA @
+Definir Alfa vaVariavel;  @ Declaração no início @
+
+Se (vnCondicao = 1) {
+  vaVariavel = "valor";
+}
+```
+
+### **❌ Erro #4: Confundir Tipos de Dados**
+**Problema:** Tentar atribuir tipos incompatíveis
+```lsp
+@ ❌ INCORRETO - ERRO DE TIPO @
+Definir Numero vnValor;
+vnValor = "123";  @ Tentando atribuir string a número @
+```
+
+**Solução:** Use conversões apropriadas
+```lsp
+@ ✅ CORRETO - CONVERSÃO ADEQUADA @
+Definir Numero vnValor;
+Definir Alfa vaTexto;
+vaTexto = "123";
+AlfaParaInt(vaTexto, vnValor);
+```
+
+### **❌ Erro #5: Loop Infinito**
+**Problema:** Condição de parada nunca é atingida
+```lsp
+@ ❌ INCORRETO - LOOP INFINITO @
+vnContador = 1;
+Enquanto (vnContador > 0) {
+  @ Processamento sem incrementar vnContador @
+}
+```
+
+**Solução:** Sempre atualize a variável de controle
+```lsp
+@ ✅ CORRETO - LOOP CONTROLADO @
+vnContador = 1;
+Enquanto (vnContador <= 10) {
+  @ Processamento @
+  vnContador++;  @ Incrementa a variável de controle @
+}
+```
+
+## 🎯 **Padrões de Projeto LSP**
+
+### **📋 Padrão: Validação de Dados**
+```lsp
+@ Sempre valide antes de processar @
+Definir Funcao validarDados();
+
+Funcao validarDados(); {
+  @ 1. Verifica se não é nulo @
+  Se (EstaNulo(vaDado, vnEhNulo) = 0) {
+    @ 2. Verifica se não é vazio @
+    TamanhoAlfa(vaDado, vnTamanho);
+    Se (vnTamanho > 0) {
+      @ 3. Processa apenas se válido @
+      @ ... lógica de processamento ... @
+    } Senao {
+      Mensagem(Erro, "Dado não pode ser vazio");
+    }
+  } Senao {
+    Mensagem(Erro, "Dado não pode ser nulo");
+  }
+}
+```
+
+### **🔄 Padrão: Conversão Segura**
+```lsp
+@ Sempre use variáveis intermediárias para conversões @
+Definir Funcao converterSeguro();
+
+Funcao converterSeguro(); {
+  @ 1. Declara variáveis intermediárias @
+  Definir Numero vnValor;
+  Definir Alfa vaValorStr;
+  Definir Alfa vaMensagem;
+  
+  @ 2. Faz a conversão @
+  AlfaParaInt(vaTexto, vnValor);
+  
+  @ 3. Converte para exibição @
+  IntParaAlfa(vnValor, vaValorStr);
+  
+  @ 4. Monta mensagem @
+  vaMensagem = "Valor convertido: " + vaValorStr;
+  
+  @ 5. Exibe resultado @
+  Mensagem(Retorna, vaMensagem);
+}
+```
+
+### **🔍 Padrão: Tratamento de Erros**
+```lsp
+@ Sempre trate erros de forma estruturada @
+Definir Funcao processarComTratamento();
+
+Funcao processarComTratamento(); {
+  @ 1. Tenta a operação @
+  Se (operacaoCritica() = 1) {
+    @ 2. Sucesso - processa resultado @
+    processarResultado();
+  } Senao {
+    @ 3. Falha - registra erro e notifica @
+    registrarErro();
+    Mensagem(Erro, "Operação falhou. Verifique os dados.");
+  }
+}
+```
+
 ## Introdução
 
 A Linguagem Senior de Programação (LSP) é uma linguagem proprietária utilizada nos sistemas da Senior para a customização e extensão de funcionalidades. Ela permite a manipulação de dados, a criação de regras de negócio personalizadas e a automação de processos dentro do ambiente Senior.
@@ -177,6 +601,74 @@ Diferente de linguagens tradicionais como Java, C# ou Python, a LSP foi projetad
 2. **Experientes**: Use o [Índice Completo](#-índice-completo) para navegação rápida
 3. **Referência**: Consulte [Funções Gerais](#funções-gerais) para encontrar funções específicas
 4. **Práticos**: Veja [Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) para casos reais
+
+## 🧠 **Conceitos Mentais Importantes**
+
+### **💭 Modelo Mental #1: "Parâmetros de Retorno"**
+**Pense assim:** Em LSP, as funções **não retornam valores**, elas **preenchem variáveis** que você passa como parâmetro.
+
+**Analogia:** É como dar um formulário para alguém preencher, em vez de receber uma resposta direta.
+
+**Exemplo:**
+```lsp
+@ ❌ Pensamento INCORRETO (estilo outras linguagens) @
+vnTamanho = TamanhoAlfa(vaTexto);  @ "A função retorna um valor" @
+
+@ ✅ Pensamento CORRETO (estilo LSP) @
+TamanhoAlfa(vaTexto, vnTamanho);   @ "A função preenche vnTamanho" @
+```
+
+### **💭 Modelo Mental #2: "Manipulação Primeiro, Função Depois"**
+**Pense assim:** Faça **todas as operações** primeiro, depois chame a função com o resultado.
+
+**Analogia:** É como cozinhar - prepare todos os ingredientes antes de colocar na panela.
+
+**Exemplo:**
+```lsp
+@ ❌ INCORRETO - Tentando fazer tudo na função @
+Mensagem(Retorna, "Resultado: " + vaValor + " - Total: " + vaTotal);
+
+@ ✅ CORRETO - Preparando tudo antes @
+vaMensagem = "Resultado: " + vaValor + " - Total: " + vaTotal;
+Mensagem(Retorna, vaMensagem);
+```
+
+### **💭 Modelo Mental #3: "Variáveis são Recipientes"**
+**Pense assim:** Variáveis são como **caixas** que guardam valores. Você precisa de uma caixa para cada valor que quer manipular.
+
+**Analogia:** É como organizar uma despensa - cada tipo de alimento vai em um recipiente específico.
+
+**Exemplo:**
+```lsp
+@ ❌ INCORRETO - Tentando usar valores "soltos" @
+Mensagem(Retorna, "Nome: " + "João" + " - Idade: " + 25);
+
+@ ✅ CORRETO - Cada valor em sua "caixa" @
+Definir Alfa vaNome;
+Definir Numero vnIdade;
+Definir Alfa vaMensagem;
+
+vaNome = "João";
+vnIdade = 25;
+vaMensagem = "Nome: " + vaNome + " - Idade: " + vnIdade;
+Mensagem(Retorna, vaMensagem);
+```
+
+### **💭 Modelo Mental #4: "LSP é Sequencial"**
+**Pense assim:** LSP executa **linha por linha**, na ordem que você escreveu. Não há "mágica" - tudo é explícito.
+
+**Analogia:** É como seguir uma receita de bolo - cada passo deve ser feito na ordem correta.
+
+**Exemplo:**
+```lsp
+@ ❌ INCORRETO - Tentando usar antes de preparar @
+vaMensagem = "Resultado: " + vaResultado;  @ vaResultado ainda não existe @
+vnResultado = vnA + vnB;
+
+@ ✅ CORRETO - Preparando antes de usar @
+vnResultado = vnA + vnB;
+vaMensagem = "Resultado: " + vaResultado;
+```
 
 ### **🎯 Casos de Uso Comuns da LSP**
 
@@ -212,6 +704,187 @@ ValorElementoJson(vaResposta, "", "logradouro", vaEndereco);
 @ Cálculo automático @
 vnDesconto = (vnValor * vnPercentual) / 100;
 vnTotal = vnValor - vnDesconto;
+```
+
+## 🎯 **Casos de Uso Reais Detalhados**
+
+### **🏢 Cenário Empresarial: Validação de Cliente**
+```lsp
+@ Sistema completo de validação de dados de cliente @
+Definir Funcao validarCliente();
+
+Funcao validarCliente(); {
+  @ 1. Validação de CNPJ @
+  DeixaNumeros(vaCNPJ);
+  Se (TamanhoAlfa(vaCNPJ) <> 14) {
+    Mensagem(Erro, "CNPJ deve ter 14 dígitos");
+    Retorna;
+  }
+  
+  @ 2. Validação de email @
+  PosicaoAlfa("@", vaEmail, vnPosArroba);
+  Se (vnPosArroba = 0) {
+    Mensagem(Erro, "Email inválido - deve conter @");
+    Retorna;
+  }
+  
+  @ 3. Validação de telefone @
+  DeixaNumeros(vaTelefone);
+  Se (TamanhoAlfa(vaTelefone) < 10) {
+    Mensagem(Erro, "Telefone inválido - mínimo 10 dígitos");
+    Retorna;
+  }
+  
+  @ 4. Validação de data de nascimento @
+  Se (vdDataNascimento > DataHoje()) {
+    Mensagem(Erro, "Data de nascimento não pode ser futura");
+    Retorna;
+  }
+  
+  Mensagem(Retorna, "Cliente validado com sucesso!");
+}
+```
+
+### **🌐 Cenário de Integração: Consulta CEP Automática**
+```lsp
+@ Sistema de consulta automática de CEP com validação @
+Definir Funcao consultarCEP();
+
+Funcao consultarCEP(); {
+  @ 1. Limpa e valida CEP @
+  DeixaNumeros(vaCEP);
+  Se (TamanhoAlfa(vaCEP) <> 8) {
+    Mensagem(Erro, "CEP deve ter 8 dígitos");
+    Retorna;
+  }
+  
+  @ 2. Monta URL da API @
+  vaURL = "https://viacep.com.br/ws/" + vaCEP + "/json/";
+  
+  @ 3. Configura e executa requisição @
+  HttpObjeto(vaHTTP);
+  HttpGet(vaHTTP, vaURL, vaResposta);
+  
+  @ 4. Verifica se encontrou CEP @
+  PosicaoAlfa("erro", vaResposta, vnPosErro);
+  Se (vnPosErro > 0) {
+    Mensagem(Erro, "CEP não encontrado");
+    HttpClose(vaHTTP);
+    Retorna;
+  }
+  
+  @ 5. Extrai dados do JSON @
+  ValorElementoJson(vaResposta, "", "logradouro", vaEndereco);
+  ValorElementoJson(vaResposta, "", "bairro", vaBairro);
+  ValorElementoJson(vaResposta, "", "localidade", vaCidade);
+  ValorElementoJson(vaResposta, "", "uf", vaEstado);
+  
+  @ 6. Monta e exibe resultado @
+  vaMensagem = vaEndereco + ", " + vaBairro + " - " + vaCidade + "/" + vaEstado;
+  Mensagem(Retorna, vaMensagem);
+  
+  @ 7. Fecha conexão @
+  HttpClose(vaHTTP);
+}
+```
+
+### **📊 Cenário de Processamento: Relatório de Vendas**
+```lsp
+@ Sistema de geração de relatório de vendas @
+Definir Funcao gerarRelatorioVendas();
+
+Funcao gerarRelatorioVendas(); {
+  @ 1. Valida período @
+  Se (vdDataInicio > vdDataFim) {
+    Mensagem(Erro, "Data inicial não pode ser maior que final");
+    Retorna;
+  }
+  
+  @ 2. Consulta vendas no banco @
+  vaSQL = "SELECT SUM(valor) as total FROM vendas WHERE data BETWEEN '" + 
+          vdDataInicio + "' AND '" + vdDataFim + "'";
+  
+  SQL_Criar(vaSQL);
+  SQL_Executar(vaSQL);
+  
+  @ 3. Processa resultado @
+  Se (SQL_Proximo(vaSQL) = 1) {
+    SQL_DefinirNumero(vaSQL, "total", vnTotalVendas);
+    
+    @ 4. Formata valores @
+    IntParaAlfa(vnTotalVendas, vaTotalStr);
+    
+    @ 5. Calcula estatísticas @
+    vnMediaDiaria = vnTotalVendas / 30;  @ Assumindo 30 dias @
+    IntParaAlfa(vnMediaDiaria, vaMediaStr);
+    
+    @ 6. Monta relatório @
+    vaRelatorio = "RELATÓRIO DE VENDAS" + #13 + #10 +
+                  "Período: " + vdDataInicio + " a " + vdDataFim + #13 + #10 +
+                  "Total: R$ " + vaTotalStr + #13 + #10 +
+                  "Média diária: R$ " + vaMediaStr;
+    
+    Mensagem(Retorna, vaRelatorio);
+  } Senao {
+    Mensagem(Erro, "Nenhuma venda encontrada no período");
+  }
+  
+  SQL_Fechar(vaSQL);
+}
+```
+
+### **🔐 Cenário de Segurança: Validação de Senha**
+```lsp
+@ Sistema de validação de senha com critérios de segurança @
+Definir Funcao validarSenha();
+
+Funcao validarSenha(); {
+  @ 1. Verifica tamanho mínimo @
+  TamanhoAlfa(vaSenha, vnTamanho);
+  Se (vnTamanho < 8) {
+    Mensagem(Erro, "Senha deve ter pelo menos 8 caracteres");
+    Retorna;
+  }
+  
+  @ 2. Verifica se tem letra maiúscula @
+  vnContador = 1;
+  vnTemMaiuscula = 0;
+  Enquanto (vnContador <= vnTamanho) {
+    CopiarAlfa(vaSenha, vnContador, 1);
+    Se (vaCaracter >= "A" E vaCaracter <= "Z") {
+      vnTemMaiuscula = 1;
+    }
+    vnContador++;
+  }
+  
+  Se (vnTemMaiuscula = 0) {
+    Mensagem(Erro, "Senha deve conter pelo menos uma letra maiúscula");
+    Retorna;
+  }
+  
+  @ 3. Verifica se tem número @
+  DeixaNumeros(vaSenha);
+  Se (TamanhoAlfa(vaSenha) = 0) {
+    Mensagem(Erro, "Senha deve conter pelo menos um número");
+    Retorna;
+  }
+  
+  @ 4. Verifica se tem caractere especial @
+  PosicaoAlfa("!", vaSenha, vnPos);
+  Se (vnPos = 0) {
+    PosicaoAlfa("@", vaSenha, vnPos);
+  }
+  Se (vnPos = 0) {
+    PosicaoAlfa("#", vaSenha, vnPos);
+  }
+  
+  Se (vnPos = 0) {
+    Mensagem(Erro, "Senha deve conter pelo menos um caractere especial (!@#)");
+    Retorna;
+  }
+  
+  Mensagem(Retorna, "Senha válida!");
+}
 ```
 
 ---
@@ -272,6 +945,90 @@ AlfaParaInt(vaTexto, vnNumero);
 @ Strings @
 TamanhoAlfa(vaTexto, vnTamanho);
 PosicaoAlfa("busca", vaTexto, vnPosicao);
+```
+
+## 🎯 **Quick Reference Cards**
+
+### **💳 Card: Manipulação de Strings**
+```
+┌─────────────────────────────────┐
+│ 📝 MANIPULAÇÃO DE STRINGS       │
+├─────────────────────────────────┤
+│ TamanhoAlfa(texto, tamanho)     │
+│ PosicaoAlfa(busca, texto, pos)  │
+│ SubstAlfa(antigo, novo, texto)  │
+│ CopiarAlfa(texto, pos, qtd)     │
+│ LimpaEspacos(texto)             │
+│ DeletarAlfa(texto, pos, qtd)    │
+│ InserirAlfa(texto, pos, novo)   │
+└─────────────────────────────────┘
+```
+
+### **💳 Card: Conversões**
+```
+┌─────────────────────────────────┐
+│ 🔄 CONVERSÕES                   │
+├─────────────────────────────────┤
+│ IntParaAlfa(numero, texto)      │
+│ AlfaParaInt(texto, numero)      │
+│ AlfaParaDecimal(texto, decimal) │
+│ StrParaInt(texto, numero)       │
+│ IntParaStr(numero, texto)       │
+│ AlfaParaData(texto, data)       │
+└─────────────────────────────────┘
+```
+
+### **💳 Card: Datas**
+```
+┌─────────────────────────────────┐
+│ 📅 MANIPULAÇÃO DE DATAS         │
+├─────────────────────────────────┤
+│ DataHoje(data)                  │
+│ DataHora(data)                  │
+│ MontaData(dia, mes, ano, data)  │
+│ DecodData(data, dia, mes, ano)  │
+│ AdicionarDias(data, dias)       │
+│ FormatarData(data, formato)     │
+└─────────────────────────────────┘
+```
+
+### **💳 Card: Validação**
+```
+┌─────────────────────────────────┐
+│ ✅ VALIDAÇÃO E VERIFICAÇÃO      │
+├─────────────────────────────────┤
+│ EstaNulo(dado, ehNulo)         │
+│ DeixaNumeros(texto)             │
+│ VrfAbrA(valor, min, max)        │
+│ TamanhoAlfa(texto, tamanho)     │
+│ PosicaoAlfa(busca, texto, pos)  │
+└─────────────────────────────────┘
+```
+
+### **💳 Card: HTTP e APIs**
+```
+┌─────────────────────────────────┐
+│ 🌐 HTTP E APIS                  │
+├─────────────────────────────────┤
+│ HttpObjeto(http)                │
+│ HttpGet(http, url, resposta)    │
+│ HttpPost(http, url, dados)      │
+│ ValorElementoJson(json, path)   │
+│ HttpClose(http)                 │
+└─────────────────────────────────┘
+```
+
+### **💳 Card: Banco de Dados**
+```
+┌─────────────────────────────────┐
+│ 🗃️ BANCO DE DADOS               │
+├─────────────────────────────────┤
+│ SQL_Criar(sql)                  │
+│ SQL_Executar(sql)               │
+│ SQL_Proximo(sql)                │
+│ SQL_Fechar(sql)                 │
+│ SQL_Definir<tipo>(sql, campo)   │
+└─────────────────────────────────┘
 ```
 
 ---
@@ -9159,4 +9916,4 @@ Mensagem(Retorna, vaMensagem);
 
 **📚 Fim da Documentação LSP - Linguagem Sênior de Programação**
 
-*Desenvolvido pela Senior Sistemas | Atualizado em 2024*
+*Desenvolvido em colaboração | Atualizado em 2025*
