@@ -1,4 +1,4 @@
-# Documentação da Linguagem LSP - Linguagem Sênior de Programação
+# Documentação da Linguagem LSP - Linguagem Senior de Programação
 
 [![Senior Sistemas](https://img.shields.io/badge/Senior-Sistemas-blue)](https://www.senior.com.br)
 [![LSP](https://img.shields.io/badge/Linguagem-LSP-green)](https://documentacao.senior.com.br/tecnologia)
@@ -11204,6 +11204,6 @@ Mensagem(Retorna, vaMensagem);
 
 ---
 
-**📚 Fim da Documentação LSP - Linguagem Sênior de Programação**
+**📚 Fim da Documentação LSP - Linguagem Senior de Programação**
 
 *Desenvolvido em colaboração | Atualizado em 2025*
