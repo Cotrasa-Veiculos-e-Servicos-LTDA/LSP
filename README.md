@@ -1,4 +1,4 @@
-# Documentação da Linguagem LSP - Linguagem Senior de Programação
+# Documentação da Linguagem LSP - Linguagem Sênior de Programação
 
 [![Senior Sistemas](https://img.shields.io/badge/Senior-Sistemas-blue)](https://www.senior.com.br)
 [![LSP](https://img.shields.io/badge/Linguagem-LSP-green)](https://documentacao.senior.com.br/tecnologia)
@@ -54,7 +54,9 @@ Definir Data vdNascimento;  @ Data @
 - [Definição de Tabelas](#definição-de-tabelas)
 ### **🔧 Manipulação de Dados**
 - [Manipulação Avançada de Strings](#manipulação-avançada-de-strings)
+- [Funções Adicionais de Manipulação de Strings](#funções-adicionais-de-manipulação-de-strings)
 - [Manipulação Avançada de Datas](#manipulação-avançada-de-datas)
+- [Funções Avançadas de Data e Dias Úteis](#funções-avançadas-de-data-e-dias-úteis)
 - [Manipulação Dinâmica de Variáveis](#manipulação-dinâmica-de-variáveis)
 - [Cast de Variável](#cast-de-variável)
 
@@ -127,17 +129,19 @@ Definir Data vdNascimento;  @ Data @
 
 ### **🚀 Nível 2: Intermediário (Funcionalidades Essenciais)**
 1. **Sexto**: [Manipulação Avançada de Strings](#manipulação-avançada-de-strings) - Manipule textos
-2. **Sétimo**: [Manipulação Avançada de Datas](#manipulação-avançada-de-datas) - Trabalhe com datas
-3. **Oitavo**: [Definição de Funções](#definição-de-funções) - Crie suas próprias funções
-4. **Nono**: [Validação e Verificação](#validação-e-verificação) - Valide dados
-5. **Décimo**: [Cast de Variável](#cast-de-variável) - Converta entre tipos
+2. **Sétimo**: [Funções Adicionais de Manipulação de Strings](#funções-adicionais-de-manipulação-de-strings) - ASCII, limpeza e acentos
+3. **Oitavo**: [Manipulação Avançada de Datas](#manipulação-avançada-de-datas) - Trabalhe com datas
+4. **Nono**: [Funções Avançadas de Data e Dias Úteis](#funções-avançadas-de-data-e-dias-úteis) - Calcule dias úteis e manipule calendários
+5. **Décimo**: [Definição de Funções](#definição-de-funções) - Crie suas próprias funções
+6. **Décimo primeiro**: [Validação e Verificação](#validação-e-verificação) - Valide dados
+7. **Décimo segundo**: [Cast de Variável](#cast-de-variável) - Converta entre tipos
 
 ### **⚡ Nível 3: Avançado (Recursos Especializados)**
-1. **Décimo primeiro**: [Definição de Cursor](#definição-de-cursor) - Acesse bancos de dados
-2. **Décimo segundo**: [Funções SQL](#funções-sql) - Execute SQL diretamente
-3. **Décimo terceiro**: [Chamada HTTP](#chamada-http) - Integre com APIs
-4. **Décimo quarto**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
-5. **Décimo quinto**: [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) - Exemplos reais
+1. **Décimo terceiro**: [Definição de Cursor](#definição-de-cursor) - Acesse bancos de dados
+2. **Décimo quarto**: [Funções SQL](#funções-sql) - Execute SQL diretamente
+3. **Décimo quinto**: [Chamada HTTP](#chamada-http) - Integre com APIs
+4. **Décimo sexto**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
+5. **Décimo sétimo**: [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) - Exemplos reais
 
 ## 🔍 **Debugging e Troubleshooting**
 
@@ -2800,6 +2804,242 @@ Funcao transmitirDadosSeguro(); {
 }
 ```
 
+## Funções Adicionais de Manipulação de Strings
+
+### RetornaAscII
+
+Retorna o caracter ASCII correspondente a um número.
+
+**Sintaxe:**
+```lsp
+RetornaAscII(<xNumero>, <xCarAscII>);
+```
+
+**Parâmetros:**
+- `xNumero`: Variável tipo Numero da qual se quer o retorno em ASCII
+- `xCarAscII`: Variável Alfa que retorna o caracter ASCII correspondente ao número
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploRetornaAscII();
+
+@ Variáveis globais @
+Definir Numero vnCodigo;
+Definir Alfa vaCaracter;
+Definir Alfa vaMensagem;
+
+exemploRetornaAscII();
+
+Funcao exemploRetornaAscII(); {
+  @ === EXEMPLO 1: LETRAS MAIÚSCULAS === @
+  vnCodigo = 65;  @ Código ASCII da letra 'A' @
+  RetornaAscII(vnCodigo, vaCaracter);
+  vaMensagem = "Código 65 = " + vaCaracter;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "Código 65 = A" @
+  
+  @ === EXEMPLO 2: NÚMEROS === @
+  vnCodigo = 48;  @ Código ASCII do número '0' @
+  RetornaAscII(vnCodigo, vaCaracter);
+  vaMensagem = "Código 48 = " + vaCaracter;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "Código 48 = 0" @
+  
+  @ === EXEMPLO 3: CARACTERES ESPECIAIS === @
+  vnCodigo = 64;  @ Código ASCII do símbolo '@' @
+  RetornaAscII(vnCodigo, vaCaracter);
+  vaMensagem = "Código 64 = " + vaCaracter;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "Código 64 = @" @
+  
+  @ === EXEMPLO PRÁTICO: GERAR SENHA SIMPLES === @
+  Definir Alfa vaSenha;
+  Definir Numero vnContador;
+  
+  vaSenha = "";
+  Para (vnContador = 1; vnContador <= 4; vnContador++) {
+    vnCodigo = 65 + vnContador - 1;  @ A, B, C, D @
+    RetornaAscII(vnCodigo, vaCaracter);
+    vaSenha = vaSenha + vaCaracter;
+  }
+  vaMensagem = "Senha gerada: " + vaSenha;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "Senha gerada: ABCD" @
+}
+```
+
+### RetiraCaracteresEspeciais
+
+Remove caracteres especiais deixando somente letras e números, removendo todos os outros caracteres.
+
+**Sintaxe:**
+```lsp
+RetiraCaracteresEspeciais(<Retorno>);
+```
+
+**Parâmetros:**
+- `Retorno`: Variável Alfa que recebe o campo a ser limpo e retorna o campo sem caracteres especiais
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploRetiraCaracteresEspeciais();
+
+@ Variáveis globais @
+Definir Alfa vaTextoOriginal;
+Definir Alfa vaTextoLimpo;
+Definir Alfa vaMensagem;
+
+exemploRetiraCaracteresEspeciais();
+
+Funcao exemploRetiraCaracteresEspeciais(); {
+  @ === EXEMPLO 1: RAZÃO SOCIAL === @
+  vaTextoOriginal = "João & Pessoa Ltda.";
+  vaTextoLimpo = vaTextoOriginal;
+  RetiraCaracteresEspeciais(vaTextoLimpo);
+  vaMensagem = "Original: " + vaTextoOriginal + " | Limpo: " + vaTextoLimpo;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "JoaoPessoaLtda" @
+  
+  @ === EXEMPLO 2: TELEFONE === @
+  vaTextoOriginal = "(47) 99999-8888";
+  vaTextoLimpo = vaTextoOriginal;
+  RetiraCaracteresEspeciais(vaTextoLimpo);
+  vaMensagem = "Telefone original: " + vaTextoOriginal + " | Apenas números: " + vaTextoLimpo;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "4799998888" @
+  
+  @ === EXEMPLO 3: EMAIL PARA ID === @
+  vaTextoOriginal = "usuario@empresa.com.br";
+  vaTextoLimpo = vaTextoOriginal;
+  RetiraCaracteresEspeciais(vaTextoLimpo);
+  vaMensagem = "Email: " + vaTextoOriginal + " | ID limpo: " + vaTextoLimpo;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "usuarioempresacombr" @
+  
+  @ === EXEMPLO PRÁTICO: VALIDAÇÃO DE DOCUMENTO === @
+  validarDocumentoLimpo();
+}
+
+/* ========================================================================
+   FUNCAO: validarDocumentoLimpo
+   DESCRICAO: Valida documento removendo caracteres especiais
+   PARAMETROS: Nenhum (usa variáveis globais)
+   RETORNO: Void
+   OBSERVACOES: Exemplo prático de uso da função
+   ======================================================================== */
+Funcao validarDocumentoLimpo(); {
+  @ Simular entrada de CPF com formatação @
+  Definir Alfa vaCPF;
+  Definir Numero vnTamanho;
+  
+  vaCPF = "123.456.789-10";
+  vaMensagem = "CPF formatado: " + vaCPF;
+  Mensagem(Retorna, vaMensagem);
+  
+  @ Remover formatação @
+  RetiraCaracteresEspeciais(vaCPF);
+  vaMensagem = "CPF apenas números: " + vaCPF;
+  Mensagem(Retorna, vaMensagem);
+  
+  @ Validar tamanho @
+  TamanhoAlfa(vaCPF, vnTamanho);
+  Se (vnTamanho = 11) {
+    Mensagem(Retorna, "CPF válido para processamento");
+  } Senao {
+    Mensagem(Erro, "CPF inválido após limpeza");
+  }
+}
+```
+
+### RetiraAcentuacao
+
+Recebe uma string com acentuação e retorna a mesma string sem acentuação e em maiúsculo.
+
+**Sintaxe:**
+```lsp
+RetiraAcentuacao(<pString>);
+```
+
+**Parâmetros:**
+- `pString`: Variável Alfa que recebe uma string e retorna a variável em maiúsculo e sem acentuação
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploRetiraAcentuacao();
+
+@ Variáveis globais @
+Definir Alfa vaTextoOriginal;
+Definir Alfa vaTextoSemAcento;
+Definir Alfa vaMensagem;
+
+exemploRetiraAcentuacao();
+
+Funcao exemploRetiraAcentuacao(); {
+  @ === EXEMPLO 1: NOME COM ACENTOS === @
+  vaTextoOriginal = "José António da Silva";
+  vaTextoSemAcento = vaTextoOriginal;
+  RetiraAcentuacao(vaTextoSemAcento);
+  vaMensagem = "Original: " + vaTextoOriginal + " | Sem acento: " + vaTextoSemAcento;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "JOSE ANTONIO DA SILVA" @
+  
+  @ === EXEMPLO 2: CARACTERES ESPECIAIS === @
+  vaTextoOriginal = "ÇçÁáàÉéÚúÍí";
+  vaTextoSemAcento = vaTextoOriginal;
+  RetiraAcentuacao(vaTextoSemAcento);
+  vaMensagem = "Acentos: " + vaTextoOriginal + " | Convertido: " + vaTextoSemAcento;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "CcAaaEeUuIi" @
+  
+  @ === EXEMPLO 3: ENDEREÇO === @
+  vaTextoOriginal = "Rua das Açucenas, 123 - São José";
+  vaTextoSemAcento = vaTextoOriginal;
+  RetiraAcentuacao(vaTextoSemAcento);
+  vaMensagem = "Endereço: " + vaTextoOriginal + " | Normalizado: " + vaTextoSemAcento;
+  Mensagem(Retorna, vaMensagem);  @ Resultado: "RUA DAS ACUCENAS, 123 - SAO JOSE" @
+  
+  @ === EXEMPLO PRÁTICO: PADRONIZAÇÃO PARA BUSCA === @
+  padronizarParaBusca();
+}
+
+/* ========================================================================
+   FUNCAO: padronizarParaBusca
+   DESCRICAO: Padroniza strings para pesquisa sem acentos
+   PARAMETROS: Nenhum (usa variáveis globais)
+   RETORNO: Void
+   OBSERVACOES: Exemplo prático de normalização para busca
+   ======================================================================== */
+Funcao padronizarParaBusca(); {
+  @ Simular lista de nomes para padronização @
+  Definir Numero vnContador;
+  Definir Alfa vaNomes;
+  Definir Alfa vaNomeAtual;
+  Definir Alfa vaNomePadronizado;
+  
+  @ Lista simulada separada por ponto-e-vírgula @
+  vaNomes = "João da Silva;Maria José;Antônio Pereira;Françoise Dubois";
+  
+  Mensagem(Retorna, "=== PADRONIZAÇÃO DE NOMES PARA BUSCA ===");
+  
+  @ Processar cada nome da lista @
+  Para (vnContador = 1; vnContador <= 4; vnContador++) {
+    @ Obter nome atual (simulado) @
+    Se (vnContador = 1) {
+      vaNomeAtual = "João da Silva";
+    } Senao Se (vnContador = 2) {
+      vaNomeAtual = "Maria José";
+    } Senao Se (vnContador = 3) {
+      vaNomeAtual = "Antônio Pereira";
+    } Senao {
+      vaNomeAtual = "Françoise Dubois";
+    }
+    
+    @ Padronizar para busca @
+    vaNomePadronizado = vaNomeAtual;
+    RetiraAcentuacao(vaNomePadronizado);
+    
+    @ Exibir resultado @
+    Definir Alfa vaIndice;
+    IntParaAlfa(vnContador, vaIndice);
+    vaMensagem = vaIndice + ". " + vaNomeAtual + " -> " + vaNomePadronizado;
+    Mensagem(Retorna, vaMensagem);
+  }
+  
+  Mensagem(Retorna, "Nomes padronizados para indexação/busca");
+}
+```
+
 ## Cast de Variável
 
 As funções de cast de variável na LSP permitem converter valores entre diferentes tipos de dados.
@@ -3945,6 +4185,373 @@ Definir Numero vnValor;
 vnValor = 1475.12845;
 Arredonda Valor Tipo Acerto(vnValor, 1); @ Retorna 1475.13 @
 Arredonda Valor Tipo Acerto(vnValor, 2); @ Retorna 1475.12 @
+```
+
+## Funções Avançadas de Data e Dias Úteis
+
+### RetDiaSemana
+
+Retorna o dia da semana em forma de número da data de entrada.
+
+**Sintaxe:**
+```lsp
+RetDiaSemana(<pData>, <pDia>);
+```
+
+**Parâmetros:**
+- `pData`: Variável numérica que recebe a data atual
+- `pDia`: Variável numérica que retorna o dia da semana da data atual
+
+**Valores de retorno:**
+- 0 = Domingo
+- 1 = Segunda-feira
+- 2 = Terça-feira
+- 3 = Quarta-feira
+- 4 = Quinta-feira
+- 5 = Sexta-feira
+- 6 = Sábado
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploRetDiaSemana();
+
+@ Variáveis globais @
+Definir Numero vnDataSis;
+Definir Numero vnDiaSemana;
+Definir Alfa vaNomeDia;
+
+exemploRetDiaSemana();
+
+Funcao exemploRetDiaSemana(); {
+  @ Obtém a data atual do sistema @
+  vnDataSis = DatSis;
+  
+  @ Retorna o dia da semana @
+  RetDiaSemana(vnDataSis, vnDiaSemana);
+  
+  @ Converte o número para nome do dia @
+  Se (vnDiaSemana = 0) {
+    vaNomeDia = "Domingo";
+  } Senao Se (vnDiaSemana = 1) {
+    vaNomeDia = "Segunda-feira";
+  } Senao Se (vnDiaSemana = 2) {
+    vaNomeDia = "Terça-feira";
+  } Senao Se (vnDiaSemana = 3) {
+    vaNomeDia = "Quarta-feira";
+  } Senao Se (vnDiaSemana = 4) {
+    vaNomeDia = "Quinta-feira";
+  } Senao Se (vnDiaSemana = 5) {
+    vaNomeDia = "Sexta-feira";
+  } Senao {
+    vaNomeDia = "Sábado";
+  }
+  
+  Definir Alfa vaMensagem;
+  vaMensagem = "Hoje é " + vaNomeDia;
+  Mensagem(Retorna, vaMensagem);
+}
+```
+
+### RetDiaUtilAntPos
+
+Verifica se uma data é dia útil ou não, retornando o dia útil imediatamente anterior e o posterior. Se a data informada for dia útil, traz essa data em ambos os retornos.
+
+**Sintaxe:**
+```lsp
+RetDiaUtilAntPos(<pData>, <pCEP>, <pDataAnt>, <pDataPos>);
+```
+
+**Parâmetros:**
+- `pData`: Variável numérica que recebe a data atual
+- `pCEP`: Variável numérica que recebe o CEP do local
+- `pDataAnt`: Variável numérica que retorna o dia útil imediatamente anterior, ou a data informada caso ela já seja dia útil
+- `pDataPos`: Variável numérica que retorna o dia útil imediatamente posterior, ou a data informada caso ela já seja dia útil
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploRetDiaUtilAntPos();
+
+@ Variáveis globais @
+Definir Numero vnData;
+Definir Numero vnCEP;
+Definir Numero vnDataAnt;
+Definir Numero vnDataPos;
+Definir Alfa vaDataAlf;
+Definir Alfa vaDataAntStr;
+Definir Alfa vaDataPosStr;
+
+exemploRetDiaUtilAntPos();
+
+Funcao exemploRetDiaUtilAntPos(); {
+  @ Exemplo com data de Natal (25/12/2024) @
+  vaDataAlf = "25/12/2024";
+  ConvDataInt(vaDataAlf, vnData);
+  vnCEP = 89107000;
+  
+  @ Verifica dias úteis anteriores e posteriores @
+  RetDiaUtilAntPos(vnData, vnCEP, vnDataAnt, vnDataPos);
+  
+  @ Converte as datas para string para exibição @
+  ConvDataExt(vnDataAnt, vaDataAntStr);
+  ConvDataExt(vnDataPos, vaDataPosStr);
+  
+  Definir Alfa vaMensagem;
+  vaMensagem = "Data base: " + vaDataAlf;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Dia útil anterior: " + vaDataAntStr;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Dia útil posterior: " + vaDataPosStr;
+  Mensagem(Retorna, vaMensagem);
+}
+```
+
+### RetornarDiasUteisMes
+
+Retorna a quantidade de dias úteis de um mês tomando como base uma determinada data.
+
+**Sintaxe:**
+```lsp
+RetornarDiasUteisMes(<aDatabase>, <aTipoRetorno>, <aQtdDiasUteis>);
+```
+
+**Parâmetros:**
+- `aDatabase`: Variável do tipo Data que recebe a data base a ser verificada
+- `aTipoRetorno`: Variável numérica que indica o tipo de retorno:
+  - 0: Retorna a quantidade de dias úteis do mês inteiro
+  - 1: Retorna a quantidade de dias úteis do primeiro dia do mês até o dia da data base
+- `aQtdDiasUteis`: Variável numérica que retorna a quantidade de dias úteis encontrada
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploRetornarDiasUteisMes();
+
+@ Variáveis globais @
+Definir Data vdDataBase;
+Definir Numero vnQtdDiasUteisTotal;
+Definir Numero vnQtdDiasUteisAteData;
+Definir Alfa vaQtdTotalStr;
+Definir Alfa vaQtdAteDataStr;
+
+exemploRetornarDiasUteisMes();
+
+Funcao exemploRetornarDiasUteisMes(); {
+  @ Define uma data de exemplo (21/07/2024) @
+  vdDataBase = CodData(21, 7, 2024);
+  
+  @ Obtém quantidade de dias úteis do mês inteiro @
+  RetornarDiasUteisMes(vdDataBase, 0, vnQtdDiasUteisTotal);
+  
+  @ Obtém quantidade de dias úteis até a data base @
+  RetornarDiasUteisMes(vdDataBase, 1, vnQtdDiasUteisAteData);
+  
+  @ Converte para string para exibição @
+  IntParaAlfa(vnQtdDiasUteisTotal, vaQtdTotalStr);
+  IntParaAlfa(vnQtdDiasUteisAteData, vaQtdAteDataStr);
+  
+  Definir Alfa vaMensagem;
+  vaMensagem = "Dias úteis no mês todo: " + vaQtdTotalStr;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Dias úteis até 21/07: " + vaQtdAteDataStr;
+  Mensagem(Retorna, vaMensagem);
+}
+```
+
+### RetornarDiasUteisPeriodo
+
+Retorna a quantidade de dias úteis entre duas datas informadas.
+
+**Sintaxe:**
+```lsp
+RetornarDiasUteisPeriodo(<aDataIni>, <aDataFim>, <aQtdDiasUteis>);
+```
+
+**Parâmetros:**
+- `aDataIni`: Variável do tipo Data que recebe a data inicial do período
+- `aDataFim`: Variável do tipo Data que recebe a data final do período
+- `aQtdDiasUteis`: Variável numérica que retorna a quantidade de dias úteis entre as datas
+
+**⚠️ Observação:** A data final deve ser maior ou igual à data inicial, ou o retorno será zero.
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploRetornarDiasUteisPeriodo();
+
+@ Variáveis globais @
+Definir Data vdDataInicial;
+Definir Data vdDataFinal;
+Definir Numero vnQtdDiasUteis;
+Definir Alfa vaQtdStr;
+
+exemploRetornarDiasUteisPeriodo();
+
+Funcao exemploRetornarDiasUteisPeriodo(); {
+  @ Define período de exemplo (21/06/2024 a 18/08/2024) @
+  vdDataInicial = CodData(21, 6, 2024);
+  vdDataFinal = CodData(18, 8, 2024);
+  
+  @ Calcula quantidade de dias úteis no período @
+  RetornarDiasUteisPeriodo(vdDataInicial, vdDataFinal, vnQtdDiasUteis);
+  
+  @ Converte para string para exibição @
+  IntParaAlfa(vnQtdDiasUteis, vaQtdStr);
+  
+  Definir Alfa vaMensagem;
+  vaMensagem = "Dias úteis no período: " + vaQtdStr;
+  Mensagem(Retorna, vaMensagem);
+}
+```
+
+### RetornarQtdDiasAno
+
+Retorna a quantidade de dias do ano tomando como base o ano da data passada, considerando diferentes tipos de ano.
+
+**Sintaxe:**
+```lsp
+RetornarQtdDiasAno(<aData>, <aTipoAno>, <aQtdDiasAno>);
+```
+
+**Parâmetros:**
+- `aData`: Variável do tipo Data que recebe a data base
+- `aTipoAno`: Variável numérica que indica o tipo de ano:
+  - 0: Ano Útil - considera 252 dias
+  - 1: Ano Comercial - considera 360 dias
+  - 2: Ano Civil - considera 365 ou 366 dias (ano bissexto)
+- `aQtdDiasAno`: Variável numérica que retorna a quantidade de dias do ano
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploRetornarQtdDiasAno();
+
+@ Variáveis globais @
+Definir Data vdData;
+Definir Numero vnDiasUtil;
+Definir Numero vnDiasComercial;
+Definir Numero vnDiasCivil;
+Definir Alfa vaDiasUtilStr;
+Definir Alfa vaDiasComercialStr;
+Definir Alfa vaDiasCivilStr;
+
+exemploRetornarQtdDiasAno();
+
+Funcao exemploRetornarQtdDiasAno(); {
+  @ Define uma data de exemplo (02/07/2024) @
+  vdData = CodData(2, 7, 2024);
+  
+  @ Obtém quantidade de dias para cada tipo de ano @
+  RetornarQtdDiasAno(vdData, 0, vnDiasUtil);       @ Ano útil @
+  RetornarQtdDiasAno(vdData, 1, vnDiasComercial);  @ Ano comercial @
+  RetornarQtdDiasAno(vdData, 2, vnDiasCivil);      @ Ano civil @
+  
+  @ Converte para string para exibição @
+  IntParaAlfa(vnDiasUtil, vaDiasUtilStr);
+  IntParaAlfa(vnDiasComercial, vaDiasComercialStr);
+  IntParaAlfa(vnDiasCivil, vaDiasCivilStr);
+  
+  Definir Alfa vaMensagem;
+  vaMensagem = "Dias úteis no ano: " + vaDiasUtilStr;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Dias comerciais no ano: " + vaDiasComercialStr;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Dias civis no ano: " + vaDiasCivilStr;
+  Mensagem(Retorna, vaMensagem);
+}
+```
+
+### UltimoDia
+
+Verifica qual é o último dia do mês/ano da data informada.
+
+**Sintaxe:**
+```lsp
+UltimoDia(<DatAtu>);
+```
+
+**Parâmetros:**
+- `DatAtu`: Campo/Variável numérica da qual se deseja saber o último dia do mês
+
+**⚠️ Observação:** Não pode ser campo do sistema ou de tabela, pois o retorno é na própria variável.
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploUltimoDia();
+
+@ Variáveis globais @
+Definir Numero vnData;
+Definir Alfa vaDataOriginal;
+Definir Alfa vaDataUltimoDia;
+
+exemploUltimoDia();
+
+Funcao exemploUltimoDia(); {
+  @ Define uma data de exemplo (20/12/2024) @
+  vaDataOriginal = "20/12/2024";
+  ConvDataInt(vaDataOriginal, vnData);
+  
+  @ Aplica a função UltimoDia @
+  UltimoDia(vnData);
+  
+  @ Converte o resultado para string @
+  ConvDataExt(vnData, vaDataUltimoDia);
+  
+  Definir Alfa vaMensagem;
+  vaMensagem = "Data original: " + vaDataOriginal;
+  Mensagem(Retorna, vaMensagem);
+  vaMensagem = "Último dia do mês: " + vaDataUltimoDia;
+  Mensagem(Retorna, vaMensagem);
+  @ Resultado esperado: 31/12/2024 @
+}
+```
+
+**Exemplo Prático Completo - Sistema de Controle de Prazos:**
+
+```lsp
+Definir Funcao sistemaControlePrazos();
+
+@ Variáveis globais @
+Definir Data vdDataBase;
+Definir Numero vnDiaSemana;
+Definir Numero vnDataUtilAnt;
+Definir Numero vnDataUtilPos;
+Definir Numero vnDiasUteisRestantes;
+Definir Numero vnCEP;
+Definir Alfa vaMensagemStatus;
+
+sistemaControlePrazos();
+
+Funcao sistemaControlePrazos(); {
+  @ Obtém a data atual @
+  DataHoje(vdDataBase);
+  vnCEP = 89107000;  @ CEP de exemplo @
+  
+  @ Verifica se hoje é dia útil @
+  Definir Numero vnDataAtual;
+  vnDataAtual = vdDataBase;
+  RetDiaUtilAntPos(vnDataAtual, vnCEP, vnDataUtilAnt, vnDataUtilPos);
+  
+  @ Verifica o dia da semana @
+  RetDiaSemana(vnDataAtual, vnDiaSemana);
+  
+  @ Calcula dias úteis restantes no mês @
+  Definir Numero vnDiasUteisTotal;
+  Definir Numero vnDiasUteisAteHoje;
+  RetornarDiasUteisMes(vdDataBase, 0, vnDiasUteisTotal);
+  RetornarDiasUteisMes(vdDataBase, 1, vnDiasUteisAteHoje);
+  vnDiasUteisRestantes = vnDiasUteisTotal - vnDiasUteisAteHoje;
+  
+  @ Monta relatório @
+  Se (vnDataAtual = vnDataUtilAnt) {
+    vaMensagemStatus = "Hoje é dia útil!";
+  } Senao {
+    vaMensagemStatus = "Hoje NÃO é dia útil.";
+  }
+  
+  Mensagem(Retorna, vaMensagemStatus);
+  
+  Definir Alfa vaTemp;
+  IntParaAlfa(vnDiasUteisRestantes, vaTemp);
+  vaMensagemStatus = "Dias úteis restantes no mês: " + vaTemp;
+  Mensagem(Retorna, vaMensagemStatus);
+}
 ```
 
 #### Formatar
@@ -7605,6 +8212,13 @@ As funções a seguir podem ser utilizadas para manipulação de comandos SQL e 
 | SQL_RetornarSeNulo  | Função que retorna se campo do registro do cursor é nulo. |
 | SQL_UsarAbrangencia | Função que informa ao cursor se é para utilizar abrangência de usuários ou não. |
 | SQL_UsarSQLSenior2  | Função que informa se o comando a ser definido para o cursor utiliza a sintaxe de linguagem Senior ou a sintaxe nativa (SQL Nativa: linguagem originada da base de dados utilizada, ex: Oracle, SQL server...etc). |
+| **Execução Direta de SQL** |
+| ExecSQL             | Executa um comando SQL no banco para operações INSERT, UPDATE e DELETE. |
+| ExecSQLEx           | Executa um comando SQL no banco com controle de erro, retornando status de sucesso/falha. |
+| **Controle de Transações** |
+| IniciarTransacao    | Inicia uma transação no banco de dados. |
+| FinalizarTransacao  | Finaliza a transação no banco de dados executando COMMIT. |
+| DesfazerTransacao   | Desfaz a transação no banco de dados executando ROLLBACK. |
 
 
 ### SQL Senior 2
@@ -7737,6 +8351,554 @@ Enquanto (SQL_EOF(xCursor) = 0) {
 }
 SQL_FecharCursor(xCursor);
 SQL_Destruir(xCursor);
+```
+
+### SelecaoTabelas
+
+Traz os dados de um comando SELECT(SQL) mais elaborado, incluindo funções de agregação como COUNT(), SUM(), etc. Aceita também comandos como GROUP BY, UNION entre outros.
+
+**Sintaxe:**
+```lsp
+SelecaoTabelas(<pSqlSel>, <pCpoRet>, <pTemMas>);
+```
+
+**Parâmetros:**
+- `pSqlSel`: Variável que recebe uma instrução SELECT(SQL) ou "+" para buscar próximo registro
+- `pCpoRet`: Variável que retorna os dados resultantes do comando (separados por ';' se múltiplos campos)
+- `pTemMas`: Variável que retorna '+' caso o comando retorne mais de uma linha
+
+**⚠️ Observações importantes:**
+- O início do SQL é fixado em SELECT para evitar danos ao banco
+- Todos os dados são convertidos para uma única variável Alfa
+- Quando há múltiplos campos, são separados por ';'
+- Para navegar entre registros, passe "+" como parâmetro `pSqlSel`
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploSelecaoTabelas();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Alfa vaRetorno;
+Definir Alfa vaMais;
+Definir Numero vnContador;
+
+exemploSelecaoTabelas();
+
+Funcao exemploSelecaoTabelas(); {
+  @ === EXEMPLO 1: CONTAGEM POR ESTADO === @
+  vaSQL = "SIGUFS, COUNT(*) FROM E085CLI GROUP BY SIGUFS";
+  SelecaoTabelas(vaSQL, vaRetorno, vaMais);
+  
+  vnContador = 1;
+  Enquanto (vaMais = "+") {
+    @ Processar o registro atual @
+    Definir Alfa vaMensagem;
+    Definir Alfa vaContadorStr;
+    IntParaAlfa(vnContador, vaContadorStr);
+    vaMensagem = "Registro " + vaContadorStr + ": " + vaRetorno;
+    Mensagem(Retorna, vaMensagem);
+    
+    @ Buscar próximo registro @
+    SelecaoTabelas("+", vaRetorno, vaMais);
+    vnContador++;
+  }
+  
+  @ === EXEMPLO 2: SOMA DE VALORES === @
+  vaSQL = "SUM(TOTPED), COUNT(*) FROM E120PED WHERE SITPED = 'A'";
+  SelecaoTabelas(vaSQL, vaRetorno, vaMais);
+  
+  @ vaRetorno conterá algo como "1500.50;25" (soma;quantidade) @
+  Definir Alfa vaResultado;
+  vaResultado = "Total de pedidos ativos: " + vaRetorno;
+  Mensagem(Retorna, vaResultado);
+  
+  @ === EXEMPLO 3: DADOS CONSOLIDADOS POR FILIAL === @
+  vaSQL = "CODFIL, SUM(TOTPED), COUNT(*) FROM E120PED GROUP BY CODFIL ORDER BY CODFIL";
+  SelecaoTabelas(vaSQL, vaRetorno, vaMais);
+  
+  Mensagem(Retorna, "=== RELATÓRIO POR FILIAL ===");
+  vnContador = 1;
+  
+  @ Processar primeiro registro @
+  Se (vaRetorno <> "") {
+    processarRegistroFilial(vaRetorno, vnContador);
+    vnContador++;
+  }
+  
+  @ Processar demais registros @
+  Enquanto (vaMais = "+") {
+    SelecaoTabelas("+", vaRetorno, vaMais);
+    Se (vaRetorno <> "") {
+      processarRegistroFilial(vaRetorno, vnContador);
+      vnContador++;
+    }
+  }
+}
+
+/* ========================================================================
+   FUNCAO: processarRegistroFilial
+   DESCRICAO: Processa um registro com dados de filial
+   PARAMETROS: pDados - String com dados separados por ';'
+               pContador - Numero sequencial do registro
+   RETORNO: Void
+   OBSERVACOES: Auxiliar para exemplo de SelecaoTabelas
+   ======================================================================== */
+Funcao processarRegistroFilial(Alfa pDados, Numero pContador); {
+  @ Extrair componentes do registro: CODFIL;TOTAL;QUANTIDADE @
+  Definir Alfa vaCodFilial;
+  Definir Alfa vaTotal;
+  Definir Alfa vaQuantidade;
+  Definir Numero vnPos1;
+  Definir Numero vnPos2;
+  Definir Numero vnTamanho;
+  
+  @ Localizar separadores @
+  PosicaoAlfa(";", pDados, vnPos1);
+  Se (vnPos1 > 0) {
+    @ Extrair código da filial @
+    vaCodFilial = pDados;
+    CopiarAlfa(vaCodFilial, 1, vnPos1 - 1);
+    
+    @ Buscar segundo separador @
+    Definir Alfa vaRestante;
+    TamanhoAlfa(pDados, vnTamanho);
+    vaRestante = pDados;
+    CopiarAlfa(vaRestante, vnPos1 + 1, vnTamanho - vnPos1);
+    
+    PosicaoAlfa(";", vaRestante, vnPos2);
+    Se (vnPos2 > 0) {
+      @ Extrair total @
+      vaTotal = vaRestante;
+      CopiarAlfa(vaTotal, 1, vnPos2 - 1);
+      
+      @ Extrair quantidade @
+      TamanhoAlfa(vaRestante, vnTamanho);
+      vaQuantidade = vaRestante;
+      CopiarAlfa(vaQuantidade, vnPos2 + 1, vnTamanho - vnPos2);
+      
+      @ Montar relatório @
+      Definir Alfa vaMensagem;
+      Definir Alfa vaContadorStr;
+      IntParaAlfa(pContador, vaContadorStr);
+      vaMensagem = vaContadorStr + ". Filial " + vaCodFilial + 
+                   " - Total: R$ " + vaTotal + " - Pedidos: " + vaQuantidade;
+      Mensagem(Retorna, vaMensagem);
+    }
+  }
+}
+```
+
+### ExecSQL
+
+Executa um comando SQL no banco. Pode ser usado para operações INSERT, UPDATE e DELETE.
+
+**Sintaxe:**
+```lsp
+ExecSQL(<ComandoSQL>);
+```
+
+**Parâmetros:**
+- `ComandoSQL`: Comando SQL a ser executado (tipo Alfa)
+
+**Exemplos:**
+
+**INSERT:**
+```lsp
+Definir Funcao exemploExecSQLInsert();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Numero vnCodEmp;
+Definir Alfa vaNomEmp;
+
+exemploExecSQLInsert();
+
+Funcao exemploExecSQLInsert(); {
+  @ Definir dados para inserção @
+  vnCodEmp = 999;
+  vaNomEmp = "EMPRESA TESTE LTDA";
+  
+  @ Montar comando SQL @
+  Definir Alfa vaCodEmpStr;
+  IntParaAlfa(vnCodEmp, vaCodEmpStr);
+  vaSQL = "INSERT INTO R030EMP (NUMEMP, NOMEMP) VALUES (" + vaCodEmpStr + ", '" + vaNomEmp + "')";
+  
+  @ Executar comando @
+  ExecSQL(vaSQL);
+  
+  Mensagem(Retorna, "Empresa inserida com sucesso!");
+}
+```
+
+**UPDATE:**
+```lsp
+Definir Funcao exemploExecSQLUpdate();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Numero vnCodEmp;
+Definir Alfa vaNovoNome;
+
+exemploExecSQLUpdate();
+
+Funcao exemploExecSQLUpdate(); {
+  @ Definir dados para atualização @
+  vnCodEmp = 999;
+  vaNovoNome = "EMPRESA ATUALIZADA LTDA";
+  
+  @ Montar comando SQL @
+  Definir Alfa vaCodEmpStr;
+  IntParaAlfa(vnCodEmp, vaCodEmpStr);
+  vaSQL = "UPDATE R030EMP SET NOMEMP = '" + vaNovoNome + "' WHERE NUMEMP = " + vaCodEmpStr;
+  
+  @ Executar comando @
+  ExecSQL(vaSQL);
+  
+  Mensagem(Retorna, "Empresa atualizada com sucesso!");
+}
+```
+
+**DELETE:**
+```lsp
+Definir Funcao exemploExecSQLDelete();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Numero vnCodEmp;
+
+exemploExecSQLDelete();
+
+Funcao exemploExecSQLDelete(); {
+  @ Definir código para exclusão @
+  vnCodEmp = 999;
+  
+  @ Montar comando SQL @
+  Definir Alfa vaCodEmpStr;
+  IntParaAlfa(vnCodEmp, vaCodEmpStr);
+  vaSQL = "DELETE FROM R030EMP WHERE NUMEMP = " + vaCodEmpStr;
+  
+  @ Executar comando @
+  ExecSQL(vaSQL);
+  
+  Mensagem(Retorna, "Empresa excluída com sucesso!");
+}
+```
+
+### ExecSQLEx
+
+Executa um comando SQL no banco com controle de erro. Retorna 0 (zero) para sucesso ou 1 seguido da mensagem de erro em caso de falha.
+
+**Sintaxe:**
+```lsp
+ExecSQLEx(<ComandoSQL>, <Sucesso>, <Mensagem>);
+```
+
+**Parâmetros:**
+- `ComandoSQL`: Comando SQL a ser executado (tipo Alfa)
+- `Sucesso`: Variável numérica que retorna 0 para sucesso, 1 para erro
+- `Mensagem`: Variável alfa que retorna mensagem de erro (se houver)
+
+**Exemplos:**
+
+**INSERT com tratamento de erro:**
+```lsp
+Definir Funcao exemploExecSQLExInsert();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Numero vnErro;
+Definir Alfa vaMensagemErro;
+Definir Numero vnCodEmp;
+Definir Alfa vaNomEmp;
+
+exemploExecSQLExInsert();
+
+Funcao exemploExecSQLExInsert(); {
+  @ Definir dados @
+  vnCodEmp = 1000;
+  vaNomEmp = "NOVA EMPRESA LTDA";
+  
+  @ Iniciar transação @
+  IniciarTransacao();
+  
+  @ Montar e executar SQL para empresa @
+  Definir Alfa vaCodEmpStr;
+  IntParaAlfa(vnCodEmp, vaCodEmpStr);
+  vaSQL = "INSERT INTO R030EMP (NUMEMP, NOMEMP) VALUES (" + vaCodEmpStr + ", '" + vaNomEmp + "')";
+  
+  ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+  Se (vnErro = 0) {
+    @ Inserir funcionário relacionado @
+    vaSQL = "INSERT INTO R034FUN (NUMEMP, TIPCOL, NUMCAD, NOMFUN) VALUES (" + vaCodEmpStr + ", 1, 1, 'FUNCIONARIO TESTE')";
+    ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+    
+    Se (vnErro = 0) {
+      FinalizarTransacao();
+      Mensagem(Retorna, "Empresa e funcionário inseridos com sucesso!");
+    } Senao {
+      DesfazerTransacao();
+      Mensagem(Erro, "Erro ao inserir funcionário: " + vaMensagemErro);
+    }
+  } Senao {
+    DesfazerTransacao();
+    Mensagem(Erro, "Erro ao inserir empresa: " + vaMensagemErro);
+  }
+}
+```
+
+**UPDATE com tratamento de erro:**
+```lsp
+Definir Funcao exemploExecSQLExUpdate();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Numero vnErro;
+Definir Alfa vaMensagemErro;
+
+exemploExecSQLExUpdate();
+
+Funcao exemploExecSQLExUpdate(); {
+  vaSQL = "UPDATE R030EMP SET NOMEMP = 'EMPRESA MODIFICADA' WHERE NUMEMP = 1000";
+  
+  ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+  Se (vnErro = 0) {
+    Mensagem(Retorna, "Atualização realizada com sucesso!");
+  } Senao {
+    Mensagem(Erro, "Erro na atualização: " + vaMensagemErro);
+  }
+}
+```
+
+**DELETE com tratamento de erro:**
+```lsp
+Definir Funcao exemploExecSQLExDelete();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Numero vnErro;
+Definir Alfa vaMensagemErro;
+
+exemploExecSQLExDelete();
+
+Funcao exemploExecSQLExDelete(); {
+  vaSQL = "DELETE FROM R030EMP WHERE NUMEMP = 1000";
+  
+  ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+  Se (vnErro = 0) {
+    Mensagem(Retorna, "Exclusão realizada com sucesso!");
+  } Senao {
+    Mensagem(Erro, "Erro na exclusão: " + vaMensagemErro);
+  }
+}
+```
+
+**Utilizando com campos BLOB:**
+```lsp
+Definir Funcao exemploExecSQLExBlob();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Numero vnErro;
+Definir Alfa vaMensagemErro;
+Definir Alfa vaBlob;
+Definir Numero vnArquivo;
+
+exemploExecSQLExBlob();
+
+Funcao exemploExecSQLExBlob(); {
+  @ Ler arquivo para BLOB @
+  vnArquivo = Abrir("C:\\temp\\imagem.png", Ler);
+  Ler(vnArquivo, vaBlob, 9999999);
+  Fechar(vnArquivo);
+  
+  @ Inserir imagem com BLOB @
+  vaSQL = "INSERT INTO R030EMP (NUMEMP, FOTOEMP) VALUES (1001, :BLOB(vaBlob))";
+  
+  ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+  Se (vnErro = 0) {
+    Mensagem(Retorna, "Imagem inserida com sucesso!");
+  } Senao {
+    Mensagem(Erro, "Erro ao inserir imagem: " + vaMensagemErro);
+  }
+}
+```
+
+### Funções de Transação
+
+#### IniciarTransacao
+
+Inicia uma transação no banco de dados.
+
+**Sintaxe:**
+```lsp
+IniciarTransacao();
+```
+
+**Exemplo de uso completo:**
+```lsp
+Definir Funcao exemploTransacaoCompleta();
+
+@ Variáveis globais @
+Definir Alfa vaSQL;
+Definir Numero vnErro;
+Definir Alfa vaMensagemErro;
+Definir Numero vnCodUsu;
+
+exemploTransacaoCompleta();
+
+Funcao exemploTransacaoCompleta(); {
+  @ Obter código do usuário atual @
+  vnCodUsu = CodUsu;
+  
+  @ Iniciar transação @
+  IniciarTransacao();
+  
+  @ Executar operações SQL @
+  vaSQL = "INSERT INTO R030EMP (NUMEMP, NOMEMP) VALUES (2000, 'EMPRESA TRANSACAO')";
+  ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+  
+  Se (vnErro = 0) {
+    @ Verificar permissão do usuário @
+    Se (vnCodUsu = 1) {
+      DesfazerTransacao();
+      Mensagem(Erro, "O usuário 1 não tem permissão para esta operação");
+    } Senao {
+      @ Continuar com mais operações @
+      vaSQL = "UPDATE R030EMP SET NOMEMP = 'EMPRESA TRANSACAO CONFIRMADA' WHERE NUMEMP = 2000";
+      ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+      
+      Se (vnErro = 0) {
+        FinalizarTransacao();
+        Mensagem(Retorna, "Transação completada com sucesso!");
+      } Senao {
+        DesfazerTransacao();
+        Mensagem(Erro, "Erro na atualização: " + vaMensagemErro);
+      }
+    }
+  } Senao {
+    DesfazerTransacao();
+    Mensagem(Erro, "Erro na inserção: " + vaMensagemErro);
+  }
+}
+```
+
+#### FinalizarTransacao
+
+Finaliza a transação no banco de dados executando COMMIT.
+
+**Sintaxe:**
+```lsp
+FinalizarTransacao();
+```
+
+#### DesfazerTransacao
+
+Desfaz a transação no banco de dados executando ROLLBACK.
+
+**Sintaxe:**
+```lsp
+DesfazerTransacao();
+```
+
+**⚠️ Observações importantes sobre transações:**
+
+1. **Tratamento automático de erros:** Caso ocorra um erro entre `IniciarTransacao()` e `FinalizarTransacao()`, a transação será automaticamente desfeita com ROLLBACK, exceto durante depuração.
+
+2. **Uso explícito:** Deve ser informada explicitamente a transação com os comandos `IniciarTransacao()` e `FinalizarTransacao()` quando necessário usar transações nas regras LSP.
+
+3. **Validação de sessão:** A rotina de validação de seção do usuário realiza alterações no banco quando não há transações ativas.
+
+4. **Depuração:** Durante depuração, a transação não será finalizada automaticamente em caso de erro.
+
+**Exemplo prático - Sistema de Transferência Bancária:**
+```lsp
+Definir Funcao exemploTransferenciaBancaria();
+
+@ Variáveis globais @
+Definir Numero vnContaOrigem;
+Definir Numero vnContaDestino;
+Definir Numero vnValor;
+Definir Alfa vaSQL;
+Definir Numero vnErro;
+Definir Alfa vaMensagemErro;
+Definir Numero vnSaldoOrigem;
+
+exemploTransferenciaBancaria();
+
+Funcao exemploTransferenciaBancaria(); {
+  @ Definir dados da transferência @
+  vnContaOrigem = 12345;
+  vnContaDestino = 67890;
+  vnValor = 1000;
+  
+  @ Verificar saldo antes de iniciar transação @
+  verificarSaldoConta(vnContaOrigem, vnSaldoOrigem);
+  
+  Se (vnSaldoOrigem >= vnValor) {
+    @ Iniciar transação @
+    IniciarTransacao();
+    
+    @ 1. Debitar da conta origem @
+    Definir Alfa vaContaOrigemStr;
+    Definir Alfa vaValorStr;
+    IntParaAlfa(vnContaOrigem, vaContaOrigemStr);
+    DecimalParaAlfa(vnValor, vaValorStr);
+    
+    vaSQL = "UPDATE CONTAS SET SALDO = SALDO - " + vaValorStr + " WHERE CONTA = " + vaContaOrigemStr;
+    ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+    
+    Se (vnErro = 0) {
+      @ 2. Creditar na conta destino @
+      Definir Alfa vaContaDestinoStr;
+      IntParaAlfa(vnContaDestino, vaContaDestinoStr);
+      
+      vaSQL = "UPDATE CONTAS SET SALDO = SALDO + " + vaValorStr + " WHERE CONTA = " + vaContaDestinoStr;
+      ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+      
+      Se (vnErro = 0) {
+        @ 3. Registrar histórico @
+        vaSQL = "INSERT INTO HISTORICO (CONTA_ORIGEM, CONTA_DESTINO, VALOR, DATA) VALUES (" + 
+                vaContaOrigemStr + ", " + vaContaDestinoStr + ", " + vaValorStr + ", GETDATE())";
+        ExecSQLEx(vaSQL, vnErro, vaMensagemErro);
+        
+        Se (vnErro = 0) {
+          FinalizarTransacao();
+          Mensagem(Retorna, "Transferência realizada com sucesso!");
+        } Senao {
+          DesfazerTransacao();
+          Mensagem(Erro, "Erro ao registrar histórico: " + vaMensagemErro);
+        }
+      } Senao {
+        DesfazerTransacao();
+        Mensagem(Erro, "Erro ao creditar conta destino: " + vaMensagemErro);
+      }
+    } Senao {
+      DesfazerTransacao();
+      Mensagem(Erro, "Erro ao debitar conta origem: " + vaMensagemErro);
+    }
+  } Senao {
+    Mensagem(Erro, "Saldo insuficiente para transferência");
+  }
+}
+
+/* ========================================================================
+   FUNCAO: verificarSaldoConta
+   DESCRICAO: Verifica o saldo atual de uma conta
+   PARAMETROS: pConta - Numero da conta, pSaldo - Saldo atual (retorno)
+   RETORNO: Void
+   OBSERVACOES: Função auxiliar para verificação de saldo
+   ======================================================================== */
+Funcao verificarSaldoConta(Numero pConta, Numero End pSaldo); {
+  @ Simulação - em ambiente real, consultaria o banco @
+  Se (pConta = 12345) {
+    pSaldo = 5000;  @ Conta com saldo suficiente @
+  } Senao Se (pConta = 67890) {
+    pSaldo = 2000;  @ Conta destino @
+  } Senao {
+    pSaldo = 0;     @ Conta inexistente @
+  }
+}
 ```
 
 ## Funções Específicas do Gerador de Relatórios
@@ -8811,7 +9973,57 @@ O arquivo gerado será salvo com o nome informado em `vNomeRelatorio` (ex: `1-3.
 **Resumo visual do processo:**
 - **Tela de saída:** Deixe o campo "Nome do Arquivo (Opcional)" em branco.
 - **Regra de inicialização:** Atribua o valor desejado à variável `vNomeRelatorio`.
-- **Arquivo gerado:** O nome do arquivo será o valor da variável, com a extensão do formato escolhido (PDF, TXT, etc).
+- **Arquivo gerado:** O nome do arquivo será o valor da variável, com a extensão do formato escolhado (PDF, TXT, etc).
+
+### **SetaNumeroTelaEntrada**
+
+Permite alterar os valores numéricos da tela de entrada do modelo de relatório.
+
+**Sintaxe:**
+```lsp
+SetaNumeroTelaEntrada(<NomeCampo>, <Valor>);
+```
+
+**Parâmetros:**
+- `NomeCampo`: Nome do campo da tela de entrada (tipo Alfa)
+- `Valor`: Valor para o campo (tipo Numero)
+
+**Exemplo:**
+```lsp
+Definir Funcao exemploSetaParametrosRelatorio();
+
+@ Variáveis globais @
+Definir Numero vnCodEmpresa;
+Definir Numero vnCodFilial;
+Definir Alfa vaAbrangenciaEmpresa;
+
+exemploSetaParametrosRelatorio();
+
+Funcao exemploSetaParametrosRelatorio(); {
+  @ Definir parâmetros de entrada @
+  vnCodEmpresa = 1;
+  vnCodFilial = 5;
+  vaAbrangenciaEmpresa = "1..3";
+  
+  @ Configurar campos numéricos da tela de entrada @
+  SetaNumeroTelaEntrada("ECodEmp", vnCodEmpresa);
+  SetaNumeroTelaEntrada("ECodFil", vnCodFilial);
+  
+  @ Configurar campos alfa da tela de entrada @
+  SetaAlfaTelaEntrada("EAbrEmp", vaAbrangenciaEmpresa);
+  
+  @ Executar relatório com parâmetros pré-definidos @
+  ExecutaRelatorio("REL001.GER", "S");
+  
+  Mensagem(Retorna, "Relatório executado com parâmetros automatizados");
+}
+```
+
+**⚠️ Observações importantes:**
+- Esta função grava os valores numa lista que será usada na próxima execução de `ExecutaRelatorio`
+- A lista de valores é zerada após a execução da função `ExecutaRelatorio`
+- Utilize para automatizar a execução de relatórios sem intervenção do usuário
+- Complementa a função `SetaAlfaTelaEntrada` para campos alfanuméricos
 
 
 ## Manipulação de Arquivos
@@ -8970,6 +10182,488 @@ Webservice.WSSeguranca = "XML_Segurança";
 A autenticação de web services é feita, por padrão, através dos parâmetros `usuario`, ou `user`, e `senha`, ou `password`. Quando não informado, a autenticação é feita através dos valores do usuário do sistema.
 
 Caso desejar ignorar os parâmetros, acesse a Central de Configurações Senior e insira a chave `com.senior.middleware.webservices.use_implicit_params_login` com o valor `false`.
+
+### Funções Internas de Porta de Web Service
+
+As portas de serviço via Regra LSP podem conter funções internas responsáveis por executar uma determinada operação na porta.
+
+**Sintaxe:**
+```lsp
+<Nome_da_Porta>.<Nome_Funcao_Interna>
+```
+
+Para as Portas de Serviço em geral, temos algumas Funções Internas que podem ser executadas:
+
+#### Executar()
+
+Função que executa a requisição da porta, ou seja, realiza as operações para as quais a porta do serviço foi implementada.
+
+**Sintaxe:**
+```lsp
+nomePorta.Executar();
+```
+
+#### AtivaLimpezaParamEnt()
+
+Função que habilita a Limpeza Automática dos Parâmetros de Entrada após a Execução, ou seja, após qualquer execução da porta (função `Executar()`), todos os parâmetros de entrada serão limpos sendo necessário alimentá-los novamente para uma nova execução. Caso esta função não seja chamada dentro da Regra LSP, a porta vai assumir a Limpeza Automática como **habilitada por padrão**.
+
+**Sintaxe:**
+```lsp
+nomePorta.AtivaLimpezaParamEnt();
+```
+
+#### DesatLimpezaParamEnt()
+
+Função que desabilita a Limpeza Automática dos Parâmetros de Entrada após a Execução, ou seja, após qualquer execução da porta (função `Executar()`), todos os parâmetros de entrada serão mantidos não sendo necessário alimentá-los novamente para uma nova execução. Caso esta função não seja chamada dentro da Regra LSP, a porta vai assumir a Limpeza Automática como **habilitada por padrão**.
+
+**Sintaxe:**
+```lsp
+nomePorta.DesatLimpezaParamEnt();
+```
+
+#### LimparParamsEntrada()
+
+Função que realiza a Limpeza dos Parâmetros de Entrada no ato de sua chamada, ou seja, todos os parâmetros de entrada da porta serão limpos ao executar a função.
+
+**Sintaxe:**
+```lsp
+nomePorta.LimparParamsEntrada();
+```
+
+### Exemplo Prático Completo
+
+No exemplo fictício abaixo, será criada uma porta de serviço para inserção de duas pessoas com um contato no banco de dados:
+
+```lsp
+Definir Funcao exemploPortaWebService();
+
+@ Variáveis globais @
+Definir xServico.xPorta wsPorta;
+Definir Numero vnCodPessoa1;
+Definir Numero vnCodPessoa2;
+Definir Alfa vaNomPessoa1;
+Definir Alfa vaNomPessoa2;
+Definir Alfa vaTelContato;
+Definir Alfa vaNomContato;
+
+exemploPortaWebService();
+
+Funcao exemploPortaWebService(); {
+  @ Definir dados das pessoas @
+  vnCodPessoa1 = 1;
+  vnCodPessoa2 = 2;
+  vaNomPessoa1 = "Pessoa 1";
+  vaNomPessoa2 = "Pessoa 2";
+  vaTelContato = "99999999";
+  vaNomContato = "Contato 1";
+  
+  @ Desativar limpeza automática para reutilizar parâmetros @
+  wsPorta.DesatLimpezaParamEnt();
+  
+  @ === PRIMEIRA EXECUÇÃO === @
+  @ Configurar parâmetros para primeira pessoa @
+  wsPorta.codPessoa = vnCodPessoa1;
+  wsPorta.nomPessoa = vaNomPessoa1;
+  
+  @ Configurar dados de contato (tipo tabela) @
+  wsPorta.dadosContato.CriarLinha();
+  wsPorta.dadosContato.telContato = vaTelContato;
+  wsPorta.dadosContato.nomContato = vaNomContato;
+  
+  @ Executar primeira inserção @
+  wsPorta.Executar(); @ Primeira Execução @
+  
+  @ === SEGUNDA EXECUÇÃO === @
+  @ Alterar apenas dados da pessoa (contato será reutilizado) @
+  wsPorta.codPessoa = vnCodPessoa2;
+  wsPorta.nomPessoa = vaNomPessoa2;
+  
+  @ Executar segunda inserção @
+  wsPorta.Executar(); @ Segunda Execução @
+  
+  @ === LIMPEZA E RECONFIGURAÇÃO === @
+  @ Limpar parâmetros manualmente @
+  wsPorta.LimparParamsEntrada();
+  
+  @ Reativar limpeza automática para próximas execuções @
+  wsPorta.AtivaLimpezaParamEnt();
+  
+  Mensagem(Retorna, "Duas pessoas inseridas com sucesso!");
+}
+```
+
+**📝 Explicação do exemplo:**
+
+1. **`DesatLimpezaParamEnt()`**: Ao desativar a limpeza automática, a primeira chamada da execução do serviço vai inserir a **Pessoa 1** com o **Contato 1** mantendo esses parâmetros alimentados para uma próxima execução.
+
+2. **Reutilização de parâmetros**: Sobrescrevendo apenas os dados da pessoa (de "Pessoa 1" para "Pessoa 2"), a segunda execução do serviço resultará na inserção da **Pessoa 2** com o **Contato 1**, pois os parâmetros de entrada do tipo tabela "telContato" e "nomContato" ainda estarão alimentados.
+
+3. **`LimparParamsEntrada()`**: Realizará a limpeza de todos os parâmetros de entrada ao final.
+
+4. **`AtivaLimpezaParamEnt()`**: Indica o retorno da Limpeza Automática dos Parâmetros de Entrada após a Execução para quaisquer execuções posteriores da mesma porta na regra atual.
+
+**⚠️ Observações importantes:**
+
+- **Comportamento padrão**: Se nenhuma função de limpeza for chamada, a porta assume a **Limpeza Automática como habilitada por padrão**.
+- **Reutilização estratégica**: Use `DesatLimpezaParamEnt()` quando quiser reutilizar parâmetros comuns entre múltiplas execuções.
+- **Limpeza manual**: Use `LimparParamsEntrada()` para limpar parâmetros a qualquer momento, independente da configuração automática.
+- **Reconfiguração**: Use `AtivaLimpezaParamEnt()` para voltar ao comportamento padrão após usar parâmetros reutilizados.
+
+### Manipulação de Grids em Web Services
+
+Os Web Services frequentemente utilizam grids (tabelas) para entrada e saída de dados. Esta seção aborda como manipular esses grids de forma eficiente.
+
+#### Funções Básicas de Grid
+
+##### CriarLinha()
+
+Cria uma nova linha em um grid de entrada do Web Service.
+
+**Sintaxe:**
+```lsp
+nomeWebService.NomeGrid.CriarLinha();
+```
+
+##### QtdLinhas
+
+Propriedade que retorna a quantidade de linhas em um grid de saída.
+
+**Sintaxe:**
+```lsp
+variavel = nomeWebService.NomeGrid.QtdLinhas;
+```
+
+##### LinhaAtual
+
+Propriedade que define qual linha do grid está sendo manipulada.
+
+**Sintaxe:**
+```lsp
+nomeWebService.NomeGrid.LinhaAtual = numeroLinha;
+```
+
+#### Padrão de Entrada - Populando Grids de Web Service
+
+```lsp
+Definir Funcao exemploGridEntrada();
+
+@ Variáveis globais @
+Definir interno.com.empresa.servico.ProcessarPedidos wsPedidos;
+Definir Numero vnContador;
+Definir Numero vnCodProduto;
+Definir Numero vnQuantidade;
+Definir Numero vnPreco;
+
+exemploGridEntrada();
+
+Funcao exemploGridEntrada(); {
+  @ Configurar modo de execução @
+  wsPedidos.ModoExecucao = 1;
+  
+  @ === POPLAR GRID DE ENTRADA === @
+  @ Produto 1 @
+  wsPedidos.ItensPedido.CriarLinha();
+  wsPedidos.ItensPedido.CodProduto = 1001;
+  wsPedidos.ItensPedido.Quantidade = 5;
+  wsPedidos.ItensPedido.PrecoUnitario = 25.50;
+  wsPedidos.ItensPedido.Observacao = "Produto especial";
+  
+  @ Produto 2 @
+  wsPedidos.ItensPedido.CriarLinha();
+  wsPedidos.ItensPedido.CodProduto = 1002;
+  wsPedidos.ItensPedido.Quantidade = 3;
+  wsPedidos.ItensPedido.PrecoUnitario = 45.00;
+  wsPedidos.ItensPedido.Observacao = "Produto normal";
+  
+  @ Produto 3 @
+  wsPedidos.ItensPedido.CriarLinha();
+  wsPedidos.ItensPedido.CodProduto = 1003;
+  wsPedidos.ItensPedido.Quantidade = 2;
+  wsPedidos.ItensPedido.PrecoUnitario = 120.00;
+  wsPedidos.ItensPedido.Observacao = "Produto premium";
+  
+  @ Executar Web Service @
+  wsPedidos.Executar();
+  
+  @ Processar retorno @
+  processarRetornoPedidos();
+}
+```
+
+#### Padrão de Saída - Lendo Grids de Retorno
+
+```lsp
+Funcao processarRetornoPedidos(); {
+  @ Variáveis para processar retorno @
+  Definir Numero vnQtdLinhas;
+  Definir Numero vnContador;
+  Definir Numero vnCodProduto;
+  Definir Numero vnStatus;
+  Definir Alfa vaObservacao;
+  Definir Alfa vaMensagem;
+  
+  @ Obter quantidade de linhas retornadas @
+  vnQtdLinhas = wsPedidos.ResultadoProcessamento.QtdLinhas;
+  
+  @ Verificar se há dados @
+  Se (vnQtdLinhas > 0) {
+    vnContador = 0;
+    
+    @ === LOOP PADRÃO PARA PROCESSAR RETORNO === @
+    Enquanto (vnContador < vnQtdLinhas) {
+      @ Posicionar na linha atual @
+      wsPedidos.ResultadoProcessamento.LinhaAtual = vnContador;
+      
+      @ Ler dados da linha atual @
+      vnCodProduto = wsPedidos.ResultadoProcessamento.CodProduto;
+      vnStatus = wsPedidos.ResultadoProcessamento.StatusProcessamento;
+      vaObservacao = wsPedidos.ResultadoProcessamento.ObservacaoRetorno;
+      
+      @ Processar dados da linha @
+      Se (vnStatus = 1) {
+        Definir Alfa vaCodProdutoStr;
+        IntParaAlfa(vnCodProduto, vaCodProdutoStr);
+        vaMensagem = "Produto " + vaCodProdutoStr + " processado com sucesso: " + vaObservacao;
+        Mensagem(Retorna, vaMensagem);
+      } Senao {
+        Definir Alfa vaCodProdutoStr;
+        IntParaAlfa(vnCodProduto, vaCodProdutoStr);
+        vaMensagem = "Erro no produto " + vaCodProdutoStr + ": " + vaObservacao;
+        Mensagem(Erro, vaMensagem);
+      }
+      
+      @ Próxima linha @
+      vnContador++;
+    }
+  } Senao {
+    Mensagem(Retorna, "Nenhum resultado retornado pelo Web Service");
+  }
+}
+```
+
+#### ⚡ Otimização de Performance - Uso de Listas
+
+**⚠️ IMPORTANTE:** Manipular grids de Web Service diretamente é **muito lento** quando há muitos dados. Para melhor performance, use listas dinâmicas para preparar os dados e depois popule o grid do Web Service.
+
+**❌ Approach Lento:**
+```lsp
+@ NÃO FAÇA - Muito lento para grandes volumes @
+Para (vnI = 1; vnI <= 1000; vnI++) {
+  wsServico.Dados.CriarLinha();
+  wsServico.Dados.Codigo = vnI;
+  wsServico.Dados.Descricao = "Item " + vnI;
+  @ ... outros campos @
+}
+```
+
+**✅ Approach Eficiente:**
+```lsp
+@ FAÇA - Muito mais rápido @
+@ 1. Preparar dados em lista dinâmica @
+vlDados.DefinirCampos();
+vlDados.AdicionarCampo("Codigo", numero);
+vlDados.AdicionarCampo("Descricao", alfa, 100);
+vlDados.EfetivarCampos();
+
+@ 2. Popular lista rapidamente @
+Para (vnI = 1; vnI <= 1000; vnI++) {
+  vlDados.Adicionar();
+  vlDados.Codigo = vnI;
+  vlDados.Descricao = "Item " + vnI;
+  vlDados.Gravar();
+}
+
+@ 3. Popular Web Service apenas uma vez por grupo @
+popularWebServiceComLista();
+```
+
+#### Exemplo Prático Real - Sistema de Cotação de Frete
+
+Este exemplo mostra um sistema completo de cotação de frete usando listas para eficiência:
+
+```lsp
+Definir Funcao exemploSistemaCotacaoFrete();
+
+@ === ETAPA 1: PREPARAR DADOS EM LISTAS === @
+@ Listas dinâmicas para dados organizados @
+Definir Lista vlEncomendas;
+Definir Lista vlDimensoes;
+Definir Lista vlCotacoes;
+
+@ Web Service de Cotação de Frete @
+Definir interno.com.empresa.frete.CotacaoFrete wsCotacao;
+
+exemploSistemaCotacaoFrete();
+
+Funcao exemploSistemaCotacaoFrete(); {
+  @ === ETAPA 1: INICIALIZAR LISTAS === @
+  inicializarListasCotacao();
+  
+  @ === ETAPA 2: BUSCAR E PROCESSAR DADOS === @
+  @ Buscar encomendas do banco de dados @
+  buscarEncomendasElegiveis();
+  
+  @ === ETAPA 3: POPULAR WEB SERVICE EFICIENTEMENTE === @
+  @ Só popula o Web Service quando os dados estão prontos @
+  popularCotacaoComListas();
+  
+  @ === ETAPA 4: EXECUTAR E PROCESSAR RETORNO === @
+  wsCotacao.ModoExecucao = 1;
+  wsCotacao.Executar();
+  
+  processarRetornoCotacao();
+}
+
+Funcao inicializarListasCotacao(); {
+  @ Configurar estrutura da lista de encomendas @
+  vlEncomendas.DefinirCampos();
+  vlEncomendas.AdicionarCampo("IdEncomenda", numero);
+  vlEncomendas.AdicionarCampo("NumeroEnvio", numero);
+  vlEncomendas.AdicionarCampo("CepDestino", alfa, 8);
+  vlEncomendas.AdicionarCampo("PesoTotal", numero);
+  vlEncomendas.AdicionarCampo("Altura", numero);
+  vlEncomendas.AdicionarCampo("Largura", numero);
+  vlEncomendas.AdicionarCampo("Comprimento", numero);
+  vlEncomendas.AdicionarCampo("TipoServico", alfa, 20);
+  vlEncomendas.AdicionarCampo("StatusCotacao", alfa, 1);
+  vlEncomendas.EfetivarCampos();
+  vlEncomendas.Chave("IdEncomenda");
+}
+
+Funcao buscarEncomendasElegiveis(); {
+  @ Simulação de busca no banco - na prática seria um cursor SQL @
+  Definir Numero vnContador;
+  
+  Para (vnContador = 1; vnContador <= 50; vnContador++) {
+    @ Adicionar encomendas elegíveis para cotação na lista @
+    vlEncomendas.Adicionar();
+    vlEncomendas.IdEncomenda = vnContador;
+    vlEncomendas.NumeroEnvio = vnContador + 5000;
+    vlEncomendas.CepDestino = "01310100";
+    vlEncomendas.PesoTotal = 1200; @ gramas @
+    vlEncomendas.Altura = 15; @ cm @
+    vlEncomendas.Largura = 12; @ cm @
+    vlEncomendas.Comprimento = 20; @ cm @
+    vlEncomendas.TipoServico = "EXPRESSO";
+    vlEncomendas.StatusCotacao = "S";
+    vlEncomendas.Gravar();
+  }
+}
+
+Funcao popularCotacaoComListas(); {
+  @ === PERFORMANCE: Popular Web Service a partir da lista === @
+  Definir Numero vnTem;
+  Definir Numero vnContadorEnvios; vnContadorEnvios = 0;
+  
+  @ Navegar pela lista e popular Web Service @
+  vnTem = vlEncomendas.Primeiro();
+  Enquanto (vnTem = 1) {
+    Se (vlEncomendas.StatusCotacao = "S") {
+      @ Criar linha no Web Service de Cotação @
+      wsCotacao.Encomendas.CriarLinha();
+      
+      @ Popular dados validados da lista @
+      Definir Alfa vaIdEncomenda;
+      IntParaAlfa(vlEncomendas.IdEncomenda, vaIdEncomenda);
+      wsCotacao.Encomendas.Identificador = vaIdEncomenda;
+      wsCotacao.Encomendas.CepDestino = vlEncomendas.CepDestino;
+      wsCotacao.Encomendas.Peso = vlEncomendas.PesoTotal;
+      wsCotacao.Encomendas.Altura = vlEncomendas.Altura;
+      wsCotacao.Encomendas.Largura = vlEncomendas.Largura;
+      wsCotacao.Encomendas.Comprimento = vlEncomendas.Comprimento;
+      wsCotacao.Encomendas.Servico = vlEncomendas.TipoServico;
+      
+      vnContadorEnvios++;
+    }
+    
+    vnTem = vlEncomendas.Proximo();
+  }
+  
+  @ Debug @
+  Definir Alfa vaContadorStr;
+  Definir Alfa vaMensagem;
+  IntParaAlfa(vnContadorEnvios, vaContadorStr);
+  vaMensagem = "Enviadas " + vaContadorStr + " encomendas para cotação de frete";
+  Mensagem(Retorna, vaMensagem);
+}
+
+Funcao processarRetornoCotacao(); {
+  @ === PADRÃO DE LEITURA DE RETORNO === @
+  Definir Numero vnQtdRetorno;
+  Definir Numero vnContador;
+  Definir Alfa vaIdEncomendaRetorno;
+  Definir Numero vnValorFrete;
+  Definir Numero vnPrazoEntrega;
+  
+  @ Obter quantidade de cotações retornadas @
+  vnQtdRetorno = wsCotacao.Encomendas.QtdLinhas;
+  
+  Se (vnQtdRetorno > 0) {
+    vnContador = 0;
+    
+    @ Loop padrão para processar retorno @
+    Enquanto (vnContador < vnQtdRetorno) {
+      @ Posicionar na linha atual @
+      wsCotacao.Encomendas.LinhaAtual = vnContador;
+      
+      @ Ler dados do retorno @
+      vaIdEncomendaRetorno = wsCotacao.Encomendas.Identificador;
+      vnValorFrete = wsCotacao.Encomendas.ValorCotado;
+      vnPrazoEntrega = wsCotacao.Encomendas.PrazoEntrega;
+      
+      @ === PERFORMANCE: Buscar encomenda correspondente na lista === @
+      @ Em vez de consultar banco novamente @
+      Definir Numero vnIdEncomendaBusca;
+      AlfaParaInt(vaIdEncomendaRetorno, vnIdEncomendaBusca);
+      
+      vlEncomendas.SetarChave();
+      vlEncomendas.IdEncomenda = vnIdEncomendaBusca;
+      
+      Se (vlEncomendas.VaiParaChave() = 1) {
+        @ Processar cotação encontrada @
+        Definir Alfa vaMensagem;
+        Definir Alfa vaNumEnvioStr;
+        Definir Alfa vaValorStr;
+        Definir Alfa vaPrazoStr;
+        IntParaAlfa(vlEncomendas.NumeroEnvio, vaNumEnvioStr);
+        DecimalParaAlfa(vnValorFrete, vaValorStr);
+        IntParaAlfa(vnPrazoEntrega, vaPrazoStr);
+        vaMensagem = "Envio " + vaNumEnvioStr + " - Frete: R$ " + vaValorStr + " - Prazo: " + vaPrazoStr + " dias";
+        Mensagem(Retorna, vaMensagem);
+        
+        @ Salvar cotação na lista de cotações @
+        vlCotacoes.Adicionar();
+        vlCotacoes.IdEncomenda = vnIdEncomendaBusca;
+        vlCotacoes.ValorFrete = vnValorFrete;
+        vlCotacoes.PrazoEntrega = vnPrazoEntrega;
+        vlCotacoes.Gravar();
+      }
+      
+      vnContador++;
+    }
+  }
+}
+```
+
+#### Vantagens da Abordagem com Listas
+
+1. **Performance**: Listas dinâmicas são **10x a 100x mais rápidas** que manipulação direta de grids de Web Service
+2. **Organização**: Dados ficam organizados em memória antes da transmissão
+3. **Validação**: Permite validar e corrigir dados antes de enviar
+4. **Reutilização**: Dados podem ser reutilizados para múltiplos Web Services
+5. **Debugging**: Mais fácil debugar dados em listas que em grids de WS
+
+#### Resumo das Melhores Práticas
+
+| **Cenário** | **Recomendação** | **Motivo** |
+|-------------|------------------|------------|
+| **Poucos dados (< 10 linhas)** | Manipulação direta do grid | Simplicidade |
+| **Muitos dados (> 10 linhas)** | Usar listas + popular grid | Performance |
+| **Dados complexos** | Usar listas + validação | Organização |
+| **Múltiplos Web Services** | Usar listas + reutilizar | Eficiência |
+| **Dados do banco** | Cursor → Lista → Grid | Padrão recomendado |
+
+**🎯 Regra de Ouro:** Para qualquer operação com mais de 10 linhas de dados, **sempre use listas dinâmicas** para preparar os dados antes de popular grids de Web Service!
 
 ## Chamada HTTP
 
@@ -11204,6 +12898,6 @@ Mensagem(Retorna, vaMensagem);
 
 ---
 
-**📚 Fim da Documentação LSP - Linguagem Senior de Programação**
+**📚 Fim da Documentação LSP - Linguagem Sênior de Programação**
 
 *Desenvolvido em colaboração | Atualizado em 2025*
