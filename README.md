@@ -1,10 +1,30 @@
-# Documentação da Linguagem LSP - Linguagem Sênior de Programação
+# 📚 Documentação LSP - Linguagem Sênior de Programação
 
 [![Senior Sistemas](https://img.shields.io/badge/Senior-Sistemas-blue)](https://www.senior.com.br)
 [![LSP](https://img.shields.io/badge/Linguagem-LSP-green)](https://documentacao.senior.com.br/tecnologia)
+[![Documentação](https://img.shields.io/badge/Docs-Completa-brightgreen)](https://github.com/brunoleocam/LSP/blob/main/README.md)
+[![Exemplos](https://img.shields.io/badge/Exemplos-100+-orange)](https://github.com/brunoleocam/LSP/tree/main/exemplos)
 [![Status](https://img.shields.io/badge/Status-Ativo-brightgreen)]()
 
-> **Documentação Oficial:** <https://documentacao.senior.com.br/tecnologia>
+> **🎯 Propósito desta Documentação**
+> 
+> Esta documentação tem como objetivo **organizar de forma didática e com exemplos práticos** todo o conhecimento sobre a **Linguagem Sênior de Programação (LSP)**, facilitando o aprendizado e entendimento da linguagem para desenvolvedores de todos os níveis.
+>
+> **⚠️ IMPORTANTE:** Para informações oficiais, atualizações e documentação técnica detalhada, sempre consulte o **[site oficial da Senior](https://www.senior.com.br)** e a **[documentação oficial](https://documentacao.senior.com.br/tecnologia)**.
+>
+> **📖 O que você encontrará aqui:**
+> - ✅ **Exemplos práticos** de uso da LSP
+> - ✅ **Guia progressivo** de aprendizado
+> - ✅ **Padrões e boas práticas** recomendadas
+> - ✅ **Casos de uso reais** detalhados
+> - ✅ **Troubleshooting** de problemas comuns
+> - ✅ **Quick reference** para consulta rápida
+
+---
+
+## 🏷️ **Tags e Palavras-Chave**
+
+`LSP` `Linguagem Senior` `Senior Sistemas` `Programação` `ERP` `Gestão Empresarial` `Automação` `Web Services` `SQL` `Relatórios` `API` `Integração` `Desenvolvimento` `Senior G5` `Ruleengine` `Regras de Negócio` `Tutorial LSP` `Documentação LSP` `Exemplos LSP` `Guia LSP` `Manual LSP`
 
 ---
 
@@ -43,6 +63,7 @@ Definir Data vdNascimento;  @ Data @
 ### **🎯 Fundamentos**
 - [Introdução](#introdução)
 - [Sintaxe e Estrutura](#sintaxe-e-estrutura)
+- [Caracteres com Comportamento Especial](#caracteres-com-comportamento-especial)
 - [Comentários](#comentários)
 - [Palavras Reservadas](#palavras-reservadas)
 - [Variáveis de Sistema](#variáveis-de-sistema)
@@ -51,6 +72,7 @@ Definir Data vdNascimento;  @ Data @
 ### **📊 Dados e Variáveis**
 - [Tipo de Dados e Variáveis](#tipo-de-dados-e-variáveis)
 - [Definição de Arrays](#definição-de-arrays)
+- [Definição de Listas](#definição-de-listas)
 - [Definição de Tabelas](#definição-de-tabelas)
 ### **🔧 Manipulação de Dados**
 - [Manipulação Avançada de Strings](#manipulação-avançada-de-strings)
@@ -70,11 +92,13 @@ Definir Data vdNascimento;  @ Data @
 ### **🎮 Controle de Fluxo**
 - [Controle de Fluxo](#controle-de-fluxo)
 - [Definição de Funções](#definição-de-funções)
+- [Retorno para Aplicação](#retorno-para-aplicação)
 
 ### **🗃️ Banco de Dados**
 - [Definição de Cursor](#definição-de-cursor)
 - [Funções SQL](#funções-sql)
 - [Funções de Lista de Regras](#funções-de-lista-de-regras)
+  - [Funções Completas de Lista de Regras](#funções-completas-de-lista-de-regras)
 
 ### **📊 Gerador de Relatórios**
 - [Funções Específicas do Gerador de Relatórios](#funções-específicas-do-gerador-de-relatórios)
@@ -95,6 +119,7 @@ Definir Data vdNascimento;  @ Data @
   - [Personalização do Nome do Arquivo Gerado](#-personalização-do-nome-do-arquivo-gerado)
 
 ### **🌐 Integração e APIs**
+- [Gerenciamento Avançado de Arquivos](#gerenciamento-avançado-de-arquivos)
 - [Manipulação de Arquivos](#manipulação-de-arquivos)
 - [Chamada de Web Service](#chamada-de-web-service)
 - [Chamada HTTP](#chamada-http)
@@ -115,6 +140,8 @@ Definir Data vdNascimento;  @ Data @
 - [🎓 Exercícios Práticos por Nível](#️-exercícios-práticos-por-nível)
 - [🎯 Quick Reference Cards](#️-quick-reference-cards)
 - [🎯 Casos de Uso Reais Detalhados](#️-casos-de-uso-reais-detalhados)
+- [📝 Cheat Sheet LSP (Cola Rápida)](#️-cheat-sheet-lsp-cola-rápida)
+- [🚨 LEMBRETE FINAL: Regra de Ouro da LSP](#️-lembrete-final-regra-de-ouro-da-lsp)
 
 ---
 
@@ -137,11 +164,13 @@ Definir Data vdNascimento;  @ Data @
 7. **Décimo segundo**: [Cast de Variável](#cast-de-variável) - Converta entre tipos
 
 ### **⚡ Nível 3: Avançado (Recursos Especializados)**
-1. **Décimo terceiro**: [Definição de Cursor](#definição-de-cursor) - Acesse bancos de dados
-2. **Décimo quarto**: [Funções SQL](#funções-sql) - Execute SQL diretamente
-3. **Décimo quinto**: [Chamada HTTP](#chamada-http) - Integre com APIs
-4. **Décimo sexto**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
-5. **Décimo sétimo**: [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) - Exemplos reais
+1. **Décimo terceiro**: [Definição de Listas](#definição-de-listas) - Trabalhe com listas dinâmicas
+2. **Décimo quarto**: [Funções de Lista de Regras](#funções-de-lista-de-regras) - Manipule listas avançadas
+3. **Décimo quinto**: [Definição de Cursor](#definição-de-cursor) - Acesse bancos de dados
+4. **Décimo sexto**: [Funções SQL](#funções-sql) - Execute SQL diretamente
+5. **Décimo sétimo**: [Chamada HTTP](#chamada-http) - Integre com APIs
+6. **Décimo oitavo**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
+7. **Décimo nono**: [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) - Exemplos reais
 
 ## 🔍 **Debugging e Troubleshooting**
 
@@ -7096,6 +7125,48 @@ As listas em memória podem ser usadas quando precisa-se navegar muitas vezes no
 ✅ **A liberação da memória é de responsabilidade da lista, não cabendo ao usuário a chamada de um comando para isto. Pode-se apenas excluir os registros. Isto pode ser feito individualmente, ou através do comando Limpar (que remove todos os registros da lista)**
 ✅ **A ordenação pode ser realizada em qualquer momento, apenas configurando a chave da lista**
 ✅ **Ordenação facilitada através da definição de uma chave, sem a necessidade de ler novamente os dados**
+
+### 🔄 **Como Ordenar uma Lista Dinâmica Quando Já Preenchida**
+
+A ordenação de uma lista dinâmica já preenchida depende da **chave que você definiu** no momento da criação da lista. Para ordenar a lista em uma sequência diferente, você precisa redefinir a chave:
+
+**Sintaxe:**
+```lsp
+nomeLista.Chave("campo1;campo2;campo3");
+```
+
+**Exemplo Prático:**
+```lsp
+@ Lista já preenchida com dados @
+vlClientes.DefinirCampos();
+vlClientes.AdicionarCampo("Codigo", numero);
+vlClientes.AdicionarCampo("Nome", alfa, 50);
+vlClientes.AdicionarCampo("Cidade", alfa, 30);
+vlClientes.EfetivarCampos();
+
+@ Popular dados... @
+@ (dados já inseridos na lista) @
+
+@ === DIFERENTES FORMAS DE ORDENAÇÃO === @
+
+@ 1. Ordenar por código (crescente) @
+vlClientes.Chave("Codigo");
+
+@ 2. Ordenar por nome (alfabética) @
+vlClientes.Chave("Nome");
+
+@ 3. Ordenar por cidade e depois por nome @
+vlClientes.Chave("Cidade;Nome");
+
+@ 4. Ordenar decrescente (usar campo auxiliar ou lógica específica) @
+@ Para ordem decrescente, criar campo auxiliar ou reorganizar dados @
+```
+
+**⚠️ Observações Importantes:**
+- A lista **reorganiza automaticamente** os dados quando você redefine a chave
+- **Não é necessário recarregar** os dados após alterar a chave
+- A ordenação é **sempre crescente** - para decrescente, use campos auxiliares
+- **Performance**: A reordenação é rápida, pois os dados já estão em memória
 ✅ **Permite a inserção, atualização e exclusão de registros durante o uso**
 ✅ **Permite a definição de campos customizados. Os campos não precisam seguir um padrão estipulado em alguma tabela**
 ✅ **Pode-se navegar pela lista tanto para frente quanto para trás quantas vezes forem necessárias**
@@ -13071,418 +13142,6 @@ Funcao buscarCidadeApi(Numero vnCidApi); {
 3. **Verificação de códigos de status** antes de processar
 4. **Formatação adequada de parâmetros** com ConverteMascara
 5. **Tratamento de erros** com mensagens informativas
-
-## 🚀 **Exemplos Práticos de APIs**
-
-Esta seção demonstra operações HTTP essenciais usando APIs reais. Os exemplos são organizados por funcionalidade e incluem autenticação completa.
-
-### 🔧 **CRUD Básico - ReqRes API**
-
-A **ReqRes API** (https://reqres.in) oferece operações CRUD funcionais sem necessidade de autenticação.
-
-#### **GET - Buscar Usuário**
-
-```lsp
-Funcao buscarUsuario(Numero vnIdUsuario); {
-  Definir Alfa vaHTTP;
-  Definir Alfa vaURL;
-  Definir Alfa vaJSON;
-  Definir Alfa vaId;
-  Definir Alfa vaMensagem;
-  Definir Alfa vaNome;
-  Definir Alfa vaEmail;
-  Definir Numero vnCodRes;
-
-  @ Monta URL @
-  IntParaAlfa(vnIdUsuario, vaId);
-  vaURL = "https://reqres.in/api/users/" + vaId;
-
-  @ Configura requisição @
-  HttpObjeto(vaHTTP);
-  HttpDesabilitaErroResposta(vaHTTP);
-  HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json");
-
-  @ Executa GET @
-  HttpGet(vaHTTP, vaURL, vaJSON);
-  HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-  Se (vnCodRes = 200) {
-    ValorElementoJson(vaJSON, "data", "first_name", vaNome);
-    ValorElementoJson(vaJSON, "data", "email", vaEmail);
-    vaMensagem = " Usuário encontrado: " + vaNome + " (" + vaEmail + ")";
-    Mensagem(Retorna, vaMensagem);
-  } Senao Se (vnCodRes = 404) {
-    Mensagem(Retorna, "Usuário não encontrado");
-  } Senao {
-    IntParaAlfa(vnCodRes, vaId);
-    Mensagem(Erro, "Erro na requisição: " + vaId);
-  }
-}
-```
-
-#### **POST - Criar Usuário**
-
-```lsp
-@ Variáveis globais para dados do usuário @
-Definir Alfa vaNomeUsuario;
-Definir Alfa vaCargoUsuario;
-
-@ Exemplo de uso @
-vaNomeUsuario = "João Silva";
-vaCargoUsuario = "Desenvolvedor";
-criarUsuario();
-
-Funcao criarUsuario(); {
-  Definir Alfa vaHTTP;
-  Definir Alfa vaJSON;
-  Definir Alfa vaBody;
-  Definir Alfa vaId;
-  Definir Alfa vaMensagem;
-  Definir Numero vnCodRes;
-
-  @ Monta JSON usando variáveis globais @
-  vaBody = "{\"name\": \"" + vaNomeUsuario + "\", \"job\": \"" + vaCargoUsuario + "\"}";
-
-  @ Configura requisição @
-  HttpObjeto(vaHTTP);
-  HttpDesabilitaErroResposta(vaHTTP);
-  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
-
-  @ Executa POST @
-  HttpPost(vaHTTP, "https://reqres.in/api/users", vaBody, vaJSON);
-  HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-  Se (vnCodRes = 201) {
-    ValorElementoJson(vaJSON, "", "id", vaId);
-    vaMensagem = " Usuário criado! ID: " + vaId;
-    Mensagem(Retorna, vaMensagem);
-  } Senao {
-    IntParaAlfa(vnCodRes, vaId);
-    Mensagem(Erro, "Erro ao criar: " + vaId);
-  }
-}
-```
-
-#### **PUT - Atualizar Completo**
-
-```lsp
-@ Variáveis globais para atualização @
-Definir Numero vnIdUsuario;
-Definir Alfa vaNomeAtualizar;
-Definir Alfa vaCargoAtualizar;
-
-@ Exemplo de uso @
-vnIdUsuario = 2;
-vaNomeAtualizar = "João Santos";
-vaCargoAtualizar = "Analista Senior";
-atualizarUsuario();
-
-Funcao atualizarUsuario(); {
-  Definir Alfa vaHTTP;
-  Definir Alfa vaURL;
-  Definir Alfa vaJSON;
-  Definir Alfa vaBody;
-  Definir Alfa vaIdStr;
-  Definir Numero vnCodRes;
-
-  IntParaAlfa(vnIdUsuario, vaIdStr);
-  vaURL = "https://reqres.in/api/users/" + vaIdStr;
-  vaBody = "{\"name\": \"" + vaNomeAtualizar + "\", \"job\": \"" + vaCargoAtualizar + "\"}";
-
-  HttpObjeto(vaHTTP);
-  HttpDesabilitaErroResposta(vaHTTP);
-  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
-
-  @ PUT substitui recurso completo @
-  HttpPut(vaHTTP, vaURL, vaBody, vaJSON);
-  HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-  Se (vnCodRes = 200) {
-    Mensagem(Retorna, " Usuário " + vaIdStr + " atualizado completamente");
-  } Senao {
-    IntParaAlfa(vnCodRes, vaIdStr);
-    Mensagem(Erro, "Erro ao atualizar: " + vaIdStr);
-  }
-}
-
-@ Exemplo de uso @
-vnIdUsuario = 2;
-vaNomeAtualizar = "João Santos";
-vaCargoAtualizar = "Analista Senior";
-atualizarUsuario();
-```
-
-#### **PATCH - Atualizar Parcial**
-
-```lsp
-@ Variáveis globais para PATCH @
-Definir Numero vnIdCargo;
-Definir Alfa vaNovoCargo;
-
-@ Exemplo de uso @
-vnIdCargo = 2;
-vaNovoCargo = "Tech Lead";
-atualizarCargo();
-
-Funcao atualizarCargo(); {
-  Definir Alfa vaHTTP;
-  Definir Alfa vaURL;
-  Definir Alfa vaJSON;
-  Definir Alfa vaBody;
-  Definir Alfa vaIdStr;
-  Definir Numero vnCodRes;
-
-  IntParaAlfa(vnIdCargo, vaIdStr);
-  vaURL = "https://reqres.in/api/users/" + vaIdStr;
-  vaBody = "{\"job\": \"" + vaNovoCargo + "\"}"; @ Apenas o campo alterado @
-
-  HttpObjeto(vaHTTP);
-  HttpDesabilitaErroResposta(vaHTTP);
-  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
-
-  @ PATCH modifica apenas campos específicos @
-  HttpPatch(vaHTTP, vaURL, vaBody, vaJSON);
-  HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-  Se (vnCodRes = 200) {
-    Mensagem(Retorna, " Cargo atualizado para: " + vaNovoCargo);
-  } Senao {
-    IntParaAlfa(vnCodRes, vaIdStr);
-    Mensagem(Erro, "Erro ao atualizar cargo: " + vaIdStr);
-  }
-}
-
-@ Exemplo de uso @
-vnIdCargo = 2;
-vaNovoCargo = "Tech Lead";
-atualizarCargo();
-```
-
-#### **DELETE - Excluir Usuário**
-
-```lsp
-Funcao excluirUsuario(Numero vnId); {
-  Definir Alfa vaHTTP;
-  Definir Alfa vaURL;
-  Definir Alfa vaJSON;
-  Definir Alfa vaIdStr;
-  Definir Numero vnCodRes;
-
-  IntParaAlfa(vnId, vaIdStr);
-  vaURL = "https://reqres.in/api/users/" + vaIdStr;
-
-  HttpObjeto(vaHTTP);
-  HttpDesabilitaErroResposta(vaHTTP);
-
-  HttpDelete(vaHTTP, vaURL, vaJSON);
-  HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-  Se (vnCodRes = 204) {
-    Mensagem(Retorna, " Usuário " + vaIdStr + " excluído com sucesso");
-  } Senao {
-    IntParaAlfa(vnCodRes, vaIdStr);
-    Mensagem(Erro, "Erro ao excluir: " + vaIdStr);
-  }
-}
-```
-
-### 🔐 **Autenticação Basic Auth - HTTPBin**
-
-Demonstra autenticação básica real usando usuário e senha.
-
-```lsp
-@ Variáveis globais para Basic Auth @
-Definir Alfa vaUsuarioAuth;
-Definir Alfa vaSenhaAuth;
-
-@ Exemplo de uso @
-vaUsuarioAuth = "admin";
-vaSenhaAuth = "senha123";
-testarBasicAuth();
-
-Funcao testarBasicAuth(); {
-  Definir Alfa vaHTTP;
-  Definir Alfa vaURL;
-  Definir Alfa vaJSON;
-  Definir Alfa vaCredenciais;
-  Definir Alfa vaAuth;
-  Definir Alfa vaUsuarioRetornado;
-  Definir Numero vnCodRes;
-
-  @ Monta URL com credenciais @
-  vaURL = "https://httpbin.org/basic-auth/" + vaUsuarioAuth + "/" + vaSenhaAuth;
-
-  @ Gera header Authorization @
-  vaCredenciais = vaUsuarioAuth + ":" + vaSenhaAuth;
-  Base64Encode(vaCredenciais, vaAuth);
-  vaAuth = "Basic " + vaAuth;
-
-  @ Configura requisição @
-  HttpObjeto(vaHTTP);
-  HttpDesabilitaErroResposta(vaHTTP);
-  HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuth);
-
-  @ Executa requisição @
-  HttpGet(vaHTTP, vaURL, vaJSON);
-  HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-  Se (vnCodRes = 200) {
-    ValorElementoJson(vaJSON, "", "user", vaUsuarioRetornado);
-    Mensagem(Retorna, " Autenticação Basic Auth: " + vaUsuarioRetornado);
-  } Senao Se (vnCodRes = 401) {
-    Mensagem(Retorna, "Credenciais inválidas - 401 Unauthorized");
-  } Senao {
-    IntParaAlfa(vnCodRes, vaAuth);
-    Mensagem(Erro, "Erro inesperado: " + vaAuth);
-  }
-}
-
-@ Exemplo de uso @
-vaUsuarioAuth = "admin";
-vaSenhaAuth = "senha123";
-testarBasicAuth();
-```
-
-### 🎫 **Autenticação Bearer Token - HTTPBin**
-
-Demonstra autenticação com token Bearer.
-
-```lsp
-@ Variável global para Bearer Token @
-Definir Alfa vaTokenBearer;
-
-@ Exemplo de uso @
-vaTokenBearer = "meu-token-secreto";
-testarBearerToken();
-
-Funcao testarBearerToken(); {
-  Definir Alfa vaHTTP;
-  Definir Alfa vaJSON;
-  Definir Alfa vaAuth;
-  Definir Alfa vaTokenRetornado;
-  Definir Numero vnCodRes;
-
-  @ Monta header Authorization @
-  vaAuth = "Bearer " + vaTokenBearer;
-
-  @ Configura requisição @
-  HttpObjeto(vaHTTP);
-  HttpDesabilitaErroResposta(vaHTTP);
-  HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuth);
-
-  @ Executa requisição @
-  HttpGet(vaHTTP, "https://httpbin.org/bearer", vaJSON);
-  HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-  Se (vnCodRes = 200) {
-    ValorElementoJson(vaJSON, "", "token", vaTokenRetornado);
-    Mensagem(Retorna, " Autenticação Bearer: " + vaTokenRetornado);
-  } Senao Se (vnCodRes = 401) {
-    Mensagem(Retorna, "Token inválido - 401 Unauthorized");
-  } Senao {
-    IntParaAlfa(vnCodRes, vaAuth);
-    Mensagem(Erro, "Erro inesperado: " + vaAuth);
-  }
-}
-
-@ Exemplo de uso @
-vaTokenBearer = "meu-token-secreto";
-testarBearerToken();
-```
-
-### 🔑 **Fluxo Completo: Login + Token + CRUD**
-
-Exemplo completo simulando login para obter token e usar em operações subsequentes.
-
-```lsp
-Funcao exemploFluxoCompleto(); {
-  Definir Alfa vaHTTP;
-  Definir Alfa vaJSON;
-  Definir Alfa vaBody;
-  Definir Alfa vaToken;
-  Definir Alfa vaAuth;
-  Definir Numero vnCodRes;
-
-  HttpObjeto(vaHTTP);
-  HttpDesabilitaErroResposta(vaHTTP);
-
-  @ 1. LOGIN - Simula obtenção de token @
-  vaBody = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}";
-  HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
-  
-  HttpPost(vaHTTP, "https://reqres.in/api/login", vaBody, vaJSON);
-  HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-  Se (vnCodRes = 200) {
-    @ Extrai token @
-    ValorElementoJson(vaJSON, "", "token", vaToken);
-    Mensagem(Retorna, " Login realizado! Token: " + vaToken);
-
-    @ 2. USA TOKEN - Em requisição subsequente @
-    vaAuth = "Bearer " + vaToken;
-    HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuth);
-
-    @ 3. OPERAÇÃO AUTENTICADA - Buscar usuários @
-    HttpGet(vaHTTP, "https://reqres.in/api/users?page=1", vaJSON);
-    HttpLeCodigoResposta(vaHTTP, vnCodRes);
-
-    Se (vnCodRes = 200) {
-      Mensagem(Retorna, " Dados obtidos com token de autenticação!");
-    } Senao {
-      Mensagem(Erro, "Erro ao usar token autenticado");
-    }
-  } Senao {
-    Mensagem(Erro, "Falha no login");
-  }
-}
-```
-
-### 📋 **Exemplos de Uso**
-
-```lsp
-@ CRUD Básico @
-buscarUsuario(2);
-
-vaNomeUsuario = "João Silva";
-vaCargoUsuario = "Desenvolvedor";
-criarUsuario();
-
-vnIdUsuario = 2;
-vaNomeAtualizar = "João Santos";
-vaCargoAtualizar = "Analista Senior";
-atualizarUsuario();
-
-vnIdCargo = 2;
-vaNovoCargo = "Tech Lead";
-atualizarCargo();
-
-excluirUsuario(2);
-
-@ Autenticação @
-vaUsuarioAuth = "admin";
-vaSenhaAuth = "senha123";
-testarBasicAuth();
-
-vaTokenBearer = "meu-token-secreto";
-testarBearerToken();
-
-@ Fluxo completo @
-exemploFluxoCompleto();
-```
-
-###  **Resumo das APIs Utilizadas**
-
-| API | Funcionalidade | Autenticação | Status |
-|-----|---------------|--------------|--------|
-| **ReqRes** | CRUD completo funcional | Não requer |  Real |
-| **HTTPBin Basic** | Teste Basic Auth |  user:pass |  Real |
-| **HTTPBin Bearer** | Teste Bearer Token |  Bearer token |  Real |
-
-**💡 Vantagens desta abordagem:**
-- 🎯 **Foco didático**: Um exemplo claro de cada conceito
--  **Funcionalidade real**: Todas as operações funcionam de verdade
-- 🔐 **Autenticação completa**: Basic Auth e Bearer Token reais
-- 📚 **Progressão lógica**: Do básico ao avançado
 
 ---
 
