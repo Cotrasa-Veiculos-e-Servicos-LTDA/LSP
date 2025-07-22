@@ -123,6 +123,7 @@ Definir Data vdNascimento;  @ Data @
 - [Manipulação de Arquivos](#manipulação-de-arquivos)
 - [Chamada de Web Service](#chamada-de-web-service)
 - [Chamada HTTP](#chamada-http)
+  - [Resolução de Problemas SSL/HTTPS](#-resolução-de-problemas-sslhttps)
 - [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis)
 
 ### **🎨 Interface do Usuário**
@@ -169,6 +170,7 @@ Definir Data vdNascimento;  @ Data @
 3. **Décimo quinto**: [Definição de Cursor](#definição-de-cursor) - Acesse bancos de dados
 4. **Décimo sexto**: [Funções SQL](#funções-sql) - Execute SQL diretamente
 5. **Décimo sétimo**: [Chamada HTTP](#chamada-http) - Integre com APIs
+   - [Resolução de Problemas SSL/HTTPS](#-resolução-de-problemas-sslhttps) - Solucione erros SSL
 6. **Décimo oitavo**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
 7. **Décimo nono**: [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) - Exemplos reais
 
@@ -682,7 +684,30 @@ Se (vnCondicao = 1) {
 }
 ```
 
-### **❌ Erro #4: Confundir Tipos de Dados**
+### **❌ Erro #4: Concatenação Incorreta de Tipos**
+**Problema:** Tentar concatenar variáveis numéricas diretamente
+```lsp
+@ ❌ INCORRETO - ERRO DE CONCATENAÇÃO @
+Definir Numero vnIdade;
+Definir Alfa vaMensagem;
+vnIdade = 25;
+vaMensagem = "Idade: " + vnIdade;  @ ERRO: Numero não concatena @
+```
+
+**Solução:** Converta para Alfa primeiro
+```lsp
+@ ✅ CORRETO - CONVERSÃO ANTES DA CONCATENAÇÃO @
+Definir Numero vnIdade;
+Definir Alfa vaIdadeStr;
+Definir Alfa vaMensagem;
+vnIdade = 25;
+IntParaAlfa(vnIdade, vaIdadeStr);  @ Converte para Alfa @
+vaMensagem = "Idade: " + vaIdadeStr;  @ Concatena apenas Alfas @
+```
+
+**⚠️ REGRA CRÍTICA:** **Apenas variáveis do tipo `Alfa` podem ser concatenadas em LSP!**
+
+### **❌ Erro #5: Confundir Tipos de Dados**
 **Problema:** Tentar atribuir tipos incompatíveis
 ```lsp
 @ ❌ INCORRETO - ERRO DE TIPO @
@@ -1432,7 +1457,7 @@ A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP 
 | Fim; (End ou "}" - fecha chaves) | Marcador utilizado para finalizar um bloco. |
 | Para (For) | Comando utilzado para se fazer um loop de comandos. Ou seja, fazer com que um bloco de comandos seja executado determinado número de vezes. Indica-se um \<valor inicial\> e esse valor é incrementado pelo valor do \<contador\> até que a \<condicao\> seja falsa. Sintaxe: Para (\<valor inicial\>; \<condicao\>; \<contador\>); |
 | Enquanto (While) | Comando utilizado para se fazer um loop de comandos. Ou seja, fazer com que um bloco de comandos seja executado determinado número de vezes até que a \<condição>, seja falsa. Sintaxe: Enquanto (\<condicao\>); |
-| Pare (Break) | Interrompe a execução de um bloco do comando Para ou Enquanto. O Pare, simplesmente faz com que o sistema abandone o bloco de comandos e continue a execução do restante das regras. Sintaxe: Pare;|
+| Pare (Break) | Interrompe a execução de um bloco do comando Para ou Enquanto. O Pare, simplesmente faz com que o sistema abandone o bloco de comandos e continue a execução do restante das regras. **⚠️ IMPORTANTE: Pare; só pode ser usado dentro de loops Para ou Enquanto! Se usado fora destes contextos, causará erro de compilação.** Sintaxe: Pare;|
 | Cancel (1) | Se for utilizado em uma regra do evento "Antes de Imprimir" de uma seção, cancela a impressão da seção. Se for usado no evento "Na Impressão" de um campo, cancela a impressão deste campo. Sintaxe: Cancel (1); |
 | Cancel (2) | Deve ser usado em conjunto com as variáveis de sistema ValStr ou ValRet e somente no Evento "Na Impressão". O valor alfa atribuído para ValStr seguido de Cancel (2) será impresso no campo em que foi implementada a regra. Sintaxe: Cancel (2); |
 | Cancel (3) | Utilizado apenas em controles do tipo fórmula (na ordenação por fórmula) para excluir o registro atual do relatório (semelhante a executar o Cancel(1) nas regras: Definição\Seleção, Detalhe\Antes_de_Imprimir e Detalhe\Depois_de_Imprimir) |
@@ -1706,14 +1731,14 @@ Funcao validarEmail(); {
   TamanhoAlfa(vaEmail, vnTamanho);
   Se (vnTamanho < 5) {
     Mensagem(Erro, "Email muito curto!");
-    Pare;
+    Cancel(1);
   }
   
   @ 2. Encontrar @ @
   PosicaoAlfa("@", vaEmail, vnPosArroba);
   Se (vnPosArroba = 0) {
     Mensagem(Erro, "Email deve conter @");
-    Pare;
+    Cancel(1);
   }
   
   @ 3. Extrair usuário @
@@ -1740,21 +1765,40 @@ Funcao validarEmail(); {
 
 #### Concatenação de Strings
 
-Na LSP, não é possível concatenar diretamente uma variável do tipo Numero com uma variável do tipo Alfa. Para realizar essa operação, é necessário:
+**⚠️ REGRA FUNDAMENTAL: Apenas variáveis do tipo `Alfa` podem ser concatenadas em LSP.**
 
-1. Definir uma variável Alfa com o mesmo nome da variável numérica, mudando apenas o prefixo de `vn` para `va`
-2. Utilizar a função `IntParaAlfa()` para converter o valor numérico em string
+Na LSP, **não é possível concatenar diretamente uma variável do tipo `Numero` com uma variável do tipo `Alfa`** ou com strings literais. Para realizar concatenação, é necessário:
 
-**Exemplo:**
+1. **Todos os elementos** da concatenação devem ser do tipo `Alfa`
+2. **Converter variáveis numéricas** para `Alfa` usando funções como `IntParaAlfa()` ou `DecimalParaAlfa()`
+3. **Definir uma variável Alfa** com o mesmo nome da variável numérica, mudando apenas o prefixo de `vn` para `va`
+
+**✅ Exemplo CORRETO:**
 ```lsp
 Definir Numero vnNumero;
-Definir Alfa vaNumero;
+Definir Alfa vaNumero;     @ Variável Alfa para receber conversão @
 Definir Alfa vaResultado;
 
 vnNumero = 10;
-IntParaAlfa(vnNumero, vaNumero);
-vaResultado = "O número é " + vaNumero;
+IntParaAlfa(vnNumero, vaNumero);  @ Converte número para Alfa @
+vaResultado = "O número é " + vaNumero;  @ Concatena apenas Alfas @
 ```
+
+**❌ Exemplo INCORRETO:**
+```lsp
+Definir Numero vnNumero;
+Definir Alfa vaResultado;
+
+vnNumero = 10;
+vaResultado = "O número é " + vnNumero;  @ ERRO: Numero não pode ser concatenado! @
+```
+
+**📋 Regras de Concatenação:**
+- ✅ `Alfa` + `Alfa` = **Permitido**
+- ✅ `"string"` + `Alfa` = **Permitido** 
+- ❌ `Alfa` + `Numero` = **ERRO**
+- ❌ `"string"` + `Numero` = **ERRO**
+- ❌ `Numero` + `Numero` = **ERRO** (use operadores aritméticos)
 
 #### Quebra de Linha
 
@@ -6446,6 +6490,52 @@ Definir Numero vnX;
 | **🔁 Enquanto** | Loop condicional | `Enquanto (condição) { }` |
 | **⏹️ Pare** | Interromper loop | `Pare;` |
 | **↩️ VaPara** | Pular para rótulo | `VaPara etiqueta;` |
+
+### **⚠️ IMPORTANTE: Uso Correto do Comando Pare**
+
+O comando `Pare;` **só pode ser usado dentro de loops** (`Para` ou `Enquanto`). Se usado fora destes contextos, causará erro de compilação.
+
+#### **✅ Uso CORRETO:**
+```lsp
+@ Dentro de loop Para @
+Para (vnI = 1; vnI <= 10; vnI++) {
+  Se (vnI = 5) {
+    Pare;  @ ✅ CORRETO: dentro do loop Para @
+  }
+}
+
+@ Dentro de loop Enquanto @
+Enquanto (vnContador > 0) {
+  Se (vnContador = 3) {
+    Pare;  @ ✅ CORRETO: dentro do loop Enquanto @
+  }
+  vnContador--;
+}
+```
+
+#### **❌ Uso INCORRETO:**
+```lsp
+@ ❌ INCORRETO: dentro de função, fora de loops @
+Funcao validarDados(); {
+  Se (vnTamanho < 5) {
+    Mensagem(Erro, "Tamanho inválido");
+    Pare;  @ ❌ ERRO: Pare só funciona em loops! @
+  }
+}
+
+@ ✅ CORRETO: usar Cancel(1) para interromper função @
+Funcao validarDados(); {
+  Se (vnTamanho < 5) {
+    Mensagem(Erro, "Tamanho inválido");
+    Cancel(1);  @ ✅ CORRETO: para interromper função @
+  }
+}
+```
+
+**Resumo:**
+- **Para interromper loops:** Use `Pare;`
+- **Para interromper funções:** Use `Cancel(1);`
+- **Para interromper toda a execução:** Use `Cancel(1);`
 
 ### **🎯 Condicionais Progressivos**
 
@@ -11944,6 +12034,173 @@ HttpGet(vaHTTP, "https://api-rapida.exemplo.com/dados", vaResposta);
 @ Para APIs lentas - timeout maior @
 HttpSetaTimeout(vaHTTP, 120);
 HttpGet(vaHTTP, "https://api-lenta.exemplo.com/relatorio", vaResposta);
+```
+
+## 🚨 **Resolução de Problemas SSL/HTTPS**
+
+### Problemas Comuns e Soluções
+
+As requisições HTTPS para APIs externas podem apresentar diversos problemas SSL/TLS. Esta seção documenta os erros mais comuns e suas soluções práticas.
+
+#### **Erro: EIdOSSLConnectError - Error connecting with SSL**
+
+**Sintomas:**
+```
+Classe da exceção: EIdOSSLConnectError
+[EIdOSSLConnectError] Error connecting with SSL
+```
+
+**Causa:** Configuração SSL/TLS incompatível entre o Senior e o servidor de destino.
+
+**Solução:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+
+HttpObjeto(vaHTTP);
+
+@ CONFIGURAÇÃO SSL CORRETA @
+HttpAlteraConfiguracaoSSL(vaHTTP, 0); @ SSL automático para melhor compatibilidade @
+HttpHabilitaSNI(vaHTTP); @ Habilitar SNI para APIs modernas @
+HttpAlteraRedirecionamento(vaHTTP, 1); @ Seguir redirecionamentos automaticamente @
+
+HttpDesabilitaErroResposta(vaHTTP);
+HttpPost(vaHTTP, "https://api.exemplo.com/endpoint", dados, vaResposta);
+```
+
+#### **Erro: SSL23_GET_SERVER_HELLO - sslv3 alert handshake failure**
+
+**Sintomas:**
+```
+error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure
+```
+
+**Causa:** Incompatibilidade de versões SSL/TLS ou problemas de certificado.
+
+**Solução com Sistema de Tentativas:**
+```lsp
+Definir Alfa vaHTTP;
+Definir Alfa vaResposta;
+Definir Numero vnCodRes;
+Definir Numero vnTentativa;
+
+vnTentativa = 1;
+
+@ TENTATIVA 1: SSL Automático + SNI @
+HttpObjeto(vaHTTP);
+HttpAlteraConfiguracaoSSL(vaHTTP, 0);
+HttpHabilitaSNI(vaHTTP);
+HttpDesabilitaErroResposta(vaHTTP);
+HttpPost(vaHTTP, "https://api.exemplo.com/endpoint", dados, vaResposta);
+HttpLeCodigoResposta(vaHTTP, vnCodRes);
+
+Se ((vnCodRes < 200) ou (vnCodRes >= 300)) {
+  @ TENTATIVA 2: SSL Forçado sem SNI @
+  HttpObjeto(vaHTTP);
+  HttpAlteraConfiguracaoSSL(vaHTTP, 2);
+  HttpDesabilitaSNI(vaHTTP);
+  HttpDesabilitaErroResposta(vaHTTP);
+  HttpPost(vaHTTP, "https://api.exemplo.com/endpoint", dados, vaResposta);
+  HttpLeCodigoResposta(vaHTTP, vnCodRes);
+}
+
+Se ((vnCodRes < 200) ou (vnCodRes >= 300)) {
+  @ TENTATIVA 3: SSL Básico @
+  HttpObjeto(vaHTTP);
+  HttpAlteraConfiguracaoSSL(vaHTTP, 1);
+  HttpDesabilitaErroResposta(vaHTTP);
+  HttpPost(vaHTTP, "https://api.exemplo.com/endpoint", dados, vaResposta);
+}
+```
+
+#### **Erro: EIdIOHandlerPropInvalid - IOHandler value is not valid**
+
+**Sintomas:**
+```
+[EIdIOHandlerPropInvalid] IOHandler value is not valid
+```
+
+**Causa:** Problema com o handler de entrada/saída da requisição HTTP.
+
+**Solução:**
+```lsp
+Definir Alfa vaHTTP;
+
+@ Recriar objeto HTTP completamente @
+HttpObjeto(vaHTTP);
+
+@ Configuração mínima primeiro @
+HttpDesabilitaErroResposta(vaHTTP);
+
+@ Depois adicionar configurações SSL @
+HttpAlteraConfiguracaoSSL(vaHTTP, 0);
+
+@ Headers básicos apenas @
+HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
+```
+
+### **Configurações SSL Recomendadas por Cenário**
+
+#### **Para APIs Modernas (Cloudflare, AWS, etc.)**
+```lsp
+HttpAlteraConfiguracaoSSL(vaHTTP, 0); @ SSL automático @
+HttpHabilitaSNI(vaHTTP); @ SNI habilitado @
+HttpAlteraRedirecionamento(vaHTTP, 1); @ Redirecionamentos @
+```
+
+#### **Para APIs Legadas ou Servidores Antigos**
+```lsp
+HttpAlteraConfiguracaoSSL(vaHTTP, 1); @ SSL básico @
+HttpDesabilitaSNI(vaHTTP); @ SNI desabilitado @
+```
+
+#### **Para Problemas Persistentes**
+```lsp
+HttpAlteraConfiguracaoSSL(vaHTTP, 2); @ SSL sempre ativo @
+HttpDesabilitaSNI(vaHTTP); @ Sem SNI @
+```
+
+### **Configurações Obrigatórias no SeniorConfigCenter**
+
+Para requisições HTTPS funcionarem, configure no SeniorConfigCenter:
+
+1. **Navegue para:** Conexões de rede → Envio de e-mail → Requisições REST
+2. **Habilite:**
+   - ✅ "Habilitar uso de rotinas"
+   - ✅ "Utilizar SSL"
+
+**Sem essas configurações, TODAS as requisições HTTPS falharão!**
+
+### **Conversão de Formatos Decimais**
+
+**Problema:** APIs retornam decimais com ponto (.) mas LSP espera vírgula (,).
+
+```lsp
+@ Resposta da API: "202.38" @
+ValorElementoJson(vaJSON, "frete", "valor", vaValor);
+
+@ ERRO: AlfaParaDecimal não aceita ponto @
+@ AlfaParaDecimal(vaValor, vnValor); @ Falha! @
+
+@ SOLUÇÃO: Converter ponto para vírgula @
+SubstAlfa(".", ",", vaValor);
+AlfaParaDecimal(vaValor, vnValor); @ Sucesso! @
+```
+
+### **Teste de Conectividade HTTP vs HTTPS**
+
+Para diagnosticar problemas SSL, teste temporariamente com HTTP:
+
+```lsp
+@ TESTE 1: HTTP (sem SSL) @
+vaURL = "http://api.exemplo.com/endpoint";
+HttpPost(vaHTTP, vaURL, dados, vaResposta);
+
+@ Se HTTP funcionar, o problema é SSL @
+@ TESTE 2: HTTPS com configuração SSL @
+vaURL = "https://api.exemplo.com/endpoint";
+HttpAlteraConfiguracaoSSL(vaHTTP, 0);
+HttpPost(vaHTTP, vaURL, dados, vaResposta);
 ```
 
 ### HttpPatch
