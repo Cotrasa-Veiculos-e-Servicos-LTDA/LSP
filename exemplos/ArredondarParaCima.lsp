@@ -65,8 +65,7 @@ Funcao arredondarParaCima(Numero vnValor, Numero End vnResultado); {
   Definir Numero vnValorInteiro;
   
   @ Obtem a parte inteira @
-  vnValorInteiro = vnValor;
-  Truncar(vnValorInteiro, vnValorInteiro);
+  vnValorInteiro = Truncar(vnValor);
   
   @ Se o valor original é maior que a parte inteira, adiciona 1 @
   Se (vnValorInteiro < vnValor) {
