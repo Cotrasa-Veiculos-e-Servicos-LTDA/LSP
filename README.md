@@ -644,11 +644,11 @@ DecodData(vdData, vnDia, vnMes, vnAno);
 ```
 
 #### **❌ Problema #5: Uso Incorreto da Função `Truncar`**
-**Problema:** A função `Truncar` existe, mas é usada com sintaxe incorreta
+**Problema:** A função `Truncar` existe, mas geralmente é usada com sintaxe incorreta
 
 ```lsp
 @ ❌ INCORRETO @
-vnParteInteira = Truncar(vnDataHora);
+Truncar(vnDataHora, vnParteInteira);
 ```
 
 **Solução:** Use a sintaxe correta da função Truncar
@@ -5470,7 +5470,7 @@ Trunca um número para inteiro, removendo a parte fracionária do número.
 **Sintaxe:**
 
 ```lsp
-Truncar(<valor>);
+vnParteInteira = Truncar(<valor>);
 ```
 
 **Parâmetros:**
