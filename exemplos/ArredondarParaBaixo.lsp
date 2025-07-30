@@ -50,6 +50,5 @@ Mensagem(Retorna, vaMensagem);
 
 @ Função que arredonda o valor para baixo removendo as casas decimais @
 Funcao arredondarParaBaixo(Numero vnValor, Numero End vnResultado); {
-  vnResultado = vnValor;
-  Truncar(vnResultado, vnResultado); @ Remove as casas decimais @
+  vnResultado = Truncar(vnValor); @ Remove as casas decimais @
 } 
