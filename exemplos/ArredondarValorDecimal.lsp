@@ -92,8 +92,7 @@ Funcao arredondaValor(Numero vnValor, Numero vnLimiteDecimal, Numero End vnResul
   Definir Numero vnValorDecimal;
 
   @ Obtem a parte inteira @
-  vnValorInteiro = vnValor;
-  Truncar(vnValorInteiro, vnValorInteiro);
+  vnValorInteiro = Truncar(vnValor);
   
   @ Calcula a parte decimal @
   vnValorDecimal = vnValor - vnValorInteiro;
