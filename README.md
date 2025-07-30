@@ -55,6 +55,35 @@ Definir Data vdNascimento;  @ Data @
 1. **Não concatene dentro de parâmetros de funções**
 2. **Use variáveis intermediárias para conversões**
 3. **Siga o padrão de nomenclatura (va, vn, vd)**
+4. **Use `\` para quebra de linha em strings longas**
+
+### **📝 Quebra de Linha em Strings Longas**
+Quando uma string (especialmente em cursores SQL) excede o limite de uma linha, use o caractere `\` no final da linha para continuar na próxima linha. **Padrão recomendado: coluna 80.**
+
+```lsp
+@ ❌ INCORRETO - String muito longa em uma linha @
+Cur_Consulta.SQL "SELECT PRODUTO.NOME, PRODUTO.DESCRICAO, PRODUTO.PRECO, PRODUTO.DATA_CADASTRO, PRODUTO.ULTIMA_ATUALIZACAO, PRODUTO.ESTOQUE, PRODUTO.STATUS, CASE WHEN SYSDATE - PRODUTO.ULTIMA_ATUALIZACAO > 7 THEN 0 ELSE 1 END AS PRODUTO_ATUALIZADO FROM PRODUTOS PRODUTO, CATEGORIAS CAT WHERE CAT.COD_CATEGORIA = PRODUTO.COD_CATEGORIA AND PRODUTO.STATUS = 'A' AND PRODUTO.ESTOQUE > 0";
+
+@ ✅ CORRETO - Quebra de linha com \ @
+Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
+                        PRODUTO.DESCRICAO,                          \
+                        PRODUTO.PRECO,                              \
+                        PRODUTO.DATA_CADASTRO,                      \
+                        PRODUTO.ULTIMA_ATUALIZACAO,                 \
+                        PRODUTO.ESTOQUE,                            \
+                        PRODUTO.STATUS,                             \
+                        CASE WHEN SYSDATE - PRODUTO.ULTIMA_ATUALIZACAO > 7 THEN 0 ELSE 1 END AS PRODUTO_ATUALIZADO \
+                 FROM PRODUTOS PRODUTO, CATEGORIAS CAT              \
+                 WHERE CAT.COD_CATEGORIA = PRODUTO.COD_CATEGORIA    \
+                   AND PRODUTO.STATUS = 'A'                         \
+                   AND PRODUTO.ESTOQUE > 0";
+```
+
+**Regras para quebra de linha:**
+- **Posição do `\`:** Coluna 80 (ou quando o texto passar dessa posição)
+- **Alinhamento:** Alinhe as colunas para facilitar leitura
+- **Espaçamento:** Mantenha espaços consistentes após o `\`
+- **Indentação:** Use 2 espaços para cada nível de indentação
 
 ---
 
@@ -572,8 +601,9 @@ vaStrProcura = "Primeira linha" + vaEnter + "Segunda linha";
 **Problema:** `FormatarData` aceita apenas tipo `Numero`, não `Data`
 ```lsp
 @ ❌ INCORRETO @
+Definir Data vdData;
 DataHoje(vdData);
-FormatarData(vdData, "dd/MM/yyyy", vaFormatada);
+FormatarData(vdData, "dd/MM/yyyy", vaFormatada);  @ ERRO: FormatarData só aceita Numero @
 ```
 
 **Solução:** Use `DataHora()` que retorna `Numero`
@@ -613,17 +643,18 @@ Definir Numero vnAno;
 DecodData(vdData, vnDia, vnMes, vnAno);
 ```
 
-#### **❌ Problema #5: Função `Truncar` Inexistente**
-**Problema:** A função `Truncar` não existe na LSP
+#### **❌ Problema #5: Uso Incorreto da Função `Truncar`**
+**Problema:** A função `Truncar` existe, mas é usada com sintaxe incorreta
+
 ```lsp
 @ ❌ INCORRETO @
 vnParteInteira = Truncar(vnDataHora);
 ```
 
-**Solução:** Use conversão para inteiro ou outras funções
+**Solução:** Use a sintaxe correta da função Truncar
 ```lsp
 @ ✅ CORRETO @
-vnParteInteira = vnDataHora;  @ Conversão implícita @
+vnParteInteira = Truncar(vnDataHora);  @ Sintaxe correta: Truncar(valor) retorna o valor truncado @
 ```
 
 ### **❌ Erro #1: Concatenação em Parâmetros de Funções**
@@ -744,6 +775,34 @@ Enquanto (vnContador <= 10) {
 }
 ```
 
+### **❌ Erro #6: Variáveis de Parâmetro em SQL_Retornar**
+**Problema:** Usar variáveis de parâmetro (que começam com "p") diretamente nas funções SQL_Retornar
+```lsp
+@ ❌ INCORRETO - NÃO FUNCIONA @
+Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
+  SQL_RetornarInteiro(xCursor, "CODIGO", pCodigo);      @ ERRO: não retorna valor @
+  SQL_RetornarInteiro(xCursor, "RESULTADO", pResultado); @ ERRO: não retorna valor @
+}
+```
+
+**Solução:** Use variáveis locais e depois atribua aos parâmetros
+```lsp
+@ ✅ CORRETO - FUNCIONA @
+Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
+  Definir Numero vnCodigoTemp;
+  Definir Numero vnResultadoTemp;
+  
+  SQL_RetornarInteiro(xCursor, "CODIGO", vnCodigoTemp);
+  SQL_RetornarInteiro(xCursor, "RESULTADO", vnResultadoTemp);
+  
+  @ Atribuir valores às variáveis de parâmetro @
+  pCodigo = vnCodigoTemp;
+  pResultado = vnResultadoTemp;
+}
+```
+
+**⚠️ REGRA CRÍTICA:** **NUNCA use variáveis de parâmetro (que começam com "p") diretamente nas funções SQL_Retornar. O Senior não retorna valores para essas variáveis. Sempre use variáveis locais e depois atribua aos parâmetros.**
+
 ## 🎯 **Padrões de Projeto LSP**
 
 ### **📋 Padrão: Validação de Dados**
@@ -812,7 +871,7 @@ Funcao processarComTratamento(); {
 }
 ```
 
-## Introdução
+## 📚 **Introdução**
 
 A Linguagem Senior de Programação (LSP) é uma linguagem proprietária utilizada nos sistemas da Senior para a customização e extensão de funcionalidades. Ela permite a manipulação de dados, a criação de regras de negócio personalizadas e a automação de processos dentro do ambiente Senior.
 
@@ -1301,7 +1360,7 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 
 ---
 
-## Sintaxe e Estrutura
+## 📝 **Sintaxe e Estrutura**
 
 A linguagem LSP possui uma sintaxe própria, estruturada para facilitar a criação de regras de negócio dentro do ecossistema da Senior. Os comandos são escritos de forma sequencial e utilizam palavras-chave específicas para definir ações e estruturas de controle.
 
@@ -1395,7 +1454,7 @@ Inicio
 Fim;
 ```
 
-## Caracteres com Comportamento Especial
+## 🔤 **Caracteres com Comportamento Especial**
 
 Existem determinados caracteres que, quando inseridos em uma expressão literal nas regras, devem ser precedidos do caractere `\` (barra) para indicar que estes caracteres serão usados literalmente e não como caracteres especiais. Estes caracteres são: `"` (aspas) e `\` (barra).
 
@@ -1405,7 +1464,7 @@ Exemplo:
 EnviaEMail("Joao","joao@senior.com.br", "", "", "Teste","\"\\\\Servidor\\teste.txt\"", "");
 ```
 
-## Comentários
+## 💬 **Comentários**
 
 Comentários são utilizados para explicar o código e são ignorados pelo compilador. Existem três tipos de comentários na LSP:
 
@@ -1429,7 +1488,7 @@ Exemplo de comentário de múltiplas linhas:
 Definir Numero vnX;
 ```
 
-## Palavras Reservadas
+## 🔒 **Palavras Reservadas**
 
 A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP possui 51 (cinquenta e uma) palavras reservadas que não poderão ser usadas pelo programador para outros fins.
 
@@ -1476,7 +1535,7 @@ A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP 
 | ValStr |	Usado apenas no gerador, para alterar a descrição de um campo tipo Descrição. O texto passada para ValStr será impresso no lugar da descrição original do campo. ValStr = "Teste"; Cancel(2);	|
 | Cursor |	Os cursores nada mais são que um SELECT em uma regra, retornando registros que satisfaçam a condição informada na propriedade SQL de um Cursor. Observações: O SELECT utilizado no cursor não possui relacionamento direto com o SELECT utilizado pelo gerador de relatórios, por exemplo. |
 
-## Variáveis de Sistema
+## ⚙️ **Variáveis de Sistema**
 
 As variáveis de sistema são utilizadas para obter informações do ambiente de execução, como data, hora, usuário, entre outros. Abaixo estão algumas das principais variáveis de sistema disponíveis no Gerador de Relatórios:
 
@@ -1502,9 +1561,9 @@ As variáveis de sistema são utilizadas para obter informações do ambiente de
 | NumPag         | Número da página                                         |
 | QtdDupPag      | Quantidade de duplicatas impressas por página - Utilizado no modelo FRCR002 |
 
-## Operadores
+## 🔧 **Operadores**
 
-### Operadores Lógicos
+### **🧮 Operadores Lógicos**
 
 Os operadores lógicos são utilizados para realizar comparações e operações lógicas. Os principais operadores lógicos são:
 
@@ -1517,7 +1576,7 @@ Os operadores lógicos são utilizados para realizar comparações e operações
 - `e`: E lógico
 - `ou`: Ou lógico
 
-### Operadores Aritméticos
+### **➕ Operadores Aritméticos**
 
 Os operadores aritméticos são utilizados para realizar operações matemáticas. Os principais operadores aritméticos são:
 
@@ -1528,7 +1587,7 @@ Os operadores aritméticos são utilizados para realizar operações matemática
 - `++`: Incremento de 1
 - `--`: Decremento de 1
 
-### Operadores Extras
+### **🔤 Operadores Extras**
 
 Os operadores extras são utilizados para outras operações específicas. Alguns dos operadores extras são:
 
@@ -1562,9 +1621,9 @@ Parâmetros:
 - Divisor: Campo/Variável pelo qual o Dividendo será dividido
 - Resto: Variável que receberá o resto da divisão 
 
-## Tipo de Dados e Variáveis
+## 📊 **Tipo de Dados e Variáveis**
 
-### Tipos de Dados
+### **📋 Tipos de Dados**
 
 Os tipos de dados suportados pela LSP são:
 
@@ -1577,7 +1636,7 @@ Os tipos de dados suportados pela LSP são:
 - **Cursor**: Estrutura para manipulação de consultas SQL.
 - **Funcao**: Funções definidas pelo programador.
 
-### Declaração ou Definição de Variáveis
+### **📝 Declaração ou Definição de Variáveis**
 
 As variáveis na LSP são declaradas utilizando o comando `Definir`. O nome das variáveis deve ter no máximo 100 caracteres e pode conter `_` (sublinhado). Não é permitido usar acentuação no nome das variáveis. Caso a variável não seja definida, esta será considerada como tipo Numero.
 
@@ -1593,7 +1652,7 @@ Definir Numero vnIdade;
 Definir Data vdNascimento;
 ```
 
-### Declaração ou Definição de Variáveis com Tamanho
+### **📏 Declaração ou Definição de Variáveis com Tamanho**
 
 Para variáveis do tipo `Alfa`, é possível definir o tamanho máximo da cadeia de caracteres.
 
@@ -1603,7 +1662,7 @@ Exemplo:
 Definir Alfa vaNome[30];
 ```
 
-### Forma de Acesso
+### **🔗 Forma de Acesso**
 
 As variáveis são acessadas diretamente pelo seu nome.
 
@@ -1638,14 +1697,14 @@ vaNome[vnIndice] = "Nome";
 vaNome[vnIndice + 1 * 2 ] = "Nome";
 ```
 
-### Regras
+### **📋 Regras**
 
 - Variáveis do tipo Data deve-se usar a função MontaData(dd,mm,yyyy,vdData); para atribuir uma data ou atribuir a variável de sistema DatSis
 - O nome das variáveis não pode ser igual ao nome dos parâmetros de funções
 - O nome das variáveis não pode ser igual ao nome dos campos de listas
 - Variáveis devem seguir o padrão de nomenclatura: prefixo + nome descritivo em CamelCase
 
-### Padrão de Nomenclatura de Variáveis
+### **🏷️ Padrão de Nomenclatura de Variáveis**
 
 A LSP utiliza um padrão específico de nomenclatura que facilita a identificação do tipo de variável:
 
@@ -1694,7 +1753,7 @@ Definir Numero vnX; @ Incorreto: muito genérico @
 ```
 
 
-## Manipulação Avançada de Strings
+## 📝 **Manipulação Avançada de Strings**
 
 As funções de manipulação de strings na LSP permitem realizar operações complexas de processamento de texto, desde operações básicas até transformações avançadas e limpeza de dados.
 
@@ -2590,7 +2649,7 @@ ConverteTexto("JSON", vaTextoOrigem, vaTextoDestino);
 | \\u0040 | @ | \\u005F | _ | \\u007E | ~ |  |  |
 | \\u0060 | ` |  |  |  |  |  |  |
 
-## Criptografia e Segurança
+## 🔐 **Criptografia e Segurança**
 
 A LSP oferece um conjunto robusto de funções para operações criptográficas, geração de tokens seguros e proteção de dados sensíveis.
 
@@ -2793,9 +2852,9 @@ Funcao autenticacaoWSecurity(); {
   GerarNonce(vaNonce);
 
   @ 2. Data/hora atual formatada para WS-Security @
-  Definir Data vdDataAtual;
-  DataHoje(vdDataAtual);
-  FormatarData(vdDataAtual, "yyyy-MM-ddTHH:mm:ssZ", vaCreated);
+  Definir Numero vnDataHora;
+  DataHora(vnDataHora);
+  FormatarData(vnDataHora, "yyyy-MM-ddTHH:mm:ssZ", vaCreated);
 
   @ 3. Gera digest @
   GerarPwdDigest(vaNonce, vaCreated, vaSenha, vaDigest);
@@ -2877,7 +2936,7 @@ Funcao transmitirDadosSeguro(); {
 }
 ```
 
-## Funções Adicionais de Manipulação de Strings
+## 🔧 **Funções Adicionais de Manipulação de Strings**
 
 ### RetornaAscII
 
@@ -3113,7 +3172,7 @@ Funcao padronizarParaBusca(); {
 }
 ```
 
-## Cast de Variável
+## 🔄 **Cast de Variável**
 
 As funções de cast de variável na LSP permitem converter valores entre diferentes tipos de dados.
 
@@ -3310,7 +3369,7 @@ Se (vnTipoInscricao = 1) { @ CNPJ @
 
 **Observação:** No caso de o tipo de dado ser 5 (Alfa), o parâmetro `valorOrigem` é passado como 0 (zero) e o parâmetro `alfaDestino` receberá o campo do tipo Alfa a ser convertido, e após a conversão, receberá o resultado da conversão.
 
-## Manipulação Avançada de Datas
+## 📅 **Manipulação Avançada de Datas**
 
 As funções de manipulação de datas na LSP permitem realizar operações complexas com datas, incluindo obtenção de datas atuais, cálculos de diferenças, formatação personalizada e validação.
 
@@ -3381,7 +3440,10 @@ Funcao obterDatasAtuais(); {
 
   @ 1. Obtém apenas a data @
   DataHoje(vdDataAtual);
-  FormatarData(vdDataAtual, "dd/MM/yyyy", vaDataFormatada);
+  @ Para formatação, use DataHora que retorna Numero @
+  Definir Numero vnDataHora;
+  DataHora(vnDataHora);
+  FormatarData(vnDataHora, "dd/MM/yyyy", vaDataFormatada);
   
   @ 2. Obtém data e hora local (número fracionário) @
   DataHora(vnDataHoraAtual);
@@ -3521,8 +3583,8 @@ Funcao extrairComponentesDataHora(); {
   DataHora(vnDataHora);
   
   @ Separa parte inteira (data) da fracionária (hora) @
-@ Nota: LSP não tem função Truncar, use conversão para inteiro @
-vnParteInteira = vnDataHora;
+@ Nota: Use conversão para inteiro ou função Truncar @
+vnParteInteira = Truncar(vnDataHora);
 vnParteFracionaria = vnDataHora - vnParteInteira;
 
 @ Calcula horas, minutos e segundos @
@@ -3915,7 +3977,7 @@ FormatarData(vnDataHora, "dd/MM/yyyy", vaFormatada); @ Funciona! @
 
 **Exemplo de Formatações Diversas:**
 
-⚠️ **IMPORTANTE**: Este exemplo está **INCORRETO** porque `DataHora` retorna um número fracionário, não uma variável do tipo Data. Para usar `FormatarData`, você precisa de variáveis do tipo Data obtidas com `DataHoje` ou `CodData`.
+⚠️ **IMPORTANTE**: Este exemplo está **CORRETO** porque `DataHora` retorna um número fracionário, que é exatamente o que `FormatarData` precisa. Para usar `FormatarData`, você precisa de números obtidos com `DataHora` ou `DataHoraUTC`.
 
 ```lsp
 Definir Funcao exemploFormatacoes();
@@ -4260,7 +4322,7 @@ Arredonda Valor Tipo Acerto(vnValor, 1); @ Retorna 1475.13 @
 Arredonda Valor Tipo Acerto(vnValor, 2); @ Retorna 1475.12 @
 ```
 
-## Funções Avançadas de Data e Dias Úteis
+## 📆 **Funções Avançadas de Data e Dias Úteis**
 
 ### RetDiaSemana
 
@@ -5403,12 +5465,26 @@ Arredondar(<numero>, <casasDecimais>, <resultado>);
 
 #### Truncar
 
-Trunca um número para inteiro, removendo a parte fracionária.
+Trunca um número para inteiro, removendo a parte fracionária do número.
 
 **Sintaxe:**
 
 ```lsp
-Truncar(<numero>, <resultado>);
+Truncar(<valor>);
+```
+
+**Parâmetros:**
+- `valor`: Valor do tipo Numero que necessita ter a parte fracionária removida
+
+**Exemplo:**
+
+```lsp
+Definir Numero vnValor;
+Definir Numero vnValorTruncado;
+
+vnValor = 1.12345;
+vnValorTruncado = Truncar(vnValor);
+@ vnValorTruncado será 1 @
 ```
 
 **Exemplo de Cálculos Financeiros:**
@@ -5440,7 +5516,7 @@ Funcao calculosFinanceiros(); {
   Mensagem(Retorna, vaMensagem);
   
   @ Trunca para inteiro @
-  Truncar(vnValorOriginal, vnValorTruncado);
+  vnValorTruncado = Truncar(vnValorOriginal);
   Definir Alfa vaValorTruncadoStr;
   IntParaAlfa(vnValorTruncado, vaValorTruncadoStr);
   vaMensagem = "Valor truncado: R$ " + vaValorTruncadoStr;
@@ -5578,7 +5654,7 @@ Funcao validacoesNumericas(); {
 }
 ```
 
-## Interface e Feedback do Usuário
+## 🖥️ **Interface e Feedback do Usuário**
 
 A LSP oferece ferramentas para criar interfaces mais amigáveis e fornecer feedback visual durante operações demoradas.
 
@@ -5928,7 +6004,7 @@ Funcao carregarConfiguracoes(); {
 }
 ```
 
-## Gerenciamento Avançado de Arquivos
+## 📁 **Gerenciamento Avançado de Arquivos**
 
 Expansão das funcionalidades de manipulação de arquivos com recursos avançados.
 
@@ -6176,6 +6252,38 @@ Mensagem(Retorna, vaMensagem);
 Mensagem(Retorna, vaJSONResposta);  @ JSON grande @
 Mensagem(Retorna, vaXMLCompleto);   @ XML grande @
 Mensagem(Retorna, vaLogCompleto);   @ Log extenso @
+```
+
+### **🚨 LIMITAÇÃO CRÍTICA: Variáveis de Parâmetro em SQL_Retornar**
+
+**NUNCA** use variáveis de parâmetro diretamente nas funções SQL_Retornar:
+
+```lsp
+@ ❌ INCORRETO - NÃO FUNCIONA @
+Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
+  SQL_RetornarInteiro(xCursor, "CODIGO", pCodigo);      @ ERRO: não retorna valor @
+  SQL_RetornarInteiro(xCursor, "RESULTADO", pResultado); @ ERRO: não retorna valor @
+}
+```
+
+**Solução:** Use variáveis locais e depois atribua aos parâmetros:
+
+```lsp
+@ ✅ CORRETO - FUNCIONA @
+Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
+  Definir Numero vnCodigoTemp;
+  Definir Numero vnResultadoTemp;
+  
+  SQL_RetornarInteiro(xCursor, "CODIGO", vnCodigoTemp);
+  SQL_RetornarInteiro(xCursor, "RESULTADO", vnResultadoTemp);
+  
+  @ Atribuir valores às variáveis de parâmetro @
+  pCodigo = vnCodigoTemp;
+  pResultado = vnResultadoTemp;
+}
+```
+
+**⚠️ REGRA CRÍTICA:** **O Senior não retorna valores para variáveis de parâmetro nas funções SQL_Retornar. Sempre use variáveis locais e depois atribua aos parâmetros.**
 
 @  SEGURO - Mostrar apenas informações resumidas @
 Definir Alfa vaMensagem;
@@ -6311,7 +6419,7 @@ MinhaGrid.CampoData = vdDataConvertida;
 #### **🎯 Regra de Ouro para Grids:**
 **Sempre use variável intermediária para conversões em grids/tabelas!**
 
-## Mensagens
+## 💬 **Mensagens**
 
 A função `Mensagem` é utilizada para exibir mensagens ao usuário. Existem diferentes tipos de mensagens, como `Retorna`, `Erro`, e `Refaz`.
 
@@ -6378,7 +6486,7 @@ vnRetorno = Mensagem(retorna,"Escolha uma opção ? [&Voltar,&Avançar, $Cancela
 Mensagem(Retorna, "Aluno: " + vaNome + vaEnter + "Média: " + vaMedia);
 ```
 
-## Cancel
+## 🛑 **Cancel**
 
 A função `Cancel` é utilizada para cancelar a execução de uma regra. Dependendo do valor passado como parâmetro, diferentes ações podem ser tomadas. Ao usar a função Cancel(n) em regras que são executadas por eventos de tela, a única ação tomada será o cancelamento da execução da regra, independentemente do valor passado como parâmetro.
 
@@ -6479,7 +6587,7 @@ Exemplo de comentário de múltiplas linhas:
 Definir Numero vnX;
 ```
 
-## Controle de Fluxo
+## 🔄 **Controle de Fluxo**
 
 ### **📋 Resumo das Estruturas de Controle**
 
@@ -6536,6 +6644,52 @@ Funcao validarDados(); {
 - **Para interromper loops:** Use `Pare;`
 - **Para interromper funções:** Use `Cancel(1);`
 - **Para interromper toda a execução:** Use `Cancel(1);`
+
+### **📋 Quadro de Boas Práticas: Cancel(1) vs Pare**
+
+| **Situação** | **Comando** | **Exemplo** | **Observação** |
+|---|---|---|---|
+| **Sair de função** | `Cancel(1);` | `Funcao nomeDaFuncao() { @corpo da função@ @caso precise interromper o fluxo, use: @ Cancel(1);}` | Use sempre que precisar interromper execução |
+| **Sair de loop** | `Pare;` | `Se (condição) { Pare; }` | **Apenas** dentro de `Para` ou `Enquanto` |
+| **Fora de loop** | `Cancel(1);` | `Se (erro) { Cancel(1); }` | **Nunca** use `Pare;` fora de loops |
+| **Tratamento de erro** | `Cancel(1);` | `Se (dadoNulo) { Cancel(1); }` | Padrão para validações |
+
+#### **Exemplo Prático de Uso Correto:**
+
+```lsp
+Definir Funcao exemploControleFluxo();
+
+@ Variáveis globais @
+Definir Numero vnContador;
+Definir Alfa vaDados;
+Definir Numero vnTamanho;
+
+exemploControleFluxo();
+
+Funcao exemploControleFluxo(); { 
+  @ Loop com Pare - usar Pare @
+  vnContador = 1;
+  Para (vnContador = 1; vnContador <= 10; vnContador++) {
+    Se (vnContador = 5) {
+      Pare;  @ ✅ CORRETO: saindo de loop @
+    }
+  }
+  
+  @ Validação final - usar Cancel(1) @
+  TamanhoAlfa(vaDados, vnTamanho);
+  Se (vnTamanho < 3) {
+    Cancel(1);  @ ✅ CORRETO: saindo de função @
+  }
+  
+  Mensagem(Retorna, "Processamento concluído!");
+}
+```
+
+**⚠️ REGRAS FUNDAMENTAIS:**
+1. **`Pare;`** = **APENAS** dentro de loops (`Para` ou `Enquanto`)
+2. **`Cancel(1);`** = Para sair de funções, tratamento de erros, validações
+3. **Nunca** use `Pare;` fora de loops
+4. **Sempre** use `Cancel(1);` após mensagens de erro
 
 ### **🎯 Condicionais Progressivos**
 
@@ -8390,37 +8544,83 @@ Enquanto (curExemplo.Achou) {
 curExemplo.FecharCursor();
 ```
 
-### Cursor Completo
+### Cursor Completo - Padrão de Uso Completo
 
 Um cursor completo é utilizado para realizar consultas SQL mais complexas e iterar sobre os resultados. Ele é definido utilizando o comando `SQL_Criar` e outras funções SQL específicas.
 
-Exemplo de definição de um cursor completo:
+**⚠️ PADRÃO RECOMENDADO:** Sempre siga este ciclo completo de criação, uso e destruição do cursor para evitar vazamentos de memória e garantir performance.
+
+#### Exemplo Padrão Completo de Cursor
 
 ```lsp
+Definir Funcao exemploCursorCompleto();
+
+@ Variáveis globais @
 Definir Alfa xCursor;
-Definir Alfa vSql;
-Definir Data vdData; MontaData(1,1,2000, vdData);
+Definir Alfa vaSQL;
+Definir Alfa vaNomeCliente;
+Definir Numero vnCodigoCliente;
+Definir Numero vnValorTotal;
+Definir Data vdDataCadastro;
+Definir Numero vnContador;
 
-vSql = "SELECT * FROM Tabela WHERE Condicao";
+exemploCursorCompleto();
 
-SQL_Criar(xCursor);
-SQL_UsarSQLSenior2(xCursor, 0);
-SQL_UsarAbrangencia(xCursor, 0);
-SQL_DefinirComando(xCursor, vSql);
-SQL_DefinirInteiro(xCursor, "vnNumero", 1);
-SQL_DefinirBoleano(xCursor, "vbBoleano", 1);
-SQL_DefinirFlutuante(xCursor, "vnFlutuante", 1.6);
-SQL_DefinirData(xCursor, "vdData", vdData);
-SQL_DefinirAlfa(xCursor, "vaAlfa", "João da Silva");
-
-SQL_AbrirCursor(xCursor);
-Enquanto (SQL_EOF(xCursor) = 0) {
-  SQL_RetornarAlfa(xCursor, "CAMPO", variavelDestino);
-  SQL_Proximo(xCursor);
+Funcao exemploCursorCompleto(); {
+  vnContador = 0;
+  
+  @ ===== 1. PREPARAÇÃO DO SQL ===== @
+  vaSQL = "SELECT NOME_CLIENTE, CODIGO_CLIENTE, VALOR_TOTAL, DATA_CADASTRO \
+             FROM CLIENTES                                                 \
+            WHERE STATUS = 'A'                                             \
+            ORDER BY NOME_CLIENTE";
+  
+  @ ===== 2. CRIAÇÃO E CONFIGURAÇÃO DO CURSOR ===== @
+  SQL_Criar(xCursor);
+  SQL_UsarSQLSenior2(xCursor, 0);           @ 0 = SQL Nativo, 1 = SQL Senior @
+  SQL_UsarAbrangencia(xCursor, 0);          @ 0 = Sem abrangência, 1 = Com abrangência @
+  SQL_DefinirComando(xCursor, vaSQL);
+  
+  @ ===== 3. ABERTURA E EXECUÇÃO DO CURSOR ===== @
+  SQL_AbrirCursor(xCursor);
+  
+  @ ===== 4. ITERAÇÃO SOBRE OS RESULTADOS ===== @
+  Enquanto (SQL_EOF(xCursor) = 0) {
+    @ Extrair dados do registro atual @
+    SQL_RetornarAlfa(xCursor, "NOME_CLIENTE", vaNomeCliente);
+    SQL_RetornarInteiro(xCursor, "CODIGO_CLIENTE", vnCodigoCliente);
+    SQL_RetornarFlutuante(xCursor, "VALOR_TOTAL", vnValorTotal);
+    SQL_RetornarData(xCursor, "DATA_CADASTRO", vdDataCadastro);
+    
+    @ Processar dados (exemplo) @
+    vnContador++;
+    
+    @ Avançar para próximo registro @
+    SQL_Proximo(xCursor);
+  }
+  
+  @ ===== 5. FINALIZAÇÃO E LIMPEZA ===== @
+  SQL_FecharCursor(xCursor);
+  SQL_Destruir(xCursor);
+  
+  @ ===== 6. RESULTADO FINAL ===== @
+  Definir Alfa vaMensagem;
+  Definir Alfa vaContadorStr;
+  IntParaAlfa(vnContador, vaContadorStr);
+  vaMensagem = "Processados " + vaContadorStr + " clientes";
+  Mensagem(Retorna, vaMensagem);
 }
-SQL_FecharCursor(xCursor);
-SQL_Destruir(xCursor);
 ```
+
+**📋 Estrutura Padrão do Cursor Completo:**
+
+1. **Preparação:** Montar SQL com placeholders se necessário
+2. **Criação:** `SQL_Criar()` + configurações
+3. **Abertura:** `SQL_AbrirCursor()`
+4. **Iteração:** `Enquanto (SQL_EOF() = 0)` + `SQL_Proximo()`
+5. **Finalização:** `SQL_FecharCursor()` + `SQL_Destruir()`
+
+**⚠️ IMPORTANTE:** Sempre feche e destrua o cursor após o uso para liberar recursos do banco de dados.
 
 ### Vantagens e Desvantagens dos Cursores
 
@@ -8971,7 +9171,7 @@ Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero 
 }
 ```
 
-## Retorno para Aplicação
+## 🔙 **Retorno para Aplicação**
 
 Usado apenas no gerador de relatórios, para alterar o valor de um campo tipo Descrição ou Numérico. O valor passado para ValRet ou ValStr será impresso no lugar do valor original do campo. Essas palavras reservadas devem ser utilizadas em conjunto com o comando `Cancel(2);`.
 
@@ -9143,6 +9343,131 @@ As funções a seguir podem ser utilizadas para manipulação de comandos SQL e 
 | FinalizarTransacao  | Finaliza a transação no banco de dados executando COMMIT. |
 | DesfazerTransacao   | Desfaz a transação no banco de dados executando ROLLBACK. |
 
+
+### Placeholders SQL - Regra de Segurança
+
+**🚨 REGRA CRÍTICA DE SEGURANÇA:** **NUNCA concatene variáveis diretamente em strings SQL. SEMPRE utilize placeholders de parâmetros (`:variavel`) para evitar SQL Injection e garantir performance.**
+
+#### Por que usar Placeholders?
+
+✅ **Segurança:** Previne SQL Injection
+✅ **Performance:** Melhor cache de consultas
+✅ **Manutenibilidade:** Código mais limpo e legível
+✅ **Padrão:** Prática recomendada pela Senior
+
+#### Exemplos de Uso Correto e Incorreto
+
+**❌ INCORRETO - Concatenação Direta (NUNCA FAÇA):**
+```lsp
+@ ❌ PERIGOSO - Vulnerável a SQL Injection @
+Definir Alfa vaSQL;
+Definir Numero vnCodigoCliente;
+Definir Alfa vaNomeCliente;
+
+vnCodigoCliente = 123;
+vaNomeCliente = "João Silva";
+
+@ CONCATENAÇÃO DIRETA - NUNCA USE! @
+vaSQL = "SELECT * FROM CLIENTES WHERE CODIGO = " + vnCodigoCliente + " AND NOME = '" + vaNomeCliente + "'";
+```
+
+**✅ CORRETO - Placeholders (SEMPRE USE):**
+```lsp
+@ ✅ SEGURO - Usando placeholders @
+Definir Alfa vaSQL;
+Definir Numero vnCodigoCliente;
+Definir Alfa vaNomeCliente;
+
+vnCodigoCliente = 123;
+vaNomeCliente = "João Silva";
+
+@ PLACEHOLDERS - SEMPRE USE! @
+vaSQL = "SELECT * FROM CLIENTES WHERE CODIGO = :vnCodigoCliente AND NOME = :vaNomeCliente";
+
+@ Configurar parâmetros no cursor @
+SQL_DefinirInteiro(xCursor, "vnCodigoCliente", vnCodigoCliente);
+SQL_DefinirAlfa(xCursor, "vaNomeCliente", vaNomeCliente);
+```
+
+#### Padrão de Nomenclatura para Placeholders
+
+**Regra:** Use o mesmo nome da variável precedido de `:`
+
+```lsp
+@ Variáveis @
+Definir Numero vnCodigoEmpresa;
+Definir Alfa vaNomeEmpresa;
+Definir Data vdDataCadastro;
+
+@ Placeholders correspondentes @
+vaSQL = "SELECT * FROM EMPRESAS WHERE CODIGO = :vnCodigoEmpresa AND NOME = :vaNomeEmpresa AND DATA_CADASTRO = :vdDataCadastro";
+
+@ Configuração dos parâmetros @
+SQL_DefinirInteiro(xCursor, "vnCodigoEmpresa", vnCodigoEmpresa);
+SQL_DefinirAlfa(xCursor, "vaNomeEmpresa", vaNomeEmpresa);
+SQL_DefinirData(xCursor, "vdDataCadastro", vdDataCadastro);
+```
+
+#### Exemplo Completo com Placeholders
+
+```lsp
+Definir Funcao exemploPlaceholdersSQL();
+
+@ Variáveis globais @
+Definir Alfa xCursor;
+Definir Alfa vaSQL;
+Definir Numero vnCodigoCliente;
+Definir Alfa vaStatusCliente;
+Definir Data vdDataInicio;
+Definir Data vdDataFim;
+
+exemploPlaceholdersSQL();
+
+Funcao exemploPlaceholdersSQL(); {
+  @ Definir parâmetros de busca @
+  vnCodigoCliente = 1001;
+  vaStatusCliente = "A";
+  MontaData(1, 1, 2024, vdDataInicio);
+  MontaData(31, 12, 2024, vdDataFim);
+  
+  @ SQL com placeholders @
+  vaSQL = "SELECT CODIGO, NOME, STATUS, DATA_CADASTRO \
+             FROM CLIENTES                            \
+            WHERE CODIGO = :vnCodigoCliente           \
+              AND STATUS = :vaStatusCliente           \
+              AND DATA_CADASTRO BETWEEN :vdDataInicio AND :vdDataFim \
+            ORDER BY NOME";
+  
+  @ Configurar cursor @
+  SQL_Criar(xCursor);
+  SQL_UsarSQLSenior2(xCursor, 0);
+  SQL_UsarAbrangencia(xCursor, 0);
+  SQL_DefinirComando(xCursor, vaSQL);
+  
+  @ Configurar parâmetros @
+  SQL_DefinirInteiro(xCursor, "vnCodigoCliente", vnCodigoCliente);
+  SQL_DefinirAlfa(xCursor, "vaStatusCliente", vaStatusCliente);
+  SQL_DefinirData(xCursor, "vdDataInicio", vdDataInicio);
+  SQL_DefinirData(xCursor, "vdDataFim", vdDataFim);
+  
+  @ Executar consulta @
+  SQL_AbrirCursor(xCursor);
+  
+  @ Processar resultados @
+  Enquanto (SQL_EOF(xCursor) = 0) {
+    @ Processar cada registro @
+    SQL_Proximo(xCursor);
+  }
+  
+  @ Finalizar @
+  SQL_FecharCursor(xCursor);
+  SQL_Destruir(xCursor);
+  
+  Mensagem(Retorna, "Consulta executada com segurança!");
+}
+```
+
+**⚠️ LEMBRE-SE:** Placeholders são obrigatórios para todas as consultas SQL que utilizam variáveis. Nunca concatene variáveis em strings SQL!
 
 ### SQL Senior 2
 
@@ -9508,7 +9833,9 @@ Funcao exemploExecSQLDelete(); {
 }
 ```
 
-### ExecSQLEx
+### ExecSQLEx - Função Recomendada para INSERT/UPDATE
+
+**⚠️ REGRA DE PREFERÊNCIA:** Sempre utilize a função `ExecSQLEx` para operações INSERT e UPDATE no banco de dados. Esta função oferece controle de erro e é a prática recomendada pela Senior.
 
 Executa um comando SQL no banco com controle de erro. Retorna 0 (zero) para sucesso ou 1 seguido da mensagem de erro em caso de falha.
 
@@ -9521,6 +9848,12 @@ ExecSQLEx(<ComandoSQL>, <Sucesso>, <Mensagem>);
 - `ComandoSQL`: Comando SQL a ser executado (tipo Alfa)
 - `Sucesso`: Variável numérica que retorna 0 para sucesso, 1 para erro
 - `Mensagem`: Variável alfa que retorna mensagem de erro (se houver)
+
+**Vantagens do ExecSQLEx:**
+✅ **Controle de erro:** Retorna status de sucesso/falha
+✅ **Mensagem de erro:** Informa detalhes em caso de falha
+✅ **Segurança:** Melhor tratamento de transações
+✅ **Padrão Senior:** Função oficial recomendada
 
 **Exemplos:**
 
@@ -11049,7 +11382,7 @@ Fechar (<manipulador do arquivo>);
 Fechar(arq);
 ```
 
-## Chamada de Web Service
+## 🌐 **Chamada de Web Service**
 
 O Editor de Regras dispõe de um conjunto de funções para que seja possível a atribuição e manipulação dos parâmetros de um web service, bem como a sua execução. Para isto é necessário declarar uma variável identificando o serviço que se deseja executar.
 
@@ -11588,7 +11921,7 @@ Funcao processarRetornoCotacao(); {
 
 **🎯 Regra de Ouro:** Para qualquer operação com mais de 10 linhas de dados, **sempre use listas dinâmicas** para preparar os dados antes de popular grids de Web Service!
 
-## Chamada HTTP
+## 🌍 **Chamada HTTP**
 
 A LSP oferece um conjunto robusto de funções para realizar requisições HTTP/HTTPS, permitindo integração com APIs REST, web services e outros endpoints HTTP. Estas funções suportam todos os métodos HTTP principais e oferecem controle granular sobre cabeçalhos, timeouts e tratamento de respostas.
 
