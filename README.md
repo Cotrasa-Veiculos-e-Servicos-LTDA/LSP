@@ -871,7 +871,7 @@ Funcao processarComTratamento(); {
 }
 ```
 
-## 📚 **Introdução**
+## 📚 **Introdução** {#introdução}
 
 A Linguagem Senior de Programação (LSP) é uma linguagem proprietária utilizada nos sistemas da Senior para a customização e extensão de funcionalidades. Ela permite a manipulação de dados, a criação de regras de negócio personalizadas e a automação de processos dentro do ambiente Senior.
 
@@ -1360,7 +1360,7 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 
 ---
 
-## 📝 **Sintaxe e Estrutura**
+## 📝 **Sintaxe e Estrutura** {#sintaxe-e-estrutura}
 
 A linguagem LSP possui uma sintaxe própria, estruturada para facilitar a criação de regras de negócio dentro do ecossistema da Senior. Os comandos são escritos de forma sequencial e utilizam palavras-chave específicas para definir ações e estruturas de controle.
 
@@ -1454,7 +1454,7 @@ Inicio
 Fim;
 ```
 
-## 🔤 **Caracteres com Comportamento Especial**
+## 🔤 **Caracteres com Comportamento Especial** {#caracteres-com-comportamento-especial}
 
 Existem determinados caracteres que, quando inseridos em uma expressão literal nas regras, devem ser precedidos do caractere `\` (barra) para indicar que estes caracteres serão usados literalmente e não como caracteres especiais. Estes caracteres são: `"` (aspas) e `\` (barra).
 
@@ -1464,7 +1464,7 @@ Exemplo:
 EnviaEMail("Joao","joao@senior.com.br", "", "", "Teste","\"\\\\Servidor\\teste.txt\"", "");
 ```
 
-## 💬 **Comentários**
+## 💬 **Comentários** {#comentários}
 
 Comentários são utilizados para explicar o código e são ignorados pelo compilador. Existem três tipos de comentários na LSP:
 
@@ -1488,7 +1488,7 @@ Exemplo de comentário de múltiplas linhas:
 Definir Numero vnX;
 ```
 
-## 🔒 **Palavras Reservadas**
+## 🔒 **Palavras Reservadas** {#palavras-reservadas}
 
 A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP possui 51 (cinquenta e uma) palavras reservadas que não poderão ser usadas pelo programador para outros fins.
 
@@ -1535,7 +1535,7 @@ A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP 
 | ValStr |	Usado apenas no gerador, para alterar a descrição de um campo tipo Descrição. O texto passada para ValStr será impresso no lugar da descrição original do campo. ValStr = "Teste"; Cancel(2);	|
 | Cursor |	Os cursores nada mais são que um SELECT em uma regra, retornando registros que satisfaçam a condição informada na propriedade SQL de um Cursor. Observações: O SELECT utilizado no cursor não possui relacionamento direto com o SELECT utilizado pelo gerador de relatórios, por exemplo. |
 
-## ⚙️ **Variáveis de Sistema**
+## ⚙️ **Variáveis de Sistema** {#variáveis-de-sistema}
 
 As variáveis de sistema são utilizadas para obter informações do ambiente de execução, como data, hora, usuário, entre outros. Abaixo estão algumas das principais variáveis de sistema disponíveis no Gerador de Relatórios:
 
@@ -1561,7 +1561,7 @@ As variáveis de sistema são utilizadas para obter informações do ambiente de
 | NumPag         | Número da página                                         |
 | QtdDupPag      | Quantidade de duplicatas impressas por página - Utilizado no modelo FRCR002 |
 
-## 🔧 **Operadores**
+## 🔧 **Operadores** {#operadores}
 
 ### **🧮 Operadores Lógicos**
 
@@ -1621,7 +1621,7 @@ Parâmetros:
 - Divisor: Campo/Variável pelo qual o Dividendo será dividido
 - Resto: Variável que receberá o resto da divisão 
 
-## 📊 **Tipo de Dados e Variáveis**
+## 📊 **Tipo de Dados e Variáveis** {#tipo-de-dados-e-variáveis}
 
 ### **📋 Tipos de Dados**
 
@@ -1753,7 +1753,7 @@ Definir Numero vnX; @ Incorreto: muito genérico @
 ```
 
 
-## 📝 **Manipulação Avançada de Strings**
+## 📝 **Manipulação Avançada de Strings** {#manipulação-avançada-de-strings}
 
 As funções de manipulação de strings na LSP permitem realizar operações complexas de processamento de texto, desde operações básicas até transformações avançadas e limpeza de dados.
 
@@ -2649,7 +2649,7 @@ ConverteTexto("JSON", vaTextoOrigem, vaTextoDestino);
 | \\u0040 | @ | \\u005F | _ | \\u007E | ~ |  |  |
 | \\u0060 | ` |  |  |  |  |  |  |
 
-## 🔐 **Criptografia e Segurança**
+## 🔐 **Criptografia e Segurança** {#criptografia-e-segurança}
 
 A LSP oferece um conjunto robusto de funções para operações criptográficas, geração de tokens seguros e proteção de dados sensíveis.
 
@@ -2936,7 +2936,7 @@ Funcao transmitirDadosSeguro(); {
 }
 ```
 
-## 🔧 **Funções Adicionais de Manipulação de Strings**
+## 🔧 **Funções Adicionais de Manipulação de Strings** {#funções-adicionais-de-manipulação-de-strings}
 
 ### RetornaAscII
 
@@ -3172,7 +3172,7 @@ Funcao padronizarParaBusca(); {
 }
 ```
 
-## 🔄 **Cast de Variável**
+## 🔄 **Cast de Variável** {#cast-de-variável}
 
 As funções de cast de variável na LSP permitem converter valores entre diferentes tipos de dados.
 
@@ -3369,7 +3369,7 @@ Se (vnTipoInscricao = 1) { @ CNPJ @
 
 **Observação:** No caso de o tipo de dado ser 5 (Alfa), o parâmetro `valorOrigem` é passado como 0 (zero) e o parâmetro `alfaDestino` receberá o campo do tipo Alfa a ser convertido, e após a conversão, receberá o resultado da conversão.
 
-## 📅 **Manipulação Avançada de Datas**
+## 📅 **Manipulação Avançada de Datas** {#manipulação-avançada-de-datas}
 
 As funções de manipulação de datas na LSP permitem realizar operações complexas com datas, incluindo obtenção de datas atuais, cálculos de diferenças, formatação personalizada e validação.
 
@@ -4322,7 +4322,7 @@ Arredonda Valor Tipo Acerto(vnValor, 1); @ Retorna 1475.13 @
 Arredonda Valor Tipo Acerto(vnValor, 2); @ Retorna 1475.12 @
 ```
 
-## 📆 **Funções Avançadas de Data e Dias Úteis**
+## 📆 **Funções Avançadas de Data e Dias Úteis** {#funções-avançadas-de-data-e-dias-úteis}
 
 ### RetDiaSemana
 
@@ -4814,7 +4814,7 @@ Funcao validarPeriodo(); {
 }
 ```
 
-## Manipulação Dinâmica de Variáveis
+## Manipulação Dinâmica de Variáveis {#manipulação-dinâmica-de-variáveis}
 
 A LSP oferece funções especializadas para trabalhar com variáveis cujos nomes são construídos dinamicamente durante a execução. Essas funções são úteis quando o nome da variável não é conhecido em tempo de desenvolvimento.
 
@@ -5654,7 +5654,7 @@ Funcao validacoesNumericas(); {
 }
 ```
 
-## 🖥️ **Interface e Feedback do Usuário**
+## 🖥️ **Interface e Feedback do Usuário** {#interface-e-feedback-do-usuário}
 
 A LSP oferece ferramentas para criar interfaces mais amigáveis e fornecer feedback visual durante operações demoradas.
 
@@ -6004,7 +6004,7 @@ Funcao carregarConfiguracoes(); {
 }
 ```
 
-## 📁 **Gerenciamento Avançado de Arquivos**
+## 📁 **Gerenciamento Avançado de Arquivos** {#gerenciamento-avançado-de-arquivos}
 
 Expansão das funcionalidades de manipulação de arquivos com recursos avançados.
 
@@ -6419,7 +6419,7 @@ MinhaGrid.CampoData = vdDataConvertida;
 #### **🎯 Regra de Ouro para Grids:**
 **Sempre use variável intermediária para conversões em grids/tabelas!**
 
-## 💬 **Mensagens**
+## 💬 **Mensagens** {#mensagens}
 
 A função `Mensagem` é utilizada para exibir mensagens ao usuário. Existem diferentes tipos de mensagens, como `Retorna`, `Erro`, e `Refaz`.
 
@@ -6486,7 +6486,7 @@ vnRetorno = Mensagem(retorna,"Escolha uma opção ? [&Voltar,&Avançar, $Cancela
 Mensagem(Retorna, "Aluno: " + vaNome + vaEnter + "Média: " + vaMedia);
 ```
 
-## 🛑 **Cancel**
+## 🛑 **Cancel** {#cancel}
 
 A função `Cancel` é utilizada para cancelar a execução de uma regra. Dependendo do valor passado como parâmetro, diferentes ações podem ser tomadas. Ao usar a função Cancel(n) em regras que são executadas por eventos de tela, a única ação tomada será o cancelamento da execução da regra, independentemente do valor passado como parâmetro.
 
@@ -6587,7 +6587,7 @@ Exemplo de comentário de múltiplas linhas:
 Definir Numero vnX;
 ```
 
-## 🔄 **Controle de Fluxo**
+## 🔄 **Controle de Fluxo** {#controle-de-fluxo}
 
 ### **📋 Resumo das Estruturas de Controle**
 
@@ -9171,7 +9171,7 @@ Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero 
 }
 ```
 
-## 🔙 **Retorno para Aplicação**
+## 🔙 **Retorno para Aplicação** {#retorno-para-aplicação}
 
 Usado apenas no gerador de relatórios, para alterar o valor de um campo tipo Descrição ou Numérico. O valor passado para ValRet ou ValStr será impresso no lugar do valor original do campo. Essas palavras reservadas devem ser utilizadas em conjunto com o comando `Cancel(2);`.
 
@@ -11382,7 +11382,7 @@ Fechar (<manipulador do arquivo>);
 Fechar(arq);
 ```
 
-## 🌐 **Chamada de Web Service**
+## 🌐 **Chamada de Web Service** {#chamada-de-web-service}
 
 O Editor de Regras dispõe de um conjunto de funções para que seja possível a atribuição e manipulação dos parâmetros de um web service, bem como a sua execução. Para isto é necessário declarar uma variável identificando o serviço que se deseja executar.
 
@@ -11921,7 +11921,7 @@ Funcao processarRetornoCotacao(); {
 
 **🎯 Regra de Ouro:** Para qualquer operação com mais de 10 linhas de dados, **sempre use listas dinâmicas** para preparar os dados antes de popular grids de Web Service!
 
-## 🌍 **Chamada HTTP**
+## 🌍 **Chamada HTTP** {#chamada-http}
 
 A LSP oferece um conjunto robusto de funções para realizar requisições HTTP/HTTPS, permitindo integração com APIs REST, web services e outros endpoints HTTP. Estas funções suportam todos os métodos HTTP principais e oferecem controle granular sobre cabeçalhos, timeouts e tratamento de respostas.
 
