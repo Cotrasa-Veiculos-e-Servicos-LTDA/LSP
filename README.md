@@ -4,15 +4,16 @@
 [![LSP](https://img.shields.io/badge/Linguagem-LSP-green)](https://documentacao.senior.com.br/tecnologia)
 [![Documentação](https://img.shields.io/badge/Docs-Completa-brightgreen)](https://github.com/brunoleocam/LSP/blob/main/README.md)
 [![Exemplos](https://img.shields.io/badge/Exemplos-100+-orange)](https://github.com/brunoleocam/LSP/tree/main/exemplos)
-[![Status](https://img.shields.io/badge/Status-Ativo-brightgreen)]()
+[![Status](https://img.shields.io/badge/Status-Ativo-brightgreen)](https://github.com/brunoleocam/LSP/blob/main/README.md)
 
 > **🎯 Propósito desta Documentação**
-> 
+>
 > Esta documentação tem como objetivo **organizar de forma didática e com exemplos práticos** todo o conhecimento sobre a **Linguagem Sênior de Programação (LSP)**, facilitando o aprendizado e entendimento da linguagem para desenvolvedores de todos os níveis.
 >
 > **⚠️ IMPORTANTE:** Para informações oficiais, atualizações e documentação técnica detalhada, sempre consulte o **[site oficial da Senior](https://www.senior.com.br)** e a **[documentação oficial](https://documentacao.senior.com.br/tecnologia)**.
 >
 > **📖 O que você encontrará aqui:**
+>
 > - ✅ **Exemplos práticos** de uso da LSP
 > - ✅ **Guia progressivo** de aprendizado
 > - ✅ **Padrões e boas práticas** recomendadas
@@ -24,13 +25,14 @@
 
 ## 🏷️ **Tags e Palavras-Chave**
 
-`LSP` `Linguagem Senior` `Senior Sistemas` `Programação` `ERP` `Gestão Empresarial` `Automação` `Web Services` `SQL` `Relatórios` `API` `Integração` `Desenvolvimento` `Senior G5` `Ruleengine` `Regras de Negócio` `Tutorial LSP` `Documentação LSP` `Exemplos LSP` `Guia LSP` `Manual LSP`
+`LSP` `Linguagem Senior` `Linguagem Senior de Programação` `Senior Sistemas` `HCM` `Gestão de Pessoas` `Programação` `ERP` `Gestão Empresarial` `Automação` `Web Services` `SQL` `Relatórios` `API` `Integração` `Desenvolvimento` `Senior G5` `Regras de Negócio` `Tutorial LSP` `Documentação LSP` `Exemplos LSP` `Guia LSP` `Manual LSP`
 
 ---
 
 ## 🚀 **Início Rápido**
 
 ### **Primeiro Programa LSP**
+
 ```lsp
 @ Meu primeiro programa em LSP @
 Definir Alfa vaMensagem;
@@ -39,12 +41,14 @@ Mensagem(Retorna, vaMensagem);
 ```
 
 ### **Conceitos Fundamentais**
+
 - **Case Insensitive**: `vaNome` = `VANOME` = `vanome`
 - **Terminador obrigatório**: Toda linha termina com `;`
 - **Comentários**: `@ uma linha @` ou `/* múltiplas linhas */`
 - **Identação**: 2 espaços (padrão Senior)
 
 ### **Tipos de Dados Essenciais**
+
 ```lsp
 Definir Alfa vaNome;        @ Texto/String @
 Definir Numero vnIdade;     @ Número (int/decimal) @
@@ -52,12 +56,14 @@ Definir Data vdNascimento;  @ Data @
 ```
 
 ### **⚠️ Lembre-se Sempre**
+
 1. **Não concatene dentro de parâmetros de funções**
 2. **Use variáveis intermediárias para conversões**
 3. **Siga o padrão de nomenclatura (va, vn, vd)**
 4. **Use `\` para quebra de linha em strings longas**
 
 ### **📝 Quebra de Linha em Strings Longas**
+
 Quando uma string (especialmente em cursores SQL) excede o limite de uma linha, use o caractere `\` no final da linha para continuar na próxima linha. **Padrão recomendado: coluna 80.**
 
 ```lsp
@@ -80,6 +86,7 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 ```
 
 **Regras para quebra de linha:**
+
 - **Posição do `\`:** Coluna 80 (ou quando o texto passar dessa posição)
 - **Alinhamento:** Alinhe as colunas para facilitar leitura
 - **Espaçamento:** Mantenha espaços consistentes após o `\`
@@ -90,6 +97,7 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 ## 📖 **Índice Completo**
 
 ### **🎯 Fundamentos**
+
 - [Introdução](#introdução)
 - [Sintaxe e Estrutura](#sintaxe-e-estrutura)
 - [Caracteres com Comportamento Especial](#caracteres-com-comportamento-especial)
@@ -99,11 +107,14 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 - [Operadores](#operadores)
 
 ### **📊 Dados e Variáveis**
+
 - [Tipo de Dados e Variáveis](#tipo-de-dados-e-variáveis)
 - [Definição de Arrays](#definição-de-arrays)
 - [Definição de Listas](#definição-de-listas)
 - [Definição de Tabelas](#definição-de-tabelas)
+
 ### **🔧 Manipulação de Dados**
+
 - [Manipulação Avançada de Strings](#manipulação-avançada-de-strings)
 - [Funções Adicionais de Manipulação de Strings](#funções-adicionais-de-manipulação-de-strings)
 - [Manipulação Avançada de Datas](#manipulação-avançada-de-datas)
@@ -112,72 +123,81 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 - [Cast de Variável](#cast-de-variável)
 
 ### **🔒 Segurança e Validação**
+
 - [Criptografia e Segurança](#criptografia-e-segurança)
 - [Validação e Verificação](#validação-e-verificação)
 
 ### **🧮 Operações e Cálculos**
+
 - [Operações Numéricas Avançadas](#operações-numéricas-avançadas)
 
 ### **🎮 Controle de Fluxo**
+
 - [Controle de Fluxo](#controle-de-fluxo)
 - [Definição de Funções](#definição-de-funções)
 - [Retorno para Aplicação](#retorno-para-aplicação)
 
 ### **🗃️ Banco de Dados**
+
 - [Definição de Cursor](#definição-de-cursor)
 - [Funções SQL](#funções-sql)
 - [Funções de Lista de Regras](#funções-de-lista-de-regras)
   - [Funções Completas de Lista de Regras](#funções-completas-de-lista-de-regras)
 
 ### **📊 Gerador de Relatórios**
+
 - [Funções Específicas do Gerador de Relatórios](#funções-específicas-do-gerador-de-relatórios)
-  - [Controles de Grade](#-controles-de-grade)
-  - [Controles de Imagem](#-controles-de-imagem)
-  - [Controles de Gráfico](#-controles-de-gráfico)
-  - [Manipulação de Controles](#-manipulação-de-controles)
-  - [Controle de Execução](#-controle-de-execução)
-  - [Manipulação de Datas](#-manipulação-de-datas)
-  - [Manipulação de SQL](#️-manipulação-de-sql)
-  - [Manipulação de Listas e Campos](#-manipulação-de-listas-e-campos)
-  - [Históricos](#-históricos)
-  - [Controle de Páginas](#-controle-de-páginas)
-  - [Controle de Impressão](#️-controle-de-impressão)
-  - [Funções de Verificação](#-funções-de-verificação)
-  - [Views Temporárias](#-views-temporárias)
-  - [Seções Adicionais](#-seções-adicionais)
-  - [Personalização do Nome do Arquivo Gerado](#-personalização-do-nome-do-arquivo-gerado)
+  - [Controles de Grade](#controles-de-grade)
+  - [Controles de Imagem](#controles-de-imagem)
+  - [Controles de Gráfico](#controles-de-gráfico)
+  - [Manipulação de Controles](#manipulação-de-controles)
+  - [Controle de Execução](#controle-de-execução)
+  - [Manipulação de Datas](#manipulação-de-datas)
+  - [Manipulação de SQL](#manipulação-de-sql)
+  - [Manipulação de Listas e Campos](#manipulação-de-listas-e-campos)
+  - [Históricos](#históricos)
+  - [Controle de Páginas](#controle-de-páginas)
+  - [Controle de Impressão](#controle-de-impressão)
+  - [Funções de Verificação](#funções-de-verificação)
+  - [Views Temporárias](#views-temporárias)
+  - [Seções Adicionais](#seções-adicionais)
+  - [Personalização do Nome do Arquivo Gerado](#personalização-do-nome-do-arquivo-gerado)
 
 ### **🌐 Integração e APIs**
+
 - [Gerenciamento Avançado de Arquivos](#gerenciamento-avançado-de-arquivos)
 - [Manipulação de Arquivos](#manipulação-de-arquivos)
 - [Chamada de Web Service](#chamada-de-web-service)
 - [Chamada HTTP](#chamada-http)
-  - [Resolução de Problemas SSL/HTTPS](#-resolução-de-problemas-sslhttps)
-- [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis)
+  - [Resolução de Problemas SSL/HTTPS](#resolução-de-problemas-sslhttps)
+- [🚀 Exemplos Práticos de APIs](#exemplos-práticos-de-apis)
 
 ### **🎨 Interface do Usuário**
+
 - [Interface e Feedback do Usuário](#interface-e-feedback-do-usuário)
 - [Mensagens](#mensagens)
 - [Cancel](#cancel)
 
 ### **📋 Referência e Boas Práticas**
+
 - [Funções Gerais](#funções-gerais)
 - [Padrões e Boas Práticas](#padrões-e-boas-práticas)
-- [⚠️ LIMITAÇÕES CRÍTICAS DA LSP](#️-limitações-críticas-da-lsp)
-- [🚨 Erros Comuns e Soluções](#️-erros-comuns-e-soluções)
-- [🎯 Padrões de Projeto LSP](#️-padrões-de-projeto-lsp)
-- [🔍 Debugging e Troubleshooting](#️-debugging-e-troubleshooting)
-- [🎓 Exercícios Práticos por Nível](#️-exercícios-práticos-por-nível)
-- [🎯 Quick Reference Cards](#️-quick-reference-cards)
-- [🎯 Casos de Uso Reais Detalhados](#️-casos-de-uso-reais-detalhados)
-- [📝 Cheat Sheet LSP (Cola Rápida)](#️-cheat-sheet-lsp-cola-rápida)
-- [🚨 LEMBRETE FINAL: Regra de Ouro da LSP](#️-lembrete-final-regra-de-ouro-da-lsp)
+- [⚠️ LIMITAÇÕES CRÍTICAS DA LSP](#limitações-críticas-da-lsp)
+- [🚨 Erros Comuns e Soluções](#erros-comuns-e-soluções)
+- [🎯 Padrões de Projeto LSP](#padrões-de-projeto-lsp)
+- [🔍 Debugging e Troubleshooting](#debugging-e-troubleshooting)
+- [🎓 Exercícios Práticos por Nível](#exercícios-práticos-por-nível)
+- [🎯 Quick Reference Cards](#quick-reference-cards)
+- [🎯 Casos de Uso Reais Detalhados](#casos-de-uso-reais-detalhados)
+- [📝 Cheat Sheet LSP (Cola Rápida)](#cheat-sheet-lsp-cola-rápida)
+- [🚨 LEMBRETE FINAL: Regra de Ouro da LSP](#lembrete-final-regra-de-ouro-da-lsp)
 
 ---
 
 ## 🎯 **Guia de Aprendizado Progressivo**
 
 ### **📖 Nível 1: Iniciante (Conceitos Básicos)**
+
 1. **Primeiro**: [Sintaxe e Estrutura](#sintaxe-e-estrutura) - Aprenda a sintaxe básica
 2. **Segundo**: [Tipo de Dados e Variáveis](#tipo-de-dados-e-variáveis) - Entenda os tipos de dados
 3. **Terceiro**: [Operadores](#operadores) - Domine os operadores
@@ -185,6 +205,7 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 5. **Quinto**: [Mensagens](#mensagens) - Saiba como exibir mensagens
 
 ### **🚀 Nível 2: Intermediário (Funcionalidades Essenciais)**
+
 1. **Sexto**: [Manipulação Avançada de Strings](#manipulação-avançada-de-strings) - Manipule textos
 2. **Sétimo**: [Funções Adicionais de Manipulação de Strings](#funções-adicionais-de-manipulação-de-strings) - ASCII, limpeza e acentos
 3. **Oitavo**: [Manipulação Avançada de Datas](#manipulação-avançada-de-datas) - Trabalhe com datas
@@ -194,22 +215,25 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 7. **Décimo segundo**: [Cast de Variável](#cast-de-variável) - Converta entre tipos
 
 ### **⚡ Nível 3: Avançado (Recursos Especializados)**
+
 1. **Décimo terceiro**: [Definição de Listas](#definição-de-listas) - Trabalhe com listas dinâmicas
 2. **Décimo quarto**: [Funções de Lista de Regras](#funções-de-lista-de-regras) - Manipule listas avançadas
 3. **Décimo quinto**: [Definição de Cursor](#definição-de-cursor) - Acesse bancos de dados
 4. **Décimo sexto**: [Funções SQL](#funções-sql) - Execute SQL diretamente
 5. **Décimo sétimo**: [Chamada HTTP](#chamada-http) - Integre com APIs
-   - [Resolução de Problemas SSL/HTTPS](#-resolução-de-problemas-sslhttps) - Solucione erros SSL
+   - [Resolução de Problemas SSL/HTTPS](#resolução-de-problemas-sslhttps) - Solucione erros SSL
 6. **Décimo oitavo**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
-7. **Décimo nono**: [🚀 Exemplos Práticos de APIs](#-exemplos-práticos-de-apis) - Exemplos reais
+7. **Décimo nono**: [🚀 Exemplos Práticos de APIs](#exemplos-práticos-de-apis) - Exemplos reais
 
 ## 🔍 **Debugging e Troubleshooting**
 
 ### **🐛 Problemas Comuns e Soluções**
 
 #### **Problema: "Variável não definida"**
+
 **Causa:** Variável declarada dentro de bloco condicional ou não declarada
 **Solução:** Declare todas as variáveis no início da regra
+
 ```lsp
 @ ❌ INCORRETO @
 Se (vnCondicao = 1) {
@@ -225,8 +249,10 @@ Se (vnCondicao = 1) {
 ```
 
 #### **Problema: "Função não funciona"**
+
 **Causa:** Parâmetros incorretos ou ordem errada
 **Solução:** Verifique a documentação da função
+
 ```lsp
 @ ❌ INCORRETO @
 TamanhoAlfa(vnTamanho, vaTexto);  @ Ordem errada @
@@ -236,8 +262,10 @@ TamanhoAlfa(vaTexto, vnTamanho);  @ Ordem correta @
 ```
 
 #### **Problema: "Comparação com função sem retorno"**
+
 **Causa:** Tentar comparar função que usa parâmetro de retorno
 **Solução:** Execute a função primeiro, depois compare a variável
+
 ```lsp
 @ ❌ INCORRETO @
 Se (EstaNulo(vaDado, vnEhNulo) = 0) {  @ Função não retorna valor @
@@ -248,8 +276,10 @@ Se (vnEhNulo = 0) {          @ Compara variável preenchida @
 ```
 
 #### **Problema: "Erro de tipo"**
+
 **Causa:** Tentativa de atribuir tipo incorreto
 **Solução:** Use funções de conversão apropriadas
+
 ```lsp
 @ ❌ INCORRETO @
 Definir Numero vnValor;
@@ -263,8 +293,10 @@ AlfaParaInt(vaTexto, vnValor);
 ```
 
 #### **Problema: "Loop infinito"**
+
 **Causa:** Condição de parada nunca atingida
 **Solução:** Verifique a lógica da condição e atualize variáveis de controle
+
 ```lsp
 @ ❌ INCORRETO @
 vnContador = 1;
@@ -281,8 +313,10 @@ Enquanto (vnContador <= 10) {
 ```
 
 #### **Problema: "Função não funciona"**
+
 **Causa:** Parâmetros incorretos ou ordem errada
 **Solução:** Verifique a documentação da função
+
 ```lsp
 @ ❌ INCORRETO @
 TamanhoAlfa(vnTamanho, vaTexto);  @ Ordem errada @
@@ -294,6 +328,7 @@ TamanhoAlfa(vaTexto, vnTamanho);  @ Ordem correta @
 ### **🔧 Técnicas de Debugging**
 
 #### **Técnica 1: Mensagens de Debug**
+
 ```lsp
 @ Adicione mensagens para rastrear execução @
 Definir Alfa vaDebug;
@@ -307,6 +342,7 @@ Mensagem(Retorna, vaDebug);
 ```
 
 #### **Técnica 2: Validação de Dados**
+
 ```lsp
 @ Sempre valide dados antes de processar @
 EstaNulo(vaDado, vnEhNulo);
@@ -324,6 +360,7 @@ Se (vnEhNulo = 0) {
 ```
 
 #### **Técnica 3: Tratamento de Erros**
+
 ```lsp
 @ Use estruturas try-catch equivalentes @
 Se (operacaoCritica() = 1) {
@@ -342,6 +379,7 @@ Se (operacaoCritica() = 1) {
 ### **📖 Nível 1: Exercícios Básicos**
 
 #### **🔢 Exercício 1: Calculadora Simples**
+
 **Objetivo:** Criar uma calculadora que soma dois números
 **Conceitos:** Variáveis, operadores, conversões, mensagens
 
@@ -363,6 +401,7 @@ Mensagem(Retorna, vaMensagem);
 ```
 
 #### **📝 Exercício 2: Validador de Nome**
+
 **Objetivo:** Validar se um nome tem pelo menos 3 caracteres
 **Conceitos:** Validação, condicionais, funções de string
 
@@ -390,6 +429,7 @@ Se (vnEhNulo = 0) {
 ### **🚀 Nível 2: Exercícios Intermediários**
 
 #### **🏷️ Exercício 3: Formatador de CPF**
+
 **Objetivo:** Remover pontos e traços de um CPF
 **Conceitos:** Manipulação de strings, loops, funções avançadas
 
@@ -409,6 +449,7 @@ Mensagem(Retorna, "CPF limpo: " + vaCPF);
 ```
 
 #### **📅 Exercício 4: Calculadora de Idade**
+
 **Objetivo:** Calcular idade a partir da data de nascimento
 **Conceitos:** Datas, operações aritméticas, validação
 
@@ -443,6 +484,7 @@ Mensagem(Retorna, vaMensagem);
 ### **⚡ Nível 3: Exercícios Avançados**
 
 #### **🌐 Exercício 5: Validador de Email**
+
 **Objetivo:** Validar formato básico de email
 **Conceitos:** Manipulação de strings, validação complexa
 
@@ -483,6 +525,7 @@ Mensagem(Retorna, "Email válido!");
 ```
 
 #### **📊 Exercício 6: Processador de Lista CSV**
+
 **Objetivo:** Processar uma lista separada por vírgulas
 **Conceitos:** Listas, loops, funções de lista
 
@@ -510,6 +553,7 @@ Para (vnContador = 1; vnContador <= vnQuantidade; vnContador++) {
 ## ⚠️ **Avisos Importantes para Iniciantes**
 
 ### 🚫 **Limitação #1: Parâmetros de Funções**
+
 ```lsp
 @ NUNCA FAÇA - NÃO FUNCIONA @
 Mensagem(Retorna, "Resultado: " + vaValor);
@@ -521,6 +565,7 @@ Mensagem(Retorna, vaMensagem);
 ```
 
 ### 📤 **Limitação #2: Funções Usam Parâmetros de Retorno**
+
 ```lsp
 @ INCORRETO @
 vnTamanho = TamanhoAlfa(vaTexto);
@@ -530,13 +575,15 @@ TamanhoAlfa(vaTexto, vnTamanho);
 ```
 
 ### 🏷️ **Regra #3: Padrão de Nomenclatura**
+
 ```lsp
 Definir Alfa vaNome;     @ va = variável alfa @
 Definir Numero vnIdade;  @ vn = variável numero @
 Definir Data vdData;     @ vd = variável data @
 ```
 
-### 🔧 **Regra #4: Grids Precisam de Variáveis Intermediárias**
+### **Regra #4: Grids Precisam de Variáveis Intermediárias** 🔧
+
 ```lsp
 @ INCORRETO @
 AlfaParaDecimal(vaTexto, MinhaGrid.CampoDecimal);
@@ -548,6 +595,7 @@ MinhaGrid.CampoDecimal = vnValor;
 ```
 
 ### 🚫 **Regra #5: Interrupção de Fluxo com Cancel**
+
 ```lsp
 @ ❌ NUNCA USE - NÃO EXISTE NA LSP @
 Mensagem(Erro, "Dado inválido");
@@ -561,6 +609,7 @@ Cancel(1);
 **Explicação:** Em LSP, o comando `Retorna;` não existe. Para interromper a execução de uma função após uma mensagem de erro, use `Cancel(1);`. O parâmetro `1` indica que a execução deve ser cancelada.
 
 **Exemplo de uso correto:**
+
 ```lsp
 EstaNulo(vaDado, vnEhNulo);
 Se (vnEhNulo = 1) {
@@ -583,13 +632,16 @@ Mensagem(Retorna, "Dado validado com sucesso!");
 ### **⚠️ AVISO IMPORTANTE: Problemas de Sintaxe Corrigidos**
 
 #### **❌ Problema #1: Função `Chr()` Inexistente**
+
 **Problema:** A função `Chr()` não existe na LSP
+
 ```lsp
 @ ❌ INCORRETO @
 vaStrProcura = "Primeira linha" + Chr(13) + Chr(10) + "Segunda linha";
 ```
 
 **Solução:** Use `CaracterParaAlfa()` para caracteres especiais
+
 ```lsp
 @ ✅ CORRETO @
 Definir Alfa vaEnter;
@@ -598,7 +650,9 @@ vaStrProcura = "Primeira linha" + vaEnter + "Segunda linha";
 ```
 
 #### **❌ Problema #2: `FormatarData` com Tipo Data**
+
 **Problema:** `FormatarData` aceita apenas tipo `Numero`, não `Data`
+
 ```lsp
 @ ❌ INCORRETO @
 Definir Data vdData;
@@ -607,6 +661,7 @@ FormatarData(vdData, "dd/MM/yyyy", vaFormatada);  @ ERRO: FormatarData só aceit
 ```
 
 **Solução:** Use `DataHora()` que retorna `Numero`
+
 ```lsp
 @ ✅ CORRETO @
 Definir Numero vnDataHora;
@@ -615,26 +670,32 @@ FormatarData(vnDataHora, "dd/MM/yyyy", vaFormatada);
 ```
 
 #### **❌ Problema #3: Atribuição Direta de Data**
+
 **Problema:** Não é possível atribuir data diretamente
+
 ```lsp
 @ ❌ INCORRETO @
 vdData = 15/08/1990;
 ```
 
 **Solução:** Use `MontaData()` ou `CodData()`
+
 ```lsp
 @ ✅ CORRETO @
 MontaData(15, 8, 1990, vdData);
 ```
 
 #### **❌ Problema #4: Variáveis Não Declaradas**
+
 **Problema:** Variáveis usadas sem declaração
+
 ```lsp
 @ ❌ INCORRETO @
 DecodData(vdData, vnDia, vnMes, vnAno);
 ```
 
 **Solução:** Declare todas as variáveis
+
 ```lsp
 @ ✅ CORRETO @
 Definir Numero vnDia;
@@ -644,6 +705,7 @@ DecodData(vdData, vnDia, vnMes, vnAno);
 ```
 
 #### **❌ Problema #5: Uso Incorreto da Função `Truncar`**
+
 **Problema:** A função `Truncar` existe, mas geralmente é usada com sintaxe incorreta
 
 ```lsp
@@ -652,13 +714,16 @@ Truncar(vnDataHora, vnParteInteira);
 ```
 
 **Solução:** Use a sintaxe correta da função Truncar
+
 ```lsp
 @ ✅ CORRETO @
 vnParteInteira = Truncar(vnDataHora);  @ Sintaxe correta: Truncar(valor) retorna o valor truncado @
 ```
 
 ### **❌ Erro #1: Concatenação em Parâmetros de Funções**
+
 **Problema:** Tentar concatenar strings diretamente nos parâmetros
+
 ```lsp
 @ ❌ INCORRETO - NÃO FUNCIONA @
 Mensagem(Retorna, "Resultado: " + vaValor);
@@ -666,6 +731,7 @@ TamanhoAlfa("Texto: " + vaNome, vnTamanho);
 ```
 
 **Solução:** Sempre use variáveis intermediárias
+
 ```lsp
 @ ✅ CORRETO - FUNCIONA @
 Definir Alfa vaMensagem;
@@ -678,7 +744,9 @@ TamanhoAlfa(vaTextoCompleto, vnTamanho);
 ```
 
 ### **❌ Erro #2: Confundir Tipos de Retorno**
+
 **Problema:** Tentar usar funções LSP como se retornassem valores
+
 ```lsp
 @ ❌ INCORRETO - NÃO FUNCIONA @
 vnTamanho = TamanhoAlfa(vaTexto);
@@ -687,6 +755,7 @@ Se (EstaNulo(vaDado, vnEhNulo) = 0) {  @ Função não retorna valor @
 ```
 
 **Solução:** LSP usa parâmetros de retorno
+
 ```lsp
 @ ✅ CORRETO - FUNCIONA @
 TamanhoAlfa(vaTexto, vnTamanho);
@@ -696,7 +765,9 @@ Se (vnEhNulo = 0) {          @ Depois compara variável @
 ```
 
 ### **❌ Erro #3: Declaração de Variáveis no Meio do Código**
+
 **Problema:** Declarar variáveis dentro de blocos condicionais
+
 ```lsp
 @ ❌ INCORRETO - PODE CAUSAR ERROS @
 Se (vnCondicao = 1) {
@@ -706,6 +777,7 @@ Se (vnCondicao = 1) {
 ```
 
 **Solução:** Declare todas as variáveis no início da regra
+
 ```lsp
 @ ✅ CORRETO - SEMPRE FUNCIONA @
 Definir Alfa vaVariavel;  @ Declaração no início @
@@ -716,7 +788,9 @@ Se (vnCondicao = 1) {
 ```
 
 ### **❌ Erro #4: Concatenação Incorreta de Tipos**
+
 **Problema:** Tentar concatenar variáveis numéricas diretamente
+
 ```lsp
 @ ❌ INCORRETO - ERRO DE CONCATENAÇÃO @
 Definir Numero vnIdade;
@@ -726,6 +800,7 @@ vaMensagem = "Idade: " + vnIdade;  @ ERRO: Numero não concatena @
 ```
 
 **Solução:** Converta para Alfa primeiro
+
 ```lsp
 @ ✅ CORRETO - CONVERSÃO ANTES DA CONCATENAÇÃO @
 Definir Numero vnIdade;
@@ -739,7 +814,9 @@ vaMensagem = "Idade: " + vaIdadeStr;  @ Concatena apenas Alfas @
 **⚠️ REGRA CRÍTICA:** **Apenas variáveis do tipo `Alfa` podem ser concatenadas em LSP!**
 
 ### **❌ Erro #5: Confundir Tipos de Dados**
+
 **Problema:** Tentar atribuir tipos incompatíveis
+
 ```lsp
 @ ❌ INCORRETO - ERRO DE TIPO @
 Definir Numero vnValor;
@@ -747,6 +824,7 @@ vnValor = "123";  @ Tentando atribuir string a número @
 ```
 
 **Solução:** Use conversões apropriadas
+
 ```lsp
 @ ✅ CORRETO - CONVERSÃO ADEQUADA @
 Definir Numero vnValor;
@@ -756,7 +834,9 @@ AlfaParaInt(vaTexto, vnValor);
 ```
 
 ### **❌ Erro #5: Loop Infinito**
+
 **Problema:** Condição de parada nunca é atingida
+
 ```lsp
 @ ❌ INCORRETO - LOOP INFINITO @
 vnContador = 1;
@@ -766,6 +846,7 @@ Enquanto (vnContador > 0) {
 ```
 
 **Solução:** Sempre atualize a variável de controle
+
 ```lsp
 @ ✅ CORRETO - LOOP CONTROLADO @
 vnContador = 1;
@@ -776,7 +857,9 @@ Enquanto (vnContador <= 10) {
 ```
 
 ### **❌ Erro #6: Variáveis de Parâmetro em SQL_Retornar**
+
 **Problema:** Usar variáveis de parâmetro (que começam com "p") diretamente nas funções SQL_Retornar
+
 ```lsp
 @ ❌ INCORRETO - NÃO FUNCIONA @
 Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
@@ -786,6 +869,7 @@ Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
 ```
 
 **Solução:** Use variáveis locais e depois atribua aos parâmetros
+
 ```lsp
 @ ✅ CORRETO - FUNCIONA @
 Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
@@ -806,6 +890,7 @@ Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
 ## 🎯 **Padrões de Projeto LSP**
 
 ### **📋 Padrão: Validação de Dados**
+
 ```lsp
 @ Sempre valide antes de processar @
 Definir Funcao validarDados();
@@ -829,6 +914,7 @@ Funcao validarDados(); {
 ```
 
 ### **🔄 Padrão: Conversão Segura**
+
 ```lsp
 @ Sempre use variáveis intermediárias para conversões @
 Definir Funcao converterSeguro();
@@ -854,6 +940,7 @@ Funcao converterSeguro(); {
 ```
 
 ### **🔍 Padrão: Tratamento de Erros**
+
 ```lsp
 @ Sempre trate erros de forma estruturada @
 Definir Funcao processarComTratamento();
@@ -871,7 +958,7 @@ Funcao processarComTratamento(); {
 }
 ```
 
-## 📚 **Introdução** {#introdução}
+## **Introdução** 📚
 
 A Linguagem Senior de Programação (LSP) é uma linguagem proprietária utilizada nos sistemas da Senior para a customização e extensão de funcionalidades. Ela permite a manipulação de dados, a criação de regras de negócio personalizadas e a automação de processos dentro do ambiente Senior.
 
@@ -895,11 +982,13 @@ Diferente de linguagens tradicionais como Java, C# ou Python, a LSP foi projetad
 ## 🧠 **Conceitos Mentais Importantes**
 
 ### **💭 Modelo Mental #1: "Parâmetros de Retorno"**
+
 **Pense assim:** Em LSP, as funções **não retornam valores**, elas **preenchem variáveis** que você passa como parâmetro.
 
 **Analogia:** É como dar um formulário para alguém preencher, em vez de receber uma resposta direta.
 
 **Exemplo:**
+
 ```lsp
 @ ❌ Pensamento INCORRETO (estilo outras linguagens) @
 vnTamanho = TamanhoAlfa(vaTexto);  @ "A função retorna um valor" @
@@ -912,11 +1001,13 @@ Se (vnEhNulo = 0) {                @ "Compara a variável preenchida" @
 ```
 
 ### **💭 Modelo Mental #2: "Manipulação Primeiro, Função Depois"**
+
 **Pense assim:** Faça **todas as operações** primeiro, depois chame a função com o resultado.
 
 **Analogia:** É como cozinhar - prepare todos os ingredientes antes de colocar na panela.
 
 **Exemplo:**
+
 ```lsp
 @ ❌ INCORRETO - Tentando fazer tudo na função @
 Mensagem(Retorna, "Resultado: " + vaValor + " - Total: " + vaTotal);
@@ -927,11 +1018,13 @@ Mensagem(Retorna, vaMensagem);
 ```
 
 ### **💭 Modelo Mental #3: "Variáveis são Recipientes"**
+
 **Pense assim:** Variáveis são como **caixas** que guardam valores. Você precisa de uma caixa para cada valor que quer manipular.
 
 **Analogia:** É como organizar uma despensa - cada tipo de alimento vai em um recipiente específico.
 
 **Exemplo:**
+
 ```lsp
 @ ❌ INCORRETO - Tentando usar valores "soltos" @
 Mensagem(Retorna, "Nome: " + "João" + " - Idade: " + 25);
@@ -948,11 +1041,13 @@ Mensagem(Retorna, vaMensagem);
 ```
 
 ### **💭 Modelo Mental #4: "LSP é Sequencial"**
+
 **Pense assim:** LSP executa **linha por linha**, na ordem que você escreveu. Não há "mágica" - tudo é explícito.
 
 **Analogia:** É como seguir uma receita de bolo - cada passo deve ser feito na ordem correta.
 
 **Exemplo:**
+
 ```lsp
 @ ❌ INCORRETO - Tentando usar antes de preparar @
 vaMensagem = "Resultado: " + vaResultado;  @ vaResultado ainda não existe @
@@ -966,24 +1061,28 @@ vaMensagem = "Resultado: " + vaResultado;
 ### **🎯 Casos de Uso Comuns da LSP**
 
 #### **📊 Automação de Processos**
+
 - Cálculos automáticos em formulários
 - Validação de dados em tempo real
 - Geração de relatórios personalizados
 - Processamento em lote
 
 #### **🌐 Integrações**
+
 - Consumo de APIs REST
 - Integração com sistemas externos
 - Sincronização de dados
 - Importação/exportação de arquivos
 
 #### **🔧 Customizações Senior**
+
 - Regras de negócio específicas
 - Workflows personalizados
 - Validações complexas
 - Transformação de dados
 
 #### **💼 Exemplos Práticos**
+
 ```lsp
 @ Validação de CNPJ @
 Se (TamanhoAlfa(vaCNPJ) <> 14) {
@@ -1002,6 +1101,7 @@ vnTotal = vnValor - vnDesconto;
 ## 🎯 **Casos de Uso Reais Detalhados**
 
 ### **🏢 Cenário Empresarial: Validação de Cliente**
+
 ```lsp
 @ Sistema completo de validação de dados de cliente @
 Definir Funcao validarCliente();
@@ -1060,6 +1160,7 @@ Funcao validarCliente(); {
 ```
 
 ### **🌐 Cenário de Integração: Consulta CEP Automática**
+
 ```lsp
 @ Sistema de consulta automática de CEP com validação @
 Definir Funcao consultarCEP();
@@ -1106,6 +1207,7 @@ Funcao consultarCEP(); {
 ```
 
 ### **📊 Cenário de Processamento: Relatório de Vendas**
+
 ```lsp
 @ Sistema de geração de relatório de vendas @
 Definir Funcao gerarRelatorioVendas();
@@ -1151,6 +1253,7 @@ Funcao gerarRelatorioVendas(); {
 ```
 
 ### **🔐 Cenário de Segurança: Validação de Senha**
+
 ```lsp
 @ Sistema de validação de senha com critérios de segurança @
 Definir Funcao validarSenha();
@@ -1218,6 +1321,7 @@ Funcao validarSenha(); {
 ## 📋 **Referência Rápida**
 
 ### **Declaração de Variáveis**
+
 ```lsp
 Definir Alfa vaNome;        @ Texto/String @
 Definir Numero vnIdade;     @ Número (int/decimal) @
@@ -1225,6 +1329,7 @@ Definir Data vdNascimento;  @ Data @
 ```
 
 ### **Operadores Básicos**
+
 ```lsp
 @ Aritméticos @
 vnSoma = vnA + vnB;         @ Adição @
@@ -1240,6 +1345,7 @@ Se (vnA < vnB) { }          @ Menor @
 ```
 
 ### **Estruturas de Controle**
+
 ```lsp
 @ Condicional @
 Se (condição) {
@@ -1259,6 +1365,7 @@ Enquanto (condição) {
 ```
 
 ### **Funções Essenciais**
+
 ```lsp
 @ Mensagens @
 Mensagem(Retorna, vaMensagem);
@@ -1276,7 +1383,8 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 ## 🎯 **Quick Reference Cards**
 
 ### **💳 Card: Manipulação de Strings**
-```
+
+```lsp
 ┌─────────────────────────────────┐
 │ 📝 MANIPULAÇÃO DE STRINGS       │
 ├─────────────────────────────────┤
@@ -1291,7 +1399,8 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 ```
 
 ### **💳 Card: Conversões**
-```
+
+```lsp
 ┌─────────────────────────────────┐
 │ 🔄 CONVERSÕES                   │
 ├─────────────────────────────────┤
@@ -1305,7 +1414,8 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 ```
 
 ### **💳 Card: Datas**
-```
+
+```lsp
 ┌─────────────────────────────────┐
 │ 📅 MANIPULAÇÃO DE DATAS         │
 ├─────────────────────────────────┤
@@ -1318,7 +1428,8 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 ```
 
 ### **💳 Card: Validação**
-```
+
+```lsp
 ┌─────────────────────────────────┐
 │ ✅ VALIDAÇÃO E VERIFICAÇÃO      │
 ├─────────────────────────────────┤
@@ -1334,7 +1445,8 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 ```
 
 ### **💳 Card: HTTP e APIs**
-```
+
+```lsp
 ┌─────────────────────────────────┐
 │ 🌐 HTTP E APIS                  │
 ├─────────────────────────────────┤
@@ -1346,7 +1458,8 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 ```
 
 ### **💳 Card: Banco de Dados**
-```
+
+```lsp
 ┌─────────────────────────────────┐
 │ 🗃️ BANCO DE DADOS               │
 ├─────────────────────────────────┤
@@ -1360,7 +1473,7 @@ PosicaoAlfa("busca", vaTexto, vnPosicao);
 
 ---
 
-## 📝 **Sintaxe e Estrutura** {#sintaxe-e-estrutura}
+## **Sintaxe e Estrutura** 📝
 
 A linguagem LSP possui uma sintaxe própria, estruturada para facilitar a criação de regras de negócio dentro do ecossistema da Senior. Os comandos são escritos de forma sequencial e utilizam palavras-chave específicas para definir ações e estruturas de controle.
 
@@ -1393,7 +1506,7 @@ Definir Alfa VANOMEVARIAVEL;
 
 ### Identação e Espaçamento
 
-A identação padrão na LSP é de **2 espaços** ao invés de 4. 
+A identação padrão na LSP é de **2 espaços** ao invés de 4.
 
 ```lsp
 Definir Numero vnX;
@@ -1411,9 +1524,9 @@ Se (vnX < vnY) {
 
 Regras:
 
-   - Se o bloco contiver apenas uma linha, não é necessário informar `{ }` ou `inicio;` e `fim;`, basta adicionar identado na linha de baixo e identado.
-   - Os blocos de código em LSP devem ser delimitados com `{ }`, ou alternativamente com `inicio;` e `fim;` (menos comum). 
-   - Todas as condições ou estruturas de repetições devem estar entre parênteses `()`.
+- Se o bloco contiver apenas uma linha, não é necessário informar `{ }` ou `inicio;` e `fim;`, basta adicionar identado na linha de baixo e identado.
+- Os blocos de código em LSP devem ser delimitados com `{ }`, ou alternativamente com `inicio;` e `fim;` (menos comum).
+- Todas as condições ou estruturas de repetições devem estar entre parênteses `()`.
 
 Exemplo de estrutura de bloco com apenas uma linha:
 
@@ -1454,7 +1567,7 @@ Inicio
 Fim;
 ```
 
-## 🔤 **Caracteres com Comportamento Especial** {#caracteres-com-comportamento-especial}
+## **Caracteres com Comportamento Especial** 🔤
 
 Existem determinados caracteres que, quando inseridos em uma expressão literal nas regras, devem ser precedidos do caractere `\` (barra) para indicar que estes caracteres serão usados literalmente e não como caracteres especiais. Estes caracteres são: `"` (aspas) e `\` (barra).
 
@@ -1464,7 +1577,7 @@ Exemplo:
 EnviaEMail("Joao","joao@senior.com.br", "", "", "Teste","\"\\\\Servidor\\teste.txt\"", "");
 ```
 
-## 💬 **Comentários** {#comentários}
+## **Comentários** 💬
 
 Comentários são utilizados para explicar o código e são ignorados pelo compilador. Existem três tipos de comentários na LSP:
 
@@ -1488,7 +1601,7 @@ Exemplo de comentário de múltiplas linhas:
 Definir Numero vnX;
 ```
 
-## 🔒 **Palavras Reservadas** {#palavras-reservadas}
+## **Palavras Reservadas** 🔒
 
 A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP possui 51 (cinquenta e uma) palavras reservadas que não poderão ser usadas pelo programador para outros fins.
 
@@ -1525,7 +1638,7 @@ A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP 
 | Regra (Rule) | Chama uma outra regra, identificada pelo \<número da regra\>. Sintaxe: Regra (\<numero_da_regra\>); |
 | Continue | Continua a execução de um loop feito pelo comando Para. Ou seja, se quiser que o loop não seja executado em determinado caso, faça o teste da condição e com ela use o comando. Sintaxe: Continue; |
 | End (Var) | Usado na definição de uma função, para indicar qual parâmetro retornará valor. Sintaxe: Funcao Teste (end \<tipo do parâmetro\> \<nome do parâmetro\>); |
-| Abrir (Open) |	Abre o \<arquivo informado\>, no \<modo de abertura\> desejado. Se o arquivo não existir ele é criado. Ele retorna um manipulador de arquivos. Sintaxe: Manipulador_de_Arquivo = Abrir (“\<nome_do_arquivo\>”,\<modo_de_abertura\>); Onde o Modo de Abertura pode ser: Ler ou Gravar. |
+| Abrir (Open) | Abre o \<arquivo informado\>, no \<modo de abertura\> desejado. Se o arquivo não existir ele é criado. Ele retorna um manipulador de arquivos. Sintaxe: Manipulador_de_Arquivo = Abrir (“\<nome_do_arquivo\>”,\<modo_de_abertura\>); Onde o Modo de Abertura pode ser: Ler ou Gravar.|
 | Fechar (Close) |	Fecha o arquivo aberto pela função Abrir. Sintaxe: Fechar (\<manipulador_de_arquivo\>); |
 | Ler (Read) |	Lê uma \<quantidade de caracteres\> do arquivo especificado no \<manipulador de arquivo\> e joga o valor lido em uma \<variável\>. Sintaxe: Ler (\<manipulador_de_arquivos\>, \<variavel\>,\<tamanho\>); |
 | Gravar (Write) |	Grava o valor de uma \<variável ou de uma constante> no \<manipulador de arquivos\>. Sintaxe: Gravar (\<manipulador_de_arquivos\>,\<variável ou constante>,\<tamanho\>); |
@@ -1535,7 +1648,7 @@ A LSP não faz distinção de letras maiúsculas e minúsculas. Portanto, a LSP 
 | ValStr |	Usado apenas no gerador, para alterar a descrição de um campo tipo Descrição. O texto passada para ValStr será impresso no lugar da descrição original do campo. ValStr = "Teste"; Cancel(2);	|
 | Cursor |	Os cursores nada mais são que um SELECT em uma regra, retornando registros que satisfaçam a condição informada na propriedade SQL de um Cursor. Observações: O SELECT utilizado no cursor não possui relacionamento direto com o SELECT utilizado pelo gerador de relatórios, por exemplo. |
 
-## ⚙️ **Variáveis de Sistema** {#variáveis-de-sistema}
+## **Variáveis de Sistema** ⚙️
 
 As variáveis de sistema são utilizadas para obter informações do ambiente de execução, como data, hora, usuário, entre outros. Abaixo estão algumas das principais variáveis de sistema disponíveis no Gerador de Relatórios:
 
@@ -1561,7 +1674,7 @@ As variáveis de sistema são utilizadas para obter informações do ambiente de
 | NumPag         | Número da página                                         |
 | QtdDupPag      | Quantidade de duplicatas impressas por página - Utilizado no modelo FRCR002 |
 
-## 🔧 **Operadores** {#operadores}
+## **Operadores** 🔧
 
 ### **🧮 Operadores Lógicos**
 
@@ -1621,7 +1734,7 @@ Parâmetros:
 - Divisor: Campo/Variável pelo qual o Dividendo será dividido
 - Resto: Variável que receberá o resto da divisão 
 
-## 📊 **Tipo de Dados e Variáveis** {#tipo-de-dados-e-variáveis}
+## **Tipo de Dados e Variáveis** 📊
 
 ### **📋 Tipos de Dados**
 
@@ -1675,7 +1788,7 @@ vnIdade = 25;
 
 As variáveis com tamanhos(Arrays) são acessadas diretamente pelo seu índice.
 
-   - O Índice pode conter um valor fixo, uma variável ou uma formula
+- O Índice pode conter um valor fixo, uma variável ou uma formula
 
 <Nome_da_Variável>[<índice>] = <valor_atribuído>;
 
@@ -1709,11 +1822,13 @@ vaNome[vnIndice + 1 * 2 ] = "Nome";
 A LSP utiliza um padrão específico de nomenclatura que facilita a identificação do tipo de variável:
 
 **Prefixos por Tipo:**
+
 - `va`: Variáveis do tipo **Alfa** (string/texto)
 - `vn`: Variáveis do tipo **Numero** (inteiro/decimal)
 - `vd`: Variáveis do tipo **Data** (data/hora)
 
 **Regras de Nomenclatura:**
+
 - Use CamelCase após o prefixo
 - Nomes descritivos e significativos
 - Máximo de 100 caracteres
@@ -1722,6 +1837,7 @@ A LSP utiliza um padrão específico de nomenclatura que facilita a identificaç
 - Não use palavras reservadas
 
 **Exemplos Corretos:**
+
 ```lsp
 @ Variáveis Alfa @
 Definir Alfa vaNomeCompleto;
@@ -1740,6 +1856,7 @@ Definir Data vdDataVencimento;
 ```
 
 **Exemplos Incorretos:**
+
 ```lsp
 @ Sem prefixo @
 Definir Alfa nome; @ Incorreto @
@@ -1752,8 +1869,7 @@ Definir Alfa va1; @ Incorreto: não é descritivo @
 Definir Numero vnX; @ Incorreto: muito genérico @
 ```
 
-
-## 📝 **Manipulação Avançada de Strings** {#manipulação-avançada-de-strings}
+## **Manipulação Avançada de Strings** 📝
 
 As funções de manipulação de strings na LSP permitem realizar operações complexas de processamento de texto, desde operações básicas até transformações avançadas e limpeza de dados.
 
@@ -1833,6 +1949,7 @@ Na LSP, **não é possível concatenar diretamente uma variável do tipo `Numero
 3. **Definir uma variável Alfa** com o mesmo nome da variável numérica, mudando apenas o prefixo de `vn` para `va`
 
 **✅ Exemplo CORRETO:**
+
 ```lsp
 Definir Numero vnNumero;
 Definir Alfa vaNumero;     @ Variável Alfa para receber conversão @
@@ -1844,6 +1961,7 @@ vaResultado = "O número é " + vaNumero;  @ Concatena apenas Alfas @
 ```
 
 **❌ Exemplo INCORRETO:**
+
 ```lsp
 Definir Numero vnNumero;
 Definir Alfa vaResultado;
@@ -1853,8 +1971,9 @@ vaResultado = "O número é " + vnNumero;  @ ERRO: Numero não pode ser concaten
 ```
 
 **📋 Regras de Concatenação:**
+
 - ✅ `Alfa` + `Alfa` = **Permitido**
-- ✅ `"string"` + `Alfa` = **Permitido** 
+- ✅ `"string"` + `Alfa` = **Permitido**
 - ❌ `Alfa` + `Numero` = **ERRO**
 - ❌ `"string"` + `Numero` = **ERRO**
 - ❌ `Numero` + `Numero` = **ERRO** (use operadores aritméticos)
@@ -1868,6 +1987,7 @@ Na LSP, não existe o caractere `\n` para quebra de linha. Para realizar a quebr
 3. Concatenar essa variável na string onde se deseja a quebra de linha
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaEnter;
 Definir Alfa vaMensagem;
@@ -1887,10 +2007,12 @@ CaracterParaAlfa(<caractere>, <destino>);
 ```
 
 **Parâmetros:**
+
 - `caractere`: Campo/Variável que mantém o código ASCII de um caracter
 - `destino`: Variável que receberá o resultado da conversão
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaLetra;
 Definir Alfa vaEnter;
@@ -1902,7 +2024,7 @@ CaracterParaAlfa(65, vaLetra); @ vaLetra será "A" @
 CaracterParaAlfa(13, vaEnter); @ vaEnter será quebra de linha @
 ```
 
-**⚠️ Importante:** Se for utilizar para inserir quebras de linha em envio de e-mail e na Central de Configurações Senior estiver habilitada a opção "Converter quebras de linha para HTML", todas as quebras de linha Windows (caracteres ASCII 13 e 10) serão convertidas para tags `<br/>`. 
+**⚠️ Importante:** Se for utilizar para inserir quebras de linha em envio de e-mail e na Central de Configurações Senior estiver habilitada a opção "Converter quebras de linha para HTML", todas as quebras de linha Windows (caracteres ASCII 13 e 10) serão convertidas para tags `<br/>`.
 
 ### Funções Básicas de Manipulação
 
@@ -1918,6 +2040,7 @@ CopiarStr(<variavel>, <posicao>, <tamanho>);
 ```
 
 **Parâmetros:**
+
 - `variavel`: Variável que contém o texto e que será modificada para conter apenas a parte copiada
 - `posicao`: Posição inicial (baseada em 1)
 - `tamanho`: Quantidade de caracteres a copiar
@@ -1962,6 +2085,7 @@ TamanhoStr(<origem>, <tamanho>);
 ```
 
 **Parâmetros:**
+
 - `origem`: Campo/Variável que se deseja saber o tamanho
 - `tamanho`: Variável Numero que receberá o tamanho
 
@@ -2000,6 +2124,7 @@ PosicaoStr(<subtexto>, <texto>, <posicao>);
 ```
 
 **Parâmetros:**
+
 - `subtexto`: Texto que se está procurando
 - `texto`: Campo/variável onde fazer a busca
 - `posicao`: Variável que receberá a posição inicial (0 se não encontrar)
@@ -2038,6 +2163,7 @@ SubstAlfaUmaVez(<subtexto>, <novoTexto>, <texto>); @ Substitui apenas a primeira
 ```
 
 **Parâmetros:**
+
 - `subtexto`: Texto a ser localizado e substituído
 - `novoTexto`: Texto que irá substituir
 - `texto`: Variável que contém o texto original e receberá o resultado
@@ -2072,6 +2198,7 @@ Concatena(<str1>, <str2>, <str3>, <destino>);
 ```
 
 **Parâmetros:**
+
 - `str1`: Campo/Variável que será concatenado
 - `str2`: Campo/Variável que será concatenado  
 - `str3`: Campo/Variável que será concatenado
@@ -2123,16 +2250,19 @@ DeletarAlfa(vaCPF, 10, 1); @ Remove traço @
 Elimina parte de um texto.
 
 **Sintaxe:**
+
 ```lsp
 DeletarStr(<origem>, <posicao>, <quantidade>);
 ```
 
 **Parâmetros:**
+
 - `origem`: Variável que passará o texto cuja parte será deletada
 - `posicao`: Variável que indica a posição de início da eliminação
 - `quantidade`: Variável que indica a quantidade de caracteres a serem eliminados
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaOrigem;
 vaOrigem = "Senior empresa de Sistemas";
@@ -2145,16 +2275,19 @@ DeletarStr(vaOrigem, 8, 11);
 Insere um ou mais caracteres em uma variável/campo, a partir da posição indicada.
 
 **Sintaxe:**
+
 ```lsp
 InserirAlfa(<valor>, <origem>, <posicao>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Variável que contém a string que deseja-se inserir
 - `origem`: Variável que contém a string de origem e que receberá o conteúdo da inserção
 - `posicao`: Variável que indica a posição em Origem a partir de onde Valor será inserido
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaOrigem;
 vaOrigem = "Senior Sistemas";
@@ -2169,16 +2302,19 @@ InserirAlfa("empresa de ", vaOrigem, 8);
 Esta função insere um ou mais caracteres em uma Variável/Campo, a partir da posição indicada.
 
 **Sintaxe:**
+
 ```lsp
 InserirStr(<valor>, <origem>, <posicao>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Variável que contém a string que deseja-se inserir
 - `origem`: Variável que contém a string de origem e que receberá o conteúdo da inserção
 - `posicao`: Variável que indica a posição em Origem a partir de onde Valor será inserido
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaOrigem;
 vaOrigem = "Senior Sistemas";
@@ -2193,11 +2329,13 @@ InserirStr("empresa de ", vaOrigem, 8);
 Limpa os espaços em branco à direita e à esquerda de uma variável alfanumérica.
 
 **Sintaxe:**
+
 ```lsp
 LimpaEspacos(<texto>);
 ```
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaTexto;
 vaTexto = "  texto com espaços  ";
@@ -2210,11 +2348,13 @@ LimpaEspacos(vaTexto);
 Limpa os espaços em branco à direita de uma variável alfanumérica.
 
 **Sintaxe:**
+
 ```lsp
 LimpaEspacosDireita(<texto>);
 ```
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaTexto;
 vaTexto = "  texto com espaços  ";
@@ -2227,11 +2367,13 @@ LimpaEspacosDireita(vaTexto);
 Limpa os espaços em branco à esquerda de uma variável alfanumérica.
 
 **Sintaxe:**
+
 ```lsp
 LimpaEspacosEsquerda(<texto>);
 ```
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaTexto;
 vaTexto = "  texto com espaços  ";
@@ -2244,16 +2386,19 @@ LimpaEspacosEsquerda(vaTexto);
 Esta função pega o texto indicado e faz assinalamentos de quebra de linha conforme o Tamanho_Linha especificado, retornando a quantidade de linhas que será usada para imprimir o texto.
 
 **Sintaxe:**
+
 ```lsp
 QuebraTexto(<texto>, <tamanhoLinha>, <quantidadeLinhas>);
 ```
 
 **Parâmetros:**
+
 - `texto`: Campo/Variável que se deseja imprimir em mais de uma linha
 - `tamanhoLinha`: Variável que indica a quantidade máxima de caracteres por linha
 - `quantidadeLinhas`: Variável que indica qual é a quantidade de linhas que serão necessárias para imprimir o texto
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaTexto;
 Definir Alfa vaFrase;
@@ -2278,16 +2423,19 @@ Enquanto (vnLinAtu <= vnNumLin) {
 Esta função procura um caractere que indica "enter" ou nova linha (#13 ou #10) em uma string e retorna a string antes do primeiro enter, e o restante da string original, em variáveis separadas.
 
 **Sintaxe:**
+
 ```lsp
 ProcuraEnter(<strProcura>, <strImp>, <strResto>);
 ```
 
 **Parâmetros:**
+
 - `strProcura`: String na qual será procurada o enter ou nova linha (#13 ou #10)
 - `strImp`: A primeira parte da string procurada, até o primeiro caracter que indica nova linha (retorno)
 - `strResto`: O restante da string, depois do primeiro caracter que indica nova linha (retorno)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaStrProcura;
 Definir Alfa vaStrImp;
@@ -2306,11 +2454,13 @@ ProcuraEnter(vaStrProcura, vaStrImp, vaStrResto);
 Realiza operações matemáticas com valores alfanuméricos.
 
 **Sintaxe:**
+
 ```lsp
 CalculaAlfa(<operacao>, <argumento1>, <argumento2>, <resultado>);
 ```
 
 **Parâmetros:**
+
 - `operacao`: Campo indicando que operação deve ser realizada:
   - "+": soma
   - "-": subtração
@@ -2320,6 +2470,7 @@ CalculaAlfa(<operacao>, <argumento1>, <argumento2>, <resultado>);
 - `resultado`: Variável alfa que receberá o resultado do cálculo
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaOperacao;
 Definir Alfa vaArg1;
@@ -2340,15 +2491,18 @@ CalculaAlfa(vaOperacao, vaArg1, vaArg2, vaResultado);
 Esta função carrega para uma variável alfanumérica o conteúdo de um arquivo texto.
 
 **Sintaxe:**
+
 ```lsp
 CarregarTextoArq(<arquivo>, <texto>);
 ```
 
 **Parâmetros:**
+
 - `arquivo`: Variável com o caminho do arquivo a ser lido
 - `texto`: Variável que retorna o texto lido do arquivo
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaTexto;
 CarregarTextoArq("C:\\Senior\\Sapiens\\Arquivo.txt", vaTexto);
@@ -2359,17 +2513,20 @@ CarregarTextoArq("C:\\Senior\\Sapiens\\Arquivo.txt", vaTexto);
 Esta função concatena até 3 campo/variáveis tipo alfa, formando uma só variável.
 
 **Sintaxe:**
+
 ```lsp
 Concatena(<str1>, <str2>, <str3>, <destino>);
 ```
 
 **Parâmetros:**
+
 - `str1`: Campo/Variável que será concatenado
 - `str2`: Campo/Variável que será concatenado
 - `str3`: Campo/Variável que será concatenado
 - `destino`: Variável que receberá o resultado da concatenação (retorno)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaResultado;
 Definir Alfa vaNome;
@@ -2449,6 +2606,7 @@ LerPosicaoAlfa(<origem>, <destino>, <posicao>);
 ```
 
 **Parâmetros:**
+
 - `origem`: Campo/Variável Alfa que se deseja verificar
 - `destino`: Variável Numero que receberá o código ASCII do caracter lido
 - `posicao`: Posição do Campo/Variável de Origem que se deseja identificar o caracter
@@ -2479,6 +2637,7 @@ Se (vnCodigoCaractere = 'T') {
 ```
 
 **Observações:**
+
 - A função retorna o código ASCII do caractere, não o caractere em si
 - Para obter o caractere como string, use `CopiarAlfa` em vez de `LerPosicaoAlfa`
 - Para comparações diretas com caracteres, use aspas simples (`'T'`)
@@ -2521,6 +2680,7 @@ ListaQuantidade(<texto>, <separador>, <quantidade>);
 ```
 
 **Parâmetros:**
+
 - `texto`: Texto com itens separados
 - `separador`: Caractere que separa os itens
 - `quantidade`: Variável que receberá a quantidade de itens
@@ -2556,11 +2716,13 @@ vnRetorno = ConverteCodificacaoString(<textoOrigem>, <codificacao>, <textoDestin
 ```
 
 **Parâmetros:**
+
 - `textoOrigem`: Contém o texto original que necessita ter sua codificação alterada
 - `codificacao`: Nome da codificação para a qual o texto será convertido ("UTF-8" ou "WINDOWS-1252")
 - `textoDestino`: Contém o texto com a codificação alterada
 
 **Valor de Retorno:**
+
 - `0`: Conversão realizada com sucesso
 - `1`: Texto possui caracteres não suportados pela codificação
 
@@ -2595,6 +2757,7 @@ ConverteTexto(<codificacao>, <textoOrigem>, <textoDestino>);
 ```
 
 **Parâmetros:**
+
 - `codificacao`: Codificação do formato de origem do texto (formato suportado: "JSON")
 - `textoOrigem`: Texto contendo os caracteres que necessitam ser convertidos
 - `textoDestino`: Variável que recebe o texto convertido
@@ -2649,7 +2812,7 @@ ConverteTexto("JSON", vaTextoOrigem, vaTextoDestino);
 | \\u0040 | @ | \\u005F | _ | \\u007E | ~ |  |  |
 | \\u0060 | ` |  |  |  |  |  |  |
 
-## 🔐 **Criptografia e Segurança** {#criptografia-e-segurança}
+## **Criptografia e Segurança** 🔐
 
 A LSP oferece um conjunto robusto de funções para operações criptográficas, geração de tokens seguros e proteção de dados sensíveis.
 
@@ -2666,6 +2829,7 @@ GeraHash(<texto>, <algoritmo>, <hash>);
 ```
 
 **Algoritmos Suportados:**
+
 - `1`: MD5 (128 bits)
 - `2`: SHA-1 (160 bits)
 - `3`: SHA-256 (256 bits)
@@ -2936,22 +3100,25 @@ Funcao transmitirDadosSeguro(); {
 }
 ```
 
-## 🔧 **Funções Adicionais de Manipulação de Strings** {#funções-adicionais-de-manipulação-de-strings}
+## **Funções Adicionais de Manipulação de Strings** 🔧
 
 ### RetornaAscII
 
 Retorna o caracter ASCII correspondente a um número.
 
 **Sintaxe:**
+
 ```lsp
 RetornaAscII(<xNumero>, <xCarAscII>);
 ```
 
 **Parâmetros:**
+
 - `xNumero`: Variável tipo Numero da qual se quer o retorno em ASCII
 - `xCarAscII`: Variável Alfa que retorna o caracter ASCII correspondente ao número
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploRetornaAscII();
 
@@ -3001,14 +3168,17 @@ Funcao exemploRetornaAscII(); {
 Remove caracteres especiais deixando somente letras e números, removendo todos os outros caracteres.
 
 **Sintaxe:**
+
 ```lsp
 RetiraCaracteresEspeciais(<Retorno>);
 ```
 
 **Parâmetros:**
+
 - `Retorno`: Variável Alfa que recebe o campo a ser limpo e retorna o campo sem caracteres especiais
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploRetiraCaracteresEspeciais();
 
@@ -3081,14 +3251,17 @@ Funcao validarDocumentoLimpo(); {
 Recebe uma string com acentuação e retorna a mesma string sem acentuação e em maiúsculo.
 
 **Sintaxe:**
+
 ```lsp
 RetiraAcentuacao(<pString>);
 ```
 
 **Parâmetros:**
+
 - `pString`: Variável Alfa que recebe uma string e retorna a variável em maiúsculo e sem acentuação
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploRetiraAcentuacao();
 
@@ -3172,7 +3345,7 @@ Funcao padronizarParaBusca(); {
 }
 ```
 
-## 🔄 **Cast de Variável** {#cast-de-variável}
+## **Cast de Variável** 🔄
 
 As funções de cast de variável na LSP permitem converter valores entre diferentes tipos de dados.
 
@@ -3209,6 +3382,7 @@ AlfaParaDecimal(<texto>, <decimal>);
 ```
 
 **Parâmetros:**
+
 - `texto`: Valor alfanumérico a ser convertido (formato brasileiro com vírgula)
 - `decimal`: Variável que receberá o valor convertido
 
@@ -3287,6 +3461,7 @@ StrParaInt(<texto>, <inteiro>);
 ```
 
 **Parâmetros:**
+
 - `texto`: Valor alfanumérico a ser convertido
 - `inteiro`: Variável que receberá o valor convertido
 
@@ -3313,6 +3488,7 @@ IntParaStr(<inteiro>, <texto>);
 ```
 
 **Parâmetros:**
+
 - `inteiro`: Valor inteiro a ser convertido
 - `texto`: Variável alfanumérica que receberá o resultado da conversão
 
@@ -3339,6 +3515,7 @@ ConverteMascara(<tipoDado>, <valorOrigem>, <alfaDestino>, <mascara>);
 ```
 
 **Parâmetros:**
+
 - `tipoDado`: Código que determina o tipo do valor de origem
   - `1`: Número
   - `2`: Dinheiro (valor)
@@ -3369,7 +3546,7 @@ Se (vnTipoInscricao = 1) { @ CNPJ @
 
 **Observação:** No caso de o tipo de dado ser 5 (Alfa), o parâmetro `valorOrigem` é passado como 0 (zero) e o parâmetro `alfaDestino` receberá o campo do tipo Alfa a ser convertido, e após a conversão, receberá o resultado da conversão.
 
-## 📅 **Manipulação Avançada de Datas** {#manipulação-avançada-de-datas}
+## **Manipulação Avançada de Datas** 📅
 
 As funções de manipulação de datas na LSP permitem realizar operações complexas com datas, incluindo obtenção de datas atuais, cálculos de diferenças, formatação personalizada e validação.
 
@@ -3396,9 +3573,11 @@ DataHora(<numeroDataHora>);
 ```
 
 **Parâmetros:**
+
 - `numeroDataHora`: Variável do tipo Numero que receberá a data e hora corrente
 
 **Observação:** Para adicionar horas, minutos e segundos na data, use as frações:
+
 - 1 Hora: 1/24 = 0.04166666666
 - 1 Minuto: 1/24/60 = 0.00069444444  
 - 1 Segundo: 1/24/60/60 = 0.00001157407
@@ -3414,9 +3593,11 @@ DataHoraUTC(<numeroDataHoraUTC>);
 ```
 
 **Parâmetros:**
+
 - `numeroDataHoraUTC`: Variável do tipo Numero que receberá a data e hora corrente UTC
 
 **Observação:** Para adicionar horas, minutos e segundos na data, use as frações:
+
 - 1 Hora: 1/24 = 0.04166666666
 - 1 Minuto: 1/24/60 = 0.00069444444
 - 1 Segundo: 1/24/60/60 = 0.00001157407
@@ -3643,6 +3824,7 @@ vdData = CodData(<dia>, <mes>, <ano>);
 ```
 
 **Parâmetros:**
+
 - `dia`: Valor correspondente ao dia
 - `mes`: Valor correspondente ao mês  
 - `ano`: Valor correspondente ao ano
@@ -3673,6 +3855,7 @@ MontaData(<dia>, <mes>, <ano>, <data>);
 ```
 
 **Parâmetros:**
+
 - `dia`: Dia da data a ser gerada
 - `mes`: Mês da data a ser gerada
 - `ano`: Ano da data a ser gerada (deve ter 4 dígitos, ex: 1998)
@@ -3701,17 +3884,20 @@ MontaData(vnDia, vnMes, vnAno, vdData);
 Esta função desmonta uma data, separando em três variáveis, as informações Dia/Mês/Ano da data.
 
 **Sintaxe:**
+
 ```lsp
 DesMontaData(<data>, <dia>, <mes>, <ano>);
 ```
 
 **Parâmetros:**
+
 - `data`: Campo/Variável a ser desmontada
 - `dia`: Variável tipo Numero que receberá o dia da data a ser desmontada
 - `mes`: Variável tipo Numero que receberá o mês da data a ser desmontada
 - `ano`: Variável tipo Numero que receberá o ano da data a ser desmontada
 
 **Exemplo:**
+
 ```lsp
 Definir Data vdDataEmissao;
 Definir Numero vnDia;
@@ -3728,15 +3914,18 @@ DesMontaData(vdDataEmissao, vnDia, vnMes, vnAno);
 Converter uma data qualquer, para o formato de data do banco de dados.
 
 **Sintaxe:**
+
 ```lsp
 ConverteDataBanco(<datNum>, <datAlf>);
 ```
 
 **Parâmetros:**
+
 - `datNum`: É o campo de tabela ou variável que se deseja converter
 - `datAlf`: É uma variável que conterá o retorno da conversão
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaDataStr;
 Definir Data vdData;
@@ -3751,15 +3940,18 @@ ConverteDataBanco(vdData, vaDataStr);
 Converter datas para o formato SQL Senior 2.
 
 **Sintaxe:**
+
 ```lsp
 ConverteDataSqlSenior2(<datNum>, <datSql>);
 ```
 
 **Parâmetros:**
+
 - `datNum`: Data a ser convertida
 - `datSql`: Data em formato SQL Senior 2 (retorno)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaSqlAux;
 ConverteDataSqlSenior2(DatSis, vaSqlAux);
@@ -3774,15 +3966,18 @@ InsClauSQLWhere("Detalhe_000LPA", vaSqlAux);
 Converter uma data qualquer, para o formato de data do banco de dados.
 
 **Sintaxe:**
+
 ```lsp
 ConverteDataToDB(<datNum>, <datAlf>);
 ```
 
 **Parâmetros:**
+
 - `datNum`: É o campo de tabela ou variável que se deseja converter
 - `datAlf`: É uma variável tipo Alfa, que conterá o retorno da conversão
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaDataStr;
 Definir Data vdData;
@@ -3797,17 +3992,20 @@ ConverteDataToDB(vdData, vaDataStr);
 Esta função tem por objetivo retornar a informação se um ano é ou não bissexto tomando como base o ano da data passada.
 
 **Sintaxe:**
+
 ```lsp
 AnoBissexto(<data>, <bissexto>);
 ```
 
 **Parâmetros:**
+
 - `data`: Recebe a data base a ser verificada
 - `bissexto`: Retorna a indicação se o ano é bissexto:
   - 0: se o ano não for bissexto
   - 1: se o ano for bissexto
 
 **Exemplo:**
+
 ```lsp
 Definir Data vdData;
 Definir Numero vnBissexto;
@@ -3930,15 +4128,18 @@ FormatarData(<data>, <formato>, <dataFormatada>);
 ```
 
 **Parâmetros:**
+
 - `data`: Valor numérico da data (tipo Numero)
 - `formato`: Formato da data (tipo Alfa)  
 - `dataFormatada`: Variável que receberá a data formatada (tipo Alfa)
 
 **⚠️ CRÍTICO - Case Sensitivity das Máscaras:**
+
 - **SEMPRE use letras minúsculas**: `yyyy` para ano, `dd` para dia
 - **NUNCA use maiúsculas**: `YYYY` ou `DD` geram datas inválidas!
 
 **Máscaras Suportadas:**
+
 - `dd`: Dia (01-31) ⚠️ **Minúsculo obrigatório**
 - `MM`: Mês (01-12)
 - `yyyy`: Ano com 4 dígitos ⚠️ **Minúsculo obrigatório**
@@ -4037,11 +4238,13 @@ Esta função gera o extenso de um valor.
 **⚠️ Importante:** Esta função contempla no máximo duas casas decimais após a vírgula. Caso o valor tenha três ou mais casas decimais após a vírgula, ele será arredondado para o valor real de duas.
 
 **Sintaxe:**
+
 ```lsp
 Extenso(<valor>, <tamanhoLinha1>, <tamanhoLinha2>, <tamanhoLinha3>, <linha1>, <linha2>, <linha3>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Campo/Variável do qual se deseja obter o extenso
 - `tamanhoLinha1`: Quantidade de caracteres que será usado na primeira linha para geração do extenso
 - `tamanhoLinha2`: Quantidade de caracteres que será usado na segunda linha para geração do extenso
@@ -4051,6 +4254,7 @@ Extenso(<valor>, <tamanhoLinha1>, <tamanhoLinha2>, <tamanhoLinha3>, <linha1>, <l
 - `linha3`: Variável que receberá a terceira linha do extenso do valor (retorno)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaExtLin1;
 Definir Alfa vaExtLin2;
@@ -4069,15 +4273,18 @@ Extenso(vnQuantidade, 30, 30, 30, vaExtLin1, vaExtLin2, vaExtLin3);
 Esta função monta o extenso do mês de uma determinada data.
 
 **Sintaxe:**
+
 ```lsp
 ExtensoMes(<datMon>, <extMes>);
 ```
 
 **Parâmetros:**
+
 - `datMon`: Campo/Variável do qual se deseja obter o extenso do mês
 - `extMes`: Variável tipo Alfa que receberá o extenso do mês
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaMesExt;
 Definir Data vdData;
@@ -4092,11 +4299,13 @@ ExtensoMes(vdData, vaMesExt);
 Esta função gera o extenso de um valor com a moeda informada.
 
 **Sintaxe:**
+
 ```lsp
 ExtensoMoeda(<vlrExt>, <tamLn1>, <tamLn2>, <tamLn3>, <moeIS>, <moeIP>, <moeDS>, <moeDP>, <extLn1>, <extLn2>, <extLn3>);
 ```
 
 **Parâmetros:**
+
 - `vlrExt`: Campo/Variável do qual se deseja obter o extenso
 - `tamLn1`: Quantidade de caracteres que será usado na primeira linha para geração do extenso
 - `tamLn2`: Quantidade de caracteres que será usado na segunda linha para geração do extenso
@@ -4110,6 +4319,7 @@ ExtensoMoeda(<vlrExt>, <tamLn1>, <tamLn2>, <tamLn3>, <moeIS>, <moeIP>, <moeDS>, 
 - `extLn3`: Variável que receberá a terceira linha do extenso do valor (retorno)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaExtLin1;
 Definir Alfa vaExtLin2;
@@ -4128,15 +4338,18 @@ ExtensoMoeda(vnValorSalario, 30, 30, 30, "dólar", "dólares", "cent", "cents", 
 Esta função monta o extenso do dia da semana de uma determinada data.
 
 **Sintaxe:**
+
 ```lsp
 ExtensoSemana(<datMon>, <extSem>);
 ```
 
 **Parâmetros:**
+
 - `datMon`: Campo/Variável do qual se deseja obter o extenso da semana
 - `extSem`: Variável que receberá o extenso da Semana
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaSemExt;
 Definir Data vdData;
@@ -4151,15 +4364,18 @@ ExtensoSemana(vdData, vaSemExt);
 Esta função gera o extenso de determinada data.
 
 **Sintaxe:**
+
 ```lsp
 DataExtenso(<data>, <extenso>);
 ```
 
 **Parâmetros:**
+
 - `data`: Campo/Variável a partir do qual se deseja gerar o extenso
 - `extenso`: Variável que retornará o extenso da data
 
 **Exemplo:**
+
 ```lsp
 Definir Data vdData;
 Definir Alfa vaExtenso;
@@ -4176,16 +4392,19 @@ DataExtenso(vdData, vaExtenso);
 Esta função multiplica um número no formato alfanumérico por um fator de multiplicação numérico e retorna o resultado desta multiplicação em uma variável alfanumérica.
 
 **Sintaxe:**
+
 ```lsp
 MultiplicaValor(<multiplicando>, <fator>, <retorno>);
 ```
 
 **Parâmetros:**
+
 - `multiplicando`: Campo/Variável que contém o valor a ser multiplicado
 - `fator`: Campo/Variável que contém o fator de multiplicação
 - `retorno`: Campo/Variável que retorna o resultado da multiplicação
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaNumOriginal;
 Definir Alfa vaNumMultiplicado;
@@ -4202,11 +4421,13 @@ MultiplicaValor(vaNumOriginal, vnFator, vaNumMultiplicado);
 Calcula a quantidade convertida de uma unidade de medida (de) para outra unidade de medida (para).
 
 **Sintaxe:**
+
 ```lsp
 ConverteUnidadeMedida(<codPro>, <codDer>, <uniMedDe>, <uniMedPara>, <qtde>, <codFor>, <qtdDec>, <codEmp>, <qtdCnv>);
 ```
 
 **Parâmetros:**
+
 - `codPro`: Variável que indica o código de produto (opcional)
 - `codDer`: Variável que indica o código da derivação (opcional)
 - `uniMedDe`: Variável que indica a unidade de medida origem (obrigatório)
@@ -4218,6 +4439,7 @@ ConverteUnidadeMedida(<codPro>, <codDer>, <uniMedDe>, <uniMedPara>, <qtde>, <cod
 - `qtdCnv`: Variável que retorna a quantidade convertida da unidade de medida origem para a unidade de medida destino
 
 **Exemplo:**
+
 ```lsp
 Definir Numero vnQtdConv;
 ConverteUnidadeMedida("", "", "KM", "M", 100, 0, 3, 0, vnQtdConv);
@@ -4229,15 +4451,18 @@ ConverteUnidadeMedida("", "", "KM", "M", 100, 0, 3, 0, vnQtdConv);
 Esta função arredonda um valor, conforme a precisão informada.
 
 **Sintaxe:**
+
 ```lsp
 Arredonda(<valor>, <decimais>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Variável que será arredondada
 - `decimais`: Variável numérica que indica a quantidade de casas decimais do arredondamento
 
 **Exemplo:**
+
 ```lsp
 Definir Numero vnValor;
 vnValor = 1577.87;
@@ -4253,21 +4478,25 @@ Arredonda(vnValor, 0);
 Esta função aplica a regra de arredondamento da ABNT, conforme a precisão informada.
 
 **Sintaxe:**
+
 ```lsp
 ArredondaABNT(<valor>, <decimais>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Variável que será arredondada
 - `decimais`: Variável numérica que indica a quantidade de casas decimais do arredondamento
 
 **Regras ABNT:**
+
 - Quando o algarismo a ser conservado for seguido de algarismo inferior a 5, o algarismo a ser conservado permanece sem alteração
 - Quando o algarismo a ser conservado for seguido de algarismo superior a 5, ou igual a 5 seguindo de um algorismo diferente de zero, soma-se uma unidade ao algarismo a ser conservado
 - Quando o algarismo a ser conservado for ímpar, seguido de 5 e posteriormente de zeros, soma-se uma unidade ao algarismo a ser conservado
 - Quando o algarismo a ser conservado for par, seguido de 5 e posteriormente de zeros, o algarismo a ser conservado permanece sem alteração
 
 **Exemplo:**
+
 ```lsp
 Definir Numero vnValor;
 vnValor = 1577.87;
@@ -4283,15 +4512,18 @@ ArredondaABNT(vnValor, 0);
 Esta função arredonda determinado valor, conforme a precisão informada.
 
 **Sintaxe:**
+
 ```lsp
 ArredondarValor(<valorVariavel>, <precisao>);
 ```
 
 **Parâmetros:**
+
 - `valorVariavel`: Campo ou variável que deseja-se arredondar
 - `precisao`: Quantidade de casas decimais para precisão do arredondamento. Se for informado 0 (zero), faz o arredondamento na parte inteira do resultado
 
 **Exemplo:**
+
 ```lsp
 Definir Numero vnVlrNum;
 vnVlrNum = 1577.87;
@@ -4304,17 +4536,20 @@ ArredondarValor(vnVlrNum, 0); @ Retorno será 1578.00 @
 Esta função arredonda um valor tipo acerto, conforme a precisão informada.
 
 **Sintaxe:**
+
 ```lsp
 Arredonda Valor Tipo Acerto(<valor>, <tipoAcerto>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Qualquer valor que se deseja arredondar
-- `tipoAcerto`: 
+- `tipoAcerto`:
   - Tipo 1: O valor passado por parâmetro será arredondado para duas casas decimais
   - Tipo 2: O valor passado por parâmetro será arredondado ignorando a terceira casa decimais
 
 **Exemplo:**
+
 ```lsp
 Definir Numero vnValor;
 vnValor = 1475.12845;
@@ -4322,22 +4557,25 @@ Arredonda Valor Tipo Acerto(vnValor, 1); @ Retorna 1475.13 @
 Arredonda Valor Tipo Acerto(vnValor, 2); @ Retorna 1475.12 @
 ```
 
-## 📆 **Funções Avançadas de Data e Dias Úteis** {#funções-avançadas-de-data-e-dias-úteis}
+## **Funções Avançadas de Data e Dias Úteis** 📆
 
 ### RetDiaSemana
 
 Retorna o dia da semana em forma de número da data de entrada.
 
 **Sintaxe:**
+
 ```lsp
 RetDiaSemana(<pData>, <pDia>);
 ```
 
 **Parâmetros:**
+
 - `pData`: Variável numérica que recebe a data atual
 - `pDia`: Variável numérica que retorna o dia da semana da data atual
 
 **Valores de retorno:**
+
 - 0 = Domingo
 - 1 = Segunda-feira
 - 2 = Terça-feira
@@ -4347,6 +4585,7 @@ RetDiaSemana(<pData>, <pDia>);
 - 6 = Sábado
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploRetDiaSemana();
 
@@ -4392,17 +4631,20 @@ Funcao exemploRetDiaSemana(); {
 Verifica se uma data é dia útil ou não, retornando o dia útil imediatamente anterior e o posterior. Se a data informada for dia útil, traz essa data em ambos os retornos.
 
 **Sintaxe:**
+
 ```lsp
 RetDiaUtilAntPos(<pData>, <pCEP>, <pDataAnt>, <pDataPos>);
 ```
 
 **Parâmetros:**
+
 - `pData`: Variável numérica que recebe a data atual
 - `pCEP`: Variável numérica que recebe o CEP do local
 - `pDataAnt`: Variável numérica que retorna o dia útil imediatamente anterior, ou a data informada caso ela já seja dia útil
 - `pDataPos`: Variável numérica que retorna o dia útil imediatamente posterior, ou a data informada caso ela já seja dia útil
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploRetDiaUtilAntPos();
 
@@ -4445,11 +4687,13 @@ Funcao exemploRetDiaUtilAntPos(); {
 Retorna a quantidade de dias úteis de um mês tomando como base uma determinada data.
 
 **Sintaxe:**
+
 ```lsp
 RetornarDiasUteisMes(<aDatabase>, <aTipoRetorno>, <aQtdDiasUteis>);
 ```
 
 **Parâmetros:**
+
 - `aDatabase`: Variável do tipo Data que recebe a data base a ser verificada
 - `aTipoRetorno`: Variável numérica que indica o tipo de retorno:
   - 0: Retorna a quantidade de dias úteis do mês inteiro
@@ -4457,6 +4701,7 @@ RetornarDiasUteisMes(<aDatabase>, <aTipoRetorno>, <aQtdDiasUteis>);
 - `aQtdDiasUteis`: Variável numérica que retorna a quantidade de dias úteis encontrada
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploRetornarDiasUteisMes();
 
@@ -4496,11 +4741,13 @@ Funcao exemploRetornarDiasUteisMes(); {
 Retorna a quantidade de dias úteis entre duas datas informadas.
 
 **Sintaxe:**
+
 ```lsp
 RetornarDiasUteisPeriodo(<aDataIni>, <aDataFim>, <aQtdDiasUteis>);
 ```
 
 **Parâmetros:**
+
 - `aDataIni`: Variável do tipo Data que recebe a data inicial do período
 - `aDataFim`: Variável do tipo Data que recebe a data final do período
 - `aQtdDiasUteis`: Variável numérica que retorna a quantidade de dias úteis entre as datas
@@ -4508,6 +4755,7 @@ RetornarDiasUteisPeriodo(<aDataIni>, <aDataFim>, <aQtdDiasUteis>);
 **⚠️ Observação:** A data final deve ser maior ou igual à data inicial, ou o retorno será zero.
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploRetornarDiasUteisPeriodo();
 
@@ -4541,11 +4789,13 @@ Funcao exemploRetornarDiasUteisPeriodo(); {
 Retorna a quantidade de dias do ano tomando como base o ano da data passada, considerando diferentes tipos de ano.
 
 **Sintaxe:**
+
 ```lsp
 RetornarQtdDiasAno(<aData>, <aTipoAno>, <aQtdDiasAno>);
 ```
 
 **Parâmetros:**
+
 - `aData`: Variável do tipo Data que recebe a data base
 - `aTipoAno`: Variável numérica que indica o tipo de ano:
   - 0: Ano Útil - considera 252 dias
@@ -4554,6 +4804,7 @@ RetornarQtdDiasAno(<aData>, <aTipoAno>, <aQtdDiasAno>);
 - `aQtdDiasAno`: Variável numérica que retorna a quantidade de dias do ano
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploRetornarQtdDiasAno();
 
@@ -4597,16 +4848,19 @@ Funcao exemploRetornarQtdDiasAno(); {
 Verifica qual é o último dia do mês/ano da data informada.
 
 **Sintaxe:**
+
 ```lsp
 UltimoDia(<DatAtu>);
 ```
 
 **Parâmetros:**
+
 - `DatAtu`: Campo/Variável numérica da qual se deseja saber o último dia do mês
 
 **⚠️ Observação:** Não pode ser campo do sistema ou de tabela, pois o retorno é na própria variável.
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploUltimoDia();
 
@@ -4694,15 +4948,18 @@ Funcao sistemaControlePrazos(); {
 Formata números de acordo com os parâmetros definidos. O formato é o mesmo usado no Borland Delphi 2.0.
 
 **Sintaxe:**
+
 ```lsp
 <variável> = Formatar(<dado>, "<formato>");
 ```
 
 **Parâmetros:**
+
 - `dado`: Variável tipo numérica a ser convertida
 - `formato`: Formato de conversão. Por exemplo, %3.0f para converter o valor 354 e %3.2f para converter o valor 345,43
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaFmt;
 vaFmt = Formatar(123, "%s");
@@ -4713,17 +4970,20 @@ vaFmt = Formatar(123, "%s");
 Formata números com casas decimais de acordo com os parâmetros definidos. O formato é o mesmo usado no Borland Delphi 2.0.
 
 **Sintaxe:**
+
 ```lsp
 FormatarN(<dado>, "<formato>", "<separador decimal>", <variável>);
 ```
 
 **Parâmetros:**
+
 - `dado`: Variável tipo numérica a ser convertida
 - `formato`: Formato de conversão
 - `separador decimal`: Qual será o separador de casas decimais
 - `variável`: Armazena o resultado da formatação
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaFmt;
 FormatarN(123, "%3.2f", ".", vaFmt);
@@ -4736,11 +4996,13 @@ FormatarN(123, "%3.2f", ".", vaFmt);
 Limpa o conteúdo do Registro GerTabAlf.
 
 **Sintaxe:**
+
 ```lsp
 LimpaGerTabAlf();
 ```
 
 **Exemplo:**
+
 ```lsp
 GerTabAlf[1] = "xxx";
 LimpaGerTabAlf();
@@ -4752,11 +5014,13 @@ LimpaGerTabAlf();
 Limpa o conteúdo do Registro GerTabNum.
 
 **Sintaxe:**
+
 ```lsp
 LimpaGerTabNum();
 ```
 
 **Exemplo:**
+
 ```lsp
 GerTabNum[1] = 1;
 LimpaGerTabNum();
@@ -4814,7 +5078,7 @@ Funcao validarPeriodo(); {
 }
 ```
 
-## Manipulação Dinâmica de Variáveis {#manipulação-dinâmica-de-variáveis}
+## **Manipulação Dinâmica de Variáveis** 🔄
 
 A LSP oferece funções especializadas para trabalhar com variáveis cujos nomes são construídos dinamicamente durante a execução. Essas funções são úteis quando o nome da variável não é conhecido em tempo de desenvolvimento.
 
@@ -4831,10 +5095,12 @@ PegarTipoVar(<nomeVariavel>, <tipo>);
 ```
 
 **Parâmetros:**
+
 - `nomeVariavel`: String contendo o nome da variável a ser verificada
 - `tipo`: Variável numérica que receberá o código do tipo (retorno)
 
 **Códigos de Retorno:**
+
 - `-1`: Variável não encontrada
 - `0`: Variável do tipo Numero
 - `1`: Variável do tipo Data
@@ -4870,6 +5136,7 @@ PegarValorVarAlf(<nomeVariavel>, <valorRetorno>);
 ```
 
 **Parâmetros:**
+
 - `nomeVariavel`: String contendo o nome da variável
 - `valorRetorno`: Variável alfa que receberá o valor
 
@@ -4901,6 +5168,7 @@ PegarValorVarNum(<nomeVariavel>, <valorRetorno>);
 ```
 
 **Parâmetros:**
+
 - `nomeVariavel`: String contendo o nome da variável
 - `valorRetorno`: Variável numérica que receberá o valor
 
@@ -4931,6 +5199,7 @@ SetarValorVarAlf(<nomeVariavel>, <valor>);
 ```
 
 **Parâmetros:**
+
 - `nomeVariavel`: String contendo o nome da variável
 - `valor`: Valor alfa a ser atribuído à variável
 
@@ -4956,6 +5225,7 @@ SetarValorVarNum(<nomeVariavel>, <valor>);
 ```
 
 **Parâmetros:**
+
 - `nomeVariavel`: String contendo o nome da variável
 - `valor`: Valor numérico a ser atribuído à variável
 
@@ -5024,6 +5294,7 @@ Funcao exemploAcessoDinamico(); {
 ```
 
 **⚠️ Observações Importantes:**
+
 - Essas funções devem ser usadas apenas quando o acesso direto não for possível
 - Para situações simples, use acesso direto: `vVar = valor` em vez de `SetarValorVarAlf("vVar", valor)`
 - Úteis para sistemas de configuração dinâmica e processamento de formulários genéricos
@@ -5046,6 +5317,7 @@ EstaNulo(<variavel>, <resultado>);
 ```
 
 **Parâmetros:**
+
 - `variavel`: Variável a ser verificada
 - `resultado`: Variável numérica que receberá 1 se nula, 0 se não nula
 
@@ -5074,6 +5346,7 @@ DeixaNumeros(<texto>);
 ```
 
 **Parâmetros:**
+
 - `texto`: Variável alfa que será modificada, mantendo apenas números
 
 **Exemplo:**
@@ -5106,6 +5379,7 @@ VrfAbrA(<valor>, <abrangencia>, <resultado>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Valor a ser verificado
 - `abrangencia`: Abrangência especificada
 - `resultado`: Variável que receberá 1 se válido, 0 se inválido
@@ -5121,6 +5395,7 @@ VrfAbrN(<valor>, <abrangencia>, <resultado>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Valor numérico a ser verificado
 - `abrangencia`: Abrangência especificada
 - `resultado`: Variável que receberá 1 se válido, 0 se inválido
@@ -5138,6 +5413,7 @@ MontaAbrangencia(<tabela>, <valores>, <sqlAbr>);
 ```
 
 **Parâmetros:**
+
 - `tabela`: Variável que recebe o campo da tabela que vai ser montada a abrangência
 - `valores`: Variável que contém a faixa de valores na forma de abrangência
 - `sqlAbr`: Variável alfa que retorna a cláusula SQL correspondente à abrangência informada
@@ -5168,6 +5444,7 @@ Chsa.SQL "SELECT * FROM R038HSA WHERE NUMEMP = :xnumemp AND TIPCOL = :xtipcol AN
 ```
 
 **Observações:**
+
 - Caso não seja informado nada na variável de abrangência na tela de entrada, esta retornará "( )"
 - O comando MontaAbrangencia retorna "( )" quando a abrangência está vazia
 - Utilização: Gerador de Relatórios e Regras
@@ -5234,6 +5511,7 @@ ArqExiste(<caminhoArquivo>, <existe>);
 ```
 
 **Parâmetros:**
+
 - `caminhoArquivo`: Caminho completo do arquivo
 - `existe`: Variável que receberá 1 se existe, 0 se não existe
 
@@ -5348,6 +5626,7 @@ VerificaAbaAtiva(<descricaoAba>, <ativa>);
 ```
 
 **Parâmetros:**
+
 - `descricaoAba`: Descrição da aba a ser verificada
 - `ativa`: Variável que receberá 1 se ativa, 0 se não ativa
 
@@ -5474,6 +5753,7 @@ vnParteInteira = Truncar(<valor>);
 ```
 
 **Parâmetros:**
+
 - `valor`: Valor do tipo Numero que necessita ter a parte fracionária removida
 
 **Exemplo:**
@@ -5575,6 +5855,7 @@ HoraParaMinuto(<hora>, <minuto>, <minutos>);
 ```
 
 **Parâmetros:**
+
 - `hora`: Valor correspondente à hora inteira
 - `minuto`: Valor correspondente aos minutos de uma hora
 - `minutos`: Variável que receberá o total em minutos
@@ -5654,7 +5935,7 @@ Funcao validacoesNumericas(); {
 }
 ```
 
-## 🖥️ **Interface e Feedback do Usuário** {#interface-e-feedback-do-usuário}
+## **Interface e Feedback do Usuário** 🖥️
 
 A LSP oferece ferramentas para criar interfaces mais amigáveis e fornecer feedback visual durante operações demoradas.
 
@@ -5770,6 +6051,7 @@ ObterVersaoSistema(<majorVersion>, <minorVersion>, <release>, <build>);
 ```
 
 **Parâmetros:**
+
 - `majorVersion`: Versão de primeiro dígito do sistema
 - `minorVersion`: Versão de segundo dígito do sistema
 - `release`: Versão de terceiro dígito do sistema (release)
@@ -5812,6 +6094,7 @@ ObtemIdiomaAtivo(<valorIdioma>);
 ```
 
 **Parâmetros:**
+
 - `valorIdioma`: Campo ou variável que receberá o valor de retorno do idioma utilizado (ex: "PTBRN")
 
 **Exemplo:**
@@ -5836,6 +6119,7 @@ sleep(<milissegundos>);
 ```
 
 **Parâmetros:**
+
 - `milissegundos`: Número de milissegundos para pausar a execução
 
 **Exemplos:**
@@ -5880,6 +6164,7 @@ Funcao exemploComSleep(); {
 ```
 
 **Observações:**
+
 - Use com moderação para não impactar a performance
 - Útil em simulações e testes
 - Valores muito altos podem travar a interface do usuário
@@ -5931,6 +6216,7 @@ RetornaValorCFG(<chave>, <retorno>);
 ```
 
 **Parâmetros:**
+
 - `chave`: Nome da chave de configuração. Pode conter:
   - Nome completo da chave
   - Parte final de uma chave
@@ -5960,6 +6246,7 @@ Mensagem(Retorna, vaMensagem);
 ```
 
 **Observações:**
+
 - Caso o valor da chave esteja em branco, o valor retornado é "( NULO )"
 - Se informada apenas a parte final do nome da chave, será retornado o valor da primeira chave localizada que contenha a parte final informada
 - Não é permitida a visualização da chave PASSWORD do arquivo CFG
@@ -6004,7 +6291,7 @@ Funcao carregarConfiguracoes(); {
 }
 ```
 
-## 📁 **Gerenciamento Avançado de Arquivos** {#gerenciamento-avançado-de-arquivos}
+## **Gerenciamento Avançado de Arquivos** 📁
 
 Expansão das funcionalidades de manipulação de arquivos com recursos avançados.
 
@@ -6041,6 +6328,7 @@ LinhasArquivo(<caminhoArquivo>, <linhas>);
 ```
 
 **Parâmetros:**
+
 - `caminhoArquivo`: Caminho do arquivo a ser analisado
 - `linhas`: Variável que receberá a quantidade de linhas
 
@@ -6160,7 +6448,7 @@ Funcao integracaoFerramentasExternas(); {
 
 ### **📚 Resumo Executivo das Limitações**
 
-| **Limitação** | **Problema** | ** Solução** |
+| **Limitação** | **Problema** | **Solução** |
 |---|---|---|
 | **Parâmetros** | Não aceita operações dentro de parâmetros | Faça operações antes, passe resultado |
 | **Retorno** | Funções usam parâmetros de retorno | Use variável de retorno, não `=` |
@@ -6217,6 +6505,7 @@ Mensagem(Retorna, vaMensagem);
 ```
 
 ### **🎯 Regra de Ouro:**
+
 **Sempre faça as manipulações ANTES de passar para a função!**
 
 ### **⚠️ ATENÇÃO ESPECIAL: Função Mensagem**
@@ -6285,6 +6574,7 @@ Funcao minhaFuncao(Numero pCodigo, Numero End pResultado); {
 
 **⚠️ REGRA CRÍTICA:** **O Senior não retorna valores para variáveis de parâmetro nas funções SQL_Retornar. Sempre use variáveis locais e depois atribua aos parâmetros.**
 
+```lsp
 @  SEGURO - Mostrar apenas informações resumidas @
 Definir Alfa vaMensagem;
 Definir Numero vnTamanho;
@@ -6300,6 +6590,7 @@ vaJSONTrecho = vaJSONResposta;
 CopiarAlfa(vaJSONTrecho, 1, 50);
 vaMensagem = "JSON início: " + vaJSONTrecho + "...";
 Mensagem(Retorna, vaMensagem);
+
 ```
 
 ### **🚫 Retorno Direto de Funções**
@@ -6329,7 +6620,7 @@ Se (ArqExiste(vaCaminho)) {
 }
 ```
 
-#### ** Sintaxe CORRETA:**
+#### **Sintaxe CORRETA:**
 
 ```lsp
 @ CORRETO: Usar parâmetro de retorno @
@@ -6356,7 +6647,7 @@ Se (vnArquivoExiste = 1) {
 }
 ```
 
-#### ** Exceções - Funções que RETORNAM diretamente:**
+#### **Exceções - Funções que RETORNAM diretamente:**
 
 ```lsp
 @ Estas funções SIM retornam valores diretamente @
@@ -6398,7 +6689,7 @@ AlfaParaInt(vaTexto, MinhaTabela.CampoInteiro);
 AlfaParaData(vaTexto, MinhaGrid.CampoData);
 ```
 
-#### ** Forma CORRETA:**
+#### **Forma CORRETA:**
 
 ```lsp
 @ CORRETO: Usar variável intermediária @
@@ -6417,13 +6708,15 @@ MinhaGrid.CampoData = vdDataConvertida;
 ```
 
 #### **🎯 Regra de Ouro para Grids:**
+
 **Sempre use variável intermediária para conversões em grids/tabelas!**
 
-## 💬 **Mensagens** {#mensagens}
+## **Mensagens** 💬
 
 A função `Mensagem` é utilizada para exibir mensagens ao usuário. Existem diferentes tipos de mensagens, como `Retorna`, `Erro`, e `Refaz`.
 
 **📋 Regras Importantes:**
+
 1. Não é possível fazer concatenação diretamente no parâmetro da função `Mensagem()`
 2. É necessário definir uma variável Alfa antes, fazer as concatenações e atribuir nessa variável
 3. A variável Alfa deve ser passada como parâmetro para a função `Mensagem()`
@@ -6434,9 +6727,9 @@ A função `Mensagem` é utilizada para exibir mensagens ao usuário. Existem di
 
 Exibe uma mensagem para o usuário. As mensagens possuem características de acordo com o seu tipo.
 
-   - Retorna: Mostra uma mensagem de aviso, com os botões especificados entre colchetes. O símbolo & indica tecla de aceleração (atalho);
-   - Erro: Gera uma exceção, mostrando uma mensagem de erro e abortando a execução da regra;
-   - Refaz: Gera uma exceção, mostrando uma mensagem de erro e abortando a execução da regra.
+- Retorna: Mostra uma mensagem de aviso, com os botões especificados entre colchetes. O símbolo & indica tecla de aceleração (atalho);
+- Erro: Gera uma exceção, mostrando uma mensagem de erro e abortando a execução da regra;
+- Refaz: Gera uma exceção, mostrando uma mensagem de erro e abortando a execução da regra.
 
 - Exemplo comum, quando a mensagem é uma string literal sem concatenação:
 
@@ -6452,6 +6745,7 @@ Definir Alfa vaResultado;
 vaResultado = "Mensagem já formatada";
 Mensagem(Retorna, vaResultado);
 ```
+
 - Exemplo quando precisamos fazer concatenação:
 
 ```lsp
@@ -6466,7 +6760,7 @@ Mensagem(Retorna, vaMensagem);
 
 - Exemplo com botões especificados entre colchetes:
 
-   - Entre colchetes podem conter 1 ou mais parâmetros, o retorno será de acordo com a sequencia do parâmetro, iniciando com 0
+- Entre colchetes podem conter 1 ou mais parâmetros, o retorno será de acordo com a sequencia do parâmetro, iniciando com 0
 
 ```lsp
 Definir Numero vnRetorno;
@@ -6486,7 +6780,7 @@ vnRetorno = Mensagem(retorna,"Escolha uma opção ? [&Voltar,&Avançar, $Cancela
 Mensagem(Retorna, "Aluno: " + vaNome + vaEnter + "Média: " + vaMedia);
 ```
 
-## 🛑 **Cancel** {#cancel}
+## **Cancel** 🛑
 
 A função `Cancel` é utilizada para cancelar a execução de uma regra. Dependendo do valor passado como parâmetro, diferentes ações podem ser tomadas. Ao usar a função Cancel(n) em regras que são executadas por eventos de tela, a única ação tomada será o cancelamento da execução da regra, independentemente do valor passado como parâmetro.
 
@@ -6494,17 +6788,17 @@ Para que seja gerado um erro, deve-se usar a função **Mensagem(Erro, "mensagem
 
 No **Gerador de Relatórios**, o comando **Cancel** pode ser usado das seguintes formas:
 
-   - **Cancel(1)**
+- **Cancel(1)**
 
-     Em controles: Cancela a execução da regra e a impressão do mesmo.
-     Nas regras: Definição\Seleção e Detalhe\Antes_de_Imprimir, exclui o registro atual do relatório (detalhe);
-     Na regra: Definição\Pré-Seleção cancela a execução do relatório.
+    Em controles: Cancela a execução da regra e a impressão do mesmo.
+    Nas regras: Definição\Seleção e Detalhe\Antes_de_Imprimir, exclui o registro atual do relatório (detalhe);
+    Na regra: Definição\Pré-Seleção cancela a execução do relatório.
 
-   - **Cancel(2)**
+- **Cancel(2)**
      Utilizado para imprimir o conteúdo da variável ValStr em controles do tipo descrição e depois sair da regra;
 
-   - **Cancel(3)**
-     Utilizado apenas em controles do tipo fórmula (na ordenação por fórmula) para excluir o registro atual do relatório (semelhante a executar o Cancel(1) nas regras: Definição\Seleção, Detalhe\Antes_de_Imprimir e Detalhe\Depois_de_Imprimir).
+- **Cancel(3)**
+    Utilizado apenas em controles do tipo fórmula (na ordenação por fórmula) para excluir o registro atual do relatório (semelhante a executar o Cancel(1) nas regras: Definição\Seleção, Detalhe\Antes_de_Imprimir e Detalhe\Depois_de_Imprimir).
 
 Exemplo:
 
@@ -6535,9 +6829,10 @@ Cancel(3); @ Exclui o registro atual do relatório em controles do tipo fórmula
 ✅ **Utilize nomes descritivos para as variáveis.**
 ✅ **Utilize o padrão CamelCase nos nomes das variáveis.**
 ✅ **Utilize o padrão "v + inicial do tipo de dado" antes do nome da variável:**
-  - `va` para variáveis do tipo `Alfa`
-  - `vn` para variáveis do tipo `Numero`
-  - `vd` para variáveis do tipo `Data`
+
+- `va` para variáveis do tipo `Alfa`
+- `vn` para variáveis do tipo `Numero`
+- `vd` para variáveis do tipo `Data`
 ❌ **Evite usar nomes de variáveis que possam ser confundidos com palavras reservadas ou nomes de funções.**
 
 ### Identação e Espaçamento
@@ -6587,7 +6882,7 @@ Exemplo de comentário de múltiplas linhas:
 Definir Numero vnX;
 ```
 
-## 🔄 **Controle de Fluxo** {#controle-de-fluxo}
+## **Controle de Fluxo** 🔄
 
 ### **📋 Resumo das Estruturas de Controle**
 
@@ -6604,6 +6899,7 @@ Definir Numero vnX;
 O comando `Pare;` **só pode ser usado dentro de loops** (`Para` ou `Enquanto`). Se usado fora destes contextos, causará erro de compilação.
 
 #### **✅ Uso CORRETO:**
+
 ```lsp
 @ Dentro de loop Para @
 Para (vnI = 1; vnI <= 10; vnI++) {
@@ -6622,6 +6918,7 @@ Enquanto (vnContador > 0) {
 ```
 
 #### **❌ Uso INCORRETO:**
+
 ```lsp
 @ ❌ INCORRETO: dentro de função, fora de loops @
 Funcao validarDados(); {
@@ -6641,6 +6938,7 @@ Funcao validarDados(); {
 ```
 
 **Resumo:**
+
 - **Para interromper loops:** Use `Pare;`
 - **Para interromper funções:** Use `Cancel(1);`
 - **Para interromper toda a execução:** Use `Cancel(1);`
@@ -6686,6 +6984,7 @@ Funcao exemploControleFluxo(); {
 ```
 
 **⚠️ REGRAS FUNDAMENTAIS:**
+
 1. **`Pare;`** = **APENAS** dentro de loops (`Para` ou `Enquanto`)
 2. **`Cancel(1);`** = Para sair de funções, tratamento de erros, validações
 3. **Nunca** use `Pare;` fora de loops
@@ -6694,6 +6993,7 @@ Funcao exemploControleFluxo(); {
 ### **🎯 Condicionais Progressivos**
 
 #### **Nível 1: Condicional Simples**
+
 ```lsp
 Definir Numero vnIdade;
 vnIdade = 20;
@@ -6706,6 +7006,7 @@ Se (vnIdade >= 18) {
 ```
 
 #### **Nível 2: Múltiplas Condições**
+
 ```lsp
 Definir Numero vnNota;
 Definir Alfa vaConceito;
@@ -6730,6 +7031,7 @@ Mensagem(Retorna, vaMensagem);
 ```
 
 #### **Nível 3: Condições Complexas**
+
 ```lsp
 Definir Numero vnIdade;
 Definir Alfa vaCategoria;
@@ -6827,6 +7129,7 @@ A recursividade é uma técnica de programação onde uma função chama a si me
 #### Estrutura Básica de uma Função Recursiva
 
 Uma função recursiva em LSP geralmente possui:
+
 1. Um ou mais casos base (condições de parada)
 2. Um ou mais casos recursivos (chamadas à própria função)
 
@@ -6931,6 +7234,7 @@ Funcao fibonacciRecursivo(Numero vnTermo, Numero vnAnterior, Numero vnAtual, Num
 ```
 
 Este exemplo demonstra:
+
 - Definição clara de casos base
 - Passagem de parâmetros para a próxima chamada recursiva
 - Uso do parâmetro `End` para retorno de valores
@@ -7370,16 +7674,18 @@ As listas em memória podem ser usadas quando precisa-se navegar muitas vezes no
 ✅ **A ordenação pode ser realizada em qualquer momento, apenas configurando a chave da lista**
 ✅ **Ordenação facilitada através da definição de uma chave, sem a necessidade de ler novamente os dados**
 
-### 🔄 **Como Ordenar uma Lista Dinâmica Quando Já Preenchida**
+### **Como Ordenar uma Lista Dinâmica Quando Já Preenchida** 🔄
 
 A ordenação de uma lista dinâmica já preenchida depende da **chave que você definiu** no momento da criação da lista. Para ordenar a lista em uma sequência diferente, você precisa redefinir a chave:
 
 **Sintaxe:**
+
 ```lsp
 nomeLista.Chave("campo1;campo2;campo3");
 ```
 
 **Exemplo Prático:**
+
 ```lsp
 @ Lista já preenchida com dados @
 vlClientes.DefinirCampos();
@@ -7407,6 +7713,7 @@ vlClientes.Chave("Cidade;Nome");
 ```
 
 **⚠️ Observações Importantes:**
+
 - A lista **reorganiza automaticamente** os dados quando você redefine a chave
 - **Não é necessário recarregar** os dados após alterar a chave
 - A ordenação é **sempre crescente** - para decrescente, use campos auxiliares
@@ -7427,6 +7734,7 @@ vlClientes.Chave("Cidade;Nome");
 #### No Gerador de Relatórios
 
 **🚨 OBRIGATÓRIO:**
+
 - Coloque a **definição, adição e efetivação dos campos** no evento **"Funções Globais do Modelo Gerador"**, pois esta é a primeira regra a ser compilada para os modelos
 - Se os campos das listas forem utilizados em uma regra que é compilada antes da adição dos campos da lista, o compilador não reconhece os mesmos dando **erro de compilação**
 - **Sempre redeclare** a definição das listas nas regras em que elas forem utilizadas
@@ -7434,6 +7742,7 @@ vlClientes.Chave("Cidade;Nome");
 #### Em Web Services de Geração de Relatórios
 
 **🚨 CRÍTICO - Access Violation:**
+
 - Na execução através de web service (exemplo: `com.senior.g5.co.ger.relatorio` do Gestão Empresarial | ERP)
 - Se não houver a **redeclaração da lista** em todas as regras onde são utilizadas, pode ocorrer **erro de Access Violation**
 - O Access Violation pode não ocorrer em modo "2 - Sincrono", mas **sempre ocorre** em modo "1 - Local"
@@ -7442,6 +7751,7 @@ vlClientes.Chave("Cidade;Nome");
 #### No Gerador de Importação e Exportação
 
 **📋 Regra Obrigatória:**
+
 - Coloque a **definição, adição e efetivação dos campos** no evento **"Início da Execução"**
 - **Redeclare** a definição da lista nas demais regras onde ela for utilizada
 
@@ -7482,6 +7792,7 @@ ListaRegraCriarLista(<numeroLista>);
 ```
 
 **Parâmetros:**
+
 - `numeroLista`: Variável numérica que receberá o identificador da lista criada
 
 **Exemplo:**
@@ -7504,6 +7815,7 @@ ListaRegraCarregarJson(<numeroLista>, <jsonString>, <grupo>, <campos>);
 ```
 
 **Parâmetros:**
+
 - `numeroLista`: Identificador da lista criada com ListaRegraCriarLista
 - `jsonString`: String contendo o JSON a ser processado
 - `grupo`: Nome do grupo/objeto dentro do JSON (use "" para raiz)
@@ -7553,6 +7865,7 @@ ListaRegraPrimeiro(<numeroLista>, <achou>);
 ```
 
 **Parâmetros:**
+
 - `numeroLista`: Identificador da lista
 - `achou`: Variável alfa que receberá "S" se encontrou registro, "N" se não encontrou
 
@@ -7583,6 +7896,7 @@ ListaRegraProximo(<numeroLista>, <achou>);
 ```
 
 **Parâmetros:**
+
 - `numeroLista`: Identificador da lista
 - `achou`: Variável alfa que receberá "S" se encontrou registro, "N" se chegou ao fim
 
@@ -7615,6 +7929,7 @@ ListaRegraObterValorAlfa(<numeroLista>, <nomeCampo>, <valor>, <obteve>);
 ```
 
 **Parâmetros:**
+
 - `numeroLista`: Identificador da lista
 - `nomeCampo`: Nome do campo a ser obtido
 - `valor`: Variável alfa que receberá o valor do campo
@@ -7729,21 +8044,25 @@ Funcao processarUsuariosJSON(); {
 Adiciona colunas e valores alfanuméricos para pesquisa na lista. Pode ser executada quantas vezes for necessário.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAddProcurarAlfa(Numero aLista, Alfa aColuna, Alfa aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável alfa que recebe o valor da coluna a ser procurada
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi adicionado valor. "S" para adicionada ou "N" para não adicionado
 
 **Utilização da Função (dependentes):** ListaRegraInicializarProcurar
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAddProcurarAlfa(VenNLista, 'CodPro', '1103', VenA_S_N);
 ```
@@ -7753,21 +8072,25 @@ ListaRegraAddProcurarAlfa(VenNLista, 'CodPro', '1103', VenA_S_N);
 Adiciona colunas e valores de data para pesquisa na lista. Pode ser executada quantas vezes for necessário.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAddProcurarData(Numero aLista, Alfa aColuna, Data aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável de data que recebe o valor da coluna a ser procurada
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi adicionado valor. "S" para adicionada ou "N" para não adicionado
 
 **Utilização da Função (dependentes):** ListaRegraInicializarProcurar
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAddProcurarData(VenNLista, 'DatEnt', 4235, VenA_S_N);
 ```
@@ -7777,21 +8100,25 @@ ListaRegraAddProcurarData(VenNLista, 'DatEnt', 4235, VenA_S_N);
 Adiciona colunas e valores numéricos para pesquisa na lista. Pode ser executada quantas vezes for necessário.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAddProcurarNumero(Numero aLista, Alfa aColuna, Numero aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável numérica que recebe o valor da coluna a ser procurada
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi adicionado valor. "S" para adicionada ou "N" para não adicionado
 
 **Utilização da Função (dependentes):** ListaRegraInicializarProcurar
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAddProcurarNumero(VenNLista, 'CodPro', 1103, VenA_S_N);
 ```
@@ -7801,17 +8128,21 @@ ListaRegraAddProcurarNumero(VenNLista, 'CodPro', 1103, VenA_S_N);
 Limpa pesquisas anteriores e prepara a lista para uma nova consulta. Deve ser chamada uma única vez antes das funções de pesquisa.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraInicializarProcurar(Numero aLista, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi executado. "S" para executado ou "N" para não executado
 
 **Exemplo:**
+
 ```lsp
 ListaRegraInicializarProcurar(VenNLista, VenA_S_N);
 ```
@@ -7821,19 +8152,23 @@ ListaRegraInicializarProcurar(VenNLista, VenA_S_N);
 Pesquisa valor do tipo alfa na lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraProcurarAlfa(Numero aLista, Alfa aColuna, Alfa aValor, Alfa End aExisteRegistro);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável alfa que recebe o valor da coluna a ser procurado
 
 **Tipo de retorno:**
+
 - `aExisteRegistro`: Indica se existe valor na lista. "S" para existe e "N" para não existe
 
 **Exemplo:**
+
 ```lsp
 ListaRegraProcurarAlfa(VenNLista, "CodPro", '1103', VenA_S_N);
 ```
@@ -7845,19 +8180,23 @@ ListaRegraProcurarAlfa(VenNLista, "CodPro", '1103', VenA_S_N);
 Pesquisa valor do tipo data na lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraProcurarData(Numero aLista, Alfa aColuna, Data aValor, Alfa End aExisteRegistro);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável de data que recebe o valor da coluna a ser procurado
 
 **Tipo de retorno:**
+
 - `aExisteRegistro`: Indica se existe valor na lista. "S" para existe e "N" para não existe
 
 **Exemplo:**
+
 ```lsp
 ListaRegraProcurarData(VenNLista, "DatEnt", 4235, VenA_S_N);
 ```
@@ -7867,19 +8206,23 @@ ListaRegraProcurarData(VenNLista, "DatEnt", 4235, VenA_S_N);
 Pesquisa valor do tipo numérico na lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraProcurarNumero(Numero aLista, Alfa aColuna, Numero aValor, Alfa End aExisteRegistro);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável numérica que recebe o valor da coluna a ser procurado
 
 **Tipo de retorno:**
+
 - `aExisteRegistro`: Indica se existe valor na lista. "S" para existe e "N" para não existe
 
 **Exemplo:**
+
 ```lsp
 ListaRegraProcurarNumero(VenNLista, "CodPro", 1103, VenA_S_N);
 ```
@@ -7889,19 +8232,23 @@ ListaRegraProcurarNumero(VenNLista, "CodPro", 1103, VenA_S_N);
 Pesquisa registros na lista baseado nos critérios configurados pelas funções ListaRegraAddProcurar*.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraProcurarRegistro(Numero aLista, Alfa End aExisteRegistro);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aExisteRegistro`: Indica se existe valor na lista. "S" para existe e "N" para não existe
 
 **Utilização da Função (dependentes):** ListaRegraAddProcurarAlfa, ListaRegraAddProcurarNumero e ListaRegraAddProcurarData
 
 **Exemplo:**
+
 ```lsp
 ListaRegraProcurarRegistro(VenNLista, VenA_S_N);
 ```
@@ -7911,19 +8258,23 @@ ListaRegraProcurarRegistro(VenNLista, VenA_S_N);
 Verifica se existe mais algum registro com os mesmos valores informados na pesquisa anterior. Procura do registro anterior até o primeiro.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraProcurarAnterior(Numero aLista, Alfa End aExisteRegistro);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aExisteRegistro`: Indicativo se foi localizado um novo registro. "S" para localizou ou "N" para não localizou
 
 **Utilização da Função (dependentes):** ListaRegraProcurarRegistro, ListaRegraProcurarAlfa, ListaRegraProcurarNumero, ListaRegraProcurarData
 
 **Exemplo:**
+
 ```lsp
 ListaRegraProcurarAnterior(VenNLista, VenA_S_N);
 ```
@@ -7933,19 +8284,23 @@ ListaRegraProcurarAnterior(VenNLista, VenA_S_N);
 Verifica se existe mais algum registro com os mesmos valores informados na pesquisa anterior. Procura da próxima linha até a última.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraProcurarProximo(Numero aLista, Alfa End aExisteRegistro);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aExisteRegistro`: Indicativo se foi localizado um novo registro. "S" para localizou ou "N" para não localizou
 
 **Utilização da Função (dependentes):** ListaRegraProcurarRegistro, ListaRegraProcurarAlfa, ListaRegraProcurarNumero, ListaRegraProcurarData
 
 **Exemplo:**
+
 ```lsp
 ListaRegraProcurarProximo(VenNLista, VenA_S_N);
 ```
@@ -7957,17 +8312,21 @@ ListaRegraProcurarProximo(VenNLista, VenA_S_N);
 Posiciona no registro anterior da lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAnterior(Numero aLista, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aExecutou`: Variável alfa que retorna se a instrução foi executada. "S" para executada e "N" para não executada
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAnterior(VenNLista, VenA_S_N);
 ```
@@ -7977,17 +8336,21 @@ ListaRegraAnterior(VenNLista, VenA_S_N);
 Posiciona no último registro da lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraUltimo(Numero aLista, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aExecutou`: Variável alfa que retorna se a instrução foi executada. "S" para executada e "N" para não executada
 
 **Exemplo:**
+
 ```lsp
 ListaRegraUltimo(VenNLista, VenA_S_N);
 ```
@@ -7997,17 +8360,21 @@ ListaRegraUltimo(VenNLista, VenA_S_N);
 Posiciona no primeiro registro da lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraInicio(Numero aLista, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aInicio`: Variável alfa que retorna se está no início da lista. "S" para início e "N" para não está no início
 
 **Exemplo:**
+
 ```lsp
 ListaRegraInicio(VenNLista, VenA_S_N);
 ```
@@ -8017,17 +8384,21 @@ ListaRegraInicio(VenNLista, VenA_S_N);
 Verifica se é o fim da lista de registros.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraFim(Numero aLista, Alfa End aFim);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aFim`: Variável alfa que retorna se está no fim da lista. "S" para fim e "N" para não está no final
 
 **Exemplo:**
+
 ```lsp
 ListaRegraFim(VenNLista, VenA_S_N);
 ```
@@ -8037,18 +8408,22 @@ ListaRegraFim(VenNLista, VenA_S_N);
 Navega para uma posição específica na lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraIrPara(Numero aLista, Numero aPosicao, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aPosicao`: Variável numérica que recebe o valor para qual deseja se posicionar na lista
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indicativo se foi posicionado na lista. "S" para posicionado ou "N" para não posicionado
 
 **Exemplo:**
+
 ```lsp
 ListaRegraIrPara(VenNLista, 3, VenA_S_N);
 ```
@@ -8058,17 +8433,21 @@ ListaRegraIrPara(VenNLista, 3, VenA_S_N);
 Retorna o posicionamento atual da lista (linha atual). Lista inicia na posição 0 até o total de linhas - 1. Quando estiver em posição inválida será retornado -1.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraPosicaoAtual(Numero aLista, Numero End aPosicao);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aPosicao`: Retorna a posição em que está na lista
 
 **Exemplo:**
+
 ```lsp
 ListaRegraPosicaoAtual(VenNLista, VenMPosicaoAtual);
 ```
@@ -8080,21 +8459,25 @@ ListaRegraPosicaoAtual(VenNLista, VenMPosicaoAtual);
 Adiciona valor alfanumérico em uma coluna de uma linha.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAddValorLinhaAlfa(Numero aLista, Alfa aColuna, Alfa aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável alfa que recebe o valor da coluna a ser adicionada
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi adicionado valor. "S" para adicionada ou "N" para não adicionado
 
 **Utilização da Função (dependentes):** ListaRegraNovaLinha
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAddValorLinhaAlfa(VenNLista, 'CodPro', '1103', VenA_S_N);
 ```
@@ -8106,21 +8489,25 @@ ListaRegraAddValorLinhaAlfa(VenNLista, 'CodPro', '1103', VenA_S_N);
 Adiciona valor de data em uma coluna de uma linha.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAddValorLinhaData(Numero aLista, Alfa aColuna, Data aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável de data que recebe o valor da coluna a ser adicionada
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi adicionado valor. "S" para adicionada ou "N" para não adicionado
 
 **Utilização da Função (dependentes):** ListaRegraNovaLinha
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAddValorLinhaData(VenNLista, 'DatEnt', 4235, VenA_S_N);
 ```
@@ -8132,21 +8519,25 @@ ListaRegraAddValorLinhaData(VenNLista, 'DatEnt', 4235, VenA_S_N);
 Adiciona valor numérico em uma coluna de uma linha.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAddValorLinhaNumero(Numero aLista, Alfa aColuna, Numero aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável numérica que recebe o valor da coluna a ser adicionada
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi adicionado valor. "S" para adicionada ou "N" para não adicionado
 
 **Utilização da Função (dependentes):** ListaRegraNovaLinha
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAddValorLinhaNumero(VenNLista, 'CodPro', 1103, VenA_S_N);
 ```
@@ -8158,19 +8549,23 @@ ListaRegraAddValorLinhaNumero(VenNLista, 'CodPro', 1103, VenA_S_N);
 Altera valor alfanumérico de uma coluna na linha atual da lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAlterarLinhaAlfa(Numero aLista, Alfa aColuna, Alfa aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável alfa que recebe o novo valor da coluna a ser alterado
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi alterado valor. "S" para alterado ou "N" para não alterado
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAlterarLinhaAlfa(VenNLista, 'CodPro', '1104', VenA_S_N);
 ```
@@ -8182,19 +8577,23 @@ ListaRegraAlterarLinhaAlfa(VenNLista, 'CodPro', '1104', VenA_S_N);
 Altera valor de data de uma coluna na linha atual da lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAlterarLinhaData(Numero aLista, Alfa aColuna, Data aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável de data que recebe o novo valor da coluna a ser alterado
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi alterado valor. "S" para alterado ou "N" para não alterado
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAlterarLinhaData(VenNLista, 'DatEnt', 4504, VenA_S_N);
 ```
@@ -8206,19 +8605,23 @@ ListaRegraAlterarLinhaData(VenNLista, 'DatEnt', 4504, VenA_S_N);
 Altera valor numérico de uma coluna na linha atual da lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraAlterarLinhaNumero(Numero aLista, Alfa aColuna, Numero aValor, Alfa End aExecutou);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna
 - `aValor`: Variável numérica que recebe o novo valor da coluna a ser alterado
 
 **Tipo de retorno:**
+
 - `aExecutou`: Indica se foi alterado valor. "S" para alterado ou "N" para não alterado
 
 **Exemplo:**
+
 ```lsp
 ListaRegraAlterarLinhaNumero(VenNLista, 'CodPro', 1104, VenA_S_N);
 ```
@@ -8230,14 +8633,17 @@ ListaRegraAlterarLinhaNumero(VenNLista, 'CodPro', 1104, VenA_S_N);
 Inicia a inclusão de uma nova linha na lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraNovaLinha(Numero aLista);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Exemplo:**
+
 ```lsp
 ListaRegraNovaLinha(VenNLista);
 ```
@@ -8249,16 +8655,19 @@ ListaRegraNovaLinha(VenNLista);
 Salva uma linha na lista (confirma as alterações).
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraSalvarLinha(Numero aLista);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Utilização da Função (dependentes):** ListaRegraNovaLinha, ListaRegraAddValorLinhaAlfa, ListaRegraAddValorLinhaNumero, ListaRegraAddValorLinhaData
 
 **Exemplo:**
+
 ```lsp
 ListaRegraSalvarLinha(VenNLista);
 ```
@@ -8270,14 +8679,17 @@ ListaRegraSalvarLinha(VenNLista);
 Exclui a linha atual posicionada da lista.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraExcluirLinha(Numero aLista);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Exemplo:**
+
 ```lsp
 ListaRegraExcluirLinha(VenNLista);
 ```
@@ -8291,19 +8703,23 @@ ListaRegraExcluirLinha(VenNLista);
 Obtém valor de data de um campo específico do registro atual.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraObterValorData(Numero aLista, Alfa aColuna, Data End aValor, Alfa End aObteve);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna da qual deseja obter o valor
 
 **Tipo de retorno:**
+
 - `aValor`: Variável de data que retorna o valor da coluna
 - `aObteve`: Indica se foi possível obter o valor. "S" para obteve e "N" para não obteve
 
 **Exemplo:**
+
 ```lsp
 ListaRegraObterValorData(VenNLista, "DatEnt", obtValorData, VenA_S_N);
 ```
@@ -8313,19 +8729,23 @@ ListaRegraObterValorData(VenNLista, "DatEnt", obtValorData, VenA_S_N);
 Obtém valor numérico de um campo específico do registro atual.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraObterValorNumero(Numero aLista, Alfa aColuna, Numero End aValor, Alfa End aObteve);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aColuna`: Variável alfa que recebe o nome da coluna da qual deseja obter o valor
 
 **Tipo de retorno:**
+
 - `aValor`: Variável numérica que retorna o valor da coluna
 - `aObteve`: Indica se foi possível obter o valor. "S" para obteve e "N" para não obteve
 
 **Exemplo:**
+
 ```lsp
 ListaRegraObterValorNumero(VenNLista, "CodPro", obtValorNum, VenA_S_N);
 ```
@@ -8337,17 +8757,21 @@ ListaRegraObterValorNumero(VenNLista, "CodPro", obtValorNum, VenA_S_N);
 Verifica se a lista está em modo de inclusão (permite incluir novas colunas).
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraEmInclusao(Numero aLista, Alfa End aEmInclusao);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aEmInclusao`: Indica se a situação da lista permite incluir novas colunas na linha. "S" para permite incluir ou "N" para não permite incluir
 
 **Exemplo:**
+
 ```lsp
 ListaRegraEmInclusao(VenNLista, VenA_S_N);
 ```
@@ -8357,17 +8781,21 @@ ListaRegraEmInclusao(VenNLista, VenA_S_N);
 Verifica se o usuário tem permissão para alterar valor de uma coluna da linha atual.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraPodeAlterar(Numero aLista, Alfa End aPermite);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aPermite`: Indicativo se pode alterar uma linha. "S" para pode alterar ou "N" para não pode alterar
 
 **Exemplo:**
+
 ```lsp
 ListaRegraPodeAlterar(VenNLista, VenA_S_N);
 ```
@@ -8377,17 +8805,21 @@ ListaRegraPodeAlterar(VenNLista, VenA_S_N);
 Verifica se o usuário tem permissão para excluir a linha atual.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraPodeExcluir(Numero aLista, Alfa End aPermite);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aPermite`: Indicativo se pode excluir uma linha. "S" para pode excluir ou "N" para não pode excluir
 
 **Exemplo:**
+
 ```lsp
 ListaRegraPodeExcluir(VenNLista, VenA_S_N);
 ```
@@ -8397,17 +8829,21 @@ ListaRegraPodeExcluir(VenNLista, VenA_S_N);
 Verifica se o usuário tem permissão para incluir uma nova linha.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraPodeIncluir(Numero aLista, Alfa End aPermite);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aPermite`: Indicativo se pode incluir uma linha. "S" para pode incluir ou "N" para não pode incluir
 
 **Exemplo:**
+
 ```lsp
 ListaRegraPodeIncluir(VenNLista, VenA_S_N);
 ```
@@ -8419,17 +8855,21 @@ ListaRegraPodeIncluir(VenNLista, VenA_S_N);
 Retorna o total de linhas na lista. Quando a lista estiver vazia, será retornado -1.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraTotalLinhas(Numero aLista, Numero End aTotal);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 
 **Tipo de retorno:**
+
 - `aTotal`: Total de linhas na lista
 
 **Exemplo:**
+
 ```lsp
 ListaRegraTotalLinhas(VenNLista, VenATotalLinha);
 ```
@@ -8439,6 +8879,7 @@ ListaRegraTotalLinhas(VenNLista, VenATotalLinha);
 Libera a lista criada para manipular valores dentro da regra.
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraLiberarLista();
 ```
@@ -8450,6 +8891,7 @@ ListaRegraLiberarLista();
 **Utilização da Função (dependentes):** ListaRegraCriarLista
 
 **Exemplo:**
+
 ```lsp
 ListaRegraLiberarLista();
 ```
@@ -8461,17 +8903,20 @@ ListaRegraLiberarLista();
 Salva a lista em arquivo. O arquivo pode ser salvo em dois formatos: ".txt" ou ".csv".
 
 **Sintaxe:**
+
 ```lsp
 ListaRegraSalvarLista(Numero aLista, Alfa aCaminho, Alfa aNomeArquivo, Alfa aFormato);
 ```
 
 **Parâmetros:**
+
 - `aLista`: Variável numérica que recebe o endereço da lista
 - `aCaminho`: Variável alfa que recebe o caminho onde a lista será salva
 - `aNomeArquivo`: Variável alfa que recebe o nome do arquivo
 - `aFormato`: Variável alfa que recebe formato que o arquivo será salvo ("T" formato .txt ou "C" formato .csv)
 
 **Exemplo:**
+
 ```lsp
 ListaRegraSalvarLista(VenNLista, "C:\\ERP", "lista", "C");
 ListaRegraSalvarLista(VenNLista, "C:\\ERP", "lista", "T");
@@ -8480,6 +8925,7 @@ ListaRegraSalvarLista(VenNLista, "C:\\ERP", "lista", "T");
 **Observações:** Caso não seja possível salvar, será retornado um erro do tipo exceção.
 
 **⚠️ Observações Importantes:**
+
 - Sempre encapsule arrays JSON em objetos antes de usar `ListaRegraCarregarJson`
 - Verifique sempre o retorno das funções de navegação (`vaAchou`)
 - Use nomes de campos consistentes entre o JSON e a lista de campos
@@ -8772,6 +9218,7 @@ Verifica se o cursor está na posição inicial (antes do primeiro registro: pos
 **Sintaxe:** `SQL_BOF(Alfa Objeto);`
 
 **Retorno:**
+
 - `1`: Cursor está na posição BOF (antes do primeiro registro)
 - `0`: Cursor NÃO está na posição BOF
 
@@ -8805,6 +9252,7 @@ Verifica se o cursor está na posição final (depois do último registro: posi�
 **Sintaxe:** `SQL_EOF(Alfa Objeto);`
 
 **Retorno:**
+
 - `1`: Cursor está na posição EOF (depois do último registro)
 - `0`: Cursor NÃO está na posição EOF
 
@@ -8834,33 +9282,35 @@ SQL_Destruir(xCursor);
 #### Observações Importantes
 
 **SQL_RetornarInteiro vs SQL_RetornarFlutuante:**
+
 - `SQL_RetornarInteiro`: Se o campo tem valor `5.45`, retorna apenas `5`
 - `SQL_RetornarFlutuante`: Retorna o valor completo `5.45`
 - Para campos tipo Double, use **obrigatoriamente** `SQL_RetornarFlutuante`
 
 **SQL_RetornarBoleano:**
+
 - Retorna `1` para verdadeiro e `0` para falso
 - Útil para campos de status, flags, indicadores
 
 **SQL_RetornarSeNulo:**
+
 - Retorna `1` se campo é NULL, `0` se não é NULL  
 - Não detecta campos vazios (`""`) ou zero (`0`), apenas NULL
 - Use para validação antes de processar dados
 
 **SQL_BOF vs SQL_EOF:**
+
 - **SQL_BOF**: Verifica início do cursor (Before Of File)
 - **SQL_EOF**: Verifica fim do cursor (End Of File)
 - Ambas retornam `1` quando na posição correspondente, `0` caso contrário
 - Em ambas as posições (BOF/EOF), todos os registros estarão nulos
 - Use para proteger contadores e controlar loops de navegação
 
-
-
 ### Otimizações para Cursores com Múltiplos Tipos
 
 **❓ Pergunta Comum:** "Não há como otimizar o uso de todos os tipos de retorno em um mesmo cursor?"
 
-** Resposta:** A sequência de `SQL_Retornar*` **é obrigatória** para cada campo, mas podemos otimizar a lógica de processamento:
+**Resposta:** A sequência de `SQL_Retornar*` **é obrigatória** para cada campo, mas podemos otimizar a lógica de processamento:
 
 #### **🚀 Versão Otimizada - Verificação Prévia de NULLs**
 
@@ -8927,6 +9377,7 @@ Funcao consultarFuncionariosOtimizado(); {
 #### **⚡ Técnicas de Otimização Aplicadas**
 
 **1. Verificação Prévia de NULLs**
+
 ```lsp
 @ Evita recuperar dados desnecessários @
 Se ((SQL_RetornarSeNulo(xCursor, "NOMFUN") = 0) e (SQL_RetornarSeNulo(xCursor, "VALSALARIO") = 0)) {
@@ -8935,6 +9386,7 @@ Se ((SQL_RetornarSeNulo(xCursor, "NOMFUN") = 0) e (SQL_RetornarSeNulo(xCursor, "
 ```
 
 **2. Recuperação Condicional**
+
 ```lsp
 @ Recupera dados básicos primeiro @
 SQL_RetornarAlfa(xCursor, "NOMFUN", vaNomeFuncionario);
@@ -8948,6 +9400,7 @@ Se (vnSalario > 5000) {
 ```
 
 **3. Agrupamento por Uso**
+
 ```lsp
 @ Agrupa recuperação por necessidade @
 @ Campos obrigatórios: sempre recupera @
@@ -8982,18 +9435,21 @@ Como boa prática, é recomendável que se reserve a regra 001 apenas para imple
 Uma função pode receber parâmetros e retornar valores.
 
 **⚠️ Importante:**
+
 - Valores alterados dentro da função também serão alterados fora dela.
 - **Os parâmetros definidos para as funções devem obrigatoriamente ser Numéricos**
 - **Parâmetros do tipo Alfanuméricos (Alfa) NÃO são suportados por funções definidas nas regras**
 
 **Incorreto - NÃO funciona:**
+
 ```lsp
 Funcao alterarNome(Alfa vaNome); {
    vaNome = "Nome Alterado"; @ ERRO: Parâmetro Alfa não suportado @
 }
 ```
 
-** Correto - Usar variáveis globais:**
+**Correto - Usar variáveis globais:**
+
 ```lsp
 Definir Alfa vaNome;
 
@@ -9005,6 +9461,7 @@ Funcao alterarNome(); {
 ```
 
 **Exemplo Oficial da Senior:**
+
 ```lsp
 @ Definição/declaração da função criada pelo usuário @
 Definir Funcao Somar(Numero pNum1, Numero pNum2, Numero End pResultado);
@@ -9099,6 +9556,7 @@ Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero 
 **⚠️ REGRA OBRIGATÓRIA:** Em LSP, as funções devem ser declaradas **SEMPRE APÓS** o código principal que as chama. A chamada da função deve aparecer ANTES da declaração da função no código.
 
 **Incorreto - NÃO funciona:**
+
 ```lsp
 Funcao minhaFuncao(); {
   @ Corpo da função @
@@ -9107,7 +9565,8 @@ Funcao minhaFuncao(); {
 minhaFuncao(); @ ERRO: Chamada após declaração @
 ```
 
-** Correto - Ordem obrigatória:**
+**Correto - Ordem obrigatória:**
+
 ```lsp
 @ 1. Variáveis globais @
 @ 2. Código principal (chamadas) @
@@ -9171,7 +9630,7 @@ Funcao adicionarQuantidadeHoras(Numero vnHoraAtual, Numero vnQuantidade, Numero 
 }
 ```
 
-## 🔙 **Retorno para Aplicação** {#retorno-para-aplicação}
+## **Retorno para Aplicação** 🔙
 
 Usado apenas no gerador de relatórios, para alterar o valor de um campo tipo Descrição ou Numérico. O valor passado para ValRet ou ValStr será impresso no lugar do valor original do campo. Essas palavras reservadas devem ser utilizadas em conjunto com o comando `Cancel(2);`.
 
@@ -9285,22 +9744,22 @@ As funções gerais na LSP são utilizadas para realizar operações comuns, com
 | VrfAbrA                     | Verifica se um determinado valor está contido em uma abrangência especificada. |
 | VrfAbrN                     | Verifica se um determinado valor numérico está contido em uma abrangência especificada. |
 | sleep                       | Pausa a execução do código por X milesegundos |
-| **Manipulação Dinâmica de Variáveis** |
+| **Manipulação Dinâmica de Variáveis** | |
 | PegarTipoVar                | Retorna o tipo de uma variável qualquer, passada como string. |
 | PegarValorVarAlf            | Retorna o valor de uma variável alfanumérica identificada por nome. |
 | PegarValorVarNum            | Retorna o valor de uma variável numérica ou de data identificada por nome. |
 | SetarValorVarAlf            | Define o valor de uma variável alfanumérica identificada por nome. |
 | SetarValorVarNum            | Define o valor de uma variável numérica ou de data identificada por nome. |
-| **Verificação e Limpeza** |
+| **Verificação e Limpeza** | |
 | EstaNulo                    | Verifica se uma variável está nula (vazia ou não inicializada). |
 | DeixaNumeros                | Remove todos os caracteres não numéricos de uma string. |
-| **Funções de Lista de Regras** |
+| **Funções de Lista de Regras** | |
 | ListaRegraCriarLista        | Cria uma nova lista de regras para armazenar dados estruturados. |
 | ListaRegraCarregarJson      | Carrega dados de uma estrutura JSON diretamente em uma lista de regras. |
 | ListaRegraPrimeiro          | Posiciona a lista no primeiro registro. |
 | ListaRegraProximo           | Move para o próximo registro da lista. |
 | ListaRegraObterValorAlfa    | Obtém o valor de um campo específico do registro atual da lista. |
-| **Arrays** |
+| **Arrays** | |
 | LimpaGerTabAlf              | Limpa o conteúdo do Registro GerTabAlf. |
 | LimpaGerTabNum              | Limpa o conteúdo do Registro GerTabNum. |
 
@@ -9335,14 +9794,13 @@ As funções a seguir podem ser utilizadas para manipulação de comandos SQL e 
 | SQL_RetornarSeNulo  | Função que retorna se campo do registro do cursor é nulo. |
 | SQL_UsarAbrangencia | Função que informa ao cursor se é para utilizar abrangência de usuários ou não. |
 | SQL_UsarSQLSenior2  | Função que informa se o comando a ser definido para o cursor utiliza a sintaxe de linguagem Senior ou a sintaxe nativa (SQL Nativa: linguagem originada da base de dados utilizada, ex: Oracle, SQL server...etc). |
-| **Execução Direta de SQL** |
+| **Execução Direta de SQL** | |
 | ExecSQL             | Executa um comando SQL no banco para operações INSERT, UPDATE e DELETE. |
 | ExecSQLEx           | Executa um comando SQL no banco com controle de erro, retornando status de sucesso/falha. |
-| **Controle de Transações** |
+| **Controle de Transações** | |
 | IniciarTransacao    | Inicia uma transação no banco de dados. |
 | FinalizarTransacao  | Finaliza a transação no banco de dados executando COMMIT. |
 | DesfazerTransacao   | Desfaz a transação no banco de dados executando ROLLBACK. |
-
 
 ### Placeholders SQL - Regra de Segurança
 
@@ -9358,6 +9816,7 @@ As funções a seguir podem ser utilizadas para manipulação de comandos SQL e 
 #### Exemplos de Uso Correto e Incorreto
 
 **❌ INCORRETO - Concatenação Direta (NUNCA FAÇA):**
+
 ```lsp
 @ ❌ PERIGOSO - Vulnerável a SQL Injection @
 Definir Alfa vaSQL;
@@ -9372,6 +9831,7 @@ vaSQL = "SELECT * FROM CLIENTES WHERE CODIGO = " + vnCodigoCliente + " AND NOME 
 ```
 
 **✅ CORRETO - Placeholders (SEMPRE USE):**
+
 ```lsp
 @ ✅ SEGURO - Usando placeholders @
 Definir Alfa vaSQL;
@@ -9606,22 +10066,26 @@ SQL_Destruir(xCursor);
 Traz os dados de um comando SELECT(SQL) mais elaborado, incluindo funções de agregação como COUNT(), SUM(), etc. Aceita também comandos como GROUP BY, UNION entre outros.
 
 **Sintaxe:**
+
 ```lsp
 SelecaoTabelas(<pSqlSel>, <pCpoRet>, <pTemMas>);
 ```
 
 **Parâmetros:**
+
 - `pSqlSel`: Variável que recebe uma instrução SELECT(SQL) ou "+" para buscar próximo registro
 - `pCpoRet`: Variável que retorna os dados resultantes do comando (separados por ';' se múltiplos campos)
 - `pTemMas`: Variável que retorna '+' caso o comando retorne mais de uma linha
 
 **⚠️ Observações importantes:**
+
 - O início do SQL é fixado em SELECT para evitar danos ao banco
 - Todos os dados são convertidos para uma única variável Alfa
 - Quando há múltiplos campos, são separados por ';'
 - Para navegar entre registros, passe "+" como parâmetro `pSqlSel`
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploSelecaoTabelas();
 
@@ -9742,16 +10206,19 @@ Funcao processarRegistroFilial(Alfa pDados, Numero pContador); {
 Executa um comando SQL no banco. Pode ser usado para operações INSERT, UPDATE e DELETE.
 
 **Sintaxe:**
+
 ```lsp
 ExecSQL(<ComandoSQL>);
 ```
 
 **Parâmetros:**
+
 - `ComandoSQL`: Comando SQL a ser executado (tipo Alfa)
 
 **Exemplos:**
 
 **INSERT:**
+
 ```lsp
 Definir Funcao exemploExecSQLInsert();
 
@@ -9780,6 +10247,7 @@ Funcao exemploExecSQLInsert(); {
 ```
 
 **UPDATE:**
+
 ```lsp
 Definir Funcao exemploExecSQLUpdate();
 
@@ -9808,6 +10276,7 @@ Funcao exemploExecSQLUpdate(); {
 ```
 
 **DELETE:**
+
 ```lsp
 Definir Funcao exemploExecSQLDelete();
 
@@ -9840,11 +10309,13 @@ Funcao exemploExecSQLDelete(); {
 Executa um comando SQL no banco com controle de erro. Retorna 0 (zero) para sucesso ou 1 seguido da mensagem de erro em caso de falha.
 
 **Sintaxe:**
+
 ```lsp
 ExecSQLEx(<ComandoSQL>, <Sucesso>, <Mensagem>);
 ```
 
 **Parâmetros:**
+
 - `ComandoSQL`: Comando SQL a ser executado (tipo Alfa)
 - `Sucesso`: Variável numérica que retorna 0 para sucesso, 1 para erro
 - `Mensagem`: Variável alfa que retorna mensagem de erro (se houver)
@@ -9858,6 +10329,7 @@ ExecSQLEx(<ComandoSQL>, <Sucesso>, <Mensagem>);
 **Exemplos:**
 
 **INSERT com tratamento de erro:**
+
 ```lsp
 Definir Funcao exemploExecSQLExInsert();
 
@@ -9904,6 +10376,7 @@ Funcao exemploExecSQLExInsert(); {
 ```
 
 **UPDATE com tratamento de erro:**
+
 ```lsp
 Definir Funcao exemploExecSQLExUpdate();
 
@@ -9927,6 +10400,7 @@ Funcao exemploExecSQLExUpdate(); {
 ```
 
 **DELETE com tratamento de erro:**
+
 ```lsp
 Definir Funcao exemploExecSQLExDelete();
 
@@ -9950,6 +10424,7 @@ Funcao exemploExecSQLExDelete(); {
 ```
 
 **Utilizando com campos BLOB:**
+
 ```lsp
 Definir Funcao exemploExecSQLExBlob();
 
@@ -9987,11 +10462,13 @@ Funcao exemploExecSQLExBlob(); {
 Inicia uma transação no banco de dados.
 
 **Sintaxe:**
+
 ```lsp
 IniciarTransacao();
 ```
 
 **Exemplo de uso completo:**
+
 ```lsp
 Definir Funcao exemploTransacaoCompleta();
 
@@ -10044,6 +10521,7 @@ Funcao exemploTransacaoCompleta(); {
 Finaliza a transação no banco de dados executando COMMIT.
 
 **Sintaxe:**
+
 ```lsp
 FinalizarTransacao();
 ```
@@ -10053,6 +10531,7 @@ FinalizarTransacao();
 Desfaz a transação no banco de dados executando ROLLBACK.
 
 **Sintaxe:**
+
 ```lsp
 DesfazerTransacao();
 ```
@@ -10068,6 +10547,7 @@ DesfazerTransacao();
 4. **Depuração:** Durante depuração, a transação não será finalizada automaticamente em caso de erro.
 
 **Exemplo prático - Sistema de Transferência Bancária:**
+
 ```lsp
 Definir Funcao exemploTransferenciaBancaria();
 
@@ -10168,17 +10648,20 @@ As funções específicas do Gerador de Relatórios são utilizadas para manipul
 Adiciona ou define texto em uma célula específica de um controle tipo grade.
 
 **Sintaxe:**
+
 ```lsp
 AdicionaDadosGrade(Alfa ControlName, Numero Linha, Numero Coluna, Alfa Texto);
 ```
 
 **Parâmetros:**
+
 - `ControlName`: Nome do controle tipo grade onde será adicionada/setada a linha ou coluna
 - `Linha`: Número da linha onde será adicionado/setado o texto
 - `Coluna`: Número da coluna onde será adicionado/setado o texto
 - `Texto`: Texto a ser adicionado/setado
 
 **Exemplo:**
+
 ```lsp
 AdicionaDadosGrade("Grade001", 2, 1, "Quarto teste da grade.");
 AdicionaDadosGrade("Grade001", 2, 2, "Gestão Empresarial | ERP da Senior Sistemas.");
@@ -10195,14 +10678,17 @@ AdicionaDadosGrade("Grade001", 3, 3, "Nono");
 Limpa todos os dados de um controle tipo grade.
 
 **Sintaxe:**
+
 ```lsp
 LimpaDadosGrade(Alfa ControlName);
 ```
 
 **Parâmetros:**
+
 - `ControlName`: Nome do controle tipo GRADE que se deseja limpar os dados
 
 **Exemplo:**
+
 ```lsp
 LimpaDadosGrade("Grade001");
 ```
@@ -10214,16 +10700,19 @@ LimpaDadosGrade("Grade001");
 Permite que o dado de uma determinada célula seja truncado, evitando a quebra de linha.
 
 **Sintaxe:**
+
 ```lsp
 TruncaDadosGrade(Alfa ControlName, Numero Linha, Numero Coluna);
 ```
 
 **Parâmetros:**
+
 - `ControlName`: Nome do controle grade que será truncado
 - `Linha`: Número da linha da célula a ser truncada
 - `Coluna`: Número da coluna da célula a ser truncada
 
 **Exemplo:**
+
 ```lsp
 TruncaDadosGrade("Grade001", 2, 1);
 ```
@@ -10235,17 +10724,20 @@ TruncaDadosGrade("Grade001", 2, 1);
 Carrega uma imagem do tipo .BMP ou .JPG a partir de um arquivo ou banco de dados.
 
 **Sintaxe:**
+
 ```lsp
 CarregaImagemControle(Alfa NomeDoControle, Numero ArquivoOuBanco, Alfa CaminhoOuCampo, Alfa SQL);
 ```
 
 **Parâmetros:**
+
 - `NomeDoControle`: Nome do controle do modelo ao qual se quer carregar a imagem
 - `ArquivoOuBanco`: 0 para carregar a partir de arquivo ou 1 para carregar do banco de dados
 - `CaminhoOuCampo`: Caminho do arquivo ou TABELA.CAMPO (se do banco)
 - `SQL`: Condição WHERE para busca da imagem no banco (somente se ArquivoOuBanco = 1)
 
 **Exemplos:**
+
 ```lsp
 @ Carregando a partir de um endereço @
 CarregaImagemControle("Imagem001", 0, "c:\\ICO.ICO", "");
@@ -10272,13 +10764,15 @@ Se (VRet = 0) {
 Carrega uma imagem do banco, arquivo ou variável para um controle imagem do modelo.
 
 **Sintaxe:**
+
 ```lsp
 CarregaImgControle(Alfa NomeDoControleImagem, Numero Arquivo0Banco1Variavel2, Alfa CaminhoCampoNome, Alfa SQL, Numero SqlSenior2);
 ```
 
 **Parâmetros:**
+
 - `NomeDoControleImagem`: Nome do controle imagem do modelo
-- `Arquivo0Banco1Variavel2`: 
+- `Arquivo0Banco1Variavel2`:
   - 0: Carrega de arquivo (ex: c:\Fig.BMP)
   - 1: Carrega do banco do campo especificado
   - 2: Carrega de variável de sistema (ICO, BMP ou EMF)
@@ -10287,6 +10781,7 @@ CarregaImgControle(Alfa NomeDoControleImagem, Numero Arquivo0Banco1Variavel2, Al
 - `SqlSenior2`: 0 para SQL Senior 1, 1 para SQL Senior 2
 
 **Exemplos:**
+
 ```lsp
 @ Imagem BMP a partir de um arquivo @
 CarregaImgControle("Imagem001", 0, "C:\\temp\\Teste.BMP", "", 0);
@@ -10313,17 +10808,20 @@ CarregaImgControle("Imagem003", 2, "ImgEMFGerador", "", 0);
 Carrega uma imagem DXF a partir de um arquivo para o controle Imagem e ImagemVetorial do modelo.
 
 **Sintaxe:**
+
 ```lsp
 CarregaImgVetorialControle(Alfa NomeDoControleImagem, Alfa Caminho, Numero Xms, Numero Xmx);
 ```
 
 **Parâmetros:**
+
 - `NomeDoControleImagem`: Nome do controle imagem do modelo
 - `Caminho`: Caminho físico do arquivo (local ou na rede)
 - `Xms`: Tamanho em MB da heap mínimo Java (0 para valores padrões)
 - `Xmx`: Tamanho máximo em MB da heap Java (0 para valores padrões)
 
 **⚠️ Observações:**
+
 - Tamanho automático deve estar definido como Falso
 - Centralizado deve estar definido como Verdadeiro
 - Ampliar deve estar definido como Verdadeiro
@@ -10338,23 +10836,26 @@ CarregaImgVetorialControle(Alfa NomeDoControleImagem, Alfa Caminho, Numero Xms, 
 Configura pontos em gráficos de figuras variáveis (linhas) antes de adicionar valores.
 
 **Sintaxe:**
+
 ```lsp
 ConfiguraPontoGrafico(Alfa ControlName, Alfa Caractere, Numero TipoPonto, Numero IndiceFigura, Numero Interrompido);
 ```
 
 **Parâmetros:**
+
 - `ControlName`: Nome do controle gráfico do modelo
 - `Caractere`: Caractere que será colocado no ponto do gráfico
-- `TipoPonto`: 
+- `TipoPonto`:
   - 1: Tipo Caractere (IndiceFigura será ignorado)
   - 0: Tipo Padrão (ponto padrão cadastrado, Caractere e IndiceFigura ignorados)
   - 2: Tipo Figura (Caractere será ignorado)
 - `IndiceFigura`: Número da figura cadastrada para o tipo de gráfico
-- `Interrompido`: 
+- `Interrompido`:
   - 1: Terá linha de ligação com outros pontos
   - 0: Não terá linha de ligação
 
 **Exemplo:**
+
 ```lsp
 @ Configuração dos pontos no gráfico @
 CRea.SQL "SELECT INDMAS,INDRES,INDTES FROM R108REA WHERE NUMEMP = :xNumEmp AND CODFIC = :xCodFic AND CODEXA = :xCodExa AND DATSOL = :xDatSol AND SEQIEX = :xSeqIex";
@@ -10391,14 +10892,17 @@ CRea.FecharCursor();
 Zera e reutiliza um componente do tipo gráfico no mesmo relatório.
 
 **Sintaxe:**
+
 ```lsp
 LimpaDadosGrafico(Alfa ControlName);
 ```
 
 **Parâmetros:**
+
 - `ControlName`: Nome do controle tipo GRAFICO que se deseja limpar os dados
 
 **Exemplo:**
+
 ```lsp
 LimpaDadosGrafico("Grafico001");
 ```
@@ -10410,11 +10914,13 @@ LimpaDadosGrafico("Grafico001");
 Permite alterar o conteúdo de algumas propriedades dos controles.
 
 **Sintaxe:**
+
 ```lsp
 AlteraControle("Nome do Controle", "Propriedade", "Parametro");
 ```
 
 **Parâmetros:**
+
 - `Nome do Controle`: Nome do controle entre aspas duplas
 - `Propriedade`: Nome da propriedade entre aspas duplas
 - `Parametro`: Valor que a propriedade vai assumir
@@ -10437,6 +10943,7 @@ AlteraControle("Nome do Controle", "Propriedade", "Parametro");
 | **Justificado** | Verdadeiro; Falso; Nenhum; Modo 1; Modo 2 |
 
 **Exemplos:**
+
 ```lsp
 AlteraControle("Subtitulo2", "Salto Página", "Não");
 AlteraControle("Desenho001", "Configurar Desenho", "Desenho=1;Cor Textura=$005E20;Cor Linha=Preto;Espessura=2");
@@ -10451,15 +10958,18 @@ AlteraControle("Grafico001", "Conf. Gráfico", "Pano Fundo;Falso");
 Altera o valor de um controle fórmula pelo seu nome.
 
 **Sintaxe:**
+
 ```lsp
 AlteraValorFormula(Alfa NomeFormula, Numero Valor);
 ```
 
 **Parâmetros:**
+
 - `NomeFormula`: O nome do controle fórmula
 - `Valor`: O novo valor do controle fórmula
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vNome;
 Definir Numero vValor;
@@ -10491,6 +11001,7 @@ AlteraValorFormula(vNome, vValor);
 Cancela o relatório que está sendo executado.
 
 **Sintaxe:**
+
 ```lsp
 CancelarRelatorio();
 ```
@@ -10504,11 +11015,13 @@ CancelarRelatorio();
 Retorna o início e o fim de um período.
 
 **Sintaxe:**
+
 ```lsp
 DataInicialFinal(Data pDatAtu, Numero pTipDat, Data pDatRef, Data End pDatIni, Data End pDatFim);
 ```
 
 **Parâmetros:**
+
 - `pDatAtu`: Data referência para o período
 - `pTipDat`: Tipo do período:
   - 0: Início e fim iguais à data referência
@@ -10525,6 +11038,7 @@ DataInicialFinal(Data pDatAtu, Numero pTipDat, Data pDatRef, Data End pDatIni, D
 - `pDatFim`: Final do período (retorno)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xDatIni;
 Definir Alfa xDatFim;
@@ -10545,16 +11059,19 @@ Cancel(2);
 Converte um valor do tipo data para uma variável alfa com uma data compatível com o banco de dados.
 
 **Sintaxe:**
+
 ```lsp
 DateToDB(Numero Date, Numero Native, Alfa End DateAlfa);
 ```
 
 **Parâmetros:**
+
 - `Date`: Data que deve ser convertida para alfa
 - `Native`: Obsoleto, mantido apenas para compatibilidade
 - `DateAlfa`: Retorno da função com data compatível com SQL nativo
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xData;
 DateToDB(1234, 0, xData);
@@ -10569,15 +11086,18 @@ Cancel(2);
 Cria uma View temporária no banco para otimizar a execução do relatório.
 
 **Sintaxe:**
+
 ```lsp
 CriaView(Alfa SQL, Alfa End NomeView);
 ```
 
 **Parâmetros:**
+
 - `SQL`: SQL contendo todo o código (SELECT) da View a ser criada (formato SQLSenior2)
 - `NomeView`: Retorna o nome temporário da View que foi criada
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xSql2;
 Definir Alfa xNomeView2;
@@ -10593,15 +11113,18 @@ CriaView(xSql2, xNomeView2);
 Retira um campo do SELECT da seção passada como parâmetro.
 
 **Sintaxe:**
+
 ```lsp
 DeleteFieldSQL(Alfa SectionName, Alfa TableFieldName);
 ```
 
 **Parâmetros:**
+
 - `SectionName`: Nome da seção que contém o SELECT onde o campo será excluído
 - `TableFieldName`: Campo a ser excluído no padrão TABELA.CAMPO
 
 **Exemplo:**
+
 ```lsp
 InsClauSQLGroupBy("Detalhe_1", "NUMEMP, TIPCOL");
 InsClauSQLCampoDireto("Detalhe_1", "Max(ValSal) ValorSal");
@@ -10613,15 +11136,18 @@ DeleteFieldSQL("Detalhe_1", "R034FUN.NUMCAD");
 Insere um campo novo no SELECT que poderá ser utilizado para agrupamentos e outros tipos de funções.
 
 **Sintaxe:**
+
 ```lsp
 InsClauSQLCampoDireto(Alfa SectionName, Alfa CampoDireto);
 ```
 
 **Parâmetros:**
+
 - `SectionName`: Nome da seção onde será inserido o campo
 - `CampoDireto`: Campo a ser inserido no SELECT
 
 **Exemplo:**
+
 ```lsp
 InsClauSQLCampoDireto("Detalhe_1", "Max(ValSal) ValorSal");
 ```
@@ -10631,15 +11157,18 @@ InsClauSQLCampoDireto("Detalhe_1", "Max(ValSal) ValorSal");
 Inclui um campo de tabela no código SQL montado pelo gerador.
 
 **Sintaxe:**
+
 ```lsp
 InsClauSQLField("Seção Detalhe", Variavel);
 ```
 
 **Parâmetros:**
+
 - `Seção Detalhe`: Nome da seção detalhe
 - `Variavel`: Código SQL para inclusão dos campos de tabela
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xsql;
 xsql = "CEPCLI AS E085CLI";
@@ -10653,15 +11182,18 @@ InsClauSQLField("Detalhe_Clientes", xsql);
 Inclui uma tabela no código SQL montado pelo gerador.
 
 **Sintaxe:**
+
 ```lsp
 InsClauSQLFrom("Seção Detalhe", Variavel);
 ```
 
 **Parâmetros:**
+
 - `Seção Detalhe`: Nome da seção Detalhe
 - `Variavel`: Código SQL para inclusão da tabela
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xsql;
 xsql = "E085CLI";
@@ -10675,15 +11207,18 @@ InsClauSQLFrom("Detalhe_Clientes", xsql);
 Insere uma cláusula GROUP BY no SELECT da seção passada como parâmetro.
 
 **Sintaxe:**
+
 ```lsp
 InsClauSQLGroupBy(Alfa SectionName, Alfa GroupByClau);
 ```
 
 **Parâmetros:**
+
 - `SectionName`: Nome da seção onde será inserida o GROUP BY
 - `GroupByClau`: Cláusula a ser inserida
 
 **Exemplo:**
+
 ```lsp
 InsClauSQLGroupBy("Detalhe_1", "NUMEMP, TIPCOL, NUMCAD");
 ```
@@ -10695,15 +11230,18 @@ InsClauSQLGroupBy("Detalhe_1", "NUMEMP, TIPCOL, NUMCAD");
 Inclui uma cláusula de ordenação no código SQL montado pelo gerador.
 
 **Sintaxe:**
+
 ```lsp
 InsClauSQLOrderBy("Seção Detalhe", Variavel);
 ```
 
 **Parâmetros:**
+
 - `Seção Detalhe`: Nome da seção Detalhe
 - `Variavel`: Código SQL para inclusão da cláusula de ordenação
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xsql;
 xsql = "R034FUN.DatAdm Desc";
@@ -10717,15 +11255,18 @@ InsClauSQLOrderBy("Detalhe_Colaborador", xsql);
 Inclui uma cláusula WHERE no código SQL montado pelo gerador.
 
 **Sintaxe:**
+
 ```lsp
 InsClauSQLWhere("Seção Detalhe", Variavel);
 ```
 
 **Parâmetros:**
+
 - `Seção Detalhe`: Nome da seção Detalhe
 - `Variavel`: Código SQL para inclusão da cláusula WHERE
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xsql;
 xsql = "R034FUN.SITAFA <> 7";
@@ -10739,15 +11280,18 @@ InsClauSQLWhere("Detalhe_Clientes", xsql);
 Insere uma cláusula WHERE dentro de um SQL durante a execução da regra de pré-seleção.
 
 **Sintaxe:**
+
 ```lsp
 InsSQLWhereSimples("Seção Detalhe", Variavel);
 ```
 
 **Parâmetros:**
+
 - `Seção Detalhe`: Nome da seção Detalhe
 - `Variavel`: Código SQL para inclusão da cláusula WHERE
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vDatStr;
 Definir Alfa xsql;
@@ -10764,16 +11308,19 @@ InsSQLWhereSimples("Detalhe_1", xsql);
 Substitui uma cláusula FROM no SELECT da seção passada como parâmetro.
 
 **Sintaxe:**
+
 ```lsp
 SubstituiFrom(Alfa SectionName, Alfa NovaClausula, Alfa TabelaSubstituida);
 ```
 
 **Parâmetros:**
+
 - `SectionName`: Nome da seção onde será substituída o FROM
 - `NovaClausula`: Cláusula que irá substituir o FROM atual
 - `TabelaSubstituida`: Nome da tabela que será substituída (opcional)
 
 **Junções Suportadas:**
+
 - CROSS JOIN (Produto Cartesiano)
 - INNER JOIN (Junção)
 - LEFT OUTER JOIN (Junção Externa a Esquerda)
@@ -10782,6 +11329,7 @@ SubstituiFrom(Alfa SectionName, Alfa NovaClausula, Alfa TabelaSubstituida);
 - KEYED JOIN (Junção por Chave)
 
 **Exemplos:**
+
 ```lsp
 @ Cross Join @
 SubstituiFrom("Detalhe_1", "(R034FUN CROSS JOIN R036DEP)", "");
@@ -10809,16 +11357,19 @@ SubstituiFrom("Detalhe_1", "(R034FUN KEYED INNER JOIN R030EMP)", "");
 Permite pegar a descrição de um campo lista.
 
 **Sintaxe:**
+
 ```lsp
 DesCamLista(Alfa TabelaCampo, Alfa Item, Alfa End Descricao);
 ```
 
 **Parâmetros:**
+
 - `TabelaCampo`: Nome da Tabela/Campo entre aspas
 - `Item`: Valor do Item na lista entre aspas
 - `Descricao`: Variável alfa com a descrição do campo da lista
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa Strdescr;
 DesCamLista("R034FUN.TIPCOL", "1", Strdescr);
@@ -10830,15 +11381,18 @@ DesCamLista("R034FUN.TIPCOL", "1", Strdescr);
 Permite determinar qual será o primeiro conector a ser inserido para concatenar na cláusula WHERE.
 
 **Sintaxe:**
+
 ```lsp
 DetPrimConector(Alfa Seção, Alfa Operador);
 ```
 
 **Parâmetros:**
+
 - `Seção`: Nome da seção entre aspas
 - `Operador`: Nome do operador entre aspas
 
 **Exemplo:**
+
 ```lsp
 DetPrimConector("Detalhe_1", " OR");
 ```
@@ -10848,14 +11402,17 @@ DetPrimConector("Detalhe_1", " OR");
 Insere espaços a direita de todos os controles no modelo.
 
 **Sintaxe:**
+
 ```lsp
 InsEspAlinhDireita(Numero Valor);
 ```
 
 **Parâmetros:**
+
 - `Valor`: Quantos espaços serão inseridos a direita do controle
 
 **Exemplo:**
+
 ```lsp
 InsEspAlinhDireita(1);
 ```
@@ -10869,16 +11426,19 @@ InsEspAlinhDireita(1);
 Monta o comando SQL para consulta em tabelas de histórico que não possuem sequência.
 
 **Sintaxe:**
+
 ```lsp
 MontarSQLHisCampo(Alfa NomeTabela, Alfa CampoTabela, Alfa End SQLMontado);
 ```
 
 **Parâmetros:**
+
 - `NomeTabela`: Nome da tabela
 - `CampoTabela`: Nome do campo da tabela
 - `SQLMontado`: Retorno da função (cláusula SQL)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xauxsql;
 MontarSQLHisCampo("R038HLO", "DatAlt", xauxsql);
@@ -10889,16 +11449,19 @@ MontarSQLHisCampo("R038HLO", "DatAlt", xauxsql);
 Monta o comando SQL para consulta em tabelas de histórico que possuem sequência.
 
 **Sintaxe:**
+
 ```lsp
 MontarSQLHisCampoSeq(Alfa Tabela, Alfa Campo, Alfa End SQLMontado);
 ```
 
 **Parâmetros:**
+
 - `Tabela`: Nome da tabela
 - `Campo`: Nome do campo da tabela
 - `SQLMontado`: Retorno da função (cláusula SQL)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xauxsql;
 MontarSQLHisCampoSeq("R038HSA", "DatAlt", xauxsql);
@@ -10909,16 +11472,19 @@ MontarSQLHisCampoSeq("R038HSA", "DatAlt", xauxsql);
 Monta o comando SQL para uso com os históricos do sistema, com base em uma data.
 
 **Sintaxe:**
+
 ```lsp
 MontarSQLHistorico(Alfa Tabela, Data Data, Alfa End Xretorno);
 ```
 
 **Parâmetros:**
+
 - `Tabela`: Nome da tabela
 - `Data`: Data do histórico
 - `Xretorno`: Variável alfanumérica que conterá o SQL montado
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xdatref;
 Definir Alfa auxsql;
@@ -10938,16 +11504,19 @@ InsClauSQLWhere("Detalhe_Aposentados", auxsql);
 Monta o comando SQL para uso com os históricos do sistema, com base em uma data e sequência.
 
 **Sintaxe:**
+
 ```lsp
 MontarSQLHistoricoSeq(Alfa Tabela, Data Data, Alfa End Xretorno);
 ```
 
 **Parâmetros:**
+
 - `Tabela`: Nome da tabela
 - `Data`: Data do histórico
 - `Xretorno`: Variável alfanumérica que conterá o SQL montado
 
 **Exemplo:**
+
 ```lsp
 @ Relacionamento Histórico Tipo Salário (DINÂMICO) @
 Se (EAbrTsa <> "") {
@@ -10971,11 +11540,13 @@ Se (EAbrTsa <> "") {
 Determina que uma página seja preenchida com rasuras.
 
 **Sintaxe:**
+
 ```lsp
 PreenchePagina(Numero Formato, Numero FormatoLinha, Numero GrossuraLinha, Alfa CorLinha, Alfa CorTextura);
 ```
 
 **Parâmetros:**
+
 - `Formato`: Valor numérico entre 0 e 8
 - `FormatoLinha`: Valor numérico entre 0 e 7
 - `GrossuraLinha`: Valor numérico
@@ -10983,6 +11554,7 @@ PreenchePagina(Numero Formato, Numero FormatoLinha, Numero GrossuraLinha, Alfa C
 - `CorTextura`: Nome da cor da textura entre aspas
 
 **Exemplo:**
+
 ```lsp
 PreenchePagina(8, 1, 2, "", "Preto");
 ListaSecao("Adicional_Salto_Pagina");
@@ -10993,15 +11565,18 @@ ListaSecao("Adicional_Salto_Pagina");
 Permite verificar se uma determinada seção será impressa na próxima página.
 
 **Sintaxe:**
+
 ```lsp
 ProximaPagina(Alfa Secao, Numero End Retorno);
 ```
 
 **Parâmetros:**
+
 - `Secao`: Nome da seção a ser verificada
 - `Retorno`: Retorna 1 quando a seção será impressa na próxima página, e 0 quando não será
 
 **Exemplo:**
+
 ```lsp
 Definir Numero RetProx;
 ProximaPagina("Subtitulo_Horario", RetProx);
@@ -11015,6 +11590,7 @@ Se (RetProx = 1) {
 Salta de página manualmente.
 
 **Sintaxe:**
+
 ```lsp
 SaltarPagina();
 ```
@@ -11026,14 +11602,17 @@ SaltarPagina();
 Define a impressora padrão para o modelo.
 
 **Sintaxe:**
+
 ```lsp
 SelecionaImpressora(Alfa pNomeImp);
 ```
 
 **Parâmetros:**
+
 - `pNomeImp`: Nome/modelo da impressora a ser usada
 
 **Exemplo:**
+
 ```lsp
 SelecionaImpressora("HP DEKJET 660C");
 ```
@@ -11045,15 +11624,18 @@ SelecionaImpressora("HP DEKJET 660C");
 Retorna o código especial de acordo com um determinado nível.
 
 **Sintaxe:**
+
 ```lsp
 CodigoEspNivel(Numero Nivel, Alfa End CodigoNivel);
 ```
 
 **Parâmetros:**
+
 - `Nivel`: Nível do código que deve ser retornado
 - `CodigoNivel`: Retorno da função com o código do nível
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xCod;
 x = esplevel;
@@ -11067,15 +11649,18 @@ Cancel(2);
 Permite saber qual a ordenação variável selecionada.
 
 **Sintaxe:**
+
 ```lsp
 OrdenacaoSelecionada(Alfa SelectionName, Alfa End Ordenacao);
 ```
 
 **Parâmetros:**
+
 - `SelectionName`: Nome da seção
 - `Ordenacao`: Variável alfanumérica que conterá o nome da ordenação variável selecionada
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa pOrdenacao;
 OrdenacaoSelecionada("Detalhe_1", pOrdenacao);
@@ -11089,15 +11674,18 @@ Se (pOrdenacao <> "Cadastro") {
 Verifica se o registro que está sendo listado na seção detalhe é o último elemento.
 
 **Sintaxe:**
+
 ```lsp
 UltimoRegistro("Seção Detalhe", Numero Retorno);
 ```
 
 **Parâmetros:**
+
 - `Seção Detalhe`: Nome da seção Detalhe desejada
 - `Retorno`: Retorna 0 caso não seja o último registro, ou 1 caso seja o último
 
 **Exemplo:**
+
 ```lsp
 Definir Numero xvalor;
 UltimoRegistro("Detalhe_Clientes", xvalor);
@@ -11113,11 +11701,13 @@ Se (xvalor = 0) {
 Busca o conteúdo atual de um campo alfanumérico de uma VIEW temporária.
 
 **Sintaxe:**
+
 ```lsp
 RetornaCampoAlfaTabela(Alfa NomeCampo, Alfa NomeTabelaView, Alfa OpcionalWhere, Alfa End pRetorno, Numero End pAchou);
 ```
 
 **Parâmetros:**
+
 - `NomeCampo`: Nome do campo da View a ser retornado
 - `NomeTabelaView`: Nome da View temporária
 - `OpcionalWhere`: Cláusula WHERE de filtro (opcional)
@@ -11125,6 +11715,7 @@ RetornaCampoAlfaTabela(Alfa NomeCampo, Alfa NomeTabelaView, Alfa OpcionalWhere, 
 - `pAchou`: Retorna 0 caso tenha encontrado resultados, ou 1 caso não tenha encontrado
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xNomeView;
 Definir Alfa xRetorno;
@@ -11148,11 +11739,13 @@ Se (xAchou = 0) {
 Busca o conteúdo atual de um campo numérico de uma VIEW temporária.
 
 **Sintaxe:**
+
 ```lsp
 RetornaCampoNumeroTabela(Alfa NomeCampo, Alfa NomeTabelaView, Alfa OpcionalWhere, Numero End pRetorno, Numero End pAchou);
 ```
 
 **Parâmetros:**
+
 - `NomeCampo`: Nome do campo da View a ser retornado
 - `NomeTabelaView`: Nome da View temporária
 - `OpcionalWhere`: Cláusula WHERE de filtro (opcional)
@@ -11160,6 +11753,7 @@ RetornaCampoNumeroTabela(Alfa NomeCampo, Alfa NomeTabelaView, Alfa OpcionalWhere
 - `pAchou`: Retorna 0 caso tenha encontrado resultados, ou 1 caso não tenha encontrado
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa xNomeView;
 Definir Numero xRetorno;
@@ -11184,32 +11778,36 @@ Se (xAchou = 0) {
 Lista uma seção adicional do modelo a partir de um evento ou regra.
 
 **Sintaxe:**
+
 ```lsp
 ListaSecao(Alfa Seção);
 ```
 
 **Parâmetros:**
+
 - `Seção`: Nome da seção entre aspas
 
 **Exemplo:**
+
 ```lsp
 ListaSecao("Adicional_1");
 ```
 
 **⚠️ Observação:** Esta função já estava documentada anteriormente no arquivo, mas é incluída aqui para completude da seção de funções específicas do Gerador de Relatórios.
 
-
-### 📝 Personalização do Nome do Arquivo Gerado
+### **Personalização do Nome do Arquivo Gerado** 📝
 
 É possível alterar o nome do arquivo gerado pelo relatório utilizando a variável **vNomeRelatorio**.
 
 > **Atenção:** Isso só funcionará se o campo "Nome do Arquivo (Opcional)" na parametrização de saída do modelo estiver em branco.
 
 **Como funciona:**
+
 - Na regra de inicialização do relatório, atribua o valor desejado à variável `vNomeRelatorio`.
 - O valor atribuído será utilizado como nome do arquivo de saída (por exemplo, PDF).
 
 **Exemplo prático:**
+
 ```lsp
 Definir Alfa EAbrEmp;
 Definir Alfa vNomeRelatorio;
@@ -11218,6 +11816,7 @@ vNomeRelatorio = EAbrEmp;
 ```
 
 **Chamada do relatório:**
+
 ```lsp
 SetaAlfaTelaEntrada("EAbrEmp", "1-3");
 ExecutaRelatorio("HRCL001.GER", "N");
@@ -11227,6 +11826,7 @@ ExecutaRelatorio("HRCL001.GER", "N");
 O arquivo gerado será salvo com o nome informado em `vNomeRelatorio` (ex: `1-3.PDF`), desde que o campo de nome do arquivo na tela de parametrização esteja vazio.
 
 **Resumo visual do processo:**
+
 - **Tela de saída:** Deixe o campo "Nome do Arquivo (Opcional)" em branco.
 - **Regra de inicialização:** Atribua o valor desejado à variável `vNomeRelatorio`.
 - **Arquivo gerado:** O nome do arquivo será o valor da variável, com a extensão do formato escolhado (PDF, TXT, etc).
@@ -11236,15 +11836,18 @@ O arquivo gerado será salvo com o nome informado em `vNomeRelatorio` (ex: `1-3.
 Permite alterar os valores numéricos da tela de entrada do modelo de relatório.
 
 **Sintaxe:**
+
 ```lsp
 SetaNumeroTelaEntrada(<NomeCampo>, <Valor>);
 ```
 
 **Parâmetros:**
+
 - `NomeCampo`: Nome do campo da tela de entrada (tipo Alfa)
 - `Valor`: Valor para o campo (tipo Numero)
 
 **Exemplo:**
+
 ```lsp
 Definir Funcao exemploSetaParametrosRelatorio();
 
@@ -11276,11 +11879,11 @@ Funcao exemploSetaParametrosRelatorio(); {
 ```
 
 **⚠️ Observações importantes:**
+
 - Esta função grava os valores numa lista que será usada na próxima execução de `ExecutaRelatorio`
 - A lista de valores é zerada após a execução da função `ExecutaRelatorio`
 - Utilize para automatizar a execução de relatórios sem intervenção do usuário
 - Complementa a função `SetaAlfaTelaEntrada` para campos alfanuméricos
-
 
 ## Manipulação de Arquivos
 
@@ -11382,7 +11985,7 @@ Fechar (<manipulador do arquivo>);
 Fechar(arq);
 ```
 
-## 🌐 **Chamada de Web Service** {#chamada-de-web-service}
+## **Chamada de Web Service** 🌐
 
 O Editor de Regras dispõe de um conjunto de funções para que seja possível a atribuição e manipulação dos parâmetros de um web service, bem como a sua execução. Para isto é necessário declarar uma variável identificando o serviço que se deseja executar.
 
@@ -11444,6 +12047,7 @@ Caso desejar ignorar os parâmetros, acesse a Central de Configurações Senior 
 As portas de serviço via Regra LSP podem conter funções internas responsáveis por executar uma determinada operação na porta.
 
 **Sintaxe:**
+
 ```lsp
 <Nome_da_Porta>.<Nome_Funcao_Interna>
 ```
@@ -11455,6 +12059,7 @@ Para as Portas de Serviço em geral, temos algumas Funções Internas que podem 
 Função que executa a requisição da porta, ou seja, realiza as operações para as quais a porta do serviço foi implementada.
 
 **Sintaxe:**
+
 ```lsp
 nomePorta.Executar();
 ```
@@ -11464,6 +12069,7 @@ nomePorta.Executar();
 Função que habilita a Limpeza Automática dos Parâmetros de Entrada após a Execução, ou seja, após qualquer execução da porta (função `Executar()`), todos os parâmetros de entrada serão limpos sendo necessário alimentá-los novamente para uma nova execução. Caso esta função não seja chamada dentro da Regra LSP, a porta vai assumir a Limpeza Automática como **habilitada por padrão**.
 
 **Sintaxe:**
+
 ```lsp
 nomePorta.AtivaLimpezaParamEnt();
 ```
@@ -11473,6 +12079,7 @@ nomePorta.AtivaLimpezaParamEnt();
 Função que desabilita a Limpeza Automática dos Parâmetros de Entrada após a Execução, ou seja, após qualquer execução da porta (função `Executar()`), todos os parâmetros de entrada serão mantidos não sendo necessário alimentá-los novamente para uma nova execução. Caso esta função não seja chamada dentro da Regra LSP, a porta vai assumir a Limpeza Automática como **habilitada por padrão**.
 
 **Sintaxe:**
+
 ```lsp
 nomePorta.DesatLimpezaParamEnt();
 ```
@@ -11482,6 +12089,7 @@ nomePorta.DesatLimpezaParamEnt();
 Função que realiza a Limpeza dos Parâmetros de Entrada no ato de sua chamada, ou seja, todos os parâmetros de entrada da porta serão limpos ao executar a função.
 
 **Sintaxe:**
+
 ```lsp
 nomePorta.LimparParamsEntrada();
 ```
@@ -11576,6 +12184,7 @@ Os Web Services frequentemente utilizam grids (tabelas) para entrada e saída de
 Cria uma nova linha em um grid de entrada do Web Service.
 
 **Sintaxe:**
+
 ```lsp
 nomeWebService.NomeGrid.CriarLinha();
 ```
@@ -11585,6 +12194,7 @@ nomeWebService.NomeGrid.CriarLinha();
 Propriedade que retorna a quantidade de linhas em um grid de saída.
 
 **Sintaxe:**
+
 ```lsp
 variavel = nomeWebService.NomeGrid.QtdLinhas;
 ```
@@ -11594,6 +12204,7 @@ variavel = nomeWebService.NomeGrid.QtdLinhas;
 Propriedade que define qual linha do grid está sendo manipulada.
 
 **Sintaxe:**
+
 ```lsp
 nomeWebService.NomeGrid.LinhaAtual = numeroLinha;
 ```
@@ -11702,6 +12313,7 @@ Funcao processarRetornoPedidos(); {
 **⚠️ IMPORTANTE:** Manipular grids de Web Service diretamente é **muito lento** quando há muitos dados. Para melhor performance, use listas dinâmicas para preparar os dados e depois popule o grid do Web Service.
 
 **❌ Approach Lento:**
+
 ```lsp
 @ NÃO FAÇA - Muito lento para grandes volumes @
 Para (vnI = 1; vnI <= 1000; vnI++) {
@@ -11713,6 +12325,7 @@ Para (vnI = 1; vnI <= 1000; vnI++) {
 ```
 
 **✅ Approach Eficiente:**
+
 ```lsp
 @ FAÇA - Muito mais rápido @
 @ 1. Preparar dados em lista dinâmica @
@@ -11921,7 +12534,7 @@ Funcao processarRetornoCotacao(); {
 
 **🎯 Regra de Ouro:** Para qualquer operação com mais de 10 linhas de dados, **sempre use listas dinâmicas** para preparar os dados antes de popular grids de Web Service!
 
-## 🌍 **Chamada HTTP** {#chamada-http}
+## **Chamada HTTP** 🌍
 
 A LSP oferece um conjunto robusto de funções para realizar requisições HTTP/HTTPS, permitindo integração com APIs REST, web services e outros endpoints HTTP. Estas funções suportam todos os métodos HTTP principais e oferecem controle granular sobre cabeçalhos, timeouts e tratamento de respostas.
 
@@ -11929,7 +12542,7 @@ A LSP oferece um conjunto robusto de funções para realizar requisições HTTP/
 
 | Função | Descrição |
 |--------|-----------|
-| **Métodos HTTP Principais** |
+| **Métodos HTTP Principais** | |
 | HttpGet | Executa requisições GET para obter dados |
 | HttpPost | Executa requisições POST para enviar dados |
 | HttpPut | Executa requisições PUT para atualizar recursos |
@@ -11937,28 +12550,28 @@ A LSP oferece um conjunto robusto de funções para realizar requisições HTTP/
 | HttpDelete | Executa requisições DELETE para remover recursos |
 | HttpDeleteBody | Executa requisições DELETE com corpo da mensagem |
 | HttpDownload | Faz download de arquivos diretamente para disco |
-| **Configuração e Upload** |
+| **Configuração e Upload** | |
 | HttpSetAttachment | Anexa arquivos locais ao corpo da requisição |
 | HttpAlteraCabecalhoRequisicao | Configura cabeçalhos HTTP personalizados |
 | HttpAlteraCodifCaracPadrao | Define codificação de caracteres padrão |
 | HttpAlteraRedirecionamento | Controla tratamento de redirecionamentos |
 | HttpSetaTimeout | Define timeout para requisições |
-| **Gerenciamento de Sessão** |
+| **Gerenciamento de Sessão** | |
 | HttpHabilitarCookies | Habilita armazenamento automático de cookies |
 | HttpDesabilitarCookies | Desabilita armazenamento de cookies |
-| **Leitura de Respostas** |
+| **Leitura de Respostas** | |
 | HttpLeCabecalhoResposta | Obtém cabeçalhos de resposta do servidor |
 | HttpLeCodigoResposta | Consulta código de status da resposta |
 | HttpNormalizaRetorno | Normaliza caracteres Unicode em respostas |
-| **Configuração de Proxy** |
+| **Configuração de Proxy** | |
 | HttpAlteraConfiguracaoProxy | Configura definições de servidor proxy |
 | HttpLeConfiguracaoProxy | Lê configurações atuais de proxy |
-| **Configuração SSL/TLS** |
+| **Configuração SSL/TLS** | |
 | HttpAlteraConfiguracaoSSL | Configura opções SSL/TLS |
 | HttpLeConfiguracaoSSL | Lê configurações SSL atuais |
 | HttpHabilitaSNI | Habilita Server Name Indication |
 | HttpDesabilitaSNI | Desabilita Server Name Indication |
-| **Utilitários** |
+| **Utilitários** | |
 | HttpObjeto | Cria objeto HTTP com configurações padrão |
 | HttpDesabilitaErroResposta | Desabilita erros automáticos HTTP |
 | HttpHabilitaErroResposta | Habilita erros automáticos HTTP |
@@ -11979,6 +12592,7 @@ HttpObjeto(vaHTTP);
 #### **Configurações de Acesso**
 
 As funções que executam requisições (HttpGet, HttpPost, HttpPut, HttpPatch, HttpDelete e HttpDownload) necessitam de um **HttpObjeto** que contenha as configurações de acesso como:
+
 - Servidor proxy
 - Configurações SSL/TLS
 - Codificação de caracteres
@@ -11991,7 +12605,7 @@ As funções que executam requisições (HttpGet, HttpPost, HttpPut, HttpPatch, 
    - Configure na tela "Configurações de Internet"
    - Aplicadas automaticamente para todos os objetos HTTP
 
-2. **💻 Dentro da regra LSP** 
+2. **💻 Dentro da regra LSP**
    - Configure programaticamente usando as funções de manipulação
    - Alterações feitas apenas **em memória** no objeto HTTP específico
    - Sobrescreve as configurações da Central de Configurações
@@ -11999,9 +12613,10 @@ As funções que executam requisições (HttpGet, HttpPost, HttpPut, HttpPatch, 
 #### **⚠️ Limitações Importantes:**
 
 - **Certificados digitais**: As funções HTTP LSP **NÃO oferecem suporte** ao uso de certificados digitais
-- ** Parâmetros suportados**: Apenas parâmetros que compõem as requisições (headers, content-type, autenticação básica, etc.)
+- **Parâmetros suportados**: Apenas parâmetros que compõem as requisições (headers, content-type, autenticação básica, etc.)
 
 **Exemplo de configuração programática:**
+
 ```lsp
 Definir Alfa vaHTTP;
 
@@ -12024,11 +12639,13 @@ Executa uma requisição HTTP GET para obter dados de um servidor. É o método 
 **Sintaxe:** `HttpGet(Alfa Objeto, Alfa URL, Alfa end HTML);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `URL`: URL completa do endpoint (deve incluir http:// ou https://)
 - `HTML`: Variável que receberá a resposta do servidor
 
 **Exemplo Básico:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12039,6 +12656,7 @@ Mensagem(Retorna, vaResposta);
 ```
 
 **Exemplo com Cabeçalhos Personalizados:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12054,6 +12672,7 @@ HttpGet(vaHTTP, "https://api.exemplo.com/dados", vaResposta);
 ```
 
 **Exemplo com Verificação de Status:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12075,6 +12694,7 @@ Se (vnStatus = 200) {
 ```
 
 **Observações:**
+
 - Sempre informe a URL completa com protocolo (http:// ou https://)
 - Para HTTPS sem certificado, use `HttpHabilitaSNI(vaHTTP)` antes da requisição
 - Caracteres especiais na URL podem causar erros em alguns sistemas
@@ -12087,12 +12707,14 @@ Executa uma requisição HTTP POST para enviar dados ao servidor. Utilizado para
 **Sintaxe:** `HttpPost(Alfa Objeto, Alfa URL, Alfa Dados, Alfa end HTML);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `URL`: URL do endpoint
 - `Dados`: Dados a serem enviados no corpo da requisição
 - `HTML`: Variável que receberá a resposta
 
 **Exemplo com Dados de Formulário:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12108,6 +12730,7 @@ Mensagem(Retorna, vaResposta);
 ```
 
 **Exemplo com JSON:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12126,6 +12749,7 @@ HttpPost(vaHTTP, "https://exemplo.com/app/path", vaDados, vaResposta);
 ```
 
 **Exemplo com Autenticação:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12144,6 +12768,7 @@ HttpPost(vaHTTP, "https://api.exemplo.com/usuarios", vaDados, vaResposta);
 ```
 
 **Observações:**
+
 - O Content-Type padrão é `application/x-www-form-urlencoded; charset=windows-1252`
 - Para JSON, sempre configure `Content-Type: application/json`
 - Para UTF-8, configure explicitamente com `HttpAlteraCodifCaracPadrao`
@@ -12156,12 +12781,14 @@ Executa uma requisição HTTP PUT para atualizar recursos existentes. Usado para
 **Sintaxe:** `HttpPut(Alfa Objeto, Alfa URL, Alfa Dados, Alfa end HTML);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `URL`: URL do recurso a ser atualizado
 - `Dados`: Dados de atualização
 - `HTML`: Variável que receberá a resposta
 
 **Exemplo Básico:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12175,6 +12802,7 @@ Mensagem(Retorna, vaResposta);
 ```
 
 **Exemplo com JSON:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12193,6 +12821,7 @@ HttpPut(vaHTTP, "https://api.exemplo.com/usuarios/123", vaDados, vaResposta);
 ```
 
 **Observações:**
+
 - PUT é usado para atualização completa de recursos
 - Só suporta formato texto, não arquivos binários
 - Sempre inclua todos os campos necessários do recurso
@@ -12204,11 +12833,13 @@ Executa uma requisição HTTP DELETE para remover recursos. Usado para exclusão
 **Sintaxe:** `HttpDelete(Alfa Objeto, Alfa URL, Alfa end HTML);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `URL`: URL do recurso a ser removido
 - `HTML`: Variável que receberá a resposta
 
 **Exemplo Básico:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12220,6 +12851,7 @@ Mensagem(Retorna, vaResposta);
 ```
 
 **Exemplo com Autenticação:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12249,12 +12881,14 @@ Executa uma requisição HTTP DELETE com dados no corpo da mensagem. Útil para 
 **Sintaxe:** `HttpDeleteBody(Alfa Objeto, Alfa URL, Alfa Dados, Alfa end HTML);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `URL`: URL do endpoint
 - `Dados`: Dados a serem enviados no corpo
 - `HTML`: Variável que receberá a resposta
 
 **Exemplo Básico:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12268,6 +12902,7 @@ Mensagem(Retorna, vaResposta);
 ```
 
 **Exemplo com Múltiplos IDs:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12297,6 +12932,7 @@ Faz download de arquivos diretamente para o disco, sem carregar na memória. Ide
 - `Arquivo`: Caminho completo onde salvar o arquivo
 
 **Exemplo Básico:**
+
 ```lsp
 Definir Alfa vaHTTP;
 
@@ -12305,6 +12941,7 @@ HttpDownload(vaHTTP, "https://www.senior.com.br/product.zip", "C:\\Senior\\produ
 ```
 
 **Exemplo com Verificação:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Numero vnStatus;
@@ -12325,6 +12962,7 @@ Se (vnStatus = 200) {
 ```
 
 **Observações:**
+
 - Funciona como HttpGet, mas salva diretamente em arquivo
 - Recomendado para arquivos grandes para evitar consumo excessivo de memória
 - O diretório de destino deve existir
@@ -12336,10 +12974,12 @@ Define um timeout (tempo limite) para requisições HTTP. Evita travamentos em r
 **Sintaxe:** `HttpSetaTimeout(Alfa Objeto, Numero Timeout);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `Timeout`: Tempo limite em segundos
 
 **Exemplo Básico:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12354,6 +12994,7 @@ Mensagem(Retorna, vaResposta);
 ```
 
 **Exemplo com Diferentes Timeouts:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12378,6 +13019,7 @@ As requisições HTTPS para APIs externas podem apresentar diversos problemas SS
 #### **Erro: EIdOSSLConnectError - Error connecting with SSL**
 
 **Sintomas:**
+
 ```
 Classe da exceção: EIdOSSLConnectError
 [EIdOSSLConnectError] Error connecting with SSL
@@ -12386,6 +13028,7 @@ Classe da exceção: EIdOSSLConnectError
 **Causa:** Configuração SSL/TLS incompatível entre o Senior e o servidor de destino.
 
 **Solução:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12411,6 +13054,7 @@ error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure
 **Causa:** Incompatibilidade de versões SSL/TLS ou problemas de certificado.
 
 **Solução com Sistema de Tentativas:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12449,6 +13093,7 @@ Se ((vnCodRes < 200) ou (vnCodRes >= 300)) {
 #### **Erro: EIdIOHandlerPropInvalid - IOHandler value is not valid**
 
 **Sintomas:**
+
 ```
 [EIdIOHandlerPropInvalid] IOHandler value is not valid
 ```
@@ -12456,6 +13101,7 @@ Se ((vnCodRes < 200) ou (vnCodRes >= 300)) {
 **Causa:** Problema com o handler de entrada/saída da requisição HTTP.
 
 **Solução:**
+
 ```lsp
 Definir Alfa vaHTTP;
 
@@ -12475,6 +13121,7 @@ HttpAlteraCabecalhoRequisicao(vaHTTP, "Content-Type", "application/json");
 ### **Configurações SSL Recomendadas por Cenário**
 
 #### **Para APIs Modernas (Cloudflare, AWS, etc.)**
+
 ```lsp
 HttpAlteraConfiguracaoSSL(vaHTTP, 0); @ SSL automático @
 HttpHabilitaSNI(vaHTTP); @ SNI habilitado @
@@ -12482,12 +13129,14 @@ HttpAlteraRedirecionamento(vaHTTP, 1); @ Redirecionamentos @
 ```
 
 #### **Para APIs Legadas ou Servidores Antigos**
+
 ```lsp
 HttpAlteraConfiguracaoSSL(vaHTTP, 1); @ SSL básico @
 HttpDesabilitaSNI(vaHTTP); @ SNI desabilitado @
 ```
 
 #### **Para Problemas Persistentes**
+
 ```lsp
 HttpAlteraConfiguracaoSSL(vaHTTP, 2); @ SSL sempre ativo @
 HttpDesabilitaSNI(vaHTTP); @ Sem SNI @
@@ -12543,12 +13192,14 @@ Executa uma requisição HTTP PATCH para aplicar modificações parciais em um r
 **Sintaxe:** `HttpPatch(Alfa end Objeto, Alfa URL, Alfa Dados, Alfa end Retorno);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `URL`: URL do recurso a ser modificado parcialmente
 - `Dados`: Dados de modificação parcial no formato texto
 - `Retorno`: Variável que receberá a resposta
 
 **Exemplo Básico:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12564,6 +13215,7 @@ HttpPatch(vaHTTP, "https://api.exemplo.com/usuarios/123", vaDados, vaResposta);
 ```
 
 **Exemplo com Verificação:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12589,6 +13241,7 @@ Se (vnStatus = 200) {
 ```
 
 **Observações:**
+
 - PATCH é usado para modificações parciais (só os campos alterados)
 - Diferente do PUT, que substitui o recurso completo
 - Suporta apenas formato texto, não arquivos binários
@@ -12600,10 +13253,12 @@ Permite o envio de arquivos locais no corpo de uma requisição HTTP. Disponíve
 **Sintaxe:** `HttpSetAttachment(Alfa end Objeto, Alfa CaminhoArquivo);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `CaminhoArquivo`: Caminho completo do arquivo local a ser anexado
 
 **Exemplo com POST:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12620,6 +13275,7 @@ HttpPost(vaHTTP, "https://api.exemplo.com/upload", "", vaResposta);
 ```
 
 **Exemplo com Múltiplos Arquivos (conceitual):**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12635,6 +13291,7 @@ HttpPost(vaHTTP, "https://api.exemplo.com/upload", "", vaResposta);
 ```
 
 **Observações:**
+
 - O arquivo deve existir no caminho especificado
 - Funciona com POST, PUT e PATCH
 - Para múltiplos arquivos, faça requisições separadas
@@ -12650,6 +13307,7 @@ Codifica strings em Base64, comumente usado para autenticação básica HTTP.
 **Sintaxe:** `Base64Encode(Alfa valor, Alfa end Base64Encode);`
 
 **Parâmetros:**
+
 - `valor`: String a ser codificada em Base64
 - `Base64Encode`: Variável que receberá o resultado codificado
 
@@ -12660,10 +13318,12 @@ Decodifica um valor Base64 de volta para texto original.
 **Sintaxe:** `Base64Decode(Alfa valor, Alfa end Base64Decode);`
 
 **Parâmetros:**
+
 - `valor`: Valor em Base64 a ser decodificado
 - `Base64Decode`: Variável que receberá o conteúdo decodificado
 
 **Exemplo Básico de Codificação:**
+
 ```lsp
 Definir Alfa vaValor;
 Definir Alfa vaBase64;
@@ -12674,6 +13334,7 @@ Mensagem(Retorna, vaBase64); @ Exibirá: dmFsb3IgcGFyYSBjb252ZXJ0ZXI= @
 ```
 
 **Exemplo Básico de Decodificação:**
+
 ```lsp
 Definir Alfa vaValorBase64;
 Definir Alfa vaValor;
@@ -12684,6 +13345,7 @@ Mensagem(Retorna, vaValor); @ Exibirá: valor para converter @
 ```
 
 **Exemplo para Autenticação HTTP:**
+
 ```lsp
 Definir Alfa vaUsuario;
 Definir Alfa vaSenha;
@@ -12704,6 +13366,7 @@ HttpAlteraCabecalhoRequisicao(vaHTTP, "Authorization", vaAuth);
 ```
 
 **Exemplo de Uso Completo (Codificar e Decodificar):**
+
 ```lsp
 Definir Alfa vaTextoOriginal;
 Definir Alfa vaTextoCodificado;
@@ -12726,6 +13389,7 @@ Se (vaTextoOriginal = vaTextoDecodificado) {
 ```
 
 **Casos de Uso Comuns:**
+
 - **Autenticação HTTP Basic**: Codificar usuário:senha
 - **Tokens de API**: Decodificar tokens JWT recebidos 
 - **Transmissão de dados**: Codificar dados binários como texto
@@ -12819,11 +13483,13 @@ Configura cabeçalhos HTTP personalizados para requisições. Válido para todos
 **Sintaxe:** `HttpAlteraCabecalhoRequisicao(Alfa end Objeto, Alfa Nome, Alfa Valor);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `Nome`: Nome do cabeçalho (não pode ser vazio)
 - `Valor`: Valor do cabeçalho (vazio remove o cabeçalho)
 
 **Exemplo com API REST:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12845,10 +13511,12 @@ Configura a codificação de caracteres para respostas do servidor quando não e
 **Sintaxe:** `HttpAlteraCodifCaracPadrao(Alfa end Objeto, Alfa Codificacao);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `Codificacao`: Nome da codificação (UTF-8, ISO-8859-1, Windows-1252)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12862,6 +13530,7 @@ HttpGet(vaHTTP, "https://api.exemplo.com/dados", vaResposta);
 ```
 
 **Observações:**
+
 - Valor padrão: ISO-8859-1
 - Codificações suportadas: UTF-8, ISO-8859-1, Windows-1252
 - Se a codificação for inválida, pode retornar vazio ou erro
@@ -12873,10 +13542,12 @@ Controla o tratamento automático de redirecionamentos HTTP (3xx).
 **Sintaxe:** `HttpAlteraRedirecionamento(Alfa Objeto, Numero AceitaRedirecionamento);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP criado com HttpObjeto
 - `AceitaRedirecionamento`: 0 = Não trata, 1 = Trata redirecionamentos
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12895,11 +13566,13 @@ HttpGet(vaHTTP, "https://site-com-redirect.exemplo.com", vaResposta);
 
 Controla o armazenamento e envio automático de cookies durante as requisições.
 
-**Sintaxe:** 
+**Sintaxe:**
+
 - `HttpHabilitarCookies(Alfa Objeto);`
 - `HttpDesabilitarCookies(Alfa Objeto);`
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12928,11 +13601,13 @@ Obtém valores de cabeçalhos retornados pelo servidor após uma requisição.
 **Sintaxe:** `HttpLeCabecalhoResposta(Alfa end Objeto, Alfa Nome, Alfa end Valor);`
 
 **Parâmetros:**
+
 - `Objeto`: Objeto HTTP após uma requisição
 - `Nome`: Nome do cabeçalho a consultar
 - `Valor`: Variável que receberá o valor (vazio se não existir)
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12953,6 +13628,7 @@ Mensagem(Retorna, "Tipo: " + vaContentType + ", Tamanho: " + vaContentLength);
 ```
 
 **Observações:**
+
 - Disponível apenas após realizar uma requisição
 - Se o mesmo cabeçalho aparecer múltiplas vezes, retorna apenas o primeiro
 - Exceção: WWW-Authenticate e Proxy-Authenticate podem retornar múltiplos valores
@@ -12964,6 +13640,7 @@ Aplica normalização Unicode para caracteres acentuados em respostas HTTP.
 **Sintaxe:** `HttpNormalizaRetorno(Alfa end Objeto);`
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -12980,6 +13657,7 @@ Mensagem(Retorna, vaResposta);
 ```
 
 **Observações:**
+
 - Converte caracteres como Á (dois code points) para Á (um code point)
 - Útil para compatibilidade com sistemas que usam diferentes representações Unicode
 - Aplica normalização canônica Unicode C
@@ -12993,12 +13671,14 @@ Configura as definições de servidor proxy para as requisições.
 **Sintaxe:** `HttpAlteraConfiguracaoProxy(Alfa Objeto, Numero UsarProxy, Alfa Servidor, Numero Porta, Numero AutPorUsu);`
 
 **Parâmetros:**
+
 - `UsarProxy`: 0 = Não usar, 1 = Usar proxy
 - `Servidor`: Endereço do servidor proxy
 - `Porta`: Porta do servidor proxy
 - `AutPorUsu`: 0 = Sem autenticação, 1 = Com autenticação
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 
@@ -13017,6 +13697,7 @@ Lê as configurações atuais de proxy do objeto HTTP.
 **Sintaxe:** `HttpLeConfiguracaoProxy(Alfa Objeto, Numero end UsarProxy, Alfa end Servidor, Numero end Porta, Numero end AutPorUsu);`
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Numero vnUsarProxy;
@@ -13038,14 +13719,17 @@ Se (vnUsarProxy = 1) {
 Configura e lê as credenciais de autenticação para o servidor proxy.
 
 **Sintaxe:**
+
 - `HttpAlteraAutenticacaoProxy(Alfa Objeto, Alfa Usuario, Alfa Senha);`
 - `HttpLeAutenticacaoProxy(Alfa Objeto, Alfa end Usuario, Alfa end Senha);`
 
 **Parâmetros:**
+
 - `Usuario`: Nome de usuário para autenticação no proxy
 - `Senha`: Senha para autenticação no proxy
 
 **Exemplo de Configuração:**
+
 ```lsp
 Definir Alfa vaHTTP;
 
@@ -13056,6 +13740,7 @@ HttpAlteraAutenticacaoProxy(vaHTTP, "nome", "senha");
 ```
 
 **Exemplo de Leitura:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaUsuario;
@@ -13072,9 +13757,11 @@ Mensagem(Retorna, "Usuário proxy: " + vaUsuario);
 **⚠️ Observações Importantes:**
 
 #### **Autenticação Automática:**
+
 - Se não informar usuário/senha válidos e a conexão exigir autenticação em servidor proxy, será exibida uma **tela de autenticação**
 
 #### **🌐 Limitação WEB 5.0:**
+
 - A **tela de autenticação NÃO está disponível na WEB 5.0**
 - Para conexões que exigem autenticação, **deve-se obrigatoriamente** informar usuário e senha válidos
 - Configure através de uma das opções:
@@ -13083,6 +13770,7 @@ Mensagem(Retorna, "Usuário proxy: " + vaUsuario);
   3. **Regra LSP** usando `HttpAlteraAutenticacaoProxy`
 
 #### **Comportamento da Leitura:**
+
 - Se configurado para **autenticação por usuário**: retorna valores do **SGU**
 - Caso contrário: retorna valores das propriedades **Usuário padrão** e **Senha padrão**
 
@@ -13121,6 +13809,7 @@ Remove todos os endereços da lista de exceções de proxy.
 **Sintaxe:** `HttpLimpaExcecoesProxy(Alfa Objeto);`
 
 **Exemplo completo de gerenciamento de exceções:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaEndereco;
@@ -13158,16 +13847,19 @@ HttpExcluiExcecaoProxy(vaHTTP, 2);
 
 Controla as configurações SSL/TLS para requisições HTTPS.
 
-**Sintaxe:** 
+**Sintaxe:**
+
 - `HttpAlteraConfiguracaoSSL(Alfa Objeto, Numero SSL);`
 - `HttpLeConfiguracaoSSL(Alfa Objeto, Numero end SSL);`
 
 **Valores SSL:**
+
 - 0 = Automático
 - 1 = Nunca
 - 2 = Sempre
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Numero vnSSL;
@@ -13188,13 +13880,16 @@ HttpLeConfiguracaoSSL(vaHTTP, vnSSL);
 Controla a exibição da barra de progresso durante downloads de arquivos.
 
 **Sintaxe:**
+
 - `HttpAlteraMostrarProgresso(Alfa Objeto, Numero Mostrar);`
 - `HttpLeMostrarProgresso(Alfa Objeto, Numero end Mostrar);`
 
 **Parâmetros:**
+
 - `Mostrar`: 0 = Não exibir progresso, 1 = Exibir progresso
 
 **Exemplo Básico:**
+
 ```lsp
 Definir Alfa vaHTTP;
 
@@ -13205,6 +13900,7 @@ HttpAlteraMostrarProgresso(vaHTTP, 1);
 ```
 
 **Exemplo Completo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Numero vnMostrarProgresso;
@@ -13229,6 +13925,7 @@ HttpAlteraMostrarProgresso(vaHTTP, 0);
 ```
 
 **Casos de Uso:**
+
 - **Downloads grandes**: Habilite para mostrar progresso ao usuário
 - **Downloads automáticos**: Desabilite para não interromper o fluxo
 - **Experiência do usuário**: Use conforme a necessidade de feedback visual
@@ -13240,10 +13937,12 @@ HttpAlteraMostrarProgresso(vaHTTP, 0);
 Controla o envio do nome do servidor na requisição HTTPS.
 
 **Sintaxe:**
+
 - `HttpHabilitaSNI(Alfa Objeto);`
 - `HttpDesabilitaSNI(Alfa Objeto);`
 
 **Exemplo:**
+
 ```lsp
 Definir Alfa vaHTTP;
 Definir Alfa vaResposta;
@@ -13259,6 +13958,7 @@ HttpGet(vaHTTP, "https://www.google.com.br/", vaResposta);
 ```
 
 **Observações:**
+
 - SNI é desabilitado por padrão
 - Necessário para alguns servidores que hospedam múltiplos domínios
 - Obrigatório para alguns certificados SSL modernos
@@ -13268,6 +13968,7 @@ HttpGet(vaHTTP, "https://www.google.com.br/", vaResposta);
 As funções HTTP da LSP contam com várias funções auxiliares que permitem controle granular sobre as requisições.
 
 #### Configuração de Cabeçalhos
+
 ```lsp
 @ Cabeçalhos comuns para APIs REST @
 HttpAlteraCabecalhoRequisicao(vaHTTP, "Accept", "application/json");
@@ -13281,6 +13982,7 @@ HttpAlteraCabecalhoRequisicao(vaHTTP, "Pragma", "no-cache");
 ```
 
 #### Verificação de Status HTTP
+
 ```lsp
 HttpLeCodigoResposta(vaHTTP, vnCodigo);
 
@@ -13300,6 +14002,7 @@ Se (vnCodigo = 200) {
 ```
 
 #### Controle de Erros
+
 ```lsp
 @ Desabilita exceções automáticas para códigos 4xx/5xx @
 HttpDesabilitaErroResposta(vaHTTP);
@@ -13309,6 +14012,7 @@ HttpHabilitaErroResposta(vaHTTP);
 ```
 
 #### Configurações SSL e Proxy
+
 ```lsp
 @ Para HTTPS sem certificado válido @
 HttpHabilitaSNI(vaHTTP);
@@ -13454,33 +14158,39 @@ Funcao exemploRequisicaoCompleta(); {
 ### Observações Importantes
 
 #### **Codificação e Caracteres**
+
 - **Codificação padrão**: windows-1252. Para UTF-8, use `HttpAlteraCodifCaracPadrao(vaHTTP, "utf-8")`
 - **Caracteres especiais**: Evite caracteres como `|` em URLs em alguns sistemas Senior
 - **Unicode**: Use `HttpNormalizaRetorno` para normalizar caracteres acentuados
 - **Codificações suportadas**: UTF-8, ISO-8859-1, Windows-1252
 
 #### **SSL/TLS e Certificados**
+
 - **SNI**: Use `HttpHabilitaSNI` para sites que requerem certificados modernos
 - **Configuração SSL**: 0=Automático, 1=Nunca, 2=Sempre
 - **HTTPS**: Sempre prefira HTTPS para segurança em produção
 
 #### **Proxy e Rede**
+
 - **Ambientes corporativos**: Configure proxy com `HttpAlteraConfiguracaoProxy`
 - **Exceções de proxy**: Use `HttpAdicionaExcecaoProxy` para serviços internos
 - **Redirecionamentos**: Habilite com `HttpAlteraRedirecionamento(vaHTTP, 1)`
 
 #### **Upload e Download**
+
 - **Upload de arquivos**: Use `HttpSetAttachment` para anexar arquivos
 - **Download de arquivos grandes**: Prefira `HttpDownload` em vez de `HttpGet`
 - **Formatos suportados**: POST/PUT/PATCH são limitados a formato texto
 - **Múltiplos arquivos**: Faça requisições separadas para cada arquivo
 
 #### **Sessões e Cookies**
+
 - **Manter sessão**: Use `HttpHabilitarCookies` para login automático
 - **Segurança**: Desabilite cookies quando não necessários
 - **Persistência**: Cookies são mantidos durante toda a sessão do objeto HTTP
 
 #### **Cabeçalhos e Respostas**
+
 - **Content-Type**: Configure corretamente (application/json, application/x-www-form-urlencoded)
 - **Leitura de cabeçalhos**: Use `HttpLeCabecalhoResposta` após requisições
 - **User-Agent**: Sempre identifique sua aplicação
@@ -13488,12 +14198,14 @@ Funcao exemploRequisicaoCompleta(); {
 - **Tokens**: Use Base64Decode para decodificar tokens JWT recebidos
 
 #### **Tratamento de Erros**
+
 - **Controle manual**: Use `HttpDesabilitaErroResposta` para tratar erros manualmente
 - **Verificação de status**: Sempre verifique códigos HTTP antes de processar
 - **Timeouts**: Configure valores apropriados baseados na velocidade esperada
 - **Logs**: Implemente logging adequado para depuração
 
 #### **Performance e Boas Práticas**
+
 - **Timeouts**: Configure sempre para evitar travamentos
 - **Reutilização**: Um objeto HTTP pode ser reutilizado para múltiplas requisições
 - **Conexões**: LSP gerencia automaticamente o pool de conexões
@@ -13512,6 +14224,7 @@ ValorElementoJson(<json>, <grupo>, <elemento>, <valor>);
 ```
 
 **Parâmetros:**
+
 - `json`: String contendo o JSON de origem
 - `grupo`: Nome do grupo/objeto dentro do JSON (use "" para raiz)
 - `elemento`: Nome do elemento/propriedade a ser extraído
@@ -13714,6 +14427,7 @@ Funcao buscarCidadeApi(Numero vnCidApi); {
 ### 💡 **Características dos Exemplos**
 
 #### **🔧 Exemplo ViaCEP:**
+
 - **Método**: GET
 - **Formato**: JSON
 - **Encoding**: UTF-8
@@ -13721,12 +14435,14 @@ Funcao buscarCidadeApi(Numero vnCidApi); {
 - **Casos de uso**: Autocompletar endereços, validação de CEP
 
 #### **🌐 Exemplo IBGE:**
+
 - **Método**: GET
 - **Formato**: JSON com view nivelada
 - **API**: Gratuita e confiável do governo
 - **Casos de uso**: Listagem de municípios, dados geográficos
 
 #### **🎯 Boas Práticas Demonstradas:**
+
 1. **Configuração de encoding UTF-8** para caracteres especiais
 2. **Desabilitação de erros automáticos** para controle manual
 3. **Verificação de códigos de status** antes de processar
@@ -13735,7 +14451,7 @@ Funcao buscarCidadeApi(Numero vnCidApi); {
 
 ---
 
-## 📝 **Cheat Sheet LSP (Cola Rápida)**
+## **Cheat Sheet LSP (Cola Rápida)** 📝
 
 ### **🚀 Essenciais para Todo Projeto**
 
@@ -13895,11 +14611,13 @@ Grid.Campo = vnValor;
 3. **Passe as variáveis** para as funções
 
 **Errado:**
+
 ```lsp
 Mensagem(Retorna, "Total: " + IntParaAlfa(vnSoma + vnExtra));
 ```
 
-** Correto:**
+**Correto:**
+
 ```lsp
 vnTotal = vnSoma + vnExtra;
 IntParaAlfa(vnTotal, vaTotalStr);
