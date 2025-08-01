@@ -170,7 +170,7 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 - [Chamada de Web Service](#chamada-de-web-service)
 - [Chamada HTTP](#chamada-http)
   - [Resolução de Problemas SSL/HTTPS](#resolução-de-problemas-sslhttps)
-- [🚀 Exemplos Práticos de APIs](#exemplos-práticos-de-apis)
+- [Exemplos Práticos de APIs](#exemplos-práticos-de-apis)
 
 ### **🎨 Interface do Usuário**
 
@@ -182,15 +182,15 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 
 - [Funções Gerais](#funções-gerais)
 - [Padrões e Boas Práticas](#padrões-e-boas-práticas)
-- [⚠️ LIMITAÇÕES CRÍTICAS DA LSP](#limitações-críticas-da-lsp)
-- [🚨 Erros Comuns e Soluções](#erros-comuns-e-soluções)
-- [🎯 Padrões de Projeto LSP](#padrões-de-projeto-lsp)
-- [🔍 Debugging e Troubleshooting](#debugging-e-troubleshooting)
-- [🎓 Exercícios Práticos por Nível](#exercícios-práticos-por-nível)
-- [🎯 Quick Reference Cards](#quick-reference-cards)
-- [🎯 Casos de Uso Reais Detalhados](#casos-de-uso-reais-detalhados)
-- [📝 Cheat Sheet LSP (Cola Rápida)](#cheat-sheet-lsp-cola-rápida)
-- [🚨 LEMBRETE FINAL: Regra de Ouro da LSP](#lembrete-final-regra-de-ouro-da-lsp)
+- [LIMITAÇÕES CRÍTICAS DA LSP](#limitações-críticas-da-lsp)
+- [Erros Comuns e Soluções](#erros-comuns-e-soluções)
+- [Padrões de Projeto LSP](#padrões-de-projeto-lsp)
+- [Debugging e Troubleshooting](#debugging-e-troubleshooting)
+- [Exercícios Práticos por Nível](#exercícios-práticos-por-nível)
+- [Quick Reference Cards](#quick-reference-cards)
+- [Casos de Uso Reais Detalhados](#casos-de-uso-reais-detalhados)
+- [Cheat Sheet LSP (Cola Rápida)](#cheat-sheet-lsp-cola-rápida)
+- [LEMBRETE FINAL: Regra de Ouro da LSP](#lembrete-final-regra-de-ouro-da-lsp)
 
 ---
 
@@ -223,7 +223,7 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 5. **Décimo sétimo**: [Chamada HTTP](#chamada-http) - Integre com APIs
    - [Resolução de Problemas SSL/HTTPS](#resolução-de-problemas-sslhttps) - Solucione erros SSL
 6. **Décimo oitavo**: [Criptografia e Segurança](#criptografia-e-segurança) - Proteja dados
-7. **Décimo nono**: [🚀 Exemplos Práticos de APIs](#exemplos-práticos-de-apis) - Exemplos reais
+7. **Décimo nono**: [Exemplos Práticos de APIs](#exemplos-práticos-de-apis) - Exemplos reais
 
 ## **Debugging e Troubleshooting**
 
