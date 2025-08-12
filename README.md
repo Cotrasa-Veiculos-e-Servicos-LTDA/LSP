@@ -167,6 +167,7 @@ Cur_Consulta.SQL "SELECT PRODUTO.NOME,                               \
 
 - [Gerenciamento Avançado de Arquivos](#gerenciamento-avançado-de-arquivos)
 - [Manipulação de Arquivos](#manipulação-de-arquivos)
+- [Manipulação de JSON](#manipulação-de-json)
 - [Chamada de Web Service](#chamada-de-web-service)
 - [Chamada HTTP](#chamada-http)
   - [Resolução de Problemas SSL/HTTPS](#resolução-de-problemas-sslhttps)
@@ -7808,51 +7809,120 @@ ListaRegraCriarLista(nLista);
 
 #### ListaRegraCarregarJson
 
-Carrega dados de uma estrutura JSON diretamente em uma lista de regras.
+Esta função lê os dados de um arquivo JSON e os carrega em uma lista onde cada campo do JSON é uma coluna na lista e cada registro é uma linha.
 
 **Sintaxe:**
 
 ```lsp
-ListaRegraCarregarJson(<numeroLista>, <jsonString>, <grupo>, <campos>);
+ListaRegraCarregarJson(Numero aLista, Alfa aJson, Alfa aGrupo, Alfa aCampos);
 ```
 
 **Parâmetros:**
 
-- `numeroLista`: Identificador da lista criada com ListaRegraCriarLista
-- `jsonString`: String contendo o JSON a ser processado
-- `grupo`: Nome do grupo/objeto dentro do JSON (use "" para raiz)
-- `campos`: Lista de campos separados por ponto-e-vírgula (;)
+| Nome | Tipo | Descrição |
+|------|------|-----------|
+| `aLista` | Número | Recebe o endereço de memória da lista criada |
+| `aJson` | Alfa | Recebe o conteúdo de um arquivo JSON |
+| `aGrupo` | Alfa | Recebe o grupo que deve ser lido do JSON |
+| `aCampos` | Alfa | Recebe os campos a serem lidos do JSON (os campos devem ser separados por ";"). No entanto, caso o campo informado no parâmetro não exista no JSON, a função emitirá erro, indicando que o campo é inexistente ou que não pode ser encontrado |
+
+**Tipo de retorno:** Nenhum.
 
 **Exemplo:**
 
 ```lsp
-Definir Numero nLista;
-Definir Alfa vaJSON;
-Definir Alfa vaJSONModificado;
+Definir Alfa vaArquivo;
+Definir Alfa vaLinha;
+Definir Alfa vaConteudoJson;
+Definir Alfa vaAchou;
+Definir Alfa vaObteve;
+Definir Alfa vaId;
+Definir Alfa vaCodigo;
+Definir Alfa vaDescricao;
+Definir Alfa vaComplemento;
+Definir Alfa vaGrupo;
+Definir Alfa vaMsgTeste;
+Definir Numero vnArquivo;
+Definir Numero vnLstIte;
 
-@ JSON de exemplo (array de objetos) @
-vaJSON = "[{\"nome\":\"João\",\"idade\":\"30\"},{\"nome\":\"Maria\",\"idade\":\"25\"}]";
+vaArquivo = "C:\\Arquivos\\teste.txt";
 
-@ Encapsular array em objeto para compatibilidade @
-vaJSONModificado = "{\"pessoas\":" + vaJSON + "}";
-
-@ Criar e carregar lista @
-ListaRegraCriarLista(nLista);
-ListaRegraCarregarJson(nLista, vaJSONModificado, "pessoas", "nome;idade");
+@ Verifica se o arquivo existe @
+Se ((vaArquivo <> "") e (ArqExiste(vaArquivo))) {
+  vaConteudoJson = "";
+  
+  @ Abre o arquivo JSON @
+  vnArquivo = Abrir(vaArquivo, "LerNL");
+  
+  @ Lê todas as linhas do arquivo @
+  Enquanto (LerNL(vnArquivo, vaLinha) = 1) {
+    vaConteudoJson = vaConteudoJson + vaLinha;
+  }
+  
+  @ Fecha o arquivo @
+  Fechar(vnArquivo);
+  
+  @ Criar lista para tratar os itens que foram gerados para os itens @
+  ListaRegraCriarLista(vnLstIte);
+  ListaRegraCarregarJson(vnLstIte, vaConteudoJson, "itens", "id;codigo;descricao;complemento;grupo");
+  
+  @ Navega pela lista carregada @
+  ListaRegraPrimeiro(vnLstIte, vaAchou);
+  Enquanto (vaAchou = "S") {
+    @ Obter os valores dos campos da lista @
+    ListaRegraObterValorNumero(vnLstIte, "id", vaId, vaObteve);
+    ListaRegraObterValorAlfa(vnLstIte, "codigo", vaCodigo, vaObteve);
+    ListaRegraObterValorAlfa(vnLstIte, "descricao", vaDescricao, vaObteve);
+    ListaRegraObterValorAlfa(vnLstIte, "complemento", vaComplemento, vaObteve);
+    ListaRegraObterValorAlfa(vnLstIte, "grupo", vaGrupo, vaObteve);
+    
+    @ Constrói mensagem de teste @
+    vaMsgTeste = "Leitura Arquivo com Array - ID: " + vaId + 
+                  " Descricao: " + vaDescricao + 
+                  " Código Item: " + vaCodigo + 
+                  " Complemento: " + vaComplemento + 
+                  " Grupo: " + vaGrupo;
+    
+    Mensagem(Retorna, vaMsgTeste);
+    
+    @ Move para o próximo registro @
+    ListaRegraProximo(vnLstIte, vaAchou);
+  }
+}
 ```
 
-**⚠️ Limitação Importante:** A função `ListaRegraCarregarJson` espera um objeto JSON que comece com `{`. Se você tiver um array JSON que comece com `[`, precisa encapsulá-lo em um objeto:
+**JSON de Exemplo (teste.txt):**
 
-```lsp
-@ Array original @
-vaArrayJSON = "[{\"campo1\":\"valor1\"},{\"campo2\":\"valor2\"}]";
-
-@ Encapsular em objeto @
-vaJSONObjeto = "{\"dados\":" + vaArrayJSON + "}";
-
-@ Agora pode usar ListaRegraCarregarJson @
-ListaRegraCarregarJson(nLista, vaJSONObjeto, "dados", "campo1;campo2");
+```json
+{
+  "Documento": {
+    "Id": 183190,
+    "Descricao": "TESTE",
+    "CriadoPor": "email@email.com.br",
+    "AtualizadoPor": "email@email.com.br",
+    "CodigoErp": "1072"
+  },
+  "itens": [
+    {
+      "Id": 204923,
+      "Codigo": "1001000002",
+      "Descricao": "TESTE DE DESCRICAO DO ITEM 1",
+      "Complemento": "TESTE DE COMPLEMENTO",
+      "Grupo": "D"
+    },
+    {
+      "Id": 204922,
+      "Codigo": "1001000001",
+      "Descricao": "TESTE DESCRICAO DO ITEM",
+      "Grupo": "I"
+    }
+  ]
+}
 ```
+
+**Utilização da Função (dependentes):** Conforme consta no exemplo de regra, é necessário a utilização da função `ListaRegraCriarLista(NumeroEnd aLista)` para criação da lista com os itens que serão lidos do arquivo.txt dentro da função `ListaRegraCarregarJson`.
+
+**⚠️ Observação Importante:** Não é possível realizar a leitura de arrays nesta função. A função trabalha com objetos JSON que contêm arrays, mas não consegue processar arrays diretamente.
 
 ### Navegação em Listas de Regras
 
@@ -11987,6 +12057,232 @@ Fechar (<manipulador do arquivo>);
 Fechar(arq);
 ```
 
+## **Manipulação de JSON**
+
+A LSP oferece três abordagens diferentes para trabalhar com dados JSON, cada uma com suas características e casos de uso específicos. A escolha da abordagem depende do tipo de dados que você precisa processar e da complexidade da estrutura JSON.
+
+### **1. ValorElementoJson - Para Dados Simples**
+
+**Quando usar:** Para extrair valores únicos de campos específicos do JSON.
+
+**Características:**
+
+- Extrai um valor por vez
+- Ideal para dados simples ou metadados
+- Mais rápido e simples de usar
+- Não consegue percorrer arrays
+
+**Exemplo:**
+
+```lsp
+Definir Alfa vaJSON;
+Definir Alfa vaToken;
+Definir Alfa vaNomeUsuario;
+
+vaJSON = "{\"usuario\": {\"nome\": \"João\", \"token\": \"abc123\"}}";
+
+@ Extrair token do usuário @
+ValorElementoJson(vaJSON, "usuario", "token", vaToken);
+@ vaToken = "abc123" @
+
+@ Extrair nome do usuário @
+ValorElementoJson(vaJSON, "usuario", "nome", vaNomeUsuario);
+@ vaNomeUsuario = "João" @
+```
+
+### **2. ListaRegraCarregarJson - Para Coleções de Dados**
+
+**Quando usar:** Para processar arrays de objetos JSON e trabalhar com múltiplos registros.
+
+**Características:**
+
+- Carrega múltiplos registros em uma lista estruturada
+- Ideal para dados tabulares ou coleções
+- Permite navegar pelos registros usando funções de lista
+- Não consegue percorrer arrays aninhados
+
+**Exemplo:**
+
+```lsp
+Definir Numero vnLista;
+Definir Alfa vaAchou;
+Definir Alfa vaNome;
+Definir Alfa vaEmail;
+
+vaJSON = "{\"usuarios\": [{\"nome\": \"João\", \"email\": \"joao@exemplo.com\"}, {\"nome\": \"Maria\", \"email\": \"maria@exemplo.com\"}]}";
+
+@ Criar lista e carregar usuários @
+ListaRegraCriarLista(vnLista);
+ListaRegraCarregarJson(vnLista, vaJSON, "usuarios", "nome;email");
+
+@ Navegar pela lista @
+ListaRegraPrimeiro(vnLista, vaAchou);
+Enquanto (vaAchou = "S") {
+  ListaRegraObterValorAlfa(vnLista, "nome", vaNome, vaAchou);
+  ListaRegraObterValorAlfa(vnLista, "email", vaEmail, vaAchou);
+  
+  @ Processar cada usuário @
+  Mensagem(Retorna, "Usuário: " + vaNome + " - " + vaEmail);
+  
+  ListaRegraProximo(vnLista, vaAchou);
+}
+```
+
+### **3. Manipulação Manual com PosicaoAlfa e LerPosicaoAlfa - Para Casos Complexos**
+
+**Quando usar:** Quando as funções padrão não conseguem atender suas necessidades, especialmente para:
+
+- Arrays aninhados
+- Estruturas JSON complexas
+- Extração de dados específicos com lógica customizada
+- Controle total sobre o parsing
+
+**Características:**
+
+- Controle total sobre a extração de dados
+- Pode processar qualquer estrutura JSON
+- Mais complexo de implementar
+- Requer conhecimento de manipulação de strings e códigos ASCII
+
+**Exemplo Prático - Extraindo Dados de Resposta de API:**
+
+```lsp
+Definir Funcao extrairDadosJSONManual(); {
+  Definir Alfa vaJSONResposta;
+  Definir Alfa vaValorFrete;
+  Definir Alfa vaPrazo;
+  Definir Numero vnPosicaoVlTotal;
+  Definir Numero vnPosicaoPrazo;
+  Definir Numero vnTamanhoJSON;
+  Definir Numero vnInicioVal;
+  Definir Numero vnFimVal;
+  Definir Numero vnCodigoCaractere;
+  Definir Numero vnCodigoVirgula; vnCodigoVirgula = 44; @ Código ASCII da vírgula @
+  Definir Numero vnCodigoChaveFecha; vnCodigoChaveFecha = 125; @ Código ASCII de } @
+  
+  @ JSON de exemplo @
+  vaJSONResposta = "{\"frete\": {\"vltotal\": 25.50, \"prazo\": 3, \"status\": \"ok\"}}";
+  
+  @ Obter tamanho total do JSON @
+  TamanhoAlfa(vaJSONResposta, vnTamanhoJSON);
+  
+  @ === EXTRAIR VALOR TOTAL === @
+  PosicaoAlfa("\"vltotal\":", vaJSONResposta, vnPosicaoVlTotal);
+  Se (vnPosicaoVlTotal > 0) {
+    @ Posicionar após "vltotal": @
+    vnPosicaoVlTotal = vnPosicaoVlTotal + 10; @ Tamanho de "vltotal": @
+    
+    @ Pular espaços @
+    Enquanto (vnPosicaoVlTotal < vnTamanhoJSON) {
+      LerPosicaoAlfa(vaJSONResposta, vnCodigoCaractere, vnPosicaoVlTotal);
+      Se (vnCodigoCaractere = 32) { @ Código ASCII do espaço @
+        vnPosicaoVlTotal++;
+      } Senao {
+        Pare;
+      }
+    }
+    
+    @ Extrair valor até vírgula ou chave @
+    vnInicioVal = vnPosicaoVlTotal;
+    vnFimVal = vnInicioVal;
+    
+    Enquanto (vnFimVal < vnTamanhoJSON) {
+      LerPosicaoAlfa(vaJSONResposta, vnCodigoCaractere, vnFimVal);
+      Se ((vnCodigoCaractere <> vnCodigoVirgula) e (vnCodigoCaractere <> vnCodigoChaveFecha)) {
+        vnFimVal++;
+      } Senao {
+        Pare;
+      }
+    }
+    
+    @ Extrair o valor @
+    Se (vnFimVal > vnInicioVal) {
+      vaValorFrete = vaJSONResposta; @ Fazer cópia primeiro @
+      CopiarAlfa(vaValorFrete, vnInicioVal, vnFimVal - vnInicioVal);
+      SubstAlfa(" ", "", vaValorFrete); @ Remover espaços @
+    }
+  }
+  
+  @ === EXTRAIR PRAZO === @
+  PosicaoAlfa("\"prazo\":", vaJSONResposta, vnPosicaoPrazo);
+  Se (vnPosicaoPrazo > 0) {
+    @ Posicionar após "prazo": @
+    vnPosicaoPrazo = vnPosicaoPrazo + 8; @ Tamanho de "prazo": @
+    
+    @ Pular espaços @
+    Enquanto (vnPosicaoPrazo < vnTamanhoJSON) {
+      LerPosicaoAlfa(vaJSONResposta, vnCodigoCaractere, vnPosicaoPrazo);
+      Se (vnCodigoCaractere = 32) { @ Código ASCII do espaço @
+        vnPosicaoPrazo++;
+      } Senao {
+        Pare;
+      }
+    }
+    
+    @ Extrair prazo até vírgula ou chave @
+    vnInicioVal = vnPosicaoPrazo;
+    vnFimVal = vnInicioVal;
+    
+    Enquanto (vnFimVal < vnTamanhoJSON) {
+      LerPosicaoAlfa(vaJSONResposta, vnCodigoCaractere, vnFimVal);
+      Se ((vnCodigoCaractere <> vnCodigoVirgula) e (vnCodigoCaractere <> vnCodigoChaveFecha)) {
+        vnFimVal++;
+      } Senao {
+        Pare;
+      }
+    }
+    
+    @ Extrair o prazo @
+    Se (vnFimVal > vnInicioVal) {
+      vaPrazo = vaJSONResposta; @ Fazer cópia primeiro @
+      CopiarAlfa(vaPrazo, vnInicioVal, vnFimVal - vnInicioVal);
+      SubstAlfa(" ", "", vaPrazo); @ Remover espaços @
+    }
+  }
+  
+  @ Mostrar resultados @
+  Mensagem(Retorna, "Valor do Frete: R$ " + vaValorFrete + " - Prazo: " + vaPrazo + " dias");
+}
+```
+
+### **Comparativo das Abordagens**
+
+| Aspecto | ValorElementoJson | ListaRegraCarregarJson | Manipulação Manual |
+|---------|-------------------|-------------------------|-------------------|
+| **Facilidade de Uso** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
+| **Performance** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Flexibilidade** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Manutenibilidade** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
+| **Controle** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+
+### **Recomendações de Uso**
+
+#### **Use ValorElementoJson quando:**
+- Precisar de dados únicos ou metadados
+- Trabalhar com JSON simples e estruturado
+- Quiser máxima performance
+- Não precisar processar arrays
+
+#### **Use ListaRegraCarregarJson quando:**
+- Precisar processar coleções de dados
+- Trabalhar com arrays de objetos
+- Quiser navegar pelos registros facilmente
+- Precisar de uma abordagem estruturada
+
+#### **Use Manipulação Manual quando:**
+- As funções padrão não conseguem atender suas necessidades
+- Precisar processar arrays aninhados
+- Quiser controle total sobre a extração
+- Tiver estruturas JSON muito complexas
+
+### **Dicas Importantes**
+
+1. **Sempre comece com as funções padrão** - Use `ValorElementoJson` ou `ListaRegraCarregarJson` primeiro
+2. **Use manipulação manual apenas quando necessário** - É mais complexo e propenso a erros
+3. **Teste com diferentes estruturas JSON** - Valide se a abordagem escolhida funciona com seus dados
+4. **Considere a manutenibilidade** - Código mais simples é mais fácil de manter
+5. **Documente a lógica** - Especialmente quando usar manipulação manual
+
 ## **Chamada de Web Service**
 
 O Editor de Regras dispõe de um conjunto de funções para que seja possível a atribuição e manipulação dos parâmetros de um web service, bem como a sua execução. Para isto é necessário declarar uma variável identificando o serviço que se deseja executar.
@@ -14218,47 +14514,118 @@ Funcao exemploRequisicaoCompleta(); {
 
 #### ValorElementoJson
 
-Função para extrair valores de elementos específicos de um objeto JSON.
+Esta função serve para ler o valor de um campo específico de um arquivo JSON.
 
 **Sintaxe:**
 
 ```lsp
-ValorElementoJson(<json>, <grupo>, <elemento>, <valor>);
+ValorElementoJson(Alfa aJson, Alfa aGrupo, Alfa aElemento, Alfa End aValor);
 ```
 
 **Parâmetros:**
 
-- `json`: String contendo o JSON de origem
-- `grupo`: Nome do grupo/objeto dentro do JSON (use "" para raiz)
-- `elemento`: Nome do elemento/propriedade a ser extraído
-- `valor`: Variável que receberá o valor extraído
+| Nome | Tipo | Descrição |
+|------|------|-----------|
+| `aJson` | Alfa | Recebe o conteúdo de um arquivo JSON |
+| `aGrupo` | Alfa | Recebe os grupos que devem ser posicionados para ler o elemento do JSON (os grupos devem ser separados por ";") |
+| `aElemento` | Alfa | Recebe o campo a ser lido do JSON |
+| `aValor` | Alfa | Variável alfanumérica que recebe o valor do campo lido do JSON |
 
-**Exemplos:**
+**Exemplo Básico:**
 
 ```lsp
 Definir Alfa vaJSON;
-Definir Alfa vaToken;
+Definir Alfa vaId;
 Definir Alfa vaNome;
-Definir Alfa vaEmail;
 
-@ JSON simples @
-vaJSON = "{\"token\": \"abc123\", \"usuario\": \"joao\"}";
+vaJSON = "{\"usuario\": {\"id\": 123, \"nome\": \"João Silva\"}}";
 
-@ Extrair o elemento "token" do JSON @
-ValorElementoJson(vaJSON, "", "token", vaToken);
-@ vaToken será "abc123" @
+@ Extrair o elemento "id" do grupo "usuario" @
+ValorElementoJson(vaJSON, "usuario", "id", vaId);
+@ vaId será "123" @
 
-@ JSON com objeto aninhado @
-vaJSON = "{\"data\": {\"first_name\": \"João\", \"email\": \"joao@exemplo.com\"}, \"token\": \"xyz789\"}";
+@ Extrair o elemento "nome" do grupo "usuario" @
+ValorElementoJson(vaJSON, "usuario", "nome", vaNome);
+@ vaNome será "João Silva" @
 
-@ Extrair elementos do grupo "data" @
-ValorElementoJson(vaJSON, "data", "first_name", vaNome);
-ValorElementoJson(vaJSON, "data", "email", vaEmail);
+```
 
-@ Extrair elemento da raiz @
-ValorElementoJson(vaJSON, "", "token", vaToken);
+**Exemplo Prático com JSON Complexo:**
 
-Mensagem(Retorna, "Nome: " + vaNome + ", Email: " + vaEmail + ", Token: " + vaToken);
+```lsp
+Definir Funcao processarJSONComplexo(); {
+  Definir Alfa vaJSON;
+  Definir Alfa vaNomeEmpresa;
+  Definir Alfa vaPais;
+  Definir Alfa vaEstado;
+  Definir Alfa vaCidade;
+  Definir Alfa vaBairro;
+  Definir Alfa vaRua;
+  Definir Alfa vaNumero;
+  Definir Alfa vaDepartamento;
+  Definir Alfa vaProjeto;
+  Definir Alfa vaVersao;
+  Definir Alfa vaRetorno;
+
+  vaJSON = "{                                                                    \
+                \"resultado\": {                                                     \
+                        \"empresa\": {                                                     \
+                          \"nome\": \"Tech Solutions\",                                    \
+                          \"localizacao\": {                                               \
+                            \"pais\": \"Brasil\",                                          \
+                            \"estado\": \"Paraná\",                                        \
+                            \"cidade\": {                                                  \
+                              \"nome\": \"Arapongas\",                                     \
+                              \"bairro\": {                                                \
+                                \"nome\": \"Centro\",                                      \
+                                \"rua\": {                                                 \
+                                  \"nome\": \"Rua das Palmeiras\",                         \
+                                  \"numero\": 123                                          \
+                                }                                                          \
+                              }                                                            \
+                            }                                                              \
+                          },                                                               \
+                          \"departamentos\": [                                             \
+                            {                                                              \
+                              \"nome\": \"TI\",                                            \
+                              \"projetos\": [                                              \
+                                {                                                          \
+                                  \"nome\": \"Sistema de Gestão\",                         \
+                                  \"versao\": \"2.1.0\"                                    \
+                                }                                                          \
+                              ]                                                            \
+                            }                                                              \
+                          ]                                                                \
+                        }                                                                  \
+                }                                                                    \
+          }";
+
+  @ Extrair dados da empresa @
+  ValorElementoJson(vaJSON, "resultado;empresa", "nome", vaNomeEmpresa);
+  
+  @ Extrair dados de localização (múltiplos níveis separados por ";") @
+  ValorElementoJson(vaJSON, "resultado;empresa;localizacao", "pais", vaPais);
+  ValorElementoJson(vaJSON, "resultado;empresa;localizacao", "estado", vaEstado);
+  ValorElementoJson(vaJSON, "resultado;empresa;localizacao;cidade", "nome", vaCidade);
+  ValorElementoJson(vaJSON, "resultado;empresa;localizacao;cidade;bairro", "nome", vaBairro);
+  ValorElementoJson(vaJSON, "resultado;empresa;localizacao;cidade;bairro;rua", "nome", vaRua);
+  ValorElementoJson(vaJSON, "resultado;empresa;localizacao;cidade;bairro;rua", "numero", vaNumero);
+  
+  @ Extrair dados do departamento (primeiro elemento do array) @
+  ValorElementoJson(vaJSON, "resultado;empresa;departamentos", "nome", vaDepartamento);
+  
+  @ Extrair dados do projeto (primeiro elemento do array aninhado) @
+  ValorElementoJson(vaJSON, "resultado;empresa;departamentos;projetos", "nome", vaProjeto);
+  ValorElementoJson(vaJSON, "resultado;empresa;departamentos;projetos", "versao", vaVersao);
+
+  vaRetorno = "Empresa: " + vaNomeEmpresa + "\n" +
+               "Localização: " + vaCidade + " - " + vaEstado + " - " + vaPais + "\n" +
+               "Endereço: " + vaRua + ", " + vaNumero + " - " + vaBairro + "\n" +
+               "Departamento: " + vaDepartamento + "\n" +
+               "Projeto: " + vaProjeto + " v" + vaVersao;
+
+  Mensagem(Retorna, vaRetorno);
+}
 ```
 
 **Exemplo Prático com API:**
@@ -14284,6 +14651,18 @@ Funcao processarRespostaAPI(); {
   Mensagem(Retorna, vaMensagem);
 }
 ```
+
+**Observações Importantes:**
+
+1. **Parâmetro de Grupo**: Para acessar elementos em níveis aninhados, use ponto e vírgula (;) para separar os grupos. Por exemplo: `"resultado;empresa;localizacao"` para acessar o grupo `localizacao` que está dentro de `empresa`, que por sua vez está dentro de `resultado`.
+
+2. **Arrays**: A função não consegue percorrer arrays automaticamente. Ela sempre encontra apenas a primeira ocorrência do elemento especificado.
+
+3. **Notação de Ponto**: Não é possível usar a notação de ponto (.) como em outras linguagens. Por exemplo: `resultado.empresa.nome` não funciona.
+
+4. **Índices de Array**: Não é possível acessar elementos de array pelo índice. Por exemplo: `resultado[0]` ou `resultado[1]` não funcionam.
+
+5. **Case Sensitive**: Os nomes dos grupos e elementos são sensíveis a maiúsculas e minúsculas. Certifique-se de usar exatamente a mesma grafia que está no JSON.
 
 ## **Exemplos Práticos de APIs**
 
