@@ -1,4 +1,4 @@
-# 📚 Documentação LSP - Linguagem Sênior de Programação
+# 📚 Documentação LSP - Linguagem Senior de Programação
 
 [![Senior Sistemas](https://img.shields.io/badge/Senior-Sistemas-blue)](https://www.senior.com.br)
 [![LSP](https://img.shields.io/badge/Linguagem-LSP-green)](https://documentacao.senior.com.br/tecnologia)
@@ -8,7 +8,7 @@
 
 > **🎯 Propósito desta Documentação**
 >
-> Esta documentação tem como objetivo **organizar de forma didática e com exemplos práticos** todo o conhecimento sobre a **Linguagem Sênior de Programação (LSP)**, facilitando o aprendizado e entendimento da linguagem para desenvolvedores de todos os níveis.
+> Esta documentação tem como objetivo **organizar de forma didática e com exemplos práticos** todo o conhecimento sobre a **Linguagem Senior de Programação (LSP)**, facilitando o aprendizado e entendimento da linguagem para desenvolvedores de todos os níveis.
 >
 > **⚠️ IMPORTANTE:** Para informações oficiais, atualizações e documentação técnica detalhada, sempre consulte o **[site oficial da Senior](https://www.senior.com.br)** e a **[documentação oficial](https://documentacao.senior.com.br/tecnologia)**.
 >
@@ -15009,6 +15009,6 @@ Mensagem(Retorna, vaMensagem);
 
 ---
 
-- **Fim da Documentação LSP - Linguagem Sênior de Programação**
+- **Fim da Documentação LSP - Linguagem Senior de Programação**
 
 - *Desenvolvido em colaboração | Atualizado em 2025*
